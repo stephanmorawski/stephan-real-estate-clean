@@ -1,9 +1,9 @@
-import { createReader } from '@keystatic/core/reader';
+﻿import { createReader } from '@keystatic/core/reader';
 import { createGitHubReader } from '@keystatic/core/reader/github';
 import { cookies, draftMode } from 'next/headers';
 import keystaticConfig from '../../keystatic.config';
 
-const repository = 'oraffaud/stephan-real-estate-clean';
+const repository = 'stephanmorawski/stephan-real-estate-clean';
 const localReader = createReader(process.cwd(), keystaticConfig);
 
 export async function getKeystaticNewsReader() {
@@ -40,3 +40,4 @@ export async function getKeystaticNewsReader() {
     isDraft: false,
   };
 }
+

@@ -33,7 +33,7 @@ const localizedContent = (label) =>
 export default config({
   storage: {
     kind: 'github',
-    repo: 'oraffaud/stephan-real-estate-clean',
+    repo: 'stephanmorawski/stephan-real-estate-clean',
   },
   ui: {
     brand: {
@@ -96,3 +96,4 @@ export default config({
     }),
   },
 });
+
