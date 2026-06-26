@@ -1,0 +1,16 @@
+{
+  "slug": "test keystatic",
+  "status": "draft",
+  "publishedAt": "2026-06-26",
+  "source": "test",
+  "fr": {
+    "title": "test FR",
+    "excerpt": "Test Keystatic content",
+    "content": []
+  },
+  "en": {
+    "title": "Test EN",
+    "excerpt": "test keystatic content en",
+    "content": []
+  }
+}
