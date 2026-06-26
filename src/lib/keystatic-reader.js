@@ -4,16 +4,26 @@ import { cookies, draftMode } from 'next/headers';
 import keystaticConfig from '../../keystatic.config';
 
 const repository = 'oraffaud/stephan-real-estate-clean';
+const localReader = createReader(process.cwd(), keystaticConfig);
 
 export async function getKeystaticNewsReader() {
-  const draft = await draftMode();
+  let isDraftModeEnabled = false;
 
-  if (draft.isEnabled) {
+  // draftMode() throws when this helper is called from generateStaticParams.
+  // In that build-time context, the local repository reader is the correct source.
+  try {
+    const draft = await draftMode();
+    isDraftModeEnabled = draft.isEnabled;
+  } catch {
+    isDraftModeEnabled = false;
+  }
+
+  if (isDraftModeEnabled) {
     const cookieStore = await cookies();
     const branch = cookieStore.get('ks-branch')?.value;
     const token = cookieStore.get('keystatic-gh-access-token')?.value;
 
-    if (branch && token) {
+    if (branch) {
       return {
         reader: createGitHubReader(keystaticConfig, {
           repo: repository,
@@ -26,7 +36,7 @@ export async function getKeystaticNewsReader() {
   }
 
   return {
-    reader: createReader(process.cwd(), keystaticConfig),
+    reader: localReader,
     isDraft: false,
   };
 }
