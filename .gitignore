@@ -11,3 +11,5 @@ src/**/.DS_Store
 
 # Local script backups
 .backup-*/
+.vercel
+.env*
