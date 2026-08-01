@@ -8,3 +8,6 @@ out
 *.bak.*
 src/**/*.bak.*
 src/**/.DS_Store
+
+# Local script backups
+.backup-*/
