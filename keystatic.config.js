@@ -90,6 +90,18 @@ export default config({
           directory: 'public/news',
           publicPath: '/news/',
         }),
+        partnerName: fields.text({
+          label: 'Nom du partenaire',
+          description: 'Facultatif. Affiché dans le bloc partenaire de l’article.',
+        }),
+        partnerUrl: fields.url({
+          label: 'Lien partenaire',
+          description: 'Facultatif. Affiché comme bouton cliquable dans l’article.',
+        }),
+        partnerLogo: fields.text({
+          label: 'Logo partenaire',
+          description: 'Facultatif. Chemin public, par exemple /partners/logo.png.',
+        }),
         fr: localizedContent('Français'),
         en: localizedContent('Anglais'),
       },
