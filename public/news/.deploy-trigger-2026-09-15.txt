@@ -1,0 +1,1 @@
+Trigger publication workflow after correcting VERCEL_PRODUCTION_DEPLOY_HOOK repository secret.
