@@ -39,6 +39,12 @@ jobs:
         run: npm ci
 
       - name: Validate production build
+        env:
+          # Keystatic validates that these variables exist while Next.js collects
+          # the API route during build. CI never uses them to access GitHub.
+          KEYSTATIC_GITHUB_CLIENT_ID: ci-build
+          KEYSTATIC_GITHUB_CLIENT_SECRET: ci-build-placeholder
+          KEYSTATIC_SECRET: ci-build-placeholder-32-characters
         run: npm run build
 
       - name: Require Vercel deploy hook
@@ -58,7 +64,6 @@ jobs:
           echo
 
       - name: Identify changed news articles
-        id: changed
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "push" ] && [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
@@ -68,11 +73,33 @@ jobs:
           fi
           cat /tmp/news-files.txt
 
-      - name: Verify published pages
+      - name: Verify production
         shell: bash
         run: |
+          # Always verify that both news indexes respond after deployment.
+          for index_url in \
+            "https://www.cotedazuragency.com/fr/actualites" \
+            "https://www.cotedazuragency.com/en/actualites"; do
+            success=0
+            for attempt in $(seq 1 30); do
+              code=$(curl --silent --location --output /dev/null --write-out '%{http_code}' "$index_url" || true)
+              if [ "$code" = "200" ]; then
+                success=1
+                break
+              fi
+              echo "Waiting for $index_url ($attempt/30, HTTP $code)"
+              sleep 10
+            done
+            if [ "$success" -ne 1 ]; then
+              echo "Production index verification failed: $index_url"
+              exit 1
+            fi
+          done
+
+          # If an article JSON changed, additionally verify the exact FR/EN pages
+          # expose the approved publication date.
           if [ ! -s /tmp/news-files.txt ]; then
-            echo "No changed news article to verify."
+            echo "No changed article JSON; index verification is sufficient."
             exit 0
           fi
 
@@ -83,9 +110,8 @@ jobs:
 
             for lang in fr en; do
               url="https://www.cotedazuragency.com/$lang/actualites/$slug"
-              echo "Waiting for $url to publish $publishedAt"
+              echo "Verifying $url"
               success=0
-
               for attempt in $(seq 1 30); do
                 body=$(curl --silent --show-error --location "$url" || true)
                 if printf '%s' "$body" | grep -Fq "$publishedAt"; then
@@ -96,9 +122,8 @@ jobs:
                 echo "Attempt $attempt/30 not ready yet"
                 sleep 10
               done
-
               if [ "$success" -ne 1 ]; then
-                echo "Production verification failed for $url"
+                echo "Production article verification failed for $url"
                 exit 1
               fi
             done
