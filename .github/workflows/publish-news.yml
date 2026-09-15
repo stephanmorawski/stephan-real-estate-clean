@@ -97,7 +97,8 @@ jobs:
           done
 
           # If an article JSON changed, additionally verify the exact FR/EN pages
-          # expose the approved publication date.
+          # expose the approved publication date. Routes are derived from JSON
+          # filenames by scripts/generate-news-index.mjs, not from entry.slug.
           if [ ! -s /tmp/news-files.txt ]; then
             echo "No changed article JSON; index verification is sufficient."
             exit 0
@@ -105,7 +106,7 @@ jobs:
 
           while IFS= read -r file; do
             [ -z "$file" ] && continue
-            slug=$(node -e "const a=require('./$file'); process.stdout.write(a.slug)")
+            slug=$(basename "$file" .json)
             publishedAt=$(node -e "const a=require('./$file'); process.stdout.write(a.publishedAt)")
 
             for lang in fr en; do
