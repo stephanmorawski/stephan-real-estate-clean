@@ -1,0 +1,105 @@
+name: Publish news to production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/news/**'
+      - 'public/news/**'
+      - 'scripts/generate-news-index.mjs'
+      - '.github/workflows/publish-news.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coteazuragency-news-production
+  cancel-in-progress: false
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate production build
+        run: npm run build
+
+      - name: Require Vercel deploy hook
+        env:
+          VERCEL_PRODUCTION_DEPLOY_HOOK: ${{ secrets.VERCEL_PRODUCTION_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_PRODUCTION_DEPLOY_HOOK" ]; then
+            echo "Missing GitHub secret: VERCEL_PRODUCTION_DEPLOY_HOOK"
+            exit 1
+          fi
+
+      - name: Trigger Vercel production deployment
+        env:
+          VERCEL_PRODUCTION_DEPLOY_HOOK: ${{ secrets.VERCEL_PRODUCTION_DEPLOY_HOOK }}
+        run: |
+          curl --fail --silent --show-error --request POST "$VERCEL_PRODUCTION_DEPLOY_HOOK"
+          echo
+
+      - name: Identify changed news articles
+        id: changed
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'content/news/*.json' > /tmp/news-files.txt
+          else
+            git diff-tree --no-commit-id --name-only -r HEAD -- 'content/news/*.json' > /tmp/news-files.txt
+          fi
+          cat /tmp/news-files.txt
+
+      - name: Verify published pages
+        shell: bash
+        run: |
+          if [ ! -s /tmp/news-files.txt ]; then
+            echo "No changed news article to verify."
+            exit 0
+          fi
+
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            slug=$(node -e "const a=require('./$file'); process.stdout.write(a.slug)")
+            publishedAt=$(node -e "const a=require('./$file'); process.stdout.write(a.publishedAt)")
+
+            for lang in fr en; do
+              url="https://www.cotedazuragency.com/$lang/actualites/$slug"
+              echo "Waiting for $url to publish $publishedAt"
+              success=0
+
+              for attempt in $(seq 1 30); do
+                body=$(curl --silent --show-error --location "$url" || true)
+                if printf '%s' "$body" | grep -Fq "$publishedAt"; then
+                  echo "Verified: $url"
+                  success=1
+                  break
+                fi
+                echo "Attempt $attempt/30 not ready yet"
+                sleep 10
+              done
+
+              if [ "$success" -ne 1 ]; then
+                echo "Production verification failed for $url"
+                exit 1
+              fi
+            done
+          done < /tmp/news-files.txt
