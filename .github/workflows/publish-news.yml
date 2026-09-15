@@ -7,7 +7,11 @@ on:
     paths:
       - 'content/news/**'
       - 'public/news/**'
+      - 'public/partners/**'
+      - 'src/lib/news/**'
+      - 'src/app/[lang]/actualites/**'
       - 'scripts/generate-news-index.mjs'
+      - 'keystatic.config.js'
       - '.github/workflows/publish-news.yml'
   workflow_dispatch:
 
@@ -108,6 +112,8 @@ jobs:
             [ -z "$file" ] && continue
             slug=$(basename "$file" .json)
             publishedAt=$(node -e "const a=require('./$file'); process.stdout.write(a.publishedAt)")
+            partnerUrl=$(node -e "const a=require('./$file'); process.stdout.write(a.partnerUrl || '')")
+            partnerLogo=$(node -e "const a=require('./$file'); process.stdout.write(a.partnerLogo || '')")
 
             for lang in fr en; do
               url="https://www.cotedazuragency.com/$lang/actualites/$slug"
@@ -116,9 +122,15 @@ jobs:
               for attempt in $(seq 1 30); do
                 body=$(curl --silent --show-error --location "$url" || true)
                 if printf '%s' "$body" | grep -Fq "$publishedAt"; then
-                  echo "Verified: $url"
-                  success=1
-                  break
+                  if [ -n "$partnerUrl" ] && ! printf '%s' "$body" | grep -Fq "$partnerUrl"; then
+                    echo "Partner URL not present yet"
+                  elif [ -n "$partnerLogo" ] && ! printf '%s' "$body" | grep -Fq "$partnerLogo"; then
+                    echo "Partner logo not present yet"
+                  else
+                    echo "Verified: $url"
+                    success=1
+                    break
+                  fi
                 fi
                 echo "Attempt $attempt/30 not ready yet"
                 sleep 10
