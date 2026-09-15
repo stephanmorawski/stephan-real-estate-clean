@@ -104,6 +104,39 @@ export default async function NewsDetailPage({ params }) {
           ))}
         </div>
 
+        {article.partnerUrl ? (
+          <aside className="mt-10 rounded-[28px] border border-zinc-200 bg-white p-6 shadow-sm md:p-8">
+            {article.partnerLogo ? (
+              <a
+                href={article.partnerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+                aria-label={article.partnerName || 'Partner'}
+              >
+                <img
+                  src={article.partnerLogo}
+                  alt={article.partnerName || 'Partner'}
+                  className="h-14 w-auto max-w-[280px] object-contain md:h-16"
+                />
+              </a>
+            ) : null}
+
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <a
+                href={article.partnerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex rounded-full border border-zinc-900 px-6 py-3 text-sm font-medium text-zinc-900 transition hover:bg-zinc-900 hover:text-white"
+              >
+                {lang === 'fr'
+                  ? `Découvrir ${article.partnerName || 'le partenaire'}`
+                  : `Visit ${article.partnerName || 'partner'}`}
+              </a>
+            </div>
+          </aside>
+        ) : null}
+
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
             href={`/${lang}/actualites`}
