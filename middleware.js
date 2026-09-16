@@ -38,6 +38,10 @@ export function middleware(req) {
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set('x-nonce', nonce);
   requestHeaders.set('Content-Security-Policy', csp);
+  requestHeaders.set(
+    'x-page-lang',
+    pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'fr'
+  );
 
   const nextWithSecurityHeaders = () => {
     const response = NextResponse.next({
