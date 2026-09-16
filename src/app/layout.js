@@ -1,4 +1,4 @@
-import { draftMode } from 'next/headers';
+import { draftMode, headers } from 'next/headers';
 import './globals.css';
 
 export const metadata = {
@@ -19,9 +19,11 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const draft = await draftMode();
+  const requestHeaders = await headers();
+  const lang = requestHeaders.get('x-page-lang') === 'en' ? 'en' : 'fr';
 
   return (
-    <html lang="fr">
+    <html lang={lang}>
       <body>
         {children}
 
