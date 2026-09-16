@@ -12,6 +12,14 @@ on:
       - 'src/app/[lang]/actualites/**'
       - 'scripts/generate-news-index.mjs'
       - 'keystatic.config.js'
+      - 'middleware.js'
+      - 'src/app/layout.js'
+      - 'src/app/[lang]/layout.js'
+      - 'src/app/[lang]/[seoSlug]/**'
+      - 'src/components/SeoLandingPage.jsx'
+      - 'src/lib/seo-pages.js'
+      - 'src/lib/seo.js'
+      - 'src/app/sitemap.ts'
       - '.github/workflows/publish-news.yml'
   workflow_dispatch:
 
