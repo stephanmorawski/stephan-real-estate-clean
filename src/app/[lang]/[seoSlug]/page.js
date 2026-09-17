@@ -20,6 +20,10 @@ export async function generateMetadata({ params }) {
     description: page.description,
     lang,
     pathname: `/${lang}/${page.slug}`,
+    // These local SEO landing pages are not one-to-one translations.
+    // Emitting hreflang with the same slug in the other language created
+    // alternates that resolve to 404s and sent a contradictory indexing signal.
+    includeLanguageAlternates: false,
   });
 }
 
