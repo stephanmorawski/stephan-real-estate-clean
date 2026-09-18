@@ -16,6 +16,7 @@ on:
       - 'src/app/layout.js'
       - 'src/app/[lang]/layout.js'
       - 'src/app/[lang]/[seoSlug]/**'
+      - 'src/app/[lang]/agence-immobiliere-cote-d-azur/**'
       - 'src/components/Footer.js'
       - 'src/components/SeoLandingPage.jsx'
       - 'src/lib/seo-pages.js'
