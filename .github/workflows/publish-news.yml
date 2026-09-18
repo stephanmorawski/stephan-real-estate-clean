@@ -10,6 +10,7 @@ on:
       - 'public/partners/**'
       - 'src/lib/news/**'
       - 'src/app/[lang]/actualites/**'
+      - 'src/app/[lang]/page.js'
       - 'scripts/generate-news-index.mjs'
       - 'keystatic.config.js'
       - 'middleware.js'
