@@ -8,17 +8,17 @@
   "approvedKeyword": "APPROUVER",
   "publishSlug": "2026-09-19-cap-antibes-sentier-littoral",
   "sourceUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/les-espaces-naturels/decouvrir/le-cap-dantibes",
-  "previewVisualUrl": "https://unsplash.com/photos/a-path-leading-to-the-ocean-through-some-trees-09kqyNYgokI",
-  "visualSourcePage": "https://unsplash.com/photos/a-path-leading-to-the-ocean-through-some-trees-09kqyNYgokI",
+  "previewVisualUrl": "https://unsplash.com/photos/a-scenic-path-leads-to-a-sparkling-blue-bay-HZ0Kq7lHhMA",
+  "visualSourcePage": "https://unsplash.com/photos/a-scenic-path-leads-to-a-sparkling-blue-bay-HZ0Kq7lHhMA",
   "visualLicense": "Unsplash License",
-  "visualAuthor": "Bruno Ngarukiye",
+  "visualAuthor": "Sanna Xu",
   "publicationVisualPendingMaterialization": true,
   "publicationVisualPath": "/news/2026-09-19-cap-antibes-sentier-littoral.jpg",
   "revision": {
     "requestedBy": "stephan@cotedazuragency.com",
-    "gmailMessageId": "1a0ba7aa8b0d38fa",
-    "request": "Use a more aspirational, dream-like visual similar to the first photo, but without backpacks.",
-    "resolution": "Selected an Antibes photograph on Unsplash showing a path opening toward the Mediterranean, with a more aspirational lifestyle feel and no visible walkers or backpacks. Sent as a fresh approval thread because Gmail could not thread a reply to the Outlook-originated feedback message. Keep waiting for final APPROUVER before publication."
+    "gmailMessageId": "1a0bac643559fe94",
+    "request": "Reuse the very first photo concept and remove the backpackers.",
+    "resolution": "Prepared a no-people visual in the same coastal-path spirit, but Gmail connector egress could not attach the generated file. Sent Stephan a verified Antibes visual link on Unsplash, with the path clearly visible and no walkers/backpacks. Kept workflowStatus=waiting_approval and requested final APPROUVER."
   },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
