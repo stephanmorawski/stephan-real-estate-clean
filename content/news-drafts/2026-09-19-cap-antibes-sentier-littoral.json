@@ -1,24 +1,34 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "gmailThreadId": "1a0bab6a203a702a",
   "originGmailThreadId": "1a0b86b2aead2fa7",
   "previousRevisionThreadId": "1a0ba1666a358d51",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "2",
   "approvedKeyword": "APPROUVER",
+  "approvalMessageId": "1a0bb01b5a789e7a",
+  "approvedAt": "2026-09-19T18:50:40Z",
   "publishSlug": "2026-09-19-cap-antibes-sentier-littoral",
   "sourceUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/les-espaces-naturels/decouvrir/le-cap-dantibes",
   "previewVisualUrl": "https://unsplash.com/photos/a-scenic-path-leads-to-a-sparkling-blue-bay-HZ0Kq7lHhMA",
   "visualSourcePage": "https://unsplash.com/photos/a-scenic-path-leads-to-a-sparkling-blue-bay-HZ0Kq7lHhMA",
   "visualLicense": "Unsplash License",
   "visualAuthor": "Sanna Xu",
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "publicationVisualPath": "/news/2026-09-19-cap-antibes-sentier-littoral.jpg",
+  "publicationVisualBlobSha": "cbea7bb59836056fd65bce5b2afe1f652f81061b",
+  "publishCommit": "bda9817055561875affaae859d59f1ab8d4fc448",
+  "productionWorkflowRunId": 35464862067,
+  "publishedAtUtc": "2026-09-19T19:37:19Z",
+  "publishedUrls": {
+    "fr": "https://www.cotedazuragency.com/fr/actualites/2026-09-19-cap-antibes-sentier-littoral",
+    "en": "https://www.cotedazuragency.com/en/actualites/2026-09-19-cap-antibes-sentier-littoral"
+  },
   "revision": {
     "requestedBy": "stephan@cotedazuragency.com",
     "gmailMessageId": "1a0bac643559fe94",
     "request": "Reuse the very first photo concept and remove the backpackers.",
-    "resolution": "Prepared a no-people visual in the same coastal-path spirit, but Gmail connector egress could not attach the generated file. Sent Stephan a verified Antibes visual link on Unsplash, with the path clearly visible and no walkers/backpacks. Kept workflowStatus=waiting_approval and requested final APPROUVER."
+    "resolution": "Sent Stephan a verified Antibes visual on Unsplash with the path clearly visible and no walkers/backpacks. Stephan approved this visual. The approved image was materialized locally in public/news and optimized for web before publication."
   },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
