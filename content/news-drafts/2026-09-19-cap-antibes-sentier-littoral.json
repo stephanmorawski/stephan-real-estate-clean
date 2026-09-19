@@ -6,6 +6,13 @@
   "approvedKeyword": "APPROUVER",
   "publishSlug": "2026-09-19-cap-antibes-sentier-littoral",
   "sourceUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/les-espaces-naturels/decouvrir/le-cap-dantibes",
+  "previewVisualUrl": "https://raw.githubusercontent.com/stephanmorawski/stephan-real-estate-clean/main/public/images/azur-aerial.jpg",
+  "revision": {
+    "requestedBy": "stephan@cotedazuragency.com",
+    "gmailMessageId": "1a0b9b25ea3b174a",
+    "request": "Remove the two walkers with backpacks from the proposed visual",
+    "resolution": "Replaced the preview visual with an existing Côte d'Azur Agency aerial coastline image containing no walkers/backpacks; article remains awaiting final APPROUVER."
+  },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
     "status": "published",
