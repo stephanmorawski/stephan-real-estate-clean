@@ -1,21 +1,23 @@
 {
   "workflowStatus": "waiting_approval",
-  "gmailThreadId": "1a0b86b2aead2fa7",
+  "gmailThreadId": "1a0ba1666a358d51",
+  "originGmailThreadId": "1a0b86b2aead2fa7",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "2",
   "approvedKeyword": "APPROUVER",
   "publishSlug": "2026-09-19-cap-antibes-sentier-littoral",
   "sourceUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/les-espaces-naturels/decouvrir/le-cap-dantibes",
-  "previewVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Sentier_cap_d%E2%80%99Antibes.jpg",
-  "visualSourcePage": "https://commons.wikimedia.org/wiki/File:Sentier_cap_d%E2%80%99Antibes.jpg",
-  "visualLicense": "CC0 1.0 Universal Public Domain Dedication",
-  "visualAuthor": "Gilbertus",
+  "previewVisualUrl": "https://unsplash.com/photos/a-path-leading-to-the-ocean-through-some-trees-09kqyNYgokI",
+  "visualSourcePage": "https://unsplash.com/photos/a-path-leading-to-the-ocean-through-some-trees-09kqyNYgokI",
+  "visualLicense": "Unsplash License",
+  "visualAuthor": "Bruno Ngarukiye",
   "publicationVisualPendingMaterialization": true,
+  "publicationVisualPath": "/news/2026-09-19-cap-antibes-sentier-littoral.jpg",
   "revision": {
     "requestedBy": "stephan@cotedazuragency.com",
-    "gmailMessageId": "1a0ba4452e5755fa",
-    "request": "Prefer a visual where the coastal path is clearly visible, while keeping the previous requirement of no walkers/backpacks.",
-    "resolution": "Selected a CC0 Wikimedia Commons photograph of the Sentier du Littoral at Cap d’Antibes with the path clearly visible and no people visible in the selected composition. Keep waiting for final APPROUVER before publication."
+    "gmailMessageId": "1a0ba7aa8b0d38fa",
+    "request": "Use a more aspirational, dream-like visual similar to the first photo, but without backpacks.",
+    "resolution": "Selected an Antibes photograph on Unsplash showing a path opening toward the Mediterranean, with a more aspirational lifestyle feel and no visible walkers or backpacks. Keep waiting for final APPROUVER before publication."
   },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
@@ -23,7 +25,7 @@
     "publishedAt": "2026-09-19",
     "source": "Côte d'Azur Agency",
     "linkedinUrl": "",
-    "image": "/images/azur-aerial.jpg",
+    "image": "/news/2026-09-19-cap-antibes-sentier-littoral.jpg",
     "fr": {
       "title": "Le sentier du littoral du Cap d’Antibes : 3,7 km entre mer et pinède",
       "excerpt": "De la Garoupe à la Villa Eilenroc, le sentier du littoral offre l’un des paysages les plus emblématiques du Cap d’Antibes et illustre la qualité de vie recherchée sur la Côte d’Azur.",
