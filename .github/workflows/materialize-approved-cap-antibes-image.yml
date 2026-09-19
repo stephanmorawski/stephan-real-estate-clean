@@ -23,7 +23,7 @@ jobs:
           set -euo pipefail
           mkdir -p public/news
           curl --fail --location --retry 3 --retry-delay 2 \
-            'https://images.unsplash.com/photo-1756211067146-623b474b763c?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=sanna-xu-HZ0Kq7lHhMA-unsplash.jpg' \
+            'https://images.unsplash.com/photo-1756211067146-623b474b763c?ixlib=rb-4.1.0&fm=jpg&fit=max&w=1600&q=82' \
             --output public/news/2026-09-19-cap-antibes-sentier-littoral.jpg
           test -s public/news/2026-09-19-cap-antibes-sentier-littoral.jpg
           mime="$(file --brief --mime-type public/news/2026-09-19-cap-antibes-sentier-littoral.jpg)"
