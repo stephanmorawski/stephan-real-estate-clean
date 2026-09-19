@@ -6,12 +6,16 @@
   "approvedKeyword": "APPROUVER",
   "publishSlug": "2026-09-19-cap-antibes-sentier-littoral",
   "sourceUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/les-espaces-naturels/decouvrir/le-cap-dantibes",
-  "previewVisualUrl": "https://raw.githubusercontent.com/stephanmorawski/stephan-real-estate-clean/main/public/images/azur-aerial.jpg",
+  "previewVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Sentier_cap_d%E2%80%99Antibes.jpg",
+  "visualSourcePage": "https://commons.wikimedia.org/wiki/File:Sentier_cap_d%E2%80%99Antibes.jpg",
+  "visualLicense": "CC0 1.0 Universal Public Domain Dedication",
+  "visualAuthor": "Gilbertus",
+  "publicationVisualPendingMaterialization": true,
   "revision": {
     "requestedBy": "stephan@cotedazuragency.com",
-    "gmailMessageId": "1a0b9b25ea3b174a",
-    "request": "Remove the two walkers with backpacks from the proposed visual",
-    "resolution": "Replaced the preview visual with an existing Côte d'Azur Agency aerial coastline image containing no walkers/backpacks; article remains awaiting final APPROUVER."
+    "gmailMessageId": "1a0ba4452e5755fa",
+    "request": "Prefer a visual where the coastal path is clearly visible, while keeping the previous requirement of no walkers/backpacks.",
+    "resolution": "Selected a CC0 Wikimedia Commons photograph of the Sentier du Littoral at Cap d’Antibes with the path clearly visible and no people visible in the selected composition. Keep waiting for final APPROUVER before publication."
   },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
