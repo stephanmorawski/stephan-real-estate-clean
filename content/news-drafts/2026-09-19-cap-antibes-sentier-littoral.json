@@ -1,7 +1,8 @@
 {
   "workflowStatus": "waiting_approval",
-  "gmailThreadId": "1a0ba1666a358d51",
+  "gmailThreadId": "1a0bab6a203a702a",
   "originGmailThreadId": "1a0b86b2aead2fa7",
+  "previousRevisionThreadId": "1a0ba1666a358d51",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "2",
   "approvedKeyword": "APPROUVER",
@@ -17,7 +18,7 @@
     "requestedBy": "stephan@cotedazuragency.com",
     "gmailMessageId": "1a0ba7aa8b0d38fa",
     "request": "Use a more aspirational, dream-like visual similar to the first photo, but without backpacks.",
-    "resolution": "Selected an Antibes photograph on Unsplash showing a path opening toward the Mediterranean, with a more aspirational lifestyle feel and no visible walkers or backpacks. Keep waiting for final APPROUVER before publication."
+    "resolution": "Selected an Antibes photograph on Unsplash showing a path opening toward the Mediterranean, with a more aspirational lifestyle feel and no visible walkers or backpacks. Sent as a fresh approval thread because Gmail could not thread a reply to the Outlook-originated feedback message. Keep waiting for final APPROUVER before publication."
   },
   "article": {
     "slug": "cap-antibes-sentier-littoral",
