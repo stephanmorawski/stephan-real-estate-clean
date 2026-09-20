@@ -41,7 +41,7 @@ jobs:
           import assert from 'node:assert/strict';
           import fs from 'node:fs';
           import { createRequire } from 'node:module';
-          const { chromium }=createRequire('/tmp/commercial-browser/package.json')('@playwright/test');
+          const { chromium, expect }=createRequire('/tmp/commercial-browser/package.json')('@playwright/test');
           const base='http://127.0.0.1:3100';
           let ready=false;
           for(let n=0;n<60;n++){try{if((await fetch(base+'/fr')).ok){ready=true;break;}}catch{} await new Promise(r=>setTimeout(r,500));}
@@ -60,10 +60,10 @@ jobs:
                   const raw=await fetch(base+path);assert.equal(raw.status,200);
                   const html=await raw.text();assert.ok(html.includes('<title>'));assert.ok(html.includes('Stephan'));
                   await page.goto(base+path);await page.waitForTimeout(300);
-                  assert.equal(await page.locator('h1').count(),1);
-                  assert.equal(await page.locator('html').getAttribute('lang'),lang);
-                  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://www.cotedazuragency.com'+path);
-                  assert.ok(await page.locator('h1').isVisible());
+                  await expect(page.locator('h1')).toHaveCount(1);
+                  await expect(page.locator('html')).toHaveAttribute('lang',lang);
+                  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://www.cotedazuragency.com'+path);
+                  await expect(page.locator('h1')).toBeVisible();
                   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'No page overflow');
                   const hrefs=await page.locator('main a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')));
                   for(const href of hrefs){if(!href?.startsWith('/')||href.startsWith('//')||href.startsWith('/api/')||checkedLinks.has(href))continue;checkedLinks.add(href);const r=await fetch(base+href);assert.ok(r.status<400,`Broken local link ${href}: ${r.status}`);}
@@ -73,8 +73,8 @@ jobs:
               }
               await page.goto(base+'/fr/services');
               await page.locator('main a[data-conversion="buyer_contact"]').click();
-              assert.ok(page.url().endsWith('/fr/contact?projet=achat'));
-              assert.ok((await page.locator('h1').textContent()).includes('recherche'));
+              await expect(page).toHaveURL(base+'/fr/contact?projet=achat');
+              await expect(page.locator('h1')).toContainText('recherche');
               assert.equal(await page.locator('form').evaluate(f=>f.checkValidity()),false);
               let delivered;
               await page.route('**/api/contact',async route=>{delivered=route.request().postDataJSON();await route.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'});});
