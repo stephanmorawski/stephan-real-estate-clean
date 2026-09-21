@@ -5,6 +5,7 @@ const { chromium, expect } = createRequire('/tmp/commercial-browser/package.json
 const base = 'http://127.0.0.1:3100';
 const output = 'commercial-test-results';
 fs.mkdirSync(output, { recursive: true });
+const requestedAreas = ['Valbonne', 'Mougins', 'Cannes', 'Mandelieu-la-Napoule', 'Théoule-sur-Mer', 'Antibes', 'Biot', 'Opio', 'Châteauneuf-Grasse', 'Roquefort-les-Pins', 'Tourrettes-sur-Loup'];
 
 // Check the published inventory without deleting a different article based on
 // an ambiguous request. The January article was withdrawn in the prior release.
@@ -55,10 +56,25 @@ try {
         if (suffix !== '/agence/partenaires') {
           await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://www.cotedazuragency.com' + path);
         }
+        if (suffix === '') {
+          await expect(page.locator('main > section').first()).not.toContainText(/Stephan/i);
+          await expect(page.locator('main > section').first()).not.toContainText('Valbonne, Biot, Mougins');
+          await expect(page.locator(`a[href="/${lang}/services#secteurs"]`)).toBeVisible();
+        }
         if (suffix === '/services') {
           await expect(page.locator('main')).not.toContainText(/Stephan/i);
           await expect(page.locator('#home-staging')).toContainText(lang === 'fr' ? 'Nous réalisons des prestations' : 'We provide home staging');
           await expect(page.locator('a[data-conversion="home_staging_contact"]')).toHaveAttribute('href', `/${lang}/contact?projet=vente`);
+          await expect(page.locator('[data-service-areas] li')).toHaveText(requestedAreas);
+          await expect(page.locator('#vendre')).not.toContainText('Le premier échange permet');
+          await expect(page.locator('#vendre')).not.toContainText('The first discussion helps');
+          await expect(page.locator('#vendre > p')).toHaveCount(0);
+          await expect(page.locator('main > header')).not.toContainText('Valbonne, Biot, Mougins');
+          await page.locator('main > header a[href="#secteurs"]').click();
+          await expect(page).toHaveURL(base + path + '#secteurs');
+          await expect(page.locator('#areas-title')).toBeInViewport();
+          await page.locator('#secteurs').screenshot({ path: `${output}/${lang}-secteurs-${width}.png` });
+          await page.evaluate(() => window.scrollTo(0, 0));
         }
         if (suffix === '/agence/expertises') {
           const headline = page.locator('#expertise-headline');
@@ -129,5 +145,5 @@ for (const lang of ['fr', 'en']) {
   const removed = await fetch(`${base}/${lang}/actualites/2026-01-01-sophia-antipolis-essor-ia-interface-trust`);
   assert.equal(removed.status, 404);
 }
-fs.writeFileSync(`${output}/results.json`, JSON.stringify({ passed: true, checks: results, links: [...checkedLinks], publishedArticles: published.length, duplicateTitles: false, januaryArticleStillWithdrawn: true, contact: 'mocked only; no actual email' }, null, 2));
-console.log(JSON.stringify({ passed: true, pageChecks: results.length, linksChecked: checkedLinks.size, publishedArticles: published.length, contact: 'mocked only' }));
+fs.writeFileSync(`${output}/results.json`, JSON.stringify({ passed: true, checks: results, links: [...checkedLinks], serviceAreas: requestedAreas, sellerIntroRemoved: true, publishedArticles: published.length, duplicateTitles: false, januaryArticleStillWithdrawn: true, contact: 'mocked only; no actual email' }, null, 2));
+console.log(JSON.stringify({ passed: true, pageChecks: results.length, linksChecked: checkedLinks.size, serviceAreas: requestedAreas.length, sellerIntroRemoved: true, publishedArticles: published.length, contact: 'mocked only' }));
