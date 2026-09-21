@@ -43,10 +43,12 @@ function getGridClass(count) {
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  const title = lang === 'en' ? 'Sale | Côte d’Azur Agency' : 'Vente | Côte d’Azur Agency';
+  const title = lang === 'en'
+    ? 'French Riviera property for sale | Côte d’Azur Agency'
+    : 'Biens à vendre sur la Côte d’Azur | Côte d’Azur Agency';
   const description = lang === 'en'
-    ? 'Properties for sale on the French Riviera.'
-    : 'Biens à la vente sur la Côte d’Azur.';
+    ? 'Explore villas, apartments and selected properties for sale on the French Riviera, with local guidance from Côte d’Azur Agency.'
+    : 'Découvrez villas, appartements et biens sélectionnés à vendre sur la Côte d’Azur, avec l’accompagnement local de Côte d’Azur Agency.';
 
   return buildPageMetadata({ title, description, lang, pathname: `/${lang}/vente` });
 }
