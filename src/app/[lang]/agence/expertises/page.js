@@ -13,7 +13,6 @@ export async function generateMetadata({ params }) {
       : 'A modern and demanding approach to real estate on the French Riviera.',
     lang,
     pathname: `/${lang}/agence/expertises`,
-    image: '/images/expertises-jardin-vue-mer.avif',
   });
 }
 
