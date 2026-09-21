@@ -6,8 +6,8 @@ import { getAllNews } from '@/lib/news';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  const title = lang === 'en' ? 'French Riviera Property Sales & Buying Support | Côte d’Azur Agency' : 'Vendre ou acheter à Valbonne et sur la Côte d’Azur | Côte d’Azur Agency';
-  const description = lang === 'en' ? 'Sell or buy with Stephan: local property advice in French and English, in Valbonne, Biot, Mougins and across the French Riviera.' : 'Vendez ou achetez avec Stephan : estimation et accompagnement immobilier en français et en anglais, à Valbonne, Biot, Mougins et sur la Côte d’Azur.';
+  const title = lang === 'en' ? 'French Riviera Property Sales & Buying Support | Côte d’Azur Agency' : 'Vendre ou acheter sur la Côte d’Azur et dans l’arrière-pays | Côte d’Azur Agency';
+  const description = lang === 'en' ? 'Sell or buy on the French Riviera and in its hinterland. Property valuation and local guidance in French and English with Côte d’Azur Agency.' : 'Vendez ou achetez sur la Côte d’Azur et dans l’arrière-pays. Estimation et accompagnement immobilier en français et en anglais avec Côte d’Azur Agency.';
   return buildPageMetadata({ title, description, lang, pathname: `/${lang}` });
 }
 
@@ -24,9 +24,9 @@ export default async function HomePage({ params }) {
       <div className="relative container py-16 md:py-24"><div className="max-w-3xl">
         <p className="text-sm uppercase tracking-widest">Côte d’Azur Agency</p>
         <h1 className="font-luxe text-4xl leading-tight md:text-6xl mt-4">{fr ? 'Votre projet immobilier, accompagné par un interlocuteur local.' : 'Your property plans, supported by a local point of contact.'}</h1>
-        <p className="mt-5 max-w-2xl text-lg text-white/90 md:text-xl">{fr ? 'Vendre ou acheter à Valbonne, Biot, Mougins et sur la Côte d’Azur. Stephan vous accompagne en français et en anglais.' : 'Sell or buy in Valbonne, Biot, Mougins and across the French Riviera. Stephan supports you in French and English.'}</p>
+        <p className="mt-5 max-w-2xl text-lg text-white/90 md:text-xl">{fr ? 'Vendre ou acheter sur la Côte d’Azur et dans l’arrière-pays. Nous vous accompagnons en français et en anglais.' : 'Sell or buy on the French Riviera and in its hinterland. We support you in French and English.'}</p>
         <div className="mt-8 flex flex-wrap gap-4"><Link href={`/${lang}/contact?projet=estimation`} className="btn-gold" data-conversion="valuation_contact">{fr ? 'Faire estimer mon bien' : 'Discuss my property’s value'}</Link><Link href={`/${lang}/contact?projet=achat`} className="btn-dark" data-conversion="buyer_contact">{fr ? 'Confier ma recherche' : 'Discuss my search'}</Link></div>
-        <Link href={`/${lang}/vente`} className="inline-block mt-6 underline underline-offset-4">{fr ? 'Voir les biens à la vente' : 'View available properties'} →</Link>
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href={`/${lang}/vente`} className="underline underline-offset-4">{fr ? 'Voir les biens à la vente' : 'View available properties'} →</Link><Link href={`/${lang}/services#secteurs`} className="underline underline-offset-4">{fr ? 'Découvrir nos secteurs' : 'Explore our areas'} →</Link></div>
       </div></div>
     </section>
 
