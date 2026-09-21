@@ -1,0 +1,71 @@
+name: Verify public presentation feedback
+on:
+  push:
+    branches: [verification/stephan-feedback-2026-09-21]
+    paths: [.github/workflows/verify-stephan-feedback.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Read public production pages and images; never submit a form
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          const base='https://www.cotedazuragency.com';
+          const results=[];
+          const mainOf=html=>html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||'';
+          const plain=html=>html.replace(/<!--[^]*?-->/g,'').replace(/<[^>]*>/g,'').replace(/&#x27;/g,"'").replace(/&amp;/g,'&').trim();
+          async function check(path,expected,validate){
+            try{
+              const response=await fetch(base+path,{signal:AbortSignal.timeout(20000),headers:{'Cache-Control':'no-cache'}});
+              const body=await response.text();
+              const details=validate?validate(body,response):{};
+              const passed=response.status===expected&&Object.values(details).every(Boolean);
+              results.push({path,status:response.status,expected,passed,details});
+            }catch(error){results.push({path,passed:false,error:error.message});}
+          }
+          for(const lang of ['fr','en']){
+            await check(`/${lang}/agence/partenaires`,200,html=>{
+              const main=mainOf(html);
+              const headings=[...main.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map(m=>plain(m[1]));
+              return {sixPartners:headings.length===6,notariesFirst:/^Notair|^Notari/.test(headings[0]),currenciesSecond:headings[1]==='Currencies Direct',partnerLinkPreserved:main.includes('https://www.currenciesdirect.com/partner/0201110000931505')};
+            });
+            await check(`/${lang}/agence/expertises`,200,html=>{
+              const main=mainOf(html);const text=plain(main);
+              return {headline:text.includes(lang==='fr'?'Le marché immobilier a changé.':'The real estate market has changed.'),headlineSecondLine:text.includes(lang==='fr'?'La manière de chercher doit changer aussi.':'The way of searching must evolve as well.'),separateHeading:main.includes('id="expertise-headline"'),photoPresent:main.includes('expertises-jardin-vue-mer.avif'),agencyVoice:text.includes(lang==='fr'?'Nous accompagnons nos clients':'We support our clients')};
+            });
+            await check(`/${lang}/services`,200,html=>{
+              const main=mainOf(html);const text=plain(main);
+              return {noStephanInServiceText:!text.includes('Stephan'),homeStagingRetained:main.includes('id="home-staging"'),agencyVoice:text.includes(lang==='fr'?'Nous réalisons des prestations de home staging':'We provide home staging services'),sellerContact:main.includes(`/${lang}/contact?projet=vente`)};
+            });
+            await check(`/${lang}/actualites`,200,html=>{
+              const main=mainOf(html);const headings=[...main.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map(m=>plain(m[1]));
+              return {januaryArticleAbsent:!main.includes('2026-01-01-sophia-antipolis-essor-ia-interface-trust'),eightArticles:headings.length===8,noDuplicateTitles:new Set(headings).size===headings.length};
+            });
+            await check(`/${lang}/actualites/2026-01-01-sophia-antipolis-essor-ia-interface-trust`,404);
+          }
+          try{
+            const response=await fetch(base+'/images/expertises-jardin-vue-mer.avif',{signal:AbortSignal.timeout(20000)});
+            const bytes=Buffer.from(await response.arrayBuffer());
+            const sha=crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${bytes.length}\0`),bytes])).digest('hex');
+            results.push({path:'/images/expertises-jardin-vue-mer.avif',status:response.status,size:bytes.length,gitBlobSha:sha,passed:response.status===200&&sha==='f760a4c6242964e3d3d6dabf45630fab9a63e555'});
+          }catch(error){results.push({path:'photo',passed:false,error:error.message});}
+          const report={checkedAt:new Date().toISOString(),releaseCommit:'898081e7e0943b43dd3071313a4ee3d5d45a3739',method:'Public unauthenticated GET requests only; no forms, no email, no payment',passed:results.every(r=>r.passed),results};
+          fs.writeFileSync('production-feedback-verification.json',JSON.stringify(report,null,2));
+          console.log(JSON.stringify(report,null,2));
+          if(!report.passed)process.exitCode=1;
+          NODE
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: production-feedback-verification
+          path: production-feedback-verification.json
+          retention-days: 5
