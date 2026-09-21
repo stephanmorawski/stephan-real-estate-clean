@@ -122,8 +122,11 @@ export default async function Page({ params }) {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a className="btn-gold" href={isFr ? "/fr/contact" : "/en/contact"}>
-              {isFr ? "Contacter l’agence" : "Contact the agency"}
+            <a className="btn-gold" href={isFr ? "/fr/contact?projet=estimation" : "/en/contact?projet=estimation"}>
+              {isFr ? "Faire estimer mon bien" : "Discuss my property’s value"}
+            </a>
+            <a className="btn-dark" href={isFr ? "/fr/contact?projet=achat" : "/en/contact?projet=achat"}>
+              {isFr ? "Confier ma recherche" : "Discuss my property search"}
             </a>
             <a className="btn-dark" href={isFr ? "/fr/vente" : "/en/vente"}>
               {isFr ? "Voir les biens à la vente" : "View properties for sale"}
