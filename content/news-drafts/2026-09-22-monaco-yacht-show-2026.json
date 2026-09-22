@@ -2,7 +2,7 @@
   "workflowStatus": "waiting_approval",
   "gmailThreadId": "1a0c81a7bb32201a",
   "originGmailThreadId": "1a0c81a7bb32201a",
-  "previousRevisionThreadId": null,
+  "previousRevisionThreadId": "1a0cab37f9c3dacd",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "approvedKeyword": "APPROUVER",
@@ -19,7 +19,8 @@
     "status": "pending_materialization",
     "mimeType": "image/png",
     "sizeBytes": 348135,
-    "attachmentId": "ANGjdJ-I-2GKm4K-dXkI3LxRfkgCBiFpKKzqZfnuH-1j7Is21Ri0SmAN42S7ijWKjw2qunF4awptTh4KNZHbjot5gZrc1cmQtlnO-7pxNSwzV4b5YmsGoP9FTKRXHnfAJz99DCgO5wR82jN_sWnAccPpeCj8Lcuq_n_xHave7hwaJS1j7jOjM2av1mjZ3hKG-sN0_WtBN0zgYrnrpSdbN15-sZizFb3APNPScbEprBAJ5nficaVmVCUGpKK2baFjHJtmFD_25KYxKitoSrVafi8chLnMclu-_TZd9ekVnXc34rysyH84m9BYr4aAd03W-OAw08b_q0GTBpTCedvaVLQxC53VZRpdrX_yO5ZGitg7TojCkGxbSXdUhk6JHzct4smmSgbvvQGdm3ApGm0S"
+    "attachmentId": "ANGjdJ-I-2GKm4K-dXkI3LxRfkgCBiFpKKzqZfnuH-1j7Is21Ri0SmAN42S7ijWKjw2qunF4awptTh4KNZHbjot5gZrc1cmQtlnO-7pxNSwzV4b5YmsGoP9FTKRXHnfAJz99DCgO5wR82jN_sWnAccPpeCj8Lcuq_n_xHave7hwaJS1j7jOjM2av1mjZ3hKG-sN0_WtBN0zgYrnrpSdbN15-sZizFb3APNPScbEprBAJ5nficaVmVCUGpKK2baFjHJtmFD_25KYxKitoSrVafi8chLnMclu-_TZd9ekVnXc34rysyH84m9BYr4aAd03W-OAw08b_q0GTBpTCedvaVLQxC53VZRpdrX_yO5ZGitg7TojCkGxbSXdUhk6JHzct4smmSgbvvQGdm3ApGm0S",
+    "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly."
   },
   "revisionHistory": [
     {
@@ -67,5 +68,9 @@
     "https://www.monacoyachtshow.com/en/2026-superyacht-list",
     "https://www.monacoyachtshow.com/en/about-the-mys",
     "https://www.monacoyachtshow.com/en/organise-your-stay"
-  ]
+  ],
+  "supersededThreadIds": [
+    "1a0cab37f9c3dacd"
+  ],
+  "approvalPreviewMessageId": "1a0cab4243703fc0"
 }
