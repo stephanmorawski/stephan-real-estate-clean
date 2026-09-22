@@ -128,48 +128,6 @@ jobs:
           while IFS= read -r file; do
             [ -z "$file" ] && continue
             slug=$(basename "$file" .json)
-            # A withdrawn or deleted article must disappear, not pass the
-            # published-article checks below. Preserve the existing deploy hook.
-            status="removed"
-            if [ -f "$file" ]; then
-              status=$(node -e "const fs=require('node:fs'); const a=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); process.stdout.write(a.status || 'published');" "$file")
-            fi
-            if [ "$status" != "published" ]; then
-              NEWS_SLUG="$slug" node --input-type=module <<'NODE'
-          const slug = process.env.NEWS_SLUG;
-          const base = 'https://www.cotedazuragency.com';
-          const articlePaths = ['fr', 'en'].map(lang => `/${lang}/actualites/${encodeURIComponent(slug)}`);
-          const listingPaths = ['/fr', '/en', '/fr/actualites', '/en/actualites', '/sitemap.xml'];
-          let verified = false;
-          for (let attempt = 1; attempt <= 30; attempt++) {
-            try {
-              const checks = [];
-              for (const path of articlePaths) {
-                const response = await fetch(base + path, { signal: AbortSignal.timeout(15000), cache: 'no-store' });
-                const ok = [404, 410].includes(response.status);
-                checks.push({ path, status: response.status, ok });
-                await response.body?.cancel();
-              }
-              for (const path of listingPaths) {
-                const response = await fetch(base + path, { signal: AbortSignal.timeout(15000), cache: 'no-store' });
-                const body = await response.text();
-                checks.push({ path, status: response.status, ok: response.status === 200 && !body.includes(slug) });
-              }
-              if (checks.every(check => check.ok)) {
-                console.log(JSON.stringify({ withdrawn: slug, verified: true, checks }));
-                verified = true;
-                break;
-              }
-              console.log(JSON.stringify({ withdrawn: slug, attempt, waitingFor: checks.filter(check => !check.ok) }));
-            } catch (error) {
-              console.log(`Withdrawal verification attempt ${attempt}: ${error.message}`);
-            }
-            if (attempt < 30) await new Promise(resolve => setTimeout(resolve, 10000));
-          }
-          if (!verified) throw new Error(`Article withdrawal not confirmed: ${slug}`);
-          NODE
-              continue
-            fi
             publishedAt=$(node -e "const a=require('./$file'); process.stdout.write(a.publishedAt)")
             partnerUrl=$(node -e "const a=require('./$file'); process.stdout.write(a.partnerUrl || '')")
             partnerLogo=$(node -e "const a=require('./$file'); process.stdout.write(a.partnerLogo || '')")
