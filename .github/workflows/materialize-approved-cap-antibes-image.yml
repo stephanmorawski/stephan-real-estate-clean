@@ -1,0 +1,48 @@
+name: Materialize approved Cap d'Antibes image
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-approved-cap-antibes-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download approved Unsplash visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://images.unsplash.com/photo-1756211067146-623b474b763c?ixlib=rb-4.1.0&fm=jpg&fit=max&w=1600&q=82' \
+            --output public/news/2026-09-19-cap-antibes-sentier-littoral.jpg
+          test -s public/news/2026-09-19-cap-antibes-sentier-littoral.jpg
+          mime="$(file --brief --mime-type public/news/2026-09-19-cap-antibes-sentier-littoral.jpg)"
+          echo "mime=$mime"
+          case "$mime" in
+            image/jpeg|image/png) ;;
+            *) echo "Unexpected MIME type: $mime" >&2; exit 1 ;;
+          esac
+
+      - name: Commit approved visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-09-19-cap-antibes-sentier-littoral.jpg
+          if git diff --cached --quiet; then
+            echo 'Image already materialized; nothing to commit.'
+            exit 0
+          fi
+          git commit -m "news: materialize approved Cap d'Antibes visual"
+          git push origin HEAD:main

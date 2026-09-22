@@ -9,23 +9,20 @@ on:
       - 'public/news/**'
       - 'public/partners/**'
       - 'src/lib/news/**'
-      # A recursive glob covers literal [lang] and [slug] route directories.
-      # Unescaped square brackets in a glob are character classes, not literals.
-      - 'src/app/**'
+      - 'src/app/[lang]/actualites/**'
+      - 'src/app/[lang]/page.js'
       - 'scripts/generate-news-index.mjs'
       - 'keystatic.config.js'
       - 'middleware.js'
+      - 'src/app/layout.js'
+      - 'src/app/[lang]/layout.js'
+      - 'src/app/[lang]/[seoSlug]/**'
+      - 'src/app/[lang]/agence-immobiliere-cote-d-azur/**'
       - 'src/components/Footer.js'
       - 'src/components/SeoLandingPage.jsx'
-      - 'src/components/ContactForm.js'
       - 'src/lib/seo-pages.js'
       - 'src/lib/seo.js'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'next.config.*'
-      - 'src/lib/contact-security.mjs'
-      - 'scripts/contact-security.test.mjs'
-      - '.github/workflows/security-checks.yml'
+      - 'src/app/sitemap.ts'
       - '.github/workflows/publish-news.yml'
   workflow_dispatch:
 
@@ -43,28 +40,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
-          persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
-          package-manager-cache: false
+          cache: npm
 
       - name: Install dependencies
-        run: npm ci --ignore-scripts --no-fund --no-audit
-
-      - name: Validate dependencies and contact guards
-        run: |
-          npm audit --omit=dev --audit-level=high
-          node --test scripts/contact-security.test.mjs
+        run: npm ci
 
       - name: Validate production build
         env:
-          # Placeholders only; these are never used to access GitHub.
+          # Keystatic validates that these variables exist while Next.js collects
+          # the API route during build. CI never uses them to access GitHub.
           KEYSTATIC_GITHUB_CLIENT_ID: ci-build
           KEYSTATIC_GITHUB_CLIENT_SECRET: ci-build-placeholder
           KEYSTATIC_SECRET: ci-build-placeholder-32-characters
@@ -83,7 +75,7 @@ jobs:
         env:
           VERCEL_PRODUCTION_DEPLOY_HOOK: ${{ secrets.VERCEL_PRODUCTION_DEPLOY_HOOK }}
         run: |
-          curl --fail --silent --show-error --max-time 30 --request POST "$VERCEL_PRODUCTION_DEPLOY_HOOK"
+          curl --fail --silent --show-error --request POST "$VERCEL_PRODUCTION_DEPLOY_HOOK"
           echo
 
       - name: Identify changed news articles
@@ -99,7 +91,7 @@ jobs:
       - name: Verify production
         shell: bash
         run: |
-          # Verify both news indexes without submitting any form.
+          # Always verify that both news indexes respond after deployment.
           for index_url in \
             "https://www.cotedazuragency.com/fr/actualites" \
             "https://www.cotedazuragency.com/en/actualites"; do
@@ -119,7 +111,9 @@ jobs:
             fi
           done
 
-          # Article-specific verification is retained for editorial changes.
+          # If an article JSON changed, additionally verify the exact FR/EN pages
+          # expose the approved publication date. Routes are derived from JSON
+          # filenames by scripts/generate-news-index.mjs, not from entry.slug.
           if [ ! -s /tmp/news-files.txt ]; then
             echo "No changed article JSON; index verification is sufficient."
             exit 0
