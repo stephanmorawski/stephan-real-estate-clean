@@ -1,0 +1,71 @@
+{
+  "workflowStatus": "waiting_approval",
+  "gmailThreadId": "1a0c81a7bb32201a",
+  "originGmailThreadId": "1a0c81a7bb32201a",
+  "selectedBy": "stephan@cotedazuragency.com",
+  "selectedChoice": "1",
+  "approvedKeyword": "APPROUVER",
+  "publishSlug": "2026-09-22-monaco-yacht-show-2026",
+  "sourceUrl": "https://www.monacoyachtshow.com/en/2026-superyacht-list",
+  "sources": [
+    {
+      "name": "Monaco Yacht Show — 2026 superyacht list",
+      "url": "https://www.monacoyachtshow.com/en/2026-superyacht-list",
+      "verified": "2026-09-22",
+      "facts": "35th edition, 23–26 September 2026, Port Hercule; fleet expected to reach 120 yachts; 43 yachts delivered in 2026."
+    },
+    {
+      "name": "Monaco Yacht Show — About the MYS",
+      "url": "https://www.monacoyachtshow.com/en/about-the-mys",
+      "verified": "2026-09-22",
+      "facts": "35th anniversary in 2026; more than 560 exhibitors and industry professionals; annual superyacht event at Port Hercule."
+    },
+    {
+      "name": "Monaco Yacht Show — Practical information",
+      "url": "https://www.monacoyachtshow.com/en/organise-your-stay",
+      "verified": "2026-09-22",
+      "facts": "The 2026 show takes place at Port Hercule from Wednesday 23 to Saturday 26 September 2026."
+    }
+  ],
+  "previewVisualUrl": "https://unsplash.com/photos/scenic-view-of-a-harbor-filled-with-yachts-7h7HX2cFw6o",
+  "visualSourcePage": "https://unsplash.com/photos/scenic-view-of-a-harbor-filled-with-yachts-7h7HX2cFw6o",
+  "visualLicense": "Unsplash License",
+  "visualAuthor": "Wyatt Simpson",
+  "visualDescription": "Port Hercule in Monaco with rows of yachts and Monaco's waterfront skyline.",
+  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPath": "/news/2026-09-22-monaco-yacht-show-2026.jpg",
+  "article": {
+    "slug": "monaco-yacht-show-2026",
+    "status": "published",
+    "publishedAt": "2026-09-22",
+    "source": "Côte d'Azur Agency",
+    "linkedinUrl": "",
+    "image": "/news/2026-09-22-monaco-yacht-show-2026.jpg",
+    "fr": {
+      "title": "Monaco Yacht Show 2026 : Port Hercule au cœur du yachting international",
+      "excerpt": "Du 23 au 26 septembre 2026, la 35e édition du Monaco Yacht Show réunit à Port Hercule 120 superyachts attendus, dont 43 livrés cette année, et plus de 560 exposants et professionnels.",
+      "content": [
+        "Du mercredi 23 au samedi 26 septembre 2026, Port Hercule accueille la 35e édition du Monaco Yacht Show. Pendant quatre jours, la Principauté redevient l’un des principaux points de rencontre internationaux du yachting haut de gamme, avec une concentration exceptionnelle de propriétaires, acquéreurs, chantiers, brokers, designers et spécialistes du secteur.",
+        "L’organisation annonce une flotte qui doit atteindre 120 superyachts à l’ouverture du salon. Parmi eux, 43 ont été livrés en 2026, ce qui permet aux visiteurs de découvrir une sélection particulièrement récente de yachts, aux côtés des constructeurs et des professionnels qui les conçoivent, les vendent, les affrètent ou les gèrent.",
+        "Le Monaco Yacht Show rassemble également plus de 560 exposants et professionnels couvrant l’ensemble de l’écosystème : construction, architecture navale, design, brokerage, refit, équipements et services. Au-delà des bateaux exposés, l’événement est donc un indicateur de la capacité de Monaco à attirer une clientèle et des acteurs économiques très internationaux.",
+        "Cette attractivité dépasse naturellement les limites de la Principauté. Monaco fonctionne en continuité avec la Côte d’Azur : Nice, Cannes, Antibes, Mougins, Valbonne ou encore les communes du littoral accueillent une clientèle internationale qui recherche à la fois accessibilité, qualité de vie, services haut de gamme et proximité avec les grands rendez-vous de la Riviera.",
+        "Pour l’immobilier, le Monaco Yacht Show illustre surtout un mode de vie et un niveau d’exigence : vue mer, accès aux ports et aux aéroports, sécurité, services, espaces extérieurs et capacité à rejoindre rapidement Monaco. Sur la French Riviera, ces critères structurent une partie importante de la demande pour les résidences principales, secondaires et les villas de prestige."
+      ]
+    },
+    "en": {
+      "title": "Monaco Yacht Show 2026: Port Hercule at the heart of international yachting",
+      "excerpt": "From 23 to 26 September 2026, the 35th Monaco Yacht Show brings an expected fleet of 120 superyachts — including 43 delivered this year — and more than 560 exhibitors and professionals to Port Hercule.",
+      "content": [
+        "From Wednesday 23 to Saturday 26 September 2026, Port Hercule hosts the 35th edition of the Monaco Yacht Show. For four days, the Principality once again becomes one of the world’s key meeting points for high-end yachting, bringing together owners, buyers, shipyards, brokers, designers and specialist companies.",
+        "The organisers expect the fleet to reach 120 superyachts by opening day. Of these, 43 were delivered in 2026, giving visitors access to an especially recent selection of yachts alongside the shipyards and professionals responsible for designing, selling, chartering and managing them.",
+        "The Monaco Yacht Show also brings together more than 560 exhibitors and industry professionals covering the full ecosystem: yacht building, naval architecture, design, brokerage, refit, equipment and specialised services. Beyond the yachts themselves, the event demonstrates Monaco’s ability to attract a highly international clientele and business community.",
+        "That appeal naturally extends beyond the Principality. Monaco operates in close continuity with the French Riviera, where Nice, Cannes, Antibes, Mougins, Valbonne and other coastal locations attract international residents seeking accessibility, quality of life, high-end services and proximity to the Riviera’s major events.",
+        "For real estate, the Monaco Yacht Show also reflects a lifestyle and a set of expectations: sea views, access to ports and airports, security, premium services, outdoor space and the ability to reach Monaco quickly. Across the French Riviera, these criteria play an important role in demand for main residences, second homes and luxury villas."
+      ]
+    }
+  },
+  "linkedin": {
+    "fr": "Le Monaco Yacht Show revient à Port Hercule du 23 au 26 septembre 2026 pour sa 35e édition. 120 superyachts sont attendus, dont 43 livrés cette année, aux côtés de plus de 560 exposants et professionnels. Au-delà du yachting, ce rendez-vous illustre l’attractivité internationale de Monaco et de toute la Riviera — et les critères qui structurent aussi l’immobilier haut de gamme : accessibilité, vue mer, services, sécurité et qualité de vie. #MonacoYachtShow #Monaco #CotedAzur #FrenchRiviera #LuxuryRealEstate",
+    "en": "The Monaco Yacht Show returns to Port Hercule from 23 to 26 September 2026 for its 35th edition. An expected 120 superyachts — including 43 delivered this year — will be presented alongside more than 560 exhibitors and professionals. Beyond yachting, the event reflects the international appeal of Monaco and the wider French Riviera, as well as the factors shaping luxury real estate demand: accessibility, sea views, services, security and quality of life. #MonacoYachtShow #Monaco #FrenchRiviera #LuxuryRealEstate"
+  }
+}
