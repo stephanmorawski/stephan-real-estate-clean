@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "gmailThreadId": "1a0c81a7bb32201a",
   "originGmailThreadId": "1a0c81a7bb32201a",
   "previousRevisionThreadId": "1a0cab37f9c3dacd",
@@ -10,6 +10,22 @@
   "publishSlug": "2026-09-22-monaco-yacht-show-2026",
   "publicationVisualPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
   "publicationVisualPendingMaterialization": false,
+  "publishedAt": "2026-09-22T21:44:05Z",
+  "productionCommitSha": "09884712e3f85c3b646a5868e470573f65b269bd",
+  "githubWorkflowRunId": 35788096445,
+  "publishedUrls": {
+    "fr": "https://www.cotedazuragency.com/fr/actualites/2026-09-22-monaco-yacht-show-2026",
+    "en": "https://www.cotedazuragency.com/en/actualites/2026-09-22-monaco-yacht-show-2026",
+    "image": "https://www.cotedazuragency.com/news/2026-09-22-monaco-yacht-show-2026.jpg"
+  },
+  "productionVerification": {
+    "frStatus": 200,
+    "enStatus": 200,
+    "imageStatus": 200,
+    "imageContentType": "image/jpeg",
+    "imageContentLength": 7909,
+    "verifiedAt": "2026-09-22T21:44:05Z"
+  },
   "visual": {
     "sourceType": "provided_by_stephan",
     "gmailMessageId": "1a0caa8e3bda03e6",
@@ -18,7 +34,7 @@
     "sourceSha256": "cade38088ef1657e9aece593482d292ffa5c39d3cb26c3b3d11f9eb9af14ec52",
     "repoBlobSha": "e712a6aa93376be521603c17f64ffcfa785a9054",
     "revisionRequest": "Peux tu changer la photo et mettre celle là",
-    "status": "materialized",
+    "status": "published",
     "mimeType": "image/jpeg",
     "sizeBytes": 7909,
     "width": 220,
