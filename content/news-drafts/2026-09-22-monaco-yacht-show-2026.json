@@ -27,21 +27,21 @@
     "verifiedAt": "2026-09-22T21:44:05Z"
   },
   "visual": {
-    "sourceType": "unsplash",
-    "sourcePage": "https://unsplash.com/photos/scenic-view-of-a-harbor-filled-with-yachts-7h7HX2cFw6o",
-    "sourceImageUrl": "https://images.unsplash.com/photo-1752884991294-cd424478903a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000",
-    "author": "Wyatt Simpson",
-    "license": "Unsplash License",
-    "licenseVerification": "Source page states 'Free to use under the Unsplash License'.",
-    "location": "Port Hercule, Monaco",
-    "description": "Scenic view of Port Hercule filled with yachts.",
+    "sourceType": "pexels",
+    "sourcePage": "https://www.pexels.com/photo/monaco-yacht-harbor-with-cityscape-38852496/",
+    "sourceImageUrl": null,
+    "author": "Jean-Paul Wettstein",
+    "license": "Pexels License",
+    "licenseVerification": "Source page is reachable and lists the photo as free with a free download; Pexels marks the asset as free to use.",
+    "location": "Monaco, Monaco",
+    "description": "High-resolution view of yachts docked in Monaco Harbor with the city skyline in the background; selected to avoid the ruin visible in the rejected image.",
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-    "revisionRequestMessageId": "1a0ccfa6e22466b0",
-    "revisionRequest": "J’ai mis un imprim écran de la photo et cela a pris mon imprim écran, donc la photo apparaît mais de mauvaise qualité. Est ce que l'on peut changer la photo et prendre une original?",
+    "revisionRequestMessageId": "1a0cd307881bdb36",
+    "revisionRequest": "Cette photo ne va pas il y a une ruine à droite",
     "status": "waiting_approval",
-    "verifiedAt": "2026-09-23T07:25:43Z",
+    "verifiedAt": "2026-09-23T07:51:14Z",
     "sourceReachable": true,
-    "publicationNote": "Current live article still uses the previous low-resolution screenshot until Stephan approves this replacement."
+    "publicationNote": "Current live article remains unchanged until Stephan explicitly approves this replacement visual."
   },
   "revisionHistory": [
     {
@@ -55,6 +55,12 @@
       "gmailMessageId": "1a0ccfa6e22466b0",
       "request": "Replace the low-resolution screenshot currently used as the published image with an original/high-resolution photo.",
       "resolution": "Proposed a verified high-resolution Port Hercule photo by Wyatt Simpson from Unsplash; pending Stephan's explicit APPROUVER before changing production."
+    },
+    {
+      "date": "2026-09-23",
+      "gmailMessageId": "1a0cd307881bdb36",
+      "request": "Cette photo ne va pas il y a une ruine à droite",
+      "resolution": "Rejected the previous Unsplash visual and proposed a different high-resolution Monaco harbor photo by Jean-Paul Wettstein on Pexels, focused on yachts and city skyline and selected to avoid the ruin visible in the rejected image; pending Stephan's explicit APPROUVER."
     }
   ],
   "article": {
@@ -101,7 +107,7 @@
   ],
   "approvalPreviewMessageId": null,
   "postPublicationRevisionPending": true,
-  "postPublicationRevisionType": "visual_quality_replacement",
+  "postPublicationRevisionType": "visual_composition_replacement",
   "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
   "previousPublishedVisual": {
     "sourceType": "provided_by_stephan",
@@ -120,6 +126,6 @@
     "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly.",
     "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
   },
-  "latestRevisionRequestedAt": "2026-09-23T06:35:54Z",
-  "latestRevisionPreparedAt": "2026-09-23T07:25:43Z"
+  "latestRevisionRequestedAt": "2026-09-23T07:34:56Z",
+  "latestRevisionPreparedAt": "2026-09-23T07:51:14Z"
 }
