@@ -1,15 +1,15 @@
 {
-  "workflowStatus": "published",
+  "workflowStatus": "waiting_approval",
   "gmailThreadId": "1a0c81a7bb32201a",
   "originGmailThreadId": "1a0c81a7bb32201a",
   "previousRevisionThreadId": "1a0cab37f9c3dacd",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "approvedKeyword": "APPROUVER",
-  "approvalReceivedMessageId": "1a0cab8b9e501319",
+  "approvalReceivedMessageId": null,
   "publishSlug": "2026-09-22-monaco-yacht-show-2026",
   "publicationVisualPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-  "publicationVisualPendingMaterialization": false,
+  "publicationVisualPendingMaterialization": true,
   "publishedAt": "2026-09-22T21:44:05Z",
   "productionCommitSha": "09884712e3f85c3b646a5868e470573f65b269bd",
   "githubWorkflowRunId": 35788096445,
@@ -27,21 +27,21 @@
     "verifiedAt": "2026-09-22T21:44:05Z"
   },
   "visual": {
-    "sourceType": "provided_by_stephan",
-    "gmailMessageId": "1a0caa8e3bda03e6",
-    "gmailFilename": "image001.png",
+    "sourceType": "unsplash",
+    "sourcePage": "https://unsplash.com/photos/scenic-view-of-a-harbor-filled-with-yachts-7h7HX2cFw6o",
+    "sourceImageUrl": "https://images.unsplash.com/photo-1752884991294-cd424478903a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000",
+    "author": "Wyatt Simpson",
+    "license": "Unsplash License",
+    "licenseVerification": "Source page states 'Free to use under the Unsplash License'.",
+    "location": "Port Hercule, Monaco",
+    "description": "Scenic view of Port Hercule filled with yachts.",
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-    "sourceSha256": "cade38088ef1657e9aece593482d292ffa5c39d3cb26c3b3d11f9eb9af14ec52",
-    "repoBlobSha": "e712a6aa93376be521603c17f64ffcfa785a9054",
-    "revisionRequest": "Peux tu changer la photo et mettre celle là",
-    "status": "published",
-    "mimeType": "image/jpeg",
-    "sizeBytes": 7909,
-    "width": 220,
-    "height": 148,
-    "attachmentId": "ANGjdJ-I-2GKm4K-dXkI3LxRfkgCBiFpKKzqZfnuH-1j7Is21Ri0SmAN42S7ijWKjw2qunF4awptTh4KNZHbjot5gZrc1cmQtlnO-7pxNSwzV4b5YmsGoP9FTKRXHnfAJz99DCgO5wR82jN_sWnAccPpeCj8Lcuq_n_xHave7hwaJS1j7jOjM2av1mjZ3hKG-sN0_WtBN0zgYrnrpSdbN15-sZizFb3APNPScbEprBAJ5nficaVmVCUGpKK2baFjHJtmFD_25KYxKitoSrVafi8chLnMclu-_TZd9ekVnXc34rysyH84m9BYr4aAd03W-OAw08b_q0GTBpTCedvaVLQxC53VZRpdrX_yO5ZGitg7TojCkGxbSXdUhk6JHzct4smmSgbvvQGdm3ApGm0S",
-    "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly.",
-    "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
+    "revisionRequestMessageId": "1a0ccfa6e22466b0",
+    "revisionRequest": "J’ai mis un imprim écran de la photo et cela a pris mon imprim écran, donc la photo apparaît mais de mauvaise qualité. Est ce que l'on peut changer la photo et prendre une original?",
+    "status": "waiting_approval",
+    "verifiedAt": "2026-09-23T07:25:43Z",
+    "sourceReachable": true,
+    "publicationNote": "Current live article still uses the previous low-resolution screenshot until Stephan approves this replacement."
   },
   "revisionHistory": [
     {
@@ -49,6 +49,12 @@
       "gmailMessageId": "1a0caa8e3bda03e6",
       "request": "Peux tu changer la photo et mettre celle là",
       "resolution": "Replaced the proposed Unsplash image with Stephan's supplied Port Hercule image."
+    },
+    {
+      "date": "2026-09-23",
+      "gmailMessageId": "1a0ccfa6e22466b0",
+      "request": "Replace the low-resolution screenshot currently used as the published image with an original/high-resolution photo.",
+      "resolution": "Proposed a verified high-resolution Port Hercule photo by Wyatt Simpson from Unsplash; pending Stephan's explicit APPROUVER before changing production."
     }
   ],
   "article": {
@@ -93,5 +99,27 @@
   "supersededThreadIds": [
     "1a0cab37f9c3dacd"
   ],
-  "approvalPreviewMessageId": "1a0cab4243703fc0"
+  "approvalPreviewMessageId": null,
+  "postPublicationRevisionPending": true,
+  "postPublicationRevisionType": "visual_quality_replacement",
+  "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
+  "previousPublishedVisual": {
+    "sourceType": "provided_by_stephan",
+    "gmailMessageId": "1a0caa8e3bda03e6",
+    "gmailFilename": "image001.png",
+    "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
+    "sourceSha256": "cade38088ef1657e9aece593482d292ffa5c39d3cb26c3b3d11f9eb9af14ec52",
+    "repoBlobSha": "e712a6aa93376be521603c17f64ffcfa785a9054",
+    "revisionRequest": "Peux tu changer la photo et mettre celle là",
+    "status": "published",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 7909,
+    "width": 220,
+    "height": 148,
+    "attachmentId": "ANGjdJ-I-2GKm4K-dXkI3LxRfkgCBiFpKKzqZfnuH-1j7Is21Ri0SmAN42S7ijWKjw2qunF4awptTh4KNZHbjot5gZrc1cmQtlnO-7pxNSwzV4b5YmsGoP9FTKRXHnfAJz99DCgO5wR82jN_sWnAccPpeCj8Lcuq_n_xHave7hwaJS1j7jOjM2av1mjZ3hKG-sN0_WtBN0zgYrnrpSdbN15-sZizFb3APNPScbEprBAJ5nficaVmVCUGpKK2baFjHJtmFD_25KYxKitoSrVafi8chLnMclu-_TZd9ekVnXc34rysyH84m9BYr4aAd03W-OAw08b_q0GTBpTCedvaVLQxC53VZRpdrX_yO5ZGitg7TojCkGxbSXdUhk6JHzct4smmSgbvvQGdm3ApGm0S",
+    "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly.",
+    "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
+  },
+  "latestRevisionRequestedAt": "2026-09-23T06:35:54Z",
+  "latestRevisionPreparedAt": "2026-09-23T07:25:43Z"
 }
