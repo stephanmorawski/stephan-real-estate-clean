@@ -1,18 +1,18 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "gmailThreadId": "1a0cd41bea058f9d",
   "originGmailThreadId": "1a0c81a7bb32201a",
   "previousRevisionThreadId": "1a0c81a7bb32201a",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "approvedKeyword": "APPROUVER",
-  "approvalReceivedMessageId": null,
+  "approvalReceivedMessageId": "1a0cda21922cbf21",
   "publishSlug": "2026-09-22-monaco-yacht-show-2026",
   "publicationVisualPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "publishedAt": "2026-09-22T21:44:05Z",
-  "productionCommitSha": "09884712e3f85c3b646a5868e470573f65b269bd",
-  "githubWorkflowRunId": 35788096445,
+  "productionCommitSha": "503f217bd3e9e3381325bf7fe6e217ca9191b01a",
+  "githubWorkflowRunId": 35846307921,
   "publishedUrls": {
     "fr": "https://www.cotedazuragency.com/fr/actualites/2026-09-22-monaco-yacht-show-2026",
     "en": "https://www.cotedazuragency.com/en/actualites/2026-09-22-monaco-yacht-show-2026",
@@ -23,13 +23,13 @@
     "enStatus": 200,
     "imageStatus": 200,
     "imageContentType": "image/jpeg",
-    "imageContentLength": 7909,
-    "verifiedAt": "2026-09-22T21:44:05Z"
+    "verifiedAt": "2026-09-23T10:01:52Z",
+    "deploymentId": "dpl_9wgVGnQEwESJvTeNPp7B1bHox3o8"
   },
   "visual": {
     "sourceType": "pexels",
     "sourcePage": "https://www.pexels.com/photo/luxury-yachts-docked-at-monaco-harbor-31758514/",
-    "sourceImageUrl": null,
+    "sourceImageUrl": "https://images.pexels.com/photos/31758514/pexels-photo-31758514.jpeg?cs=srgb&dl=pexels-raouf-meftah-544066862-31758514.jpg&fm=jpg",
     "author": "Raouf Meftah",
     "license": "Pexels License",
     "licenseVerification": "Source page is reachable and marks the Monaco harbor photo as Free download / Free to use.",
@@ -38,10 +38,14 @@
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
     "revisionRequestMessageId": "1a0cd5620cac7a8a",
     "revisionRequest": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
-    "status": "waiting_approval",
+    "status": "published",
     "verifiedAt": "2026-09-23T08:47:08Z",
     "sourceReachable": true,
-    "publicationNote": "Current live article remains unchanged until Stephan explicitly approves this replacement visual."
+    "approvedByMessageId": "1a0cda21922cbf21",
+    "approvedAt": "2026-09-23T09:39:00Z",
+    "materializedAt": "2026-09-23T09:59:31Z",
+    "repoBlobSha": "46c34837295fb9f0fa55ed5b136c3044a81c2a38",
+    "publicationNote": "Approved replacement visual materialized and deployed to production."
   },
   "revisionHistory": [
     {
@@ -67,6 +71,12 @@
       "gmailMessageId": "1a0cd5620cac7a8a",
       "request": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
       "resolution": "Rejected the black-and-white visual and proposed a verified color Pexels photo by Raouf Meftah showing multiple contemporary luxury yachts in Monaco harbor; pending Stephan's explicit APPROUVER."
+    },
+    {
+      "date": "2026-09-23",
+      "gmailMessageId": "1a0cda21922cbf21",
+      "request": "APPROUVER",
+      "resolution": "Stephan approved the color Pexels visual by Raouf Meftah. The original JPEG was materialized to the repository, validated as image/jpeg, deployed to production, and verified on both FR and EN article URLs."
     }
   ],
   "article": {
@@ -113,7 +123,7 @@
     "1a0c81a7bb32201a"
   ],
   "approvalPreviewMessageId": "1a0cd41bea058f9d",
-  "postPublicationRevisionPending": true,
+  "postPublicationRevisionPending": false,
   "postPublicationRevisionType": "visual_color_modern_yachts_replacement",
   "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
   "previousPublishedVisual": {
@@ -134,5 +144,6 @@
     "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
   },
   "latestRevisionRequestedAt": "2026-09-23T08:16:04Z",
-  "latestRevisionPreparedAt": "2026-09-23T08:47:08Z"
+  "latestRevisionPreparedAt": "2026-09-23T08:47:08Z",
+  "latestApprovalReceivedAt": "2026-09-23T09:39:00Z"
 }
