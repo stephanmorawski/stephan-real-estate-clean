@@ -1,8 +1,8 @@
 {
   "workflowStatus": "waiting_approval",
-  "gmailThreadId": "1a0c81a7bb32201a",
+  "gmailThreadId": "1a0cd41bea058f9d",
   "originGmailThreadId": "1a0c81a7bb32201a",
-  "previousRevisionThreadId": "1a0cab37f9c3dacd",
+  "previousRevisionThreadId": "1a0c81a7bb32201a",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "approvedKeyword": "APPROUVER",
@@ -103,9 +103,10 @@
     "https://www.monacoyachtshow.com/en/organise-your-stay"
   ],
   "supersededThreadIds": [
-    "1a0cab37f9c3dacd"
+    "1a0cab37f9c3dacd",
+    "1a0c81a7bb32201a"
   ],
-  "approvalPreviewMessageId": null,
+  "approvalPreviewMessageId": "1a0cd41bea058f9d",
   "postPublicationRevisionPending": true,
   "postPublicationRevisionType": "visual_composition_replacement",
   "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
