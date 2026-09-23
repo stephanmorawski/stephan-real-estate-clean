@@ -28,18 +28,18 @@
   },
   "visual": {
     "sourceType": "pexels",
-    "sourcePage": "https://www.pexels.com/photo/monaco-yacht-harbor-with-cityscape-38852496/",
+    "sourcePage": "https://www.pexels.com/photo/luxury-yachts-docked-at-monaco-harbor-31758514/",
     "sourceImageUrl": null,
-    "author": "Jean-Paul Wettstein",
+    "author": "Raouf Meftah",
     "license": "Pexels License",
-    "licenseVerification": "Source page is reachable and lists the photo as free with a free download; Pexels marks the asset as free to use.",
+    "licenseVerification": "Source page is reachable and marks the Monaco harbor photo as Free download / Free to use.",
     "location": "Monaco, Monaco",
-    "description": "High-resolution view of yachts docked in Monaco Harbor with the city skyline in the background; selected to avoid the ruin visible in the rejected image.",
+    "description": "Color photograph of multiple contemporary luxury yachts docked in Monaco harbor with elegant architecture in the background; selected in response to Stephan's request for a color image showing newer-looking yachts.",
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-    "revisionRequestMessageId": "1a0cd307881bdb36",
-    "revisionRequest": "Cette photo ne va pas il y a une ruine à droite",
+    "revisionRequestMessageId": "1a0cd5620cac7a8a",
+    "revisionRequest": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
     "status": "waiting_approval",
-    "verifiedAt": "2026-09-23T07:51:14Z",
+    "verifiedAt": "2026-09-23T08:47:08Z",
     "sourceReachable": true,
     "publicationNote": "Current live article remains unchanged until Stephan explicitly approves this replacement visual."
   },
@@ -61,6 +61,12 @@
       "gmailMessageId": "1a0cd307881bdb36",
       "request": "Cette photo ne va pas il y a une ruine à droite",
       "resolution": "Rejected the previous Unsplash visual and proposed a different high-resolution Monaco harbor photo by Jean-Paul Wettstein on Pexels, focused on yachts and city skyline and selected to avoid the ruin visible in the rejected image; pending Stephan's explicit APPROUVER."
+    },
+    {
+      "date": "2026-09-23",
+      "gmailMessageId": "1a0cd5620cac7a8a",
+      "request": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
+      "resolution": "Rejected the black-and-white visual and proposed a verified color Pexels photo by Raouf Meftah showing multiple contemporary luxury yachts in Monaco harbor; pending Stephan's explicit APPROUVER."
     }
   ],
   "article": {
@@ -108,7 +114,7 @@
   ],
   "approvalPreviewMessageId": "1a0cd41bea058f9d",
   "postPublicationRevisionPending": true,
-  "postPublicationRevisionType": "visual_composition_replacement",
+  "postPublicationRevisionType": "visual_color_modern_yachts_replacement",
   "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
   "previousPublishedVisual": {
     "sourceType": "provided_by_stephan",
@@ -127,6 +133,6 @@
     "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly.",
     "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
   },
-  "latestRevisionRequestedAt": "2026-09-23T07:34:56Z",
-  "latestRevisionPreparedAt": "2026-09-23T07:51:14Z"
+  "latestRevisionRequestedAt": "2026-09-23T08:16:04Z",
+  "latestRevisionPreparedAt": "2026-09-23T08:47:08Z"
 }
