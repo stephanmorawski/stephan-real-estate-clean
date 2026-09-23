@@ -1,0 +1,57 @@
+name: Materialize approved Monaco Yacht Show image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/materialize-approved-monaco-yacht-show-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download approved Pexels visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://images.pexels.com/photos/31758514/pexels-photo-31758514.jpeg?cs=srgb&dl=pexels-raouf-meftah-544066862-31758514.jpg&fm=jpg' \
+            --output public/news/2026-09-22-monaco-yacht-show-2026.jpg
+          test -s public/news/2026-09-22-monaco-yacht-show-2026.jpg
+          mime="$(file --brief --mime-type public/news/2026-09-22-monaco-yacht-show-2026.jpg)"
+          echo "mime=$mime"
+          case "$mime" in
+            image/jpeg|image/png) ;;
+            *) echo "Unexpected MIME type: $mime" >&2; exit 1 ;;
+          esac
+          bytes="$(wc -c < public/news/2026-09-22-monaco-yacht-show-2026.jpg)"
+          echo "bytes=$bytes"
+          if [ "$bytes" -lt 100000 ]; then
+            echo "Downloaded image is unexpectedly small: $bytes bytes" >&2
+            exit 1
+          fi
+
+      - name: Commit approved visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-09-22-monaco-yacht-show-2026.jpg
+          if git diff --cached --quiet; then
+            echo 'Approved image already materialized; nothing to commit.'
+            exit 0
+          fi
+          git commit -m "news: materialize approved Monaco Yacht Show visual"
+          git push origin HEAD:main
