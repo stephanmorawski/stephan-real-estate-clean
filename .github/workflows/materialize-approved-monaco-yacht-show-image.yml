@@ -55,3 +55,5 @@ jobs:
           fi
           git commit -m "news: materialize approved Monaco Yacht Show visual"
           git push origin HEAD:main
+
+# Approval trigger: 2026-09-23T09:39:00Z
