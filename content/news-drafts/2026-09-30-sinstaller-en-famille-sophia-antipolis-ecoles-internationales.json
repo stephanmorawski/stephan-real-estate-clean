@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "approved_pending_publication",
+  "workflowStatus": "published",
   "approvalSource": "direct_user_publication_instruction",
   "approvedAt": "2026-09-30",
   "selectedChoice": "1",
@@ -8,7 +8,7 @@
   "publishSlug": "2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales",
   "articlePath": "content/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.json",
   "publicationVisualPath": "public/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg",
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "factsVerifiedAt": "2026-09-30",
   "editorialNotes": [
     "Distinct from the transport proposal also numbered 1 in a different batch.",
@@ -29,5 +29,40 @@
     "status": "prepared_not_posted",
     "fr": "S’installer en famille autour de Sophia Antipolis : et si l’école était le point de départ de votre recherche immobilière ?\n\nTrois parcours à connaître :\n• Le CIV, pour un cursus français à dimension internationale et le BFI au lycée.\n• ICS Côte d’Azur, pour une scolarité bilingue français-anglais de 2 à 11 ans dans le cadre de l’IB Primary Years Programme.\n• Mougins British International School, pour un parcours britannique préparant aux IGCSE et aux A Levels.\n\nLe bon choix dépend de l’enfant, des langues pratiquées et du projet de la famille. Côté logement, pensez aussi aux trajets domicile-école-travail, aux activités et aux besoins de chacun.\n\nCôte d’Azur Agency vous accompagne dans votre recherche immobilière. Les conditions d’admission et les places sont à confirmer directement auprès des établissements.\n\nNotre article : https://www.cotedazuragency.com/fr/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales\n\n#SophiaAntipolis #Valbonne #Mougins #VieDeFamille #CoteDAzur",
     "en": "Moving to Sophia Antipolis with your family? Schooling can be a useful starting point for your property search.\n\nThree pathways to explore:\n• CIV: French education with international sections and the BFI at upper-secondary level.\n• ICS Côte d’Azur: bilingual French-English education for ages 2 to 11 through the IB Primary Years Programme.\n• Mougins British International School: a British curriculum leading to IGCSEs and A Levels.\n\nYour children’s needs, languages and future plans matter as much as the location of your home. Remember to consider school and work journeys, after-school activities and your everyday routine.\n\nCôte d’Azur Agency helps with your property search. Admissions requirements and available places must be confirmed directly with each school.\n\nRead the article: https://www.cotedazuragency.com/en/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales\n\n#SophiaAntipolis #FrenchRiviera #FamilyRelocation #InternationalSchools"
+  },
+  "publicationVerification": {
+    "verifiedAt": "2026-09-30",
+    "publicationCommit": "a6ef07a0e11d37e3f48a2a1a5e20d58150b1c8b8",
+    "pullRequest": 26,
+    "preparationRunId": 36726736136,
+    "productionRunId": 36726993864,
+    "productionJobId": 109926317561,
+    "productionWorkflowConclusion": "success",
+    "deploymentId": "dpl_7ZKC32i9gmZK3z2HQcTKw6932hcC",
+    "deploymentState": "READY",
+    "frUrl": "https://www.cotedazuragency.com/fr/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales",
+    "enUrl": "https://www.cotedazuragency.com/en/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales",
+    "frHttpStatus": 200,
+    "enHttpStatus": 200,
+    "publicWorkflowChecks": "Both news indexes returned HTTP 200; unauthenticated article requests exposed the publication date in both languages.",
+    "pageContentChecks": "Both language versions contain the correct title, complete article, source links, campus image, archive caption and photo attribution.",
+    "image": {
+      "url": "https://www.cotedazuragency.com/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg",
+      "httpStatus": 200,
+      "format": "jpeg",
+      "width": 1280,
+      "height": 959,
+      "bytes": 301842
+    }
+  },
+  "publicationNotification": {
+    "status": "sent",
+    "sentAtDate": "2026-09-30",
+    "provider": "Microsoft Outlook Email",
+    "from": "olivier@interface-trust.com",
+    "to": "stephan@cotedazuragency.com",
+    "method": "reply_to_existing_request",
+    "contents": "Live FR/EN URLs, LinkedIn copy in both languages, public JPEG URL and required photo attribution. No attachments claimed.",
+    "linkedinPublished": false
   }
 }
