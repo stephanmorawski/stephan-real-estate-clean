@@ -1,0 +1,33 @@
+{
+  "workflowStatus": "approved_pending_publication",
+  "approvalSource": "direct_user_publication_instruction",
+  "approvedAt": "2026-09-30",
+  "selectedChoice": "1",
+  "sourceProposalDate": "2026-09-27",
+  "approvedTopic": "S’installer en famille autour de Sophia Antipolis : les options scolaires internationales",
+  "publishSlug": "2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales",
+  "articlePath": "content/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.json",
+  "publicationVisualPath": "public/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg",
+  "publicationVisualPendingMaterialization": true,
+  "factsVerifiedAt": "2026-09-30",
+  "editorialNotes": [
+    "Distinct from the transport proposal also numbered 1 in a different batch.",
+    "No matching school article or draft found in the current publication folders.",
+    "Mougins website gives inconsistent minimum ages; the article describes school stages instead of repeating an unconfirmed minimum age.",
+    "No school partnership, admission guarantee, fee estimate or numerical journey-time claim."
+  ],
+  "visual": {
+    "author": "Olivier Cleynen",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Centre_International_de_Valbonne_(CIV)_01.jpg",
+    "sourceImageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Centre_International_de_Valbonne_%28CIV%29_01.jpg/1280px-Centre_International_de_Valbonne_%28CIV%29_01.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modification": "Web-sized thumbnail; archive campus photograph; visible credit and license link on both language versions.",
+    "verifiedAt": "2026-09-30"
+  },
+  "linkedin": {
+    "status": "prepared_not_posted",
+    "fr": "S’installer en famille autour de Sophia Antipolis : et si l’école était le point de départ de votre recherche immobilière ?\n\nTrois parcours à connaître :\n• Le CIV, pour un cursus français à dimension internationale et le BFI au lycée.\n• ICS Côte d’Azur, pour une scolarité bilingue français-anglais de 2 à 11 ans dans le cadre de l’IB Primary Years Programme.\n• Mougins British International School, pour un parcours britannique préparant aux IGCSE et aux A Levels.\n\nLe bon choix dépend de l’enfant, des langues pratiquées et du projet de la famille. Côté logement, pensez aussi aux trajets domicile-école-travail, aux activités et aux besoins de chacun.\n\nCôte d’Azur Agency vous accompagne dans votre recherche immobilière. Les conditions d’admission et les places sont à confirmer directement auprès des établissements.\n\nNotre article : https://www.cotedazuragency.com/fr/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales\n\n#SophiaAntipolis #Valbonne #Mougins #VieDeFamille #CoteDAzur",
+    "en": "Moving to Sophia Antipolis with your family? Schooling can be a useful starting point for your property search.\n\nThree pathways to explore:\n• CIV: French education with international sections and the BFI at upper-secondary level.\n• ICS Côte d’Azur: bilingual French-English education for ages 2 to 11 through the IB Primary Years Programme.\n• Mougins British International School: a British curriculum leading to IGCSEs and A Levels.\n\nYour children’s needs, languages and future plans matter as much as the location of your home. Remember to consider school and work journeys, after-school activities and your everyday routine.\n\nCôte d’Azur Agency helps with your property search. Admissions requirements and available places must be confirmed directly with each school.\n\nRead the article: https://www.cotedazuragency.com/en/actualites/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales\n\n#SophiaAntipolis #FrenchRiviera #FamilyRelocation #InternationalSchools"
+  }
+}

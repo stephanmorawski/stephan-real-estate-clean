@@ -12,6 +12,17 @@ function normalizePost({ slug, entry }, lang = 'fr') {
     source: entry.source || 'LinkedIn',
     linkedinUrl: entry.linkedinUrl || null,
     image: entry.imageUpload || entry.image || '/images/hero-pool.jpg',
+    imageAlt: localized.imageAlt || localized.title || '',
+    imageCaption: localized.imageCaption || '',
+    imageCredit: entry.imageCredit || null,
+    sources: Array.isArray(entry.sources)
+      ? entry.sources
+          .filter((item) => item && typeof item.url === 'string' && /^https:\/\//i.test(item.url))
+          .map((item) => ({
+            url: item.url,
+            label: typeof item.label === 'string' ? item.label : item.label?.[lang] || item.label?.fr || item.url,
+          }))
+      : [],
     partnerName: entry.partnerName || null,
     partnerUrl: entry.partnerUrl || null,
     partnerLogo: entry.partnerLogo || null,

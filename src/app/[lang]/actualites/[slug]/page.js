@@ -94,7 +94,25 @@ export default async function NewsDetailPage({ params }) {
 
         {article.image ? (
           <div className="mt-10 overflow-hidden rounded-[28px] bg-zinc-100">
-            <img src={article.image} alt={article.title} className="h-full w-full object-cover" />
+            <img src={article.image} alt={article.imageAlt || article.title} className="h-full w-full object-cover" />
+          </div>
+        ) : null}
+
+        {article.image && (article.imageCaption || article.imageCredit) ? (
+          <div className="mt-3 text-sm leading-relaxed text-zinc-500">
+            {article.imageCaption ? <p>{article.imageCaption}</p> : null}
+            {article.imageCredit ? (
+              <p>
+                {lang === 'fr' ? 'Photo : ' : 'Photo: '}
+                <a href={article.imageCredit.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                  {article.imageCredit.author} / Wikimedia Commons
+                </a>
+                {' — '}
+                <a href={article.imageCredit.licenseUrl} target="_blank" rel="license noopener noreferrer" className="underline underline-offset-4">
+                  {article.imageCredit.license}
+                </a>
+              </p>
+            ) : null}
           </div>
         ) : null}
 
@@ -103,6 +121,23 @@ export default async function NewsDetailPage({ params }) {
             <p key={index}>{paragraph}</p>
           ))}
         </div>
+
+        {article.sources?.length ? (
+          <aside className="mt-10 rounded-[28px] border border-zinc-200 p-6">
+            <h2 className="text-lg font-semibold text-zinc-900">
+              {lang === 'fr' ? 'Sources officielles' : 'Official sources'}
+            </h2>
+            <ul className="mt-4 space-y-3 text-sm text-zinc-700">
+              {article.sources.map((item) => (
+                <li key={item.url}>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        ) : null}
 
         {article.partnerUrl ? (
           <aside className="mt-10 rounded-[28px] border border-zinc-200 bg-white p-6 shadow-sm md:p-8">

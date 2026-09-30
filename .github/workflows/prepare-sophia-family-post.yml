@@ -1,0 +1,95 @@
+name: Prepare approved Sophia family article
+
+on:
+  push:
+    branches:
+      - publish/sophia-famille-2026-09-30
+    paths:
+      - '.github/workflows/prepare-sophia-family-post.yml'
+      - 'content/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.json'
+      - 'src/lib/news/index.js'
+      - 'src/app/**/actualites/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prepare-sophia-family-2026-09-30
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout publication branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download licensed CIV campus photograph
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          curl --fail --location --retry 4 --retry-delay 3 --max-time 90 \
+            --user-agent 'CoteAzurAgencyEditorial/1.0 (licensed Wikimedia photograph)' \
+            'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Centre_International_de_Valbonne_%28CIV%29_01.jpg/1280px-Centre_International_de_Valbonne_%28CIV%29_01.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org' \
+            --output public/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg
+          test "$(file --brief --mime-type public/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg)" = image/jpeg
+
+      - name: Validate complete bilingual publication package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet --disable-pip-version-check Pillow
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          slug = '2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales'
+          article = json.loads(Path(f'content/news/{slug}.json').read_text())
+          assert article['slug'] == slug and article['status'] == 'published'
+          assert article['publishedAt'] == '2026-09-30'
+          assert len(article['sources']) == 3
+          assert article['imageCredit']['license'] == 'CC BY 4.0'
+          for lang in ['fr', 'en']:
+              localized = article[lang]
+              assert all(localized.get(k) for k in ['title', 'excerpt', 'content', 'imageAlt', 'imageCaption'])
+              assert len(localized['content']) >= 7
+          image_path = Path('public') / article['image'].lstrip('/')
+          with Image.open(image_path) as image:
+              assert image.format == 'JPEG' and image.width >= 1200 and image.height >= 600
+              image.verify()
+          print(f'Validated FR/EN content, sources, license and JPEG: {image_path}')
+          PY
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate production build
+        env:
+          KEYSTATIC_GITHUB_CLIENT_ID: ci-build
+          KEYSTATIC_GITHUB_CLIENT_SECRET: ci-build-placeholder
+          KEYSTATIC_SECRET: ci-build-placeholder-32-characters
+        run: npm run build
+
+      - name: Commit only the validated photograph to the publication branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-09-30-sinstaller-en-famille-sophia-antipolis-ecoles-internationales.jpg
+          if git diff --cached --quiet; then
+            echo 'Photograph already present; no image commit required.'
+          else
+            git commit -m 'news: materialize licensed CIV campus photograph'
+            git push origin HEAD:publish/sophia-famille-2026-09-30
+          fi
