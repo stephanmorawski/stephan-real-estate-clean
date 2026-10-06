@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "approvalChannel": "outlook",
   "originProposalDate": "2026-09-28",
   "selectedAt": "2026-10-05T15:43:19Z",
@@ -21,7 +21,7 @@
     "description": "Promenade ensoleillée de la Côte d’Azur avec tramway, vélo, palmiers et mer",
     "rights": "User-provided asset; approved by Olivier for Côte d’Azur Agency publication"
   },
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
   "article": {
     "slug": "mobilite-cote-azur-sans-voiture",
@@ -62,12 +62,19 @@
     "en": "🚆 Living on the French Riviera without relying solely on a car is becoming increasingly realistic along key routes. With the reinforced ZOU! coastal rail service, Nice tram connections between the airport, city centre and port, and Envibus links to Sophia Antipolis, mobility is becoming a genuine property criterion. Choosing a home also means looking at commuting time, stations and connections. #FrenchRiviera #RealEstate #Mobility #SophiaAntipolis #Nice #Antibes"
   },
   "outlookApprovalPreviewMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEJAACsbw83upNSTYKjW-Cvmf9FAAJKT9WGAAA=",
-  "lastWorkflowUpdate": "2026-10-06T06:01:47Z",
+  "lastWorkflowUpdate": "2026-10-06T11:14:00Z",
   "publicationVisualSourceFile": "Sunlit Riviera Tram Promenade.png",
   "lastRevision": {
     "at": "2026-10-06",
     "requestedBy": "Olivier",
     "request": "Use the supplied Sunlit Riviera Tram Promenade illustration for this article",
     "resolution": "Approved supplied illustration selected as the publication visual"
+  },
+  "publishedAt": "2026-10-06",
+  "publicationCommit": "9af276d2139cdf31fe3e8b67422d152b8d3282c7",
+  "productionDeploymentId": "dpl_BWChZv4LaqeZiBWMG9uGkEecPNDN",
+  "liveUrls": {
+    "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-06-mobilite-cote-azur-sans-voiture",
+    "en": "https://www.cotedazuragency.com/en/actualites/2026-10-06-mobilite-cote-azur-sans-voiture"
   }
 }
