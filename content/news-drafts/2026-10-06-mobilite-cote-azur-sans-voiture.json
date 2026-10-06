@@ -16,10 +16,10 @@
     "https://www.ter.sncf.com/sud-provence-alpes-cote-d-azur/tarifs-cartes/bons-plans/pass-sudazur-explore"
   ],
   "visual": {
-    "sourcePage": "https://unsplash.com/photos/two-modern-trams-on-grassy-tracks-in-a-city-DhSaOxW-_E4",
-    "author": "Shalev Cohen",
-    "license": "Unsplash License",
-    "location": "Nice, France"
+    "type": "user-provided",
+    "source": "Uploaded by Olivier in ChatGPT on 2026-10-06",
+    "description": "Promenade ensoleillée de la Côte d’Azur avec tramway, vélo, palmiers et mer",
+    "rights": "User-provided asset; approved by Olivier for Côte d’Azur Agency publication"
   },
   "publicationVisualPendingMaterialization": true,
   "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
@@ -62,5 +62,12 @@
     "en": "🚆 Living on the French Riviera without relying solely on a car is becoming increasingly realistic along key routes. With the reinforced ZOU! coastal rail service, Nice tram connections between the airport, city centre and port, and Envibus links to Sophia Antipolis, mobility is becoming a genuine property criterion. Choosing a home also means looking at commuting time, stations and connections. #FrenchRiviera #RealEstate #Mobility #SophiaAntipolis #Nice #Antibes"
   },
   "outlookApprovalPreviewMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEJAACsbw83upNSTYKjW-Cvmf9FAAJKT9WGAAA=",
-  "lastWorkflowUpdate": "2026-10-06T06:01:47Z"
+  "lastWorkflowUpdate": "2026-10-06T06:01:47Z",
+  "publicationVisualSourceFile": "Sunlit Riviera Tram Promenade.png",
+  "lastRevision": {
+    "at": "2026-10-06",
+    "requestedBy": "Olivier",
+    "request": "Use the supplied Sunlit Riviera Tram Promenade illustration for this article",
+    "resolution": "Approved supplied illustration selected as the publication visual"
+  }
 }
