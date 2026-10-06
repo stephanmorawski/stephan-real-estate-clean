@@ -22,14 +22,14 @@
     "rights": "User-provided asset; approved by Olivier for Côte d’Azur Agency publication"
   },
   "publicationVisualPendingMaterialization": false,
-  "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
+  "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.avif",
   "article": {
     "slug": "mobilite-cote-azur-sans-voiture",
     "status": "published",
     "publishedAt": "2026-10-06",
     "source": "Côte d'Azur Agency",
     "linkedinUrl": "",
-    "image": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
+    "image": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.avif",
     "fr": {
       "title": "Se déplacer sur la Côte d’Azur sans dépendre uniquement de la voiture",
       "excerpt": "TER ZOU!, tramway niçois et réseau Envibus : la mobilité devient un critère concret pour choisir où vivre entre Cannes, Sophia Antipolis, Nice et Monaco.",
@@ -62,13 +62,13 @@
     "en": "🚆 Living on the French Riviera without relying solely on a car is becoming increasingly realistic along key routes. With the reinforced ZOU! coastal rail service, Nice tram connections between the airport, city centre and port, and Envibus links to Sophia Antipolis, mobility is becoming a genuine property criterion. Choosing a home also means looking at commuting time, stations and connections. #FrenchRiviera #RealEstate #Mobility #SophiaAntipolis #Nice #Antibes"
   },
   "outlookApprovalPreviewMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEJAACsbw83upNSTYKjW-Cvmf9FAAJKT9WGAAA=",
-  "lastWorkflowUpdate": "2026-10-06T11:14:00Z",
+  "lastWorkflowUpdate": "2026-10-06T11:34:00Z",
   "publicationVisualSourceFile": "Sunlit Riviera Tram Promenade.png",
   "lastRevision": {
     "at": "2026-10-06",
     "requestedBy": "Olivier",
-    "request": "Use the supplied Sunlit Riviera Tram Promenade illustration for this article",
-    "resolution": "Approved supplied illustration selected as the publication visual"
+    "request": "Replace blurred publication visual with a sharper high-resolution version",
+    "resolution": "Sharp AVIF publication visual generated and prepared for production"
   },
   "publishedAt": "2026-10-06",
   "publicationCommit": "9af276d2139cdf31fe3e8b67422d152b8d3282c7",
