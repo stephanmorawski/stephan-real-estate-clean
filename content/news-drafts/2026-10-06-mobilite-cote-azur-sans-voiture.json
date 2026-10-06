@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "published",
+  "workflowStatus": "waiting_approval",
   "approvalChannel": "outlook",
   "originProposalDate": "2026-09-28",
   "selectedAt": "2026-10-05T15:43:19Z",
@@ -16,20 +16,21 @@
     "https://www.ter.sncf.com/sud-provence-alpes-cote-d-azur/tarifs-cartes/bons-plans/pass-sudazur-explore"
   ],
   "visual": {
-    "type": "user-provided",
-    "source": "Uploaded by Olivier in ChatGPT on 2026-10-06",
-    "description": "Promenade ensoleillée de la Côte d’Azur avec tramway, vélo, palmiers et mer",
-    "rights": "User-provided asset; approved by Olivier for Côte d’Azur Agency publication"
+    "type": "user-provided-approved-candidate",
+    "description": "Sunlit Riviera promenade with tram, bicycle, palms and sea",
+    "source": "Olivier-provided illustration in ChatGPT",
+    "requiredFormat": "JPEG",
+    "validationRule": "Must be fully decodable and visually checked after production deployment"
   },
-  "publicationVisualPendingMaterialization": false,
-  "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.avif",
+  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
   "article": {
     "slug": "mobilite-cote-azur-sans-voiture",
     "status": "published",
     "publishedAt": "2026-10-06",
     "source": "Côte d'Azur Agency",
     "linkedinUrl": "",
-    "image": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.avif",
+    "image": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
     "fr": {
       "title": "Se déplacer sur la Côte d’Azur sans dépendre uniquement de la voiture",
       "excerpt": "TER ZOU!, tramway niçois et réseau Envibus : la mobilité devient un critère concret pour choisir où vivre entre Cannes, Sophia Antipolis, Nice et Monaco.",
@@ -76,5 +77,7 @@
   "liveUrls": {
     "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-06-mobilite-cote-azur-sans-voiture",
     "en": "https://www.cotedazuragency.com/en/actualites/2026-10-06-mobilite-cote-azur-sans-voiture"
-  }
+  },
+  "withdrawnFromProductionAt": "2026-10-06",
+  "withdrawalReason": "Published visual failed post-production rendering check; article withdrawn pending Stephan reapproval with validated JPEG."
 }
