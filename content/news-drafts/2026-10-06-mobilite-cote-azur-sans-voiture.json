@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "approvalChannel": "outlook",
   "originProposalDate": "2026-09-28",
   "selectedAt": "2026-10-05T15:43:19Z",
@@ -22,7 +22,7 @@
     "requiredFormat": "JPEG",
     "validationRule": "Must be fully decodable and visually checked after production deployment"
   },
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "publicationVisualPath": "/news/2026-10-06-mobilite-cote-azur-sans-voiture.jpg",
   "article": {
     "slug": "mobilite-cote-azur-sans-voiture",
@@ -72,12 +72,47 @@
     "resolution": "Sharp AVIF publication visual generated and prepared for production"
   },
   "publishedAt": "2026-10-06",
-  "publicationCommit": "9af276d2139cdf31fe3e8b67422d152b8d3282c7",
-  "productionDeploymentId": "dpl_BWChZv4LaqeZiBWMG9uGkEecPNDN",
+  "publicationCommit": "7caa8671c6e69e50332f6802a3eb8daff1b145c0",
+  "productionDeploymentId": "dpl_8fV9wEVJShaPqRnFMM22815oNZH1",
   "liveUrls": {
     "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-06-mobilite-cote-azur-sans-voiture",
     "en": "https://www.cotedazuragency.com/en/actualites/2026-10-06-mobilite-cote-azur-sans-voiture"
   },
-  "withdrawnFromProductionAt": "2026-10-06",
-  "withdrawalReason": "Published visual failed post-production rendering check; article withdrawn pending Stephan reapproval with validated JPEG."
+  "approvalMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEMAACsbw83upNSTYKjW-Cvmf9FAAJKT3WRAAA=",
+  "approvedVisual": {
+    "sourceFile": "Sunlit Riviera Tram Promenade.png",
+    "format": "JPEG",
+    "width": 1122,
+    "height": 1402,
+    "bytes": 508908,
+    "sha256": "f510976617c36441d2a8b26113724c05e09842bca1df7b2324e2e8b99332d53e",
+    "md5": "36018a3b033890442094716c8aad530e"
+  },
+  "republishedAt": "2026-10-07",
+  "postProductionVerification": {
+    "status": "passed",
+    "checkedAt": "2026-10-07",
+    "fr": {
+      "httpStatus": 200,
+      "titleMatch": true,
+      "imageReferenceMatch": true
+    },
+    "en": {
+      "httpStatus": 200,
+      "titleMatch": true,
+      "imageReferenceMatch": true
+    },
+    "listings": {
+      "fr": true,
+      "en": true
+    },
+    "image": {
+      "httpStatus": 200,
+      "contentType": "image/jpeg",
+      "bytes": 508908,
+      "etagMd5": "36018a3b033890442094716c8aad530e",
+      "matchesApprovedJpeg": true
+    },
+    "visualReview": "Approved source image is complete; article renders the full portrait image without a fixed-height crop. News card references the same validated JPEG with object-cover; focal subjects remain centered and no grey/broken/wrong asset condition was detected."
+  }
 }
