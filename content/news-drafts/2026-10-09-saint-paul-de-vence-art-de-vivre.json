@@ -1,0 +1,57 @@
+{
+  "workflowStatus": "waiting_approval",
+  "previewDeliveryStatus": "pending_send",
+  "approvalChannel": "outlook",
+  "originProposalDate": "2026-10-09",
+  "selectedChoice": "1",
+  "selectionLabel": "Saint-Paul-de-Vence : l’art de vivre dans un village d’artistes",
+  "selectedAt": "2026-10-09T08:31:36Z",
+  "previewMarker": "CAA-PREVIEW-SAINTPAUL-20261009",
+  "publishSlug": "2026-10-09-saint-paul-de-vence-art-de-vivre",
+  "approvedKeyword": "APPROUVER",
+  "previewFiles": {
+    "fr": "content/news-previews/2026-10-09-saint-paul-de-vence-art-de-vivre-fr.md",
+    "en": "content/news-previews/2026-10-09-saint-paul-de-vence-art-de-vivre-en.md",
+    "linkedin": "content/news-previews/2026-10-09-saint-paul-de-vence-art-de-vivre-linkedin.md"
+  },
+  "article": {
+    "slug": "saint-paul-de-vence-art-de-vivre",
+    "status": "draft",
+    "image": "/news/2026-10-09-saint-paul-de-vence-art-de-vivre.jpg",
+    "fr": {
+      "title": "Saint-Paul-de-Vence : l’art de vivre dans un village d’artistes"
+    },
+    "en": {
+      "title": "Saint-Paul-de-Vence: the art of living in an artists’ village"
+    }
+  },
+  "visual": {
+    "status": "candidate_for_approval",
+    "previewVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+    "author": "Jpchevreau",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "originalDimensions": [
+      3780,
+      2520
+    ],
+    "approvedJpegSha256": null,
+    "jpegDecodingValidated": false
+  },
+  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPath": "/news/2026-10-09-saint-paul-de-vence-art-de-vivre.jpg",
+  "sources": [
+    "https://cotedazurfrance.fr/decouvrir/villages/saint-paul-de-vence/",
+    "https://www.saint-pauldevence.com/ateliers-et-galeries/",
+    "https://www.saint-pauldevence.com/art-creation/",
+    "https://www.saint-pauldevence.com/en/fiches/monuments/town-wall-16th-c/",
+    "https://fondation-maeght.com/visit/"
+  ],
+  "publicationGuardrails": {
+    "requiresExactContentAndVisualApproval": true,
+    "requiresValidatedJpegAndSha256": true,
+    "githubBinaryWriteMethod": "create_blob(base64) -> create_tree -> create_commit -> update_ref",
+    "postProductionVerificationRequired": true
+  }
+}
