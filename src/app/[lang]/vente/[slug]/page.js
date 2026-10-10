@@ -198,7 +198,7 @@ export default async function VenteDetailPage({ params }) {
 
           <div className="mt-12">
             <Link
-              href={`/${lang}/contact`}
+              href={`/${lang}/contact?property=${encodeURIComponent(mandat.slug)}`}
               className="inline-flex rounded-full border border-zinc-900 px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-zinc-900"
             >
               {lang === 'fr' ? 'Demander plus d’information' : 'Request more information'}
