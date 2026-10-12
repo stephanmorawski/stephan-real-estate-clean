@@ -265,19 +265,19 @@ export default async function PartenairesPage({ params }) {
           <FinanceCard data={t.financing} cta={t.cta} />
 
           <div className="min-h-[220px]">
-            <StandardCard {...t.cards[1]} />
-          </div>
-
-          <div className="min-h-[220px]">
             <StandardCard {...t.cards[2]} />
           </div>
 
           <div className="min-h-[220px]">
-            <StandardCard {...t.cards[3]} />
+            <StandardCard {...t.cards[1]} />
           </div>
 
           <div className="min-h-[220px]">
             <StandardCard {...t.cards[4]} />
+          </div>
+
+          <div className="min-h-[220px]">
+            <StandardCard {...t.cards[3]} />
           </div>
         </div>
       </section>
