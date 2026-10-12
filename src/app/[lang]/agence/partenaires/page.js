@@ -19,12 +19,14 @@ const CONTENT = {
           description: 'Financement immobilier en France pour les résidents fiscaux français : prêt immobilier classique, prêt relais, achat-revente et solutions hypothécaires.',
           url: 'https://courtier.vousfinancer.com/provence-alpes-cote-d-azur/alpes-maritimes/cannes/courtier-en-credit-a-cannes-06-18',
           logo: '/partners/vousfinancer-logo-clean.png',
+          logoKind: 'vousfinancer',
         },
         {
           name: 'OMAGE Finance Conseil',
           description: 'Financement immobilier pour une clientèle internationale et non-résidente, avec accompagnement des dossiers nécessitant une structuration financière ou patrimoniale spécifique.',
           url: 'https://www.omagefinance.fr/',
-          logo: '/partners/omage-finance-logo-clean.jpg',
+          logo: '/partners/omage-finance-symbol.jpg',
+          logoKind: 'omage',
         },
       ],
     },
@@ -68,13 +70,15 @@ const CONTENT = {
           name: 'VousFinancer',
           description: 'Property finance in France for French tax residents, including standard mortgages, bridge loans, buy-to-resell financing and mortgage-backed solutions.',
           url: 'https://courtier.vousfinancer.com/provence-alpes-cote-d-azur/alpes-maritimes/cannes/courtier-en-credit-a-cannes-06-18',
-          logo: '/partners/vousfinancer-logo.png',
+          logo: '/partners/vousfinancer-logo-clean.png',
+          logoKind: 'vousfinancer',
         },
         {
           name: 'OMAGE Finance Conseil',
           description: 'Property finance for international and non-resident clients, including cases requiring specific financial or wealth structuring.',
           url: 'https://www.omagefinance.fr/',
-          logo: '/partners/omage-finance-logo.jpg',
+          logo: '/partners/omage-finance-symbol.jpg',
+          logoKind: 'omage',
         },
       ],
     },
@@ -105,7 +109,7 @@ const CONTENT = {
 
 function StandardCard({ title, description }) {
   return (
-    <article className="h-full rounded-[28px] bg-white p-8 md:p-9 shadow-soft ring-1 ring-black/5">
+    <article className="h-full rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9">
       <h2 className="font-serif text-[30px] leading-[1.05] tracking-[-0.03em] text-black md:text-[34px]">
         {title}
       </h2>
@@ -118,7 +122,7 @@ function StandardCard({ title, description }) {
 
 function CurrenciesDirectCard({ data, cta }) {
   return (
-    <article className="h-full rounded-[28px] bg-white p-8 md:p-9 shadow-soft ring-1 ring-black/5 flex flex-col">
+    <article className="flex h-full flex-col rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9">
       <div>
         <h2 className="font-serif text-[30px] leading-[1.05] tracking-[-0.03em] text-black md:text-[34px]">
           {data.title}
@@ -129,16 +133,15 @@ function CurrenciesDirectCard({ data, cta }) {
       </div>
 
       <div className="mt-7">
-        <div className="relative h-[76px] w-[250px] md:h-[88px] md:w-[290px]">
-          <Image
-            src="/partners/currencies-direct-logo-display.png"
-            alt="Currencies Direct"
-            fill
-            className="object-contain object-left"
-            sizes="290px"
-            unoptimized
-          />
-        </div>
+        <Image
+          src="/partners/currencies-direct-logo-display.png"
+          alt="Currencies Direct"
+          width={290}
+          height={88}
+          className="h-auto w-[250px] object-contain object-left md:w-[290px]"
+          sizes="290px"
+          unoptimized
+        />
       </div>
 
       <div className="mt-7">
@@ -155,9 +158,41 @@ function CurrenciesDirectCard({ data, cta }) {
   );
 }
 
+function PartnerLogo({ partner }) {
+  if (partner.logoKind === 'vousfinancer') {
+    return (
+      <div className="flex h-[104px] w-[124px] shrink-0 items-center justify-center">
+        <Image
+          src={partner.logo}
+          alt=""
+          width={220}
+          height={183}
+          className="h-auto w-[112px] object-contain"
+          sizes="112px"
+          unoptimized
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex h-[96px] w-[96px] shrink-0 items-center justify-center rounded-[20px] bg-white ring-1 ring-black/5">
+      <Image
+        src={partner.logo}
+        alt=""
+        width={61}
+        height={60}
+        className="h-[60px] w-[61px] object-contain"
+        sizes="61px"
+        unoptimized
+      />
+    </div>
+  );
+}
+
 function FinanceCard({ data, cta }) {
   return (
-    <article className="rounded-[28px] bg-white p-8 md:p-10 shadow-soft ring-1 ring-black/5 md:col-span-2">
+    <article className="rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:col-span-2 md:p-10">
       <div className="max-w-[820px]">
         <h2 className="font-serif text-[34px] leading-[1.05] tracking-[-0.03em] text-black md:text-[42px]">
           {data.title}
@@ -167,33 +202,24 @@ function FinanceCard({ data, cta }) {
         </p>
       </div>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
+      <div className="mt-8 grid items-stretch gap-5 md:grid-cols-2">
         {data.partners.map((partner) => (
           <div
             key={partner.name}
-            className="flex h-full flex-col rounded-[22px] bg-[#f7f4ef] p-6 ring-1 ring-black/5 md:p-7"
+            className="flex min-h-[430px] flex-col rounded-[22px] bg-[#f7f4ef] p-6 ring-1 ring-black/5 md:p-7"
           >
-            <div className="flex min-h-[128px] items-center gap-6">
-              <div className="relative h-[118px] w-[160px] shrink-0">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  fill
-                  className="object-contain object-left"
-                  sizes="160px"
-                  unoptimized
-                />
-              </div>
-              <div className="font-serif text-[25px] leading-tight text-black md:text-[28px]">
+            <div className="flex min-h-[112px] items-center gap-6">
+              <PartnerLogo partner={partner} />
+              <h3 className="font-serif text-[27px] leading-[1.08] tracking-[-0.02em] text-black md:text-[30px]">
                 {partner.name}
-              </div>
+              </h3>
             </div>
 
-            <p className="mt-5 flex-1 text-[16px] leading-[1.65] text-black/72">
+            <p className="mt-6 flex-1 text-[16px] leading-[1.65] text-black/72">
               {partner.description}
             </p>
 
-            <div className="mt-6">
+            <div className="mt-7">
               <a
                 href={partner.url}
                 target="_blank"
