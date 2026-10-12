@@ -18,13 +18,13 @@ const CONTENT = {
           name: 'VousFinancer',
           description: 'Financement immobilier en France pour les résidents fiscaux français : prêt immobilier classique, prêt relais, achat-revente et solutions hypothécaires.',
           url: 'https://courtier.vousfinancer.com/provence-alpes-cote-d-azur/alpes-maritimes/cannes/courtier-en-credit-a-cannes-06-18',
-          logo: '/partners/vousfinancer-logo.png',
+          logo: '/partners/vousfinancer-logo-clean.png',
         },
         {
           name: 'OMAGE Finance Conseil',
           description: 'Financement immobilier pour une clientèle internationale et non-résidente, avec accompagnement des dossiers nécessitant une structuration financière ou patrimoniale spécifique.',
           url: 'https://www.omagefinance.fr/',
-          logo: '/partners/omage-finance-logo.jpg',
+          logo: '/partners/omage-finance-logo-clean.jpg',
         },
       ],
     },
@@ -173,14 +173,14 @@ function FinanceCard({ data, cta }) {
             key={partner.name}
             className="flex h-full flex-col rounded-[22px] bg-[#f7f4ef] p-6 ring-1 ring-black/5 md:p-7"
           >
-            <div className="flex min-h-[88px] items-center gap-5">
-              <div className="relative h-[76px] w-[90px] shrink-0">
+            <div className="flex min-h-[128px] items-center gap-6">
+              <div className="relative h-[118px] w-[160px] shrink-0">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
                   fill
                   className="object-contain object-left"
-                  sizes="90px"
+                  sizes="160px"
                   unoptimized
                 />
               </div>
