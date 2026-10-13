@@ -108,15 +108,18 @@ const CONTENT = {
 };
 
 const PARTNER_CARD_CLASS =
-  'flex min-h-[430px] h-full flex-col rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9';
+  'flex min-h-[310px] h-full flex-col rounded-[24px] bg-white p-6 shadow-soft ring-1 ring-black/5 md:p-7';
+
+const FINANCE_PARTNER_CARD_CLASS =
+  'flex min-h-[310px] h-full flex-col rounded-[22px] bg-[#f7f4ef] p-6 ring-1 ring-black/5 md:p-7';
 
 function StandardCard({ title, description }) {
   return (
-    <article className="h-full rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9">
-      <h2 className="font-serif text-[30px] leading-[1.05] tracking-[-0.03em] text-black md:text-[34px]">
+    <article className="h-full rounded-[24px] bg-white p-6 shadow-soft ring-1 ring-black/5 md:p-7">
+      <h2 className="font-serif text-[27px] leading-[1.08] tracking-[-0.03em] text-black md:text-[30px]">
         {title}
       </h2>
-      <p className="mt-5 text-[17px] leading-[1.6] text-black/75">
+      <p className="mt-4 text-[16px] leading-[1.55] text-black/75">
         {description}
       </p>
     </article>
@@ -127,32 +130,32 @@ function CurrenciesDirectCard({ data, cta }) {
   return (
     <article className={PARTNER_CARD_CLASS}>
       <div>
-        <h2 className="font-serif text-[30px] leading-[1.05] tracking-[-0.03em] text-black md:text-[34px]">
+        <h2 className="font-serif text-[29px] leading-[1.06] tracking-[-0.03em] text-black md:text-[32px]">
           {data.title}
         </h2>
-        <p className="mt-5 text-[17px] leading-[1.6] text-black/75">
+        <p className="mt-4 text-[16px] leading-[1.55] text-black/75">
           {data.description}
         </p>
       </div>
 
-      <div className="mt-7">
+      <div className="mt-5">
         <Image
           src="/partners/currencies-direct-logo-display.png"
           alt="Currencies Direct"
-          width={290}
-          height={88}
-          className="h-auto w-[250px] object-contain object-left md:w-[290px]"
-          sizes="290px"
+          width={240}
+          height={73}
+          className="h-auto w-[210px] object-contain object-left md:w-[240px]"
+          sizes="240px"
           unoptimized
         />
       </div>
 
-      <div className="mt-auto pt-7">
+      <div className="mt-auto pt-5">
         <a
           href={data.url}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-black px-8 text-[13px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-black hover:text-white"
+          className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-black px-6 text-[12px] font-medium uppercase tracking-[0.2em] text-black transition hover:bg-black hover:text-white"
         >
           {cta}
         </a>
@@ -164,14 +167,14 @@ function CurrenciesDirectCard({ data, cta }) {
 function PartnerLogo({ partner }) {
   if (partner.logoKind === 'vousfinancer') {
     return (
-      <div className="flex h-[104px] w-[124px] shrink-0 items-center justify-center">
+      <div className="flex h-[88px] w-[106px] shrink-0 items-center justify-center">
         <Image
           src={partner.logo}
           alt=""
-          width={220}
-          height={183}
-          className="h-auto w-[112px] object-contain"
-          sizes="112px"
+          width={184}
+          height={153}
+          className="h-auto w-[94px] object-contain"
+          sizes="94px"
           unoptimized
         />
       </div>
@@ -179,14 +182,14 @@ function PartnerLogo({ partner }) {
   }
 
   return (
-    <div className="flex h-[96px] w-[96px] shrink-0 items-center justify-center rounded-[20px] bg-white ring-1 ring-black/5">
+    <div className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-[18px] bg-white ring-1 ring-black/5">
       <Image
         src={partner.logo}
         alt=""
-        width={61}
-        height={60}
-        className="h-[60px] w-[61px] object-contain"
-        sizes="61px"
+        width={52}
+        height={51}
+        className="h-[51px] w-[52px] object-contain"
+        sizes="52px"
         unoptimized
       />
     </div>
@@ -195,44 +198,44 @@ function PartnerLogo({ partner }) {
 
 function FinanceCard({ data, cta }) {
   return (
-    <>
-      <div className="rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:col-span-2 md:p-10">
-        <div className="max-w-[820px]">
-          <h2 className="font-serif text-[34px] leading-[1.05] tracking-[-0.03em] text-black md:text-[42px]">
-            {data.title}
-          </h2>
-          <p className="mt-4 text-[17px] leading-[1.65] text-black/70">
-            {data.intro}
-          </p>
-        </div>
+    <section className="rounded-[28px] bg-white p-7 shadow-soft ring-1 ring-black/5 md:col-span-2 md:p-8">
+      <div className="max-w-[820px]">
+        <h2 className="font-serif text-[32px] leading-[1.05] tracking-[-0.03em] text-black md:text-[38px]">
+          {data.title}
+        </h2>
+        <p className="mt-3 text-[16px] leading-[1.6] text-black/70">
+          {data.intro}
+        </p>
       </div>
 
-      {data.partners.map((partner) => (
-        <article key={partner.name} className={PARTNER_CARD_CLASS}>
-          <div className="flex min-h-[112px] items-center gap-6">
-            <PartnerLogo partner={partner} />
-            <h3 className="font-serif text-[27px] leading-[1.08] tracking-[-0.02em] text-black md:text-[30px]">
-              {partner.name}
-            </h3>
-          </div>
+      <div className="mt-6 grid items-stretch gap-5 md:grid-cols-2">
+        {data.partners.map((partner) => (
+          <article key={partner.name} className={FINANCE_PARTNER_CARD_CLASS}>
+            <div className="flex min-h-[88px] items-center gap-5">
+              <PartnerLogo partner={partner} />
+              <h3 className="font-serif text-[25px] leading-[1.08] tracking-[-0.02em] text-black md:text-[28px]">
+                {partner.name}
+              </h3>
+            </div>
 
-          <p className="mt-5 flex-1 text-[16px] leading-[1.65] text-black/72">
-            {partner.description}
-          </p>
+            <p className="mt-4 flex-1 text-[15px] leading-[1.6] text-black/72 md:text-[16px]">
+              {partner.description}
+            </p>
 
-          <div className="mt-auto pt-7">
-            <a
-              href={partner.url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-black px-8 text-[13px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-black hover:text-white"
-            >
-              {cta}
-            </a>
-          </div>
-        </article>
-      ))}
-    </>
+            <div className="mt-auto pt-5">
+              <a
+                href={partner.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-black px-6 text-[12px] font-medium uppercase tracking-[0.2em] text-black transition hover:bg-black hover:text-white"
+              >
+                {cta}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -253,30 +256,30 @@ export default async function PartenairesPage({ params }) {
           </p>
         </div>
 
-        <div className="mt-9 grid gap-6 md:grid-cols-2">
-          <div className="min-h-[220px]">
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="min-h-[310px]">
             <StandardCard {...t.cards[0]} />
           </div>
 
-          <div className="min-h-[430px]">
+          <div className="min-h-[310px]">
             <CurrenciesDirectCard data={t.currency} cta={t.cta} />
           </div>
 
           <FinanceCard data={t.financing} cta={t.cta} />
 
-          <div className="min-h-[220px]">
+          <div className="min-h-[180px]">
             <StandardCard {...t.cards[2]} />
           </div>
 
-          <div className="min-h-[220px]">
+          <div className="min-h-[180px]">
             <StandardCard {...t.cards[1]} />
           </div>
 
-          <div className="min-h-[220px]">
+          <div className="min-h-[180px]">
             <StandardCard {...t.cards[4]} />
           </div>
 
-          <div className="min-h-[220px]">
+          <div className="min-h-[180px]">
             <StandardCard {...t.cards[3]} />
           </div>
         </div>
