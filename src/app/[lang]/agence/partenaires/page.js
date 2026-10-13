@@ -107,6 +107,9 @@ const CONTENT = {
   },
 };
 
+const PARTNER_CARD_CLASS =
+  'flex min-h-[430px] h-full flex-col rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9';
+
 function StandardCard({ title, description }) {
   return (
     <article className="h-full rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9">
@@ -122,7 +125,7 @@ function StandardCard({ title, description }) {
 
 function CurrenciesDirectCard({ data, cta }) {
   return (
-    <article className="flex h-full flex-col rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:p-9">
+    <article className={PARTNER_CARD_CLASS}>
       <div>
         <h2 className="font-serif text-[30px] leading-[1.05] tracking-[-0.03em] text-black md:text-[34px]">
           {data.title}
@@ -144,7 +147,7 @@ function CurrenciesDirectCard({ data, cta }) {
         />
       </div>
 
-      <div className="mt-7">
+      <div className="mt-auto pt-7">
         <a
           href={data.url}
           target="_blank"
@@ -192,47 +195,44 @@ function PartnerLogo({ partner }) {
 
 function FinanceCard({ data, cta }) {
   return (
-    <article className="rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:col-span-2 md:p-10">
-      <div className="max-w-[820px]">
-        <h2 className="font-serif text-[34px] leading-[1.05] tracking-[-0.03em] text-black md:text-[42px]">
-          {data.title}
-        </h2>
-        <p className="mt-4 text-[17px] leading-[1.65] text-black/70">
-          {data.intro}
-        </p>
+    <>
+      <div className="rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-black/5 md:col-span-2 md:p-10">
+        <div className="max-w-[820px]">
+          <h2 className="font-serif text-[34px] leading-[1.05] tracking-[-0.03em] text-black md:text-[42px]">
+            {data.title}
+          </h2>
+          <p className="mt-4 text-[17px] leading-[1.65] text-black/70">
+            {data.intro}
+          </p>
+        </div>
       </div>
 
-      <div className="mt-8 grid items-stretch gap-5 md:grid-cols-2">
-        {data.partners.map((partner) => (
-          <div
-            key={partner.name}
-            className="flex min-h-[430px] flex-col rounded-[22px] bg-[#f7f4ef] p-6 ring-1 ring-black/5 md:p-7"
-          >
-            <div className="flex min-h-[112px] items-center gap-6">
-              <PartnerLogo partner={partner} />
-              <h3 className="font-serif text-[27px] leading-[1.08] tracking-[-0.02em] text-black md:text-[30px]">
-                {partner.name}
-              </h3>
-            </div>
-
-            <p className="mt-6 flex-1 text-[16px] leading-[1.65] text-black/72">
-              {partner.description}
-            </p>
-
-            <div className="mt-7">
-              <a
-                href={partner.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-black px-6 text-[12px] font-medium uppercase tracking-[0.19em] text-black transition hover:bg-black hover:text-white"
-              >
-                {cta}
-              </a>
-            </div>
+      {data.partners.map((partner) => (
+        <article key={partner.name} className={PARTNER_CARD_CLASS}>
+          <div className="flex min-h-[112px] items-center gap-6">
+            <PartnerLogo partner={partner} />
+            <h3 className="font-serif text-[27px] leading-[1.08] tracking-[-0.02em] text-black md:text-[30px]">
+              {partner.name}
+            </h3>
           </div>
-        ))}
-      </div>
-    </article>
+
+          <p className="mt-5 flex-1 text-[16px] leading-[1.65] text-black/72">
+            {partner.description}
+          </p>
+
+          <div className="mt-auto pt-7">
+            <a
+              href={partner.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-black px-8 text-[13px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-black hover:text-white"
+            >
+              {cta}
+            </a>
+          </div>
+        </article>
+      ))}
+    </>
   );
 }
 
@@ -258,7 +258,7 @@ export default async function PartenairesPage({ params }) {
             <StandardCard {...t.cards[0]} />
           </div>
 
-          <div className="min-h-[220px]">
+          <div className="min-h-[430px]">
             <CurrenciesDirectCard data={t.currency} cta={t.cta} />
           </div>
 
