@@ -13,7 +13,7 @@ function FinancePartnerVisual({ compact = false }) {
       </div>
       <div aria-hidden="true" className={compact ? 'h-20 w-px bg-zinc-200' : 'h-px w-28 bg-zinc-200'} />
       <div className="flex flex-col items-center gap-2">
-        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] shrink-0 object-contain" />
+        <img src="/partners/omage-finance-source-trace.svg" alt="OMAGE Finance Conseil" width="94" height="94" className="h-[94px] w-[94px] shrink-0 object-contain" />
         <span className="text-center text-xs font-medium text-zinc-800">OMAGE Finance Conseil</span>
       </div>
     </div>
