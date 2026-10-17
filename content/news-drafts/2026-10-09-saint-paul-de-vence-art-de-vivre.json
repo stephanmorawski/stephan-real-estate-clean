@@ -54,16 +54,29 @@
     "githubBinaryWriteMethod": "create_blob(base64) -> create_tree -> create_commit -> update_ref",
     "postProductionVerificationRequired": true
   },
-  "preparationState": "prepared_pending_pr_and_preview",
+  "preparationState": "preview_blocked",
   "preparationBranch": "caa/editorial/2026-10-09-saint-paul-de-vence",
   "stagedArticlePath": "content/news/2026-10-09-saint-paul-de-vence-art-de-vivre.json",
   "technicalBlockage": {
-    "step": "GitHub create_pull_request",
-    "error": "Connector safety checks blocked two attempts",
+    "step": "Vercel FR/EN article preview validation",
+    "error": "Preview article routes return 404 for status=draft (previously observed); route /preview/start and asset validation require further testing. External preview URL not accessible to current verifier.",
     "firstObserved": "2026-10-17",
-    "prCreated": false,
-    "vercelPreviewReady": false,
+    "prCreated": true,
+    "vercelPreviewReady": true,
     "mailSent": false,
     "requiresUserAction": false
+  },
+  "review": {
+    "pullRequestNumber": 31,
+    "pullRequestUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/31",
+    "state": "open",
+    "merged": false,
+    "previewDeploymentId": "dpl_CjgW72mVK8QyLGh99mFmje6bbt5T",
+    "previewDeploymentReady": true,
+    "previewValidated": false,
+    "frEnRoutes": "404 reported on 2026-10-17; not validated",
+    "visualJpegValidated": false,
+    "fullPackSent": false,
+    "finalApprovalReceived": false
   }
 }
