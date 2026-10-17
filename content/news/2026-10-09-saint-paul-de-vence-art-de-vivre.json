@@ -1,0 +1,75 @@
+{
+  "slug": "2026-10-09-saint-paul-de-vence-art-de-vivre",
+  "status": "draft",
+  "publishedAt": "2026-10-17",
+  "source": "Côte d’Azur Agency",
+  "linkedinUrl": "",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+  "imageCredit": {
+    "author": "Jpchevreau",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "sources": [
+    {
+      "url": "https://www.saint-pauldevence.com/fiches/monuments/le-cimetiere/",
+      "label": {
+        "fr": "Office de tourisme — Marc Chagall (1966–1985)",
+        "en": "Tourist office — Marc Chagall (1966–1985)"
+      }
+    },
+    {
+      "url": "https://www.saint-pauldevence.com/ateliers-et-galeries/",
+      "label": {
+        "fr": "Office de tourisme — ateliers et galeries",
+        "en": "Tourist office — studios and galleries"
+      }
+    },
+    {
+      "url": "https://www.fondation-maeght.com/",
+      "label": {
+        "fr": "Fondation Maeght — informations officielles",
+        "en": "Fondation Maeght — official information"
+      }
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+      "label": {
+        "fr": "Crédit photo : Jpchevreau, CC BY-SA 4.0",
+        "en": "Photo credit: Jpchevreau, CC BY-SA 4.0"
+      }
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "label": {
+        "fr": "Licence de la photographie : CC BY-SA 4.0",
+        "en": "Photograph license: CC BY-SA 4.0"
+      }
+    }
+  ],
+  "fr": {
+    "title": "Saint-Paul-de-Vence : l’art de vivre dans un village d’artistes",
+    "excerpt": "Entre remparts, ateliers, galeries et Fondation Maeght, Saint-Paul-de-Vence cultive un cadre de vie où patrimoine, création et paysages se rencontrent.",
+    "content": [
+      "À quelques kilomètres du littoral, Saint-Paul-de-Vence propose une autre façon de vivre la Côte d’Azur. Perché sur les collines, le village fortifié conjugue patrimoine, création artistique et paysages méditerranéens. Au-delà de la carte postale, c’est cette identité singulière qui attire les personnes recherchant un ancrage dans l’arrière-pays azuréen.",
+      "Ses remparts, construits au XVIe siècle, dessinent encore sa silhouette. Derrière les portes, ruelles pavées, placettes et façades de pierre invitent à la découverte à pied. Le centre historique forme un environnement architectural préservé dont le rythme contraste avec celui des stations du bord de mer.",
+      "L’art n’y est pas seulement un souvenir. Rue Grande et dans les rues voisines, galeries et ateliers de peintres, sculpteurs et céramistes entretiennent une vie culturelle bien présente. Marc Chagall a habité Saint-Paul-de-Vence de 1966 à 1985, inscrivant son passage dans une histoire artistique qui se prolonge avec la création contemporaine.",
+      "À proximité du centre ancien, la Fondation Maeght constitue une étape majeure pour les amateurs d’art moderne et contemporain. Ses collections, expositions et son architecture complètent les galeries et ateliers du village et participent à son rayonnement culturel.",
+      "Choisir de vivre ici, c’est aussi apprécier un paysage de collines, d’oliveraies et de chemins qui évoque la Provence tout en restant relié à la Riviera. Comme dans tout village patrimonial, déplacements, stationnement et accès aux services doivent néanmoins être examinés concrètement, selon l’adresse et le mode de vie.",
+      "Pour un projet résidentiel, le charme d’une propriété ne suffit pas : exposition, environnement immédiat, accès au village et contraintes pratiques comptent autant que l’architecture. Chez Côte d’Azur Agency, nous privilégions cette lecture complète du cadre de vie pour accompagner une installation agréable au quotidien."
+    ]
+  },
+  "en": {
+    "title": "Saint-Paul-de-Vence: the art of living in an artists’ village",
+    "excerpt": "Between historic ramparts, studios, galleries and the Fondation Maeght, Saint-Paul-de-Vence combines heritage, creativity and Riviera countryside living.",
+    "content": [
+      "A short distance inland from the Mediterranean, Saint-Paul-de-Vence offers a different way of experiencing the French Riviera. This fortified hilltop village brings together heritage, artistic creation and Mediterranean landscapes. Beyond its postcard appeal, that distinctive identity attracts people looking for a home in the Riviera hinterland.",
+      "The village’s sixteenth-century ramparts still define its silhouette. Beyond the gates, cobbled lanes, intimate squares and stone façades invite exploration on foot. The historic centre offers a preserved architectural setting and a pace of life quite different from the larger coastal resorts.",
+      "Art here is not simply a memory. Along Rue Grande and the surrounding streets, galleries and workshops run by painters, sculptors and ceramicists sustain a visible creative scene. Marc Chagall lived in Saint-Paul-de-Vence from 1966 to 1985, an important chapter in an artistic story that continues through contemporary work.",
+      "Close to the old village, the Fondation Maeght is a landmark for modern and contemporary art. Its collections, exhibitions and architecture complement the galleries and artists’ studios and contribute to the village’s cultural identity.",
+      "Living here also means enjoying hills, olive trees and countryside paths that evoke Provence while remaining connected to the Riviera. As in any historic village, travel, parking and access to local services need to be assessed carefully for each address and lifestyle.",
+      "For a home purchase, a property’s charm is only part of the picture: orientation, immediate surroundings, village access and everyday practicalities matter as much as architectural character. At Côte d’Azur Agency, we consider these factors together to help clients find a home that works in real life, not just in photographs."
+    ]
+  }
+}
