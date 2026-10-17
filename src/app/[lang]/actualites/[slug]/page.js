@@ -5,6 +5,22 @@ import { buildPageMetadata, truncateText } from '@/lib/seo';
 import { getAllNewsSlugs, getNewsBySlug } from '@/lib/news';
 import { headers } from 'next/headers';
 
+function FinancePartnerVisual() {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-8 bg-white p-8 md:gap-16 md:p-14">
+      <div className="flex flex-col items-center gap-3">
+        <img src="/partners/vousfinancer-logo-clean.png" alt="Vousfinancer" width="94" height="78" className="h-[78px] w-[94px] object-contain" />
+        <span className="text-sm font-medium text-zinc-800">Vousfinancer</span>
+      </div>
+      <div aria-hidden="true" className="hidden h-24 w-px bg-zinc-200 sm:block" />
+      <div className="flex flex-col items-center gap-3">
+        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] object-contain" />
+        <span className="text-sm font-medium text-zinc-800">OMAGE Finance Conseil</span>
+      </div>
+    </div>
+  );
+}
+
 export async function generateStaticParams() {
   const slugs = await getAllNewsSlugs();
   return slugs.flatMap((slug) => [{ lang: 'fr', slug }, { lang: 'en', slug }]);
@@ -94,7 +110,7 @@ export default async function NewsDetailPage({ params }) {
 
         {article.image ? (
           <div className="mt-10 overflow-hidden rounded-[28px] bg-zinc-100">
-            <img src={article.image} alt={article.imageAlt || article.title} className="h-full w-full object-cover" />
+            {article.image === '/news/partenariat-vousfinancer-omage-logos.svg' ? <FinancePartnerVisual /> : <img src={article.image} alt={article.imageAlt || article.title} className="h-full w-full object-cover" />}
           </div>
         ) : null}
 
