@@ -14,7 +14,7 @@ function FinancePartnerVisual() {
       </div>
       <div aria-hidden="true" className="hidden h-24 w-px bg-zinc-200 sm:block" />
       <div className="flex flex-col items-center gap-3">
-        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] object-contain" />
+        <img src="/partners/omage-finance-source-trace.svg" alt="OMAGE Finance Conseil" width="94" height="94" className="h-[94px] w-[94px] object-contain" />
         <span className="text-sm font-medium text-zinc-800">OMAGE Finance Conseil</span>
       </div>
     </div>
