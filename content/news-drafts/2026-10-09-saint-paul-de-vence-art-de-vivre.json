@@ -53,5 +53,17 @@
     "requiresValidatedJpegAndSha256": true,
     "githubBinaryWriteMethod": "create_blob(base64) -> create_tree -> create_commit -> update_ref",
     "postProductionVerificationRequired": true
+  },
+  "preparationState": "prepared_pending_pr_and_preview",
+  "preparationBranch": "caa/editorial/2026-10-09-saint-paul-de-vence",
+  "stagedArticlePath": "content/news/2026-10-09-saint-paul-de-vence-art-de-vivre.json",
+  "technicalBlockage": {
+    "step": "GitHub create_pull_request",
+    "error": "Connector safety checks blocked two attempts",
+    "firstObserved": "2026-10-17",
+    "prCreated": false,
+    "vercelPreviewReady": false,
+    "mailSent": false,
+    "requiresUserAction": false
   }
 }
