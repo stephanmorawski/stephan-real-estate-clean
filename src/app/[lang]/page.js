@@ -4,6 +4,22 @@ import { isLang, getDict } from '@/lib/i18n';
 import { buildPageMetadata } from '@/lib/seo';
 import { getAllNews } from '@/lib/news';
 
+function FinancePartnerVisual({ compact = false }) {
+  return (
+    <div className={compact ? 'flex h-full min-h-[190px] items-center justify-center gap-5 bg-white p-5' : 'flex h-full min-h-[280px] flex-col items-center justify-center gap-5 bg-white px-8 py-10'}>
+      <div className="flex flex-col items-center gap-2">
+        <img src="/partners/vousfinancer-logo-clean.png" alt="Vousfinancer" width="94" height="78" className="h-[78px] w-[94px] shrink-0 object-contain" />
+        <span className="text-center text-xs font-medium text-zinc-800">Vousfinancer</span>
+      </div>
+      <div aria-hidden="true" className={compact ? 'h-20 w-px bg-zinc-200' : 'h-px w-28 bg-zinc-200'} />
+      <div className="flex flex-col items-center gap-2">
+        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] shrink-0 object-contain" />
+        <span className="text-center text-xs font-medium text-zinc-800">OMAGE Finance Conseil</span>
+      </div>
+    </div>
+  );
+}
+
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const title = lang === 'en'
@@ -76,11 +92,9 @@ export default async function HomePage({ params }) {
               <article key={item.id} className="card-luxe overflow-hidden">
                 {item.image ? (
                   <div className="aspect-[16/10] bg-zinc-100">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="h-full w-full object-cover"
-                    />
+                    {item.image === '/news/partenariat-vousfinancer-omage-logos.svg' ? <FinancePartnerVisual compact /> : (
+                      <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
+                    )}
                   </div>
                 ) : null}
                 <div className="p-6">
