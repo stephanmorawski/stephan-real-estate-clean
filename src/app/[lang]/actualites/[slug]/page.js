@@ -5,17 +5,19 @@ import { buildPageMetadata, truncateText } from '@/lib/seo';
 import { getAllNewsSlugs, getNewsBySlug } from '@/lib/news';
 import { headers } from 'next/headers';
 
-function FinancePartnerVisual() {
+function FinancePartnerVisual({ compact = false }) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-8 bg-white p-8 md:gap-16 md:p-14">
-      <div className="flex flex-col items-center gap-3">
-        <img src="/partners/vousfinancer-logo-clean.png" alt="Vousfinancer" width="94" height="78" className="h-[78px] w-[94px] object-contain" />
-        <span className="text-sm font-medium text-zinc-800">Vousfinancer</span>
+    <div className={compact
+      ? 'flex h-full min-h-[190px] w-full items-center justify-center gap-3 bg-white px-3 py-5'
+      : 'flex h-full min-h-[280px] w-full items-center justify-center gap-3 bg-white px-4 py-8 md:gap-6 md:px-8'}>
+      <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
+        <img src="/partners/vousfinancer-logo-clean.png" alt="Vousfinancer" width="184" height="153" className="h-[78px] w-[94px] max-w-full object-contain" />
+        <span className="text-center text-[11px] font-medium text-zinc-800 md:text-xs">Vousfinancer</span>
       </div>
-      <div aria-hidden="true" className="hidden h-24 w-px bg-zinc-200 sm:block" />
-      <div className="flex flex-col items-center gap-3">
-        <img src="/partners/omage-finance-source-trace.svg" alt="OMAGE Finance Conseil" width="94" height="94" className="h-[94px] w-[94px] object-contain" />
-        <span className="text-sm font-medium text-zinc-800">OMAGE Finance Conseil</span>
+      <div aria-hidden="true" className="h-24 w-px shrink-0 bg-zinc-200" />
+      <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
+        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] object-contain" />
+        <span className="text-center text-[11px] font-medium text-zinc-800 md:text-xs">OMAGE Finance Conseil</span>
       </div>
     </div>
   );
