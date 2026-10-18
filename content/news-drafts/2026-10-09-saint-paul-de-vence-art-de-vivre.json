@@ -1,6 +1,6 @@
 {
   "workflowStatus": "waiting_approval",
-  "previewDeliveryStatus": "pending_send",
+  "previewDeliveryStatus": "sent",
   "approvalChannel": "outlook",
   "originProposalDate": "2026-10-09",
   "selectedChoice": "1",
@@ -53,5 +53,9 @@
     "requiresValidatedJpegAndSha256": true,
     "githubBinaryWriteMethod": "create_blob(base64) -> create_tree -> create_commit -> update_ref",
     "postProductionVerificationRequired": true
-  }
+  },
+  "previewDeliveryDate": "2026-10-18",
+  "previewSubject": "Côte d’Azur Agency — Saint-Paul-de-Vence : article FR/EN, visuel et LinkedIn à valider",
+  "previewDeliveryEvidence": "Outlook Sent Items search confirmed 2026-10-18T13:28:30Z",
+  "previewTechnicalStatus": "preview_vercel_unverified"
 }
