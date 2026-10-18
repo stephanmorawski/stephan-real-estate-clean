@@ -4,7 +4,7 @@ const base=(process.env.SITE_URL||'https://www.cotedazuragency.com').replace(/\/
 const dir='artifacts/post-production'; fs.mkdirSync(dir,{recursive:true});
 const browser=await chromium.launch({headless:true});
 const failures=[];
-const pages=['/fr','/en','/fr/actualites','/en/actualites','/fr/services','/en/services','/fr/contact','/en/contact'];
+const pages=['/fr','/en','/fr/actualites','/en/actualites','/fr/actualites/2026-10-15-partenariat-vousfinancer-omage','/en/actualites/2026-10-15-partenariat-vousfinancer-omage','/fr/services','/en/services','/fr/contact','/en/contact'];
 for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
  const context=await browser.newContext({viewport,deviceScaleFactor:1});
  for(const path of pages){
@@ -22,6 +22,19 @@ for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},m
       const r=img.getBoundingClientRect(), cs=getComputedStyle(img);
       if(/partner|logo|financer|omage/i.test(img.src) && cs.objectFit==='cover') out.push('partner logo uses cover: '+img.src);
       if(r.width>0&&r.height>0&&img.naturalWidth>0&&img.naturalHeight>0&&/partner|logo|financer|omage/i.test(img.src)&&cs.objectFit==='cover') out.push('logo crop risk');
+    }
+    // Editorial instruction: Vousfinancer and OMAGE remain side by side, including mobile.
+    if(location.pathname.includes('/actualites')){
+      const card=document.querySelector('a[href$="/2026-10-15-partenariat-vousfinancer-omage"]')?.closest('article');
+      const region=card || (location.pathname.endsWith('/2026-10-15-partenariat-vousfinancer-omage') ? document.querySelector('main article') : null);
+      if(region){
+        const logoImgs=[...region.querySelectorAll('img')].filter(x=>/vousfinancer|omage/i.test(x.src));
+        if(logoImgs.length>=2){
+          const [a,b]=logoImgs.slice(0,2).map(x=>x.getBoundingClientRect());
+          const dy=Math.abs((a.top+a.bottom)/2-(b.top+b.bottom)/2);
+          if(dy>Math.max(a.height,b.height)*0.6) out.push('branding deviation: logos stacked instead of side by side');
+        }
+      }
     }
     return out;
    });
