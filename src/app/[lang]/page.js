@@ -4,24 +4,6 @@ import { isLang, getDict } from '@/lib/i18n';
 import { buildPageMetadata } from '@/lib/seo';
 import { getAllNews } from '@/lib/news';
 
-function FinancePartnerVisual({ compact = false }) {
-  return (
-    <div className={compact
-      ? 'flex h-full min-h-[190px] w-full items-center justify-center gap-3 bg-white px-3 py-5'
-      : 'flex h-full min-h-[280px] w-full items-center justify-center gap-3 bg-white px-4 py-8 md:gap-6 md:px-8'}>
-      <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
-        <img src="/partners/vousfinancer-logo-clean.png" alt="Vousfinancer" width="184" height="153" className="h-[78px] w-[94px] max-w-full object-contain" />
-        <span className="text-center text-[11px] font-medium text-zinc-800 md:text-xs">Vousfinancer</span>
-      </div>
-      <div aria-hidden="true" className="h-24 w-px shrink-0 bg-zinc-200" />
-      <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
-        <img src="/partners/omage-finance-symbol.jpg" alt="OMAGE Finance Conseil" width="52" height="51" className="h-[51px] w-[52px] object-contain" />
-        <span className="text-center text-[11px] font-medium text-zinc-800 md:text-xs">OMAGE Finance Conseil</span>
-      </div>
-    </div>
-  );
-}
-
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const title = lang === 'en'
@@ -94,9 +76,7 @@ export default async function HomePage({ params }) {
               <article key={item.id} className="card-luxe overflow-hidden">
                 {item.image ? (
                   <div className="aspect-[16/10] bg-zinc-100">
-                    {item.image === '/news/partenariat-vousfinancer-omage-logos.svg' ? <FinancePartnerVisual compact /> : (
-                      <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
-                    )}
+                    <img src={item.image} alt={item.title} className={item.image === '/news/partenariat-vousfinancer-omage-official.svg' ? 'h-full w-full bg-white object-contain' : 'h-full w-full object-cover'} />
                   </div>
                 ) : null}
                 <div className="p-6">
