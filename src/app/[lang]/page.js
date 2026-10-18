@@ -76,7 +76,7 @@ export default async function HomePage({ params }) {
               <article key={item.id} className="card-luxe overflow-hidden">
                 {item.image ? (
                   <div className="aspect-[16/10] bg-zinc-100">
-                    <img src={item.image} alt={item.title} className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'h-full w-full bg-white object-contain' : 'h-full w-full object-cover'} />
+                    <img src={item.image} alt={item.title} className={'h-full w-full object-cover'} />
                   </div>
                 ) : null}
                 <div className="p-6">
