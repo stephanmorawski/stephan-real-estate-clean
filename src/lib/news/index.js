@@ -11,7 +11,7 @@ function normalizePost({ slug, entry }, lang = 'fr') {
     publishedAt: entry.publishedAt || '',
     source: entry.source || 'LinkedIn',
     linkedinUrl: entry.linkedinUrl || null,
-    image: entry.imageUpload || entry.image || '/images/hero-pool.jpg',
+    image: (entry.imageByLang && entry.imageByLang[lang]) || entry.imageUpload || entry.image || '/images/hero-pool.jpg',
     imageAlt: localized.imageAlt || localized.title || '',
     imageCaption: localized.imageCaption || '',
     imageCredit: entry.imageCredit || null,

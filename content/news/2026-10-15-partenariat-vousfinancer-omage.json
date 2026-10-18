@@ -2,7 +2,7 @@
   "slug": "partenariat-vousfinancer-omage-financement-immobilier-cote-azur",
   "publishedAt": "2026-10-17",
   "source": "Côte d’Azur Agency",
-  "image": "/news/partenariat-vousfinancer-omage-official.svg",
+  "image": "/news/partenariat-financement-2026-10-17-fr.png",
   "linkedinUrl": "",
   "fr": {
     "title": "Côte d’Azur Agency, Vousfinancer et OMAGE Finance Conseil : deux expertises pour accompagner votre financement",
@@ -25,5 +25,9 @@
       "One team, two complementary areas of expertise: the partnership helps Côte d’Azur Agency connect clients with relevant financing specialists alongside its personalised real estate service.",
       "Financing is subject to application assessment and lender terms. Visit our Partners page to learn more."
     ]
+  },
+  "imageByLang": {
+    "fr": "/news/partenariat-financement-2026-10-17-fr.png",
+    "en": "/news/partenariat-financement-2026-10-17-en.png"
   }
 }

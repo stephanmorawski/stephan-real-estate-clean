@@ -46,7 +46,7 @@ export default async function NewsPage({ params }) {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className={item.image === '/news/partenariat-vousfinancer-omage-official.svg' ? 'h-full w-full bg-white object-contain' : 'h-full w-full object-cover'}
+                    className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'h-full w-full bg-white object-contain' : 'h-full w-full object-cover'}
                   />
                 ) : null}
               </div>
