@@ -46,7 +46,7 @@ export default async function NewsPage({ params }) {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className={'h-full w-full object-cover'}
+                    className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'block h-auto w-full' : 'h-full w-full object-cover'}
                   />
                 ) : null}
               </div>
