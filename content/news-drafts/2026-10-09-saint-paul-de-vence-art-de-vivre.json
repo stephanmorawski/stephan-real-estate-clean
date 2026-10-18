@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "published",
   "previewDeliveryStatus": "sent",
   "approvalChannel": "outlook",
   "originProposalDate": "2026-10-09",
@@ -16,8 +16,8 @@
   },
   "article": {
     "slug": "saint-paul-de-vence-art-de-vivre",
-    "status": "draft",
-    "image": "/news/2026-10-09-saint-paul-de-vence-art-de-vivre.jpg",
+    "status": "published",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
     "fr": {
       "title": "Saint-Paul-de-Vence : l’art de vivre dans un village d’artistes"
     },
@@ -26,7 +26,7 @@
     }
   },
   "visual": {
-    "status": "candidate_for_approval",
+    "status": "approved_original_external_image",
     "previewVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
     "sourcePage": "https://commons.wikimedia.org/wiki/File:Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
     "author": "Jpchevreau",
@@ -39,7 +39,7 @@
     "approvedJpegSha256": null,
     "jpegDecodingValidated": false
   },
-  "publicationVisualPendingMaterialization": true,
+  "publicationVisualPendingMaterialization": false,
   "publicationVisualPath": "/news/2026-10-09-saint-paul-de-vence-art-de-vivre.jpg",
   "sources": [
     "https://cotedazurfrance.fr/decouvrir/villages/saint-paul-de-vence/",
@@ -57,5 +57,9 @@
   "previewDeliveryDate": "2026-10-18",
   "previewSubject": "Côte d’Azur Agency — Saint-Paul-de-Vence : article FR/EN, visuel et LinkedIn à valider",
   "previewDeliveryEvidence": "Outlook Sent Items search confirmed 2026-10-18T13:28:30Z",
-  "previewTechnicalStatus": "preview_vercel_unverified"
+  "previewTechnicalStatus": "preview_vercel_unverified",
+  "approvedAt": "2026-10-18T14:03:04Z",
+  "approvalMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEMAACsbw83upNSTYKjW-Cvmf9FAAJSX9ORAAA=",
+  "publicationDeploymentId": "dpl_DM81aC4UC9soDiToY9VAvyt3uF9J",
+  "publicationNote": "Site deployed READY. Image remains Wikimedia original URL, no local JPEG copied; visual/browser end-to-end check outstanding."
 }
