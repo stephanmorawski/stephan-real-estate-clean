@@ -75,8 +75,8 @@ export default async function HomePage({ params }) {
             {latestNews.map((item) => (
               <article key={item.id} className="card-luxe overflow-hidden">
                 {item.image ? (
-                  <div className="aspect-[16/10] bg-zinc-100">
-                    <img src={item.image} alt={item.title} className={'h-full w-full object-cover'} />
+                  <div className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'bg-zinc-100' : 'aspect-[16/10] bg-zinc-100'}>
+                    <img src={item.image} alt={item.title} className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'block h-auto w-full' : 'h-full w-full object-cover'} />
                   </div>
                 ) : null}
                 <div className="p-6">
