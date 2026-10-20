@@ -25,8 +25,6 @@ export function middleware(req) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
-    pathname.startsWith('/keystatic') ||
-    pathname.startsWith('/preview') ||
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next();
@@ -95,5 +93,5 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|keystatic|preview).*)']
+  matcher: ['/((?!_next|api).*)']
 };

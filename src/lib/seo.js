@@ -15,6 +15,7 @@ export function buildPageMetadata({
 }) {
   const baseUrl = 'https://www.cotedazuragency.com';
   const url = `${baseUrl}${pathname}`;
+  const imageUrl = /^https?:\/\//i.test(image) ? image : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
   const alternate = lang === 'fr' ? 'en' : 'fr';
   const altPath = pathname.replace(/^\/(fr|en)/, '');
   const alternateUrl = `${baseUrl}/${alternate}${altPath}`;
@@ -45,7 +46,7 @@ export function buildPageMetadata({
       locale: lang === 'fr' ? 'fr_FR' : 'en_GB',
       images: [
         {
-          url: `${baseUrl}${image}`,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: title,
@@ -56,7 +57,7 @@ export function buildPageMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${baseUrl}${image}`],
+      images: [imageUrl],
     },
     robots: {
       index: true,
