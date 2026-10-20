@@ -18,5 +18,32 @@
   "approvalStatus": "not_requested",
   "publicationAuthorized": false,
   "nextModule": "Builder",
-  "nextAction": "prepare_FR_EN_article_preview_for_Stephan_approval"
+  "nextAction": "prepare_FR_EN_article_preview_for_Stephan_approval",
+  "preparationState": "draft_article_staged",
+  "preparationBranch": "caa/editorial/2026-10-20-mougins-fontmerle",
+  "articlePath": "content/news/2026-10-20-mougins-fontmerle-valmasque.json",
+  "articleSlug": "2026-10-20-mougins-fontmerle-valmasque",
+  "preparedAt": "2026-10-20",
+  "editorialReview": {
+    "duplicateCheck": "Distinct from existing Mougins local SEO landing page and other published Côte d’Azur Agency articles; environment/lifestyle angle only",
+    "officialFactsCheckedAt": "2026-10-20",
+    "sourceDiscrepancy": "Municipal pages disagree on lotus introduction year and bird species (around 60 vs more than 70); article avoids planting date, uses the more specific Fontmerle page for species count."
+  },
+  "imageValidation": {
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Mougins_Etang_de_Fontmerle.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:Mougins_Etang_de_Fontmerle.jpg",
+    "license": "CC BY-SA 3.0",
+    "author": "Patrick Rouzet",
+    "reportedMime": "image/jpeg",
+    "reportedWidth": 2048,
+    "reportedHeight": 1536,
+    "reportedBytes": 1954825,
+    "sha256": null,
+    "decoded": null,
+    "status": "pending_live_preview_validation"
+  },
+  "linkedin": {
+    "fr": "Mougins, côté nature : à Fontmerle, un étang d’environ 5 hectares, une colonie de lotus qui fleurit surtout en été et plus de 70 espèces d’oiseaux recensées. À deux pas, la Valmasque déroule ses sentiers boisés et ses espaces de promenade. Un rappel qu’un choix immobilier se fait aussi autour d’un cadre de vie concret, à découvrir au fil des saisons. #Mougins #CotedAzur #Fontmerle #Valmasque #Immobilier",
+    "en": "There is another side to Mougins: Fontmerle Pond, a natural five-hectare setting with summer lotus blooms and more than 70 recorded bird species, alongside the wooded trails of Valmasque. On the French Riviera, finding a home also means understanding what its surroundings offer every day. #Mougins #FrenchRiviera #Fontmerle #Valmasque #RealEstate"
+  }
 }
