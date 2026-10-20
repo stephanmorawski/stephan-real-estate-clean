@@ -7,7 +7,8 @@
   "selectionLabel": "Saint-Paul-de-Vence : l’art de vivre dans un village d’artistes",
   "selectedAt": "2026-10-09T08:31:36Z",
   "previewMarker": "CAA-PREVIEW-SAINTPAUL-20261009",
-  "publishSlug": "2026-10-09-saint-paul-de-vence-art-de-vivre",
+  "publishSlug": "2026-10-18-saint-paul-de-vence-art-de-vivre",
+  "publishedContentPath": "content/news/2026-10-18-saint-paul-de-vence-art-de-vivre.json",
   "approvedKeyword": "APPROUVER",
   "previewFiles": {
     "fr": "content/news-previews/2026-10-09-saint-paul-de-vence-art-de-vivre-fr.md",
@@ -26,8 +27,9 @@
     }
   },
   "visual": {
-    "status": "approved_original_external_image",
+    "status": "approved_original_external_jpeg",
     "previewVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
+    "productionVisualUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
     "sourcePage": "https://commons.wikimedia.org/wiki/File:Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
     "author": "Jpchevreau",
     "license": "CC BY-SA 4.0",
@@ -36,11 +38,14 @@
       3780,
       2520
     ],
-    "approvedJpegSha256": null,
-    "jpegDecodingValidated": false
+    "approvedJpegSha256": "e439832f6b0a4a0160e6a1f07f68f47fcba863b83de776005e5b6d7606af08e7",
+    "jpegBytes": 1599753,
+    "jpegDecodingValidated": true,
+    "validatedAt": "2026-10-20"
   },
   "publicationVisualPendingMaterialization": false,
-  "publicationVisualPath": "/news/2026-10-09-saint-paul-de-vence-art-de-vivre.jpg",
+  "publicationVisualStorage": "external_authorized_source",
+  "publicationVisualPath": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Vue_du_village_de_Saint-Paul-de-Vence_depuis_la_route_de_La_Colle.jpg",
   "sources": [
     "https://cotedazurfrance.fr/decouvrir/villages/saint-paul-de-vence/",
     "https://www.saint-pauldevence.com/ateliers-et-galeries/",
@@ -51,15 +56,28 @@
   "publicationGuardrails": {
     "requiresExactContentAndVisualApproval": true,
     "requiresValidatedJpegAndSha256": true,
-    "githubBinaryWriteMethod": "create_blob(base64) -> create_tree -> create_commit -> update_ref",
     "postProductionVerificationRequired": true
   },
   "previewDeliveryDate": "2026-10-18",
   "previewSubject": "Côte d’Azur Agency — Saint-Paul-de-Vence : article FR/EN, visuel et LinkedIn à valider",
   "previewDeliveryEvidence": "Outlook Sent Items search confirmed 2026-10-18T13:28:30Z",
-  "previewTechnicalStatus": "preview_vercel_unverified",
+  "previewTechnicalStatus": "superseded_by_verified_production",
   "approvedAt": "2026-10-18T14:03:04Z",
-  "approvalMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEMAACsbw83upNSTYKjW-Cvmf9FAAJSX9ORAAA=",
-  "publicationDeploymentId": "dpl_DM81aC4UC9soDiToY9VAvyt3uF9J",
-  "publicationNote": "Site deployed READY. Image remains Wikimedia original URL, no local JPEG copied; visual/browser end-to-end check outstanding."
+  "approvalMessageFingerprint": "ea382cec87deb8170075a5419f4dbf9ee698e414466d3d81b57c8ac668357405",
+  "publicationCommit": "1d73d78e147cdb9283b6603c86d27e208b1c2bda",
+  "publicationDeploymentId": "dpl_6ZFcDfQhg6pL97Vsx6228h1FLWcL",
+  "liveUrls": {
+    "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-18-saint-paul-de-vence-art-de-vivre",
+    "en": "https://www.cotedazuragency.com/en/actualites/2026-10-18-saint-paul-de-vence-art-de-vivre"
+  },
+  "postProductionVerification": {
+    "status": "passed",
+    "verifiedAt": "2026-10-20",
+    "evidence": [
+      "FR and EN production pages available with approved content",
+      "original Wikimedia JPEG fully decoded and SHA256 recorded",
+      "visual production result explicitly confirmed by Olivier"
+    ]
+  },
+  "publicationNote": "Approved version is published and visually confirmed in production. The original authorized Wikimedia JPEG remains served externally with its attribution and CC BY-SA 4.0 license."
 }
