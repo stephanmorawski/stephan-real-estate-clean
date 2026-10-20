@@ -1,6 +1,9 @@
 name: Post-production quality gate
 
 on:
+  push:
+    branches:
+      - main
   deployment_status:
   workflow_dispatch:
     inputs:
@@ -17,12 +20,13 @@ permissions:
   deployments: read
 
 concurrency:
-  group: post-production-${{ github.event.deployment.id || github.ref }}
+  group: post-production-${{ github.event.deployment.id || github.sha || github.ref }}
   cancel-in-progress: true
 
 jobs:
   verify:
     if: >-
+      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' ||
       (github.event.deployment_status.state == 'success' &&
        github.event.deployment.environment == 'Production' &&
@@ -53,7 +57,7 @@ jobs:
       - name: Verify the live production deployment
         env:
           SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
-          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || '' }}
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.sha }}
         run: node scripts/check-production.mjs
 
       - name: Upload screenshots and report
