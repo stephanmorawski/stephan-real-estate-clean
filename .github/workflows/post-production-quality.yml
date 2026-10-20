@@ -1,4 +1,5 @@
 name: Post-production quality gate
+
 on:
   deployment_status:
   workflow_dispatch:
@@ -6,32 +7,60 @@ on:
       url:
         description: Production URL
         required: false
+        default: https://www.cotedazuragency.com
+      expected_sha:
+        description: Expected deployed Git commit SHA
+        required: false
+
 permissions:
   contents: read
   deployments: read
+
 concurrency:
   group: post-production-${{ github.event.deployment.id || github.ref }}
   cancel-in-progress: true
+
 jobs:
   verify:
-    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production' &&
+       (contains(github.event.deployment_status.target_url, 'stephan-real-estate-hcoz') ||
+        contains(github.event.deployment_status.environment_url, 'cotedazuragency.com')))
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Check out the deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+          fetch-depth: 2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save --no-package-lock playwright@1.56.1
-      - run: npx playwright install --with-deps chromium
-      - name: Verify live production (desktop and mobile)
+          cache: npm
+
+      - name: Install project and browser dependencies
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Verify the live production deployment
         env:
           SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || '' }}
         run: node scripts/check-production.mjs
-      - name: Upload screenshots and results
+
+      - name: Upload screenshots and report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: production-quality-evidence
+          name: production-quality-evidence-${{ github.run_id }}
           path: artifacts/post-production/
           retention-days: 30
+          if-no-files-found: warn
