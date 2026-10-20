@@ -1,0 +1,22 @@
+{
+  "workflowStatus": "choice_received",
+  "eventType": "editorial_choice",
+  "selectionLabel": "Mougins : vivre au rythme de Fontmerle et de la Valmasque",
+  "selectedChoice": "3",
+  "originProposalDate": "2026-10-20",
+  "originProposalSentAt": "2026-10-20T06:48:23Z",
+  "selectionReceivedAt": "2026-10-20T07:09:09Z",
+  "sourceChannel": "outlook",
+  "sourceProvider": "microsoft_outlook",
+  "sourceMessageFingerprint": "sha256:eb24d7ee425d866237729e9bd6040b3d472abd96d9ab69253b9681cfe5a7a1f3",
+  "originVersion": "outlook-proposals-2026-10-20T06:48:23Z",
+  "sentEvidence": "confirmed_in_outlook_sent_items",
+  "selectedProposalSources": [
+    "https://mougins.fr/decouvrir/ville-verte/etang-fontmerle/",
+    "https://mougins.fr/decouvrir/ville-verte/la-valmasque/"
+  ],
+  "approvalStatus": "not_requested",
+  "publicationAuthorized": false,
+  "nextModule": "Builder",
+  "nextAction": "prepare_FR_EN_article_preview_for_Stephan_approval"
+}
