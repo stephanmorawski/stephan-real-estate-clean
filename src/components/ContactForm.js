@@ -16,13 +16,16 @@ function formatPrice(value, lang) {
   }
 }
 
+const EMPTY_FORM = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+  website: ''
+};
+
 export function ContactForm({ t, lang = 'fr', property = null }) {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -55,7 +58,7 @@ export function ContactForm({ t, lang = 'fr', property = null }) {
       if (!res.ok) throw new Error(data?.error || 'Request failed');
 
       setFeedback(t.contact.success);
-      setForm({ name: '', email: '', phone: '', message: '' });
+      setForm(EMPTY_FORM);
     } catch {
       setFeedback(t.contact.error);
     } finally {
@@ -104,24 +107,64 @@ export function ContactForm({ t, lang = 'fr', property = null }) {
         </div>
       ) : null}
 
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}
+      >
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          name="website"
+          value={form.website}
+          onChange={onChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div>
         <label className="mb-2 block text-sm font-medium">{t.contact.name}</label>
-        <input name="name" value={form.name} onChange={onChange} />
+        <input
+          name="name"
+          value={form.name}
+          onChange={onChange}
+          maxLength={120}
+          autoComplete="name"
+        />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-medium">{t.contact.email}</label>
-        <input type="email" name="email" value={form.email} onChange={onChange} />
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={onChange}
+          maxLength={254}
+          autoComplete="email"
+        />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-medium">{t.contact.phone}</label>
-        <input name="phone" value={form.phone} onChange={onChange} />
+        <input
+          name="phone"
+          value={form.phone}
+          onChange={onChange}
+          maxLength={40}
+          autoComplete="tel"
+        />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-medium">{t.contact.message}</label>
-        <textarea rows="5" name="message" value={form.message} onChange={onChange} />
+        <textarea
+          rows="5"
+          name="message"
+          value={form.message}
+          onChange={onChange}
+          maxLength={5000}
+        />
       </div>
 
       <button type="button" onClick={onSubmit} disabled={loading} className="btn-dark">
