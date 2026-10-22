@@ -1,10 +1,29 @@
 import { getMandatBySlug } from '@/lib/apimo';
 
+const RATE_WINDOW_IP_MS = 15 * 60 * 1000;
+const RATE_WINDOW_EMAIL_MS = 60 * 60 * 1000;
+const RATE_LIMIT_IP = 5;
+const RATE_LIMIT_EMAIL = 3;
+const MAX_BODY_BYTES = 16 * 1024;
+
+const rateStore = globalThis.__caaContactRateStore || new Map();
+globalThis.__caaContactRateStore = rateStore;
+
 function required(name, value) {
   if (!value) {
     throw new Error(`Missing environment variable: ${name}`);
   }
   return value;
+}
+
+function json(payload, status = 200, headers = {}) {
+  return Response.json(payload, {
+    status,
+    headers: {
+      'Cache-Control': 'no-store, max-age=0',
+      ...headers,
+    },
+  });
 }
 
 function escapeHtml(value) {
@@ -14,6 +33,91 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function cleanSingleLine(value, maxLength) {
+  return String(value || '')
+    .replace(/[\u0000-\u001F\u007F]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+}
+
+function cleanMessage(value, maxLength) {
+  return String(value || '')
+    .replace(/\u0000/g, '')
+    .trim()
+    .slice(0, maxLength);
+}
+
+function isValidEmail(value) {
+  if (!value || value.length > 254) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(value);
+}
+
+function allowedOrigins() {
+  const allowed = new Set([
+    'https://www.cotedazuragency.com',
+    'https://cotedazuragency.com',
+  ]);
+
+  for (const host of [
+    process.env.VERCEL_URL,
+    process.env.VERCEL_BRANCH_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+  ]) {
+    if (host && /^[a-z0-9.-]+\.vercel\.app$/i.test(host)) {
+      allowed.add(`https://${host}`);
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    allowed.add('http://localhost:3000');
+  }
+
+  return allowed;
+}
+
+function requestOriginAllowed(req) {
+  const origin = req.headers.get('origin');
+  if (!origin || !allowedOrigins().has(origin)) return false;
+
+  const fetchSite = req.headers.get('sec-fetch-site');
+  return !fetchSite || fetchSite === 'same-origin' || fetchSite === 'same-site';
+}
+
+function clientIp(req) {
+  const forwarded = req.headers.get('x-forwarded-for') || '';
+  const first = forwarded.split(',')[0]?.trim();
+  return (first || req.headers.get('x-real-ip') || 'unknown').slice(0, 64);
+}
+
+function consumeRateLimit(key, limit, windowMs) {
+  const now = Date.now();
+  const recent = (rateStore.get(key) || []).filter((timestamp) => now - timestamp < windowMs);
+
+  if (recent.length >= limit) {
+    const retryAfterMs = windowMs - (now - recent[0]);
+    rateStore.set(key, recent);
+    return {
+      allowed: false,
+      retryAfter: Math.max(1, Math.ceil(retryAfterMs / 1000)),
+    };
+  }
+
+  recent.push(now);
+  rateStore.set(key, recent);
+
+  if (rateStore.size > 5000) {
+    for (const [storedKey, timestamps] of rateStore.entries()) {
+      if (!timestamps.some((timestamp) => now - timestamp < RATE_WINDOW_EMAIL_MS)) {
+        rateStore.delete(storedKey);
+      }
+      if (rateStore.size <= 4000) break;
+    }
+  }
+
+  return { allowed: true, retryAfter: 0 };
 }
 
 async function getGraphToken() {
@@ -29,17 +133,17 @@ async function getGraphToken() {
   });
 
   const tokenUrl = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
-
   const res = await fetch(tokenUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body,
+    cache: 'no-store',
   });
 
-  const data = await res.json();
-
+  const data = await res.json().catch(() => ({}));
   if (!res.ok || !data?.access_token) {
-    throw new Error(`Graph token error: ${JSON.stringify(data)}`);
+    console.error('GRAPH_TOKEN_ERROR', { status: res.status });
+    throw new Error('Unable to authenticate the email service');
   }
 
   return data.access_token;
@@ -54,6 +158,7 @@ async function sendMailViaGraph({ mailbox, from, replyTo, subject, html }) {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
+    cache: 'no-store',
     body: JSON.stringify({
       message: {
         subject,
@@ -88,33 +193,67 @@ async function sendMailViaGraph({ mailbox, from, replyTo, subject, html }) {
   });
 
   if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Graph sendMail error: ${res.status} ${errText}`);
+    console.error('GRAPH_SENDMAIL_ERROR', { status: res.status });
+    throw new Error('Unable to send the contact email');
   }
 }
 
 export async function POST(req) {
   try {
-    const body = await req.json();
+    if (!requestOriginAllowed(req)) {
+      return json({ error: 'Request origin not allowed' }, 403);
+    }
 
-    const name = String(body?.name || '').trim();
-    const email = String(body?.email || '').trim();
-    const phone = String(body?.phone || '').trim();
-    const message = String(body?.message || '').trim();
-    const propertySlug = String(body?.propertySlug || '').trim();
+    const contentType = req.headers.get('content-type') || '';
+    if (!contentType.toLowerCase().startsWith('application/json')) {
+      return json({ error: 'Unsupported content type' }, 415);
+    }
+
+    const contentLength = Number.parseInt(req.headers.get('content-length') || '0', 10);
+    if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
+      return json({ error: 'Request body too large' }, 413);
+    }
+
+    const body = await req.json();
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return json({ error: 'Invalid request body' }, 400);
+    }
+
+    // Honeypot: silently accept automated submissions without sending an email.
+    if (cleanSingleLine(body?.website, 200)) {
+      return json({ ok: true });
+    }
+
+    const name = cleanSingleLine(body?.name, 120);
+    const email = cleanSingleLine(body?.email, 254).toLowerCase();
+    const phone = cleanSingleLine(body?.phone, 40);
+    const message = cleanMessage(body?.message, 5000);
+    const propertySlug = cleanSingleLine(body?.propertySlug, 200);
     const lang = body?.lang === 'en' ? 'en' : 'fr';
 
-    if (!name || !email || !message) {
-      return Response.json({ error: 'Missing required fields' }, { status: 400 });
+    if (name.length < 2 || !isValidEmail(email) || message.length < 10) {
+      return json({ error: 'Invalid required fields' }, 400);
+    }
+
+    const ip = clientIp(req);
+    const ipLimit = consumeRateLimit(`ip:${ip}`, RATE_LIMIT_IP, RATE_WINDOW_IP_MS);
+    const emailLimit = consumeRateLimit(`email:${email}`, RATE_LIMIT_EMAIL, RATE_WINDOW_EMAIL_MS);
+
+    if (!ipLimit.allowed || !emailLimit.allowed) {
+      const retryAfter = Math.max(ipLimit.retryAfter, emailLimit.retryAfter);
+      return json(
+        { error: 'Too many contact requests' },
+        429,
+        { 'Retry-After': String(retryAfter) }
+      );
     }
 
     let property = null;
-
     if (propertySlug) {
       try {
         property = await getMandatBySlug(propertySlug, lang);
-      } catch (e) {
-        console.error('CONTACT_PROPERTY_LOOKUP_ERROR', e);
+      } catch (error) {
+        console.error('CONTACT_PROPERTY_LOOKUP_ERROR', error);
       }
     }
 
@@ -125,7 +264,7 @@ export async function POST(req) {
       ? [
           property.title,
           property.locationLabel,
-          property.ref ? `Réf. ${property.ref}` : ''
+          property.ref ? `Réf. ${property.ref}` : '',
         ].filter(Boolean).join(' — ')
       : '';
 
@@ -149,7 +288,7 @@ export async function POST(req) {
           <div style="margin-top:7px;color:#52525b;font-size:14px;">
             ${escapeHtml([
               property.locationLabel,
-              property.ref ? `Réf. ${property.ref}` : ''
+              property.ref ? `Réf. ${property.ref}` : '',
             ].filter(Boolean).join(' · '))}
           </div>
           <div style="margin-top:13px;">
@@ -201,15 +340,17 @@ export async function POST(req) {
       html,
     });
 
-    return Response.json({ ok: true });
-  } catch (e) {
-    console.error('CONTACT_ROUTE_ERROR', e);
-    return Response.json(
+    return json({ ok: true });
+  } catch (error) {
+    console.error('CONTACT_ROUTE_ERROR', error);
+    return json(
       {
         error: 'Server error while sending email',
-        details: process.env.NODE_ENV !== 'production' ? String(e?.message || e) : undefined,
+        details: process.env.NODE_ENV !== 'production'
+          ? String(error?.message || error)
+          : undefined,
       },
-      { status: 500 }
+      500
     );
   }
 }
