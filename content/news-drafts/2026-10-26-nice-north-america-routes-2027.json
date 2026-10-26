@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-26-editorial",
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "qa_pending",
   "eventType": "editorial_choice",
   "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
   "selectedChoice": "2",
@@ -10,10 +10,10 @@
   "sourceChannel": "outlook",
   "sourceProvider": "microsoft_outlook",
   "sourceMessageEvidence": "verified_in_outlook_thread",
-  "publicationAuthorized": false,
-  "approvalStatus": "requested",
+  "publicationAuthorized": true,
+  "approvalStatus": "received_for_v2",
   "nextModule": "CAA — Orchestrateur unique",
-  "nextAction": "wait_for_explicit_APPROUVER_or_MODIFIER_or_REFUSER_for_v2_in_same_Outlook_thread",
+  "nextAction": "complete_exact_commit_post_production_browser_QA_and_send_publication_confirmation",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -31,8 +31,10 @@
     "number": 40,
     "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/40",
     "headCommit": "7d71e2bbffcea2b194fec5e0235af9809a152255",
-    "draft": true,
-    "mergeAllowed": false
+    "draft": false,
+    "mergeAllowed": true,
+    "merged": true,
+    "mergedCommit": "208e1f2e6bb1370fa753bb1c1fed5c1e33420d4b"
   },
   "preview": {
     "deploymentId": "dpl_HwsEheRL2fty4EJamBDTGRQMzJh8",
@@ -113,5 +115,42 @@
       "sentAt": "2026-10-26T14:28:46Z",
       "result": "revision_requested_at_2026-10-26T17:45:12Z"
     }
-  ]
+  ],
+  "approvalReceivedAt": "2026-10-26T19:59:04Z",
+  "approvalEvidence": {
+    "version": "v2",
+    "marker": "CAA-v2-20261026",
+    "replyInOriginalOutlookThread": true,
+    "explicitWord": "APPROUVER",
+    "receivedAt": "2026-10-26T19:59:04Z"
+  },
+  "production": {
+    "domain": "www.cotedazuragency.com",
+    "status": "live_awaiting_full_QA",
+    "contentMergeSha": "208e1f2e6bb1370fa753bb1c1fed5c1e33420d4b",
+    "assetFixSha": "35aa12f833dcb320b94d14c57d9d2035072b47c8",
+    "deploymentId": "dpl_CCvC9AMkLWH6svyypc4qKnFZK8Vi",
+    "frUrl": "https://www.cotedazuragency.com/fr/actualites/2026-10-26-nice-north-america-routes-2027",
+    "enUrl": "https://www.cotedazuragency.com/en/actualites/2026-10-26-nice-north-america-routes-2027",
+    "htmlChecks": {
+      "fr": {
+        "http": 200,
+        "title": true,
+        "photoCredit": true
+      },
+      "en": {
+        "http": 200,
+        "title": true,
+        "photoCredit": true
+      }
+    },
+    "reliabilityRepair": {
+      "preexistingMouginsBrokenImageDetectedInQA": 40392890307,
+      "localPhotoAsset": "/news/2026-10-20-mougins-fontmerle-valmasque.jpg",
+      "fileSize": 1954825,
+      "sourceSha1": "da32ec1b1cc7ca9d7419045d8925ec94caf02c29",
+      "fixReleaseSha": "35aa12f833dcb320b94d14c57d9d2035072b47c8"
+    },
+    "fullBrowserQa": "pending_revalidation_of_latest_exact_sha"
+  }
 }
