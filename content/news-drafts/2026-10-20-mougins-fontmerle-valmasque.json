@@ -1,5 +1,5 @@
 {
-  "workflowStatus": "choice_received",
+  "workflowStatus": "published",
   "eventType": "editorial_choice",
   "selectionLabel": "Mougins : vivre au rythme de Fontmerle et de la Valmasque",
   "selectedChoice": "3",
@@ -15,10 +15,10 @@
     "https://mougins.fr/decouvrir/ville-verte/etang-fontmerle/",
     "https://mougins.fr/decouvrir/ville-verte/la-valmasque/"
   ],
-  "approvalStatus": "not_requested",
-  "publicationAuthorized": false,
-  "nextModule": "Builder",
-  "nextAction": "prepare_FR_EN_article_preview_for_Stephan_approval",
+  "approvalStatus": "user_confirmed_post_factum_2026-10-25",
+  "publicationAuthorized": true,
+  "nextModule": null,
+  "nextAction": "none",
   "preparationState": "draft_article_staged",
   "preparationBranch": "caa/editorial/2026-10-20-mougins-fontmerle",
   "articlePath": "content/news/2026-10-20-mougins-fontmerle-valmasque.json",
@@ -45,5 +45,17 @@
   "linkedin": {
     "fr": "Mougins, côté nature : à Fontmerle, un étang d’environ 5 hectares, une colonie de lotus qui fleurit surtout en été et plus de 70 espèces d’oiseaux recensées. À deux pas, la Valmasque déroule ses sentiers boisés et ses espaces de promenade. Un rappel qu’un choix immobilier se fait aussi autour d’un cadre de vie concret, à découvrir au fil des saisons. #Mougins #CotedAzur #Fontmerle #Valmasque #Immobilier",
     "en": "There is another side to Mougins: Fontmerle Pond, a natural five-hectare setting with summer lotus blooms and more than 70 recorded bird species, alongside the wooded trails of Valmasque. On the French Riviera, finding a home also means understanding what its surroundings offer every day. #Mougins #FrenchRiviera #Fontmerle #Valmasque #RealEstate"
-  }
+  },
+  "productionEvidence": {
+    "articleFile": "content/news/2026-10-20-mougins-fontmerle-valmasque.json",
+    "articleStatus": "published",
+    "publishingCommit": "fa322e22aa79874414d32beef7b7dff1c7d4ec27",
+    "liveFR": "https://www.cotedazuragency.com/fr/actualites/2026-10-20-mougins-fontmerle-valmasque",
+    "liveEN": "https://www.cotedazuragency.com/en/actualites/2026-10-20-mougins-fontmerle-valmasque",
+    "frCheck": "verified_200_article_content",
+    "enCheck": "verified_200_article_content",
+    "approvalNote": "Olivier confirmed Stephan validation on 2026-10-25; this reconciliation records existing live publication, not a new release",
+    "fullVisualMobileQA": "not independently verified in this run"
+  },
+  "reconciledAt": "2026-10-26"
 }
