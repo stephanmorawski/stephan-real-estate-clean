@@ -27,7 +27,7 @@
   "preparationState": "article_staged_on_dedicated_branch",
   "preparationBranch": "caa/editorial/2026-10-26-nice-north-america",
   "articlePath": "content/news/2026-10-26-nice-north-america-routes-2027.json",
-  "articleSlug": "nice-north-america-direct-flights-2027",
+  "articleSlug": "2026-10-26-nice-north-america-routes-2027",
   "articleVersion": "v1",
   "preparedAt": "2026-10-26",
   "factsCheckedAt": "2026-10-26",
@@ -56,5 +56,22 @@
   "linkedin": {
     "fr": "Depuis Nice, deux nouvelles options transatlantiques sont annoncées pour l’été 2027 : American Airlines prévoit Nice–New York JFK en vol quotidien à partir du 6 mai, et Air Canada Nice–Toronto deux fois par semaine du 16 juin au 23 octobre. Pour les familles internationales et les propriétaires de résidences secondaires, l’accessibilité est un critère concret du choix d’un lieu de vie — à apprécier avec les transports et les services du quotidien, sans en déduire une hausse des prix immobiliers. #Nice #CotedAzur #FrenchRiviera #Immobilier #NewYork #Toronto",
     "en": "Two more nonstop transatlantic travel options are planned from Nice for summer 2027: American Airlines to New York-JFK daily from 6 May, and Air Canada to Toronto twice weekly from 16 June to 23 October. For internationally mobile families and second-home owners, air connectivity is one practical part of choosing where to live — alongside local transport and everyday amenities, without implying any particular property-price trend. #Nice #FrenchRiviera #RealEstate #NewYork #Toronto"
+  },
+  "pullRequest": {
+    "number": 40,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/40",
+    "branch": "caa/editorial/2026-10-26-nice-north-america"
+  },
+  "previewValidation": {
+    "lastCheckedAt": "2026-10-26",
+    "deploymentId": "dpl_6fYvGE1L9F15Tk5kT1AoFuJmHmJF",
+    "checkedCommit": "7398de85ea97d23bd07d2bd06e552165057a280d",
+    "result": "FR and EN HTML returned 200 and contained correct localized titles, article, image credit and official sources; later slug-alignment commit requires new preview",
+    "urls": {
+      "fr": "https://stephan-real-estate-hcoz-7g8nxcpvd-oliviers-projects-f3562ae3.vercel.app/fr/actualites/2026-10-26-nice-north-america-routes-2027",
+      "en": "https://stephan-real-estate-hcoz-7g8nxcpvd-oliviers-projects-f3562ae3.vercel.app/en/actualites/2026-10-26-nice-north-america-routes-2027"
+    },
+    "visualDesktopMobile": "pending",
+    "imgDownloadedSha256": "0c6a26b48815a0c00057c2f8480bc98230f69fdaadaa88056544a1a5853a1e62"
   }
 }
