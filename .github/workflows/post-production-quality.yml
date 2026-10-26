@@ -4,6 +4,19 @@ on:
   push:
     branches:
       - main
+    # Only changes affecting the rendered website should trigger expensive browser QA.
+    # Editorial workflow-registry updates in content/news-drafts are not deployments.
+    paths:
+      - 'content/news/**'
+      - 'public/news/**'
+      - 'public/partners/**'
+      - 'src/**'
+      - 'scripts/check-production.mjs'
+      - 'scripts/generate-news-index.mjs'
+      - 'middleware.js'
+      - 'next.config.*'
+      - 'package.json'
+      - 'package-lock.json'
   deployment_status:
   workflow_dispatch:
     inputs:
