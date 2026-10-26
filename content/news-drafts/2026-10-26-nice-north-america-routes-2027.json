@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-26-editorial",
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "eventType": "editorial_choice",
   "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
   "selectedChoice": "2",
@@ -11,9 +11,9 @@
   "sourceProvider": "microsoft_outlook",
   "sourceMessageEvidence": "verified_in_outlook_thread",
   "publicationAuthorized": false,
-  "approvalStatus": "revision_prepared_not_sent",
+  "approvalStatus": "requested",
   "nextModule": "CAA — Orchestrateur unique",
-  "nextAction": "send_v2_approval_pack_in_same_thread_and_verify_sent_items",
+  "nextAction": "wait_for_explicit_APPROUVER_or_MODIFIER_or_REFUSER_for_v2_in_same_Outlook_thread",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -30,39 +30,39 @@
   "pullRequest": {
     "number": 40,
     "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/40",
-    "headCommit": "56405f5ccf4c6494e69365723385b66d22b71e89",
+    "headCommit": "7d71e2bbffcea2b194fec5e0235af9809a152255",
     "draft": true,
     "mergeAllowed": false
   },
   "preview": {
-    "deploymentId": "dpl_4twb3bENhCGrNCiJqzSXL4BdPdbS",
-    "commit": "56405f5ccf4c6494e69365723385b66d22b71e89",
+    "deploymentId": "dpl_HwsEheRL2fty4EJamBDTGRQMzJh8",
+    "commit": "7d71e2bbffcea2b194fec5e0235af9809a152255",
     "readyState": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-8t4ajxt6g-oliviers-projects-f3562ae3.vercel.app",
+    "baseUrl": "https://stephan-real-estate-hcoz-gnsscbj8q-oliviers-projects-f3562ae3.vercel.app",
     "frPath": "/fr/actualites/2026-10-26-nice-north-america-routes-2027",
     "enPath": "/en/actualites/2026-10-26-nice-north-america-routes-2027",
-    "access": "protected; private link sent via Outlook; no token stored",
+    "access": "protected; private v2 link sent via Outlook; no token stored",
     "htmlChecks": {
       "fr": {
         "http": 200,
         "localizedTitle": true,
-        "officialSources": true,
+        "oldCopyAbsent": true,
         "photoCredit": true
       },
       "en": {
         "http": 200,
         "localizedTitle": true,
-        "officialSources": true,
+        "oldCopyAbsent": true,
         "photoCredit": true
       }
     },
     "visualDesktopMobile": "not_independently_certified; verify before final release"
   },
   "approvalPack": {
-    "version": "v1",
-    "messageMarker": "CAA-v1-20261026",
+    "version": "v2",
+    "messageMarker": "CAA-v2-20261026",
     "mailChannel": "outlook",
-    "mailSentAt": "2026-10-26T14:28:46Z",
+    "mailSentAt": "2026-10-26T18:23:42Z",
     "proof": "confirmed_in_Outlook_Sent_Items",
     "sentTo": "stephan@cotedazuragency.com",
     "isFinalApprovalRequest": true,
@@ -97,12 +97,21 @@
     "version": "v2",
     "pr": 40,
     "previewDeploymentId": "dpl_HwsEheRL2fty4EJamBDTGRQMzJh8",
-    "mailStatus": "not_sent",
+    "mailStatus": "sent_verified",
     "previewReady": true,
     "reviewedFrEnHtml": {
       "fr": true,
       "en": true
     },
-    "previewCommit": "7d71e2bbffcea2b194fec5e0235af9809a152255"
-  }
+    "previewCommit": "7d71e2bbffcea2b194fec5e0235af9809a152255",
+    "sentAt": "2026-10-26T18:23:42Z"
+  },
+  "approvalHistory": [
+    {
+      "version": "v1",
+      "marker": "CAA-v1-20261026",
+      "sentAt": "2026-10-26T14:28:46Z",
+      "result": "revision_requested_at_2026-10-26T17:45:12Z"
+    }
+  ]
 }
