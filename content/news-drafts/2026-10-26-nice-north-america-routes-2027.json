@@ -13,7 +13,7 @@
   "publicationAuthorized": true,
   "approvalStatus": "approved_v2",
   "nextModule": "CAA — Orchestrateur unique",
-  "nextAction": "send_publication_confirmation_once_in_same_outlook_thread",
+  "nextAction": "none_cycle_completed",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -168,10 +168,16 @@
     }
   },
   "publicationConfirmation": {
-    "status": "pending",
+    "status": "sent_verified",
     "channel": "outlook",
     "expectedRecipient": "stephan@cotedazuragency.com",
     "version": "v2",
-    "marker": "CAA-published-20261026"
-  }
+    "marker": "CAA-published-20261026",
+    "sentAt": "2026-10-26T20:27:22Z",
+    "evidence": "confirmed_in_Outlook_Sent_Items_same_thread",
+    "recipient": "stephan@cotedazuragency.com",
+    "containsFrEnUrls": true,
+    "containsLinkedInFrEn": true
+  },
+  "completedAt": "2026-10-26T20:27:22Z"
 }
