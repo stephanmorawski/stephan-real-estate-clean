@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-26-editorial",
-  "workflowStatus": "choice_received",
+  "workflowStatus": "preparing",
   "eventType": "editorial_choice",
   "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
   "selectedChoice": "2",
@@ -12,8 +12,8 @@
   "sourceMessageEvidence": "verified_in_outlook_thread",
   "publicationAuthorized": false,
   "approvalStatus": "not_requested",
-  "nextModule": "Agent autonome Côte d’Azur Agency",
-  "nextAction": "verify_facts_prepare_FR_EN_PR_preview_and_send_approval_pack",
+  "nextModule": "CAA — Orchestrateur unique",
+  "nextAction": "verify_preview_FR_EN_and_send_approval_pack",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -23,5 +23,38 @@
     "Air Canada Nice–Toronto service June–October 2027"
   ],
   "recordedAt": "2026-10-26",
-  "notes": "Choice 2 is a topic selection only. Approval of full FR/EN pack must be explicit before publication. No content publication authorized."
+  "notes": "Choice 2 is a topic selection only. Approval of full FR/EN pack must be explicit before publication. No content publication authorized.",
+  "preparationState": "article_staged_on_dedicated_branch",
+  "preparationBranch": "caa/editorial/2026-10-26-nice-north-america",
+  "articlePath": "content/news/2026-10-26-nice-north-america-routes-2027.json",
+  "articleSlug": "nice-north-america-direct-flights-2027",
+  "articleVersion": "v1",
+  "preparedAt": "2026-10-26",
+  "factsCheckedAt": "2026-10-26",
+  "verifiedFacts": {
+    "newYork": "American Airlines daily Nice–New York JFK planned from 2027-05-06, per Nice Airport 2026-08-27",
+    "toronto": "Air Canada Nice–Toronto Pearson 2/week planned 2027-06-16 to 2027-10-23, Nice departures Wed/Sat, per Nice Tourist Office 2026-09-08",
+    "editorialCaveat": "Announced 2027 seasonal schedules may change; no claim of property-price impact"
+  },
+  "imageValidation": {
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Aerial_view_of_Nice_airport_02.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Nice_airport_02.jpg",
+    "author": "Olivier Cleynen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "mime": "image/jpeg",
+    "width": 3479,
+    "height": 1936,
+    "bytes": 1139886,
+    "sha256": "0c6a26b48815a0c00057c2f8480bc98230f69fdaadaa88056544a1a5853a1e62",
+    "sourceFileDownloadedAndChecked": true,
+    "verifiedBy": "Vercel sandbox: HTTP download, file-type inspection, dimensions, byte count, SHA256; full browser image load pending Preview",
+    "photoDate": "2016-03-12",
+    "status": "download_verified_preview_decode_pending",
+    "assetHosting": "Wikimedia Commons; article links directly with required license credit"
+  },
+  "linkedin": {
+    "fr": "Depuis Nice, deux nouvelles options transatlantiques sont annoncées pour l’été 2027 : American Airlines prévoit Nice–New York JFK en vol quotidien à partir du 6 mai, et Air Canada Nice–Toronto deux fois par semaine du 16 juin au 23 octobre. Pour les familles internationales et les propriétaires de résidences secondaires, l’accessibilité est un critère concret du choix d’un lieu de vie — à apprécier avec les transports et les services du quotidien, sans en déduire une hausse des prix immobiliers. #Nice #CotedAzur #FrenchRiviera #Immobilier #NewYork #Toronto",
+    "en": "Two more nonstop transatlantic travel options are planned from Nice for summer 2027: American Airlines to New York-JFK daily from 6 May, and Air Canada to Toronto twice weekly from 16 June to 23 October. For internationally mobile families and second-home owners, air connectivity is one practical part of choosing where to live — alongside local transport and everyday amenities, without implying any particular property-price trend. #Nice #FrenchRiviera #RealEstate #NewYork #Toronto"
+  }
 }
