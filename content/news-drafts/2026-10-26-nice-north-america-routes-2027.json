@@ -1,0 +1,27 @@
+{
+  "cycleId": "caa-2026-10-26-editorial",
+  "workflowStatus": "choice_received",
+  "eventType": "editorial_choice",
+  "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
+  "selectedChoice": "2",
+  "originProposalDate": "2026-10-26",
+  "originProposalSentAt": "2026-10-26T08:53:14Z",
+  "selectionReceivedAt": "2026-10-26T10:27:01Z",
+  "sourceChannel": "outlook",
+  "sourceProvider": "microsoft_outlook",
+  "sourceMessageEvidence": "verified_in_outlook_thread",
+  "publicationAuthorized": false,
+  "approvalStatus": "not_requested",
+  "nextModule": "Agent autonome Côte d’Azur Agency",
+  "nextAction": "verify_facts_prepare_FR_EN_PR_preview_and_send_approval_pack",
+  "selectedProposalSources": [
+    "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
+    "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
+  ],
+  "expectedFactsToVerify": [
+    "American Airlines Nice–New York JFK service in May 2027",
+    "Air Canada Nice–Toronto service June–October 2027"
+  ],
+  "recordedAt": "2026-10-26",
+  "notes": "Choice 2 is a topic selection only. Approval of full FR/EN pack must be explicit before publication. No content publication authorized."
+}
