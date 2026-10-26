@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-26-editorial",
-  "workflowStatus": "revision_requested",
+  "workflowStatus": "prepared_waiting_send",
   "eventType": "editorial_choice",
   "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
   "selectedChoice": "2",
@@ -11,9 +11,9 @@
   "sourceProvider": "microsoft_outlook",
   "sourceMessageEvidence": "verified_in_outlook_thread",
   "publicationAuthorized": false,
-  "approvalStatus": "revision_in_progress",
+  "approvalStatus": "revision_prepared_not_sent",
   "nextModule": "CAA — Orchestrateur unique",
-  "nextAction": "finish_revised_preview_then_send_v2_approval_pack_to_Stephan",
+  "nextAction": "send_v2_approval_pack_in_same_thread_and_verify_sent_items",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -86,8 +86,8 @@
   "verifiedFactsAt": "2026-10-26",
   "preparedAt": "2026-10-26",
   "linkedin": {
-    "fr": "Depuis Nice, deux nouvelles options transatlantiques sont annoncées pour l’été 2027 : American Airlines prévoit Nice–New York JFK en vol quotidien à partir du 6 mai, et Air Canada Nice–Toronto deux fois par semaine du 16 juin au 23 octobre. Pour les familles internationales et les propriétaires de résidences secondaires, l’accessibilité est un critère concret du choix d’un lieu de vie — à apprécier avec les transports et les services du quotidien, sans en déduire une hausse des prix immobiliers. #Nice #CotedAzur #FrenchRiviera #Immobilier #NewYork #Toronto",
-    "en": "Two more nonstop transatlantic travel options are planned from Nice for summer 2027: American Airlines to New York-JFK daily from 6 May, and Air Canada to Toronto twice weekly from 16 June to 23 October. For internationally mobile families and second-home owners, air connectivity is one practical part of choosing where to live — alongside local transport and everyday amenities, without implying any particular property-price trend. #Nice #FrenchRiviera #RealEstate #NewYork #Toronto"
+    "fr": "Depuis Nice, deux nouvelles options transatlantiques sont annoncées pour l’été 2027 : American Airlines prévoit Nice–New York JFK en vol quotidien à partir du 6 mai, et Air Canada Nice–Toronto deux fois par semaine du 16 juin au 23 octobre. Pour les familles internationales et les propriétaires de résidences secondaires, l’accessibilité est un critère concret du choix d’un lieu de vie — à apprécier avec les transports et les services du quotidien. #Nice #CotedAzur #FrenchRiviera #Immobilier #NewYork #Toronto",
+    "en": "Two more nonstop transatlantic travel options are planned from Nice for summer 2027: American Airlines to New York-JFK daily from 6 May, and Air Canada to Toronto twice weekly from 16 June to 23 October. For internationally mobile families and second-home owners, air connectivity is one practical part of choosing where to live — alongside local transport and everyday amenities. #Nice #FrenchRiviera #RealEstate #NewYork #Toronto"
   },
   "revision": {
     "requestedAt": "2026-10-26T17:45:12Z",
@@ -97,6 +97,12 @@
     "version": "v2",
     "pr": 40,
     "previewDeploymentId": "dpl_HwsEheRL2fty4EJamBDTGRQMzJh8",
-    "mailStatus": "not_sent"
+    "mailStatus": "not_sent",
+    "previewReady": true,
+    "reviewedFrEnHtml": {
+      "fr": true,
+      "en": true
+    },
+    "previewCommit": "7d71e2bbffcea2b194fec5e0235af9809a152255"
   }
 }
