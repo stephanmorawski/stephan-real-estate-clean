@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-26-editorial",
-  "workflowStatus": "qa_pending",
+  "workflowStatus": "published",
   "eventType": "editorial_choice",
   "selectionLabel": "Nice se rapproche de l’Amérique du Nord : nouvelles liaisons directes en 2027",
   "selectedChoice": "2",
@@ -11,9 +11,9 @@
   "sourceProvider": "microsoft_outlook",
   "sourceMessageEvidence": "verified_in_outlook_thread",
   "publicationAuthorized": true,
-  "approvalStatus": "received_for_v2",
+  "approvalStatus": "approved_v2",
   "nextModule": "CAA — Orchestrateur unique",
-  "nextAction": "complete_exact_commit_post_production_browser_QA_and_send_publication_confirmation",
+  "nextAction": "send_publication_confirmation_once_in_same_outlook_thread",
   "selectedProposalSources": [
     "https://www.explorenicecotedazur.com/une-nouvelle-liaison-directe-entre-nice-et-new-york-des-2027/",
     "https://www.explorenicecotedazur.com/ouverture-dune-ligne-directe-entre-nice-et-toronto-a-lete-2027/"
@@ -126,10 +126,10 @@
   },
   "production": {
     "domain": "www.cotedazuragency.com",
-    "status": "live_awaiting_full_QA",
+    "status": "verified_published",
     "contentMergeSha": "208e1f2e6bb1370fa753bb1c1fed5c1e33420d4b",
     "assetFixSha": "35aa12f833dcb320b94d14c57d9d2035072b47c8",
-    "deploymentId": "dpl_CCvC9AMkLWH6svyypc4qKnFZK8Vi",
+    "deploymentId": "dpl_B11FfDhaMCgDkCU67smw87cEtssf",
     "frUrl": "https://www.cotedazuragency.com/fr/actualites/2026-10-26-nice-north-america-routes-2027",
     "enUrl": "https://www.cotedazuragency.com/en/actualites/2026-10-26-nice-north-america-routes-2027",
     "htmlChecks": {
@@ -151,6 +151,27 @@
       "sourceSha1": "da32ec1b1cc7ca9d7419045d8925ec94caf02c29",
       "fixReleaseSha": "35aa12f833dcb320b94d14c57d9d2035072b47c8"
     },
-    "fullBrowserQa": "pending_revalidation_of_latest_exact_sha"
+    "fullBrowserQa": "passed",
+    "verifiedCommit": "dc4482e8e38a6ccda21eaab999d7bae959718d51",
+    "qaRunId": 40394961958,
+    "qaResult": "success",
+    "qaCompletedAt": "2026-10-26T20:24:00Z",
+    "qaReportArtifactId": 12686427995,
+    "qaRunUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40394961958",
+    "qaCheckedBrowserPages": 24,
+    "qaArtifactFailureCount": 0,
+    "visualInspection": "FR/EN Nice article desktop/mobile inspected; FR latest news list mobile checked with intact approved Mougins photo",
+    "localAssetHttp": {
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 1954825
+    }
+  },
+  "publicationConfirmation": {
+    "status": "pending",
+    "channel": "outlook",
+    "expectedRecipient": "stephan@cotedazuragency.com",
+    "version": "v2",
+    "marker": "CAA-published-20261026"
   }
 }
