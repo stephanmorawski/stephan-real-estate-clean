@@ -1,0 +1,75 @@
+name: Materialize approved Fontmerle image locally
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-approved-fontmerle-image.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: caa-materialize-fontmerle
+  cancel-in-progress: false
+
+jobs:
+  restore-local-asset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download exact approved image and verify source checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          target='public/news/2026-10-20-mougins-fontmerle-valmasque.jpg'
+          if [ ! -s "$target" ]; then
+            curl --fail --location --retry 4 --retry-all-errors --retry-delay 3 --connect-timeout 15 --max-time 150 \
+              --user-agent 'CoteDAzurAgencyEditorialAsset/1.0 (image attribution: Wikimedia Commons)' \
+              'https://upload.wikimedia.org/wikipedia/commons/5/5f/Mougins_Etang_de_Fontmerle.jpg' \
+              --output "$target"
+          fi
+          test "$(file --brief --mime-type "$target")" = 'image/jpeg'
+          test "$(wc -c < "$target")" -eq 1954825
+          echo 'da32ec1b1cc7ca9d7419045d8925ec94caf02c29  '"$target" | sha1sum --check --status
+
+      - name: Point already-approved Mougins article to its local original
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const fs = require('node:fs');
+          const path = 'content/news/2026-10-20-mougins-fontmerle-valmasque.json';
+          const raw = fs.readFileSync(path, 'utf8');
+          const old = 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Mougins_Etang_de_Fontmerle.jpg';
+          const local = '/news/2026-10-20-mougins-fontmerle-valmasque.jpg';
+          if (!raw.includes(old) && !raw.includes(local)) throw Error('Unexpected article image value');
+          const result = raw.replace(old, local);
+          const article = JSON.parse(result);
+          if (article.image !== local || article.imageCredit.author !== 'Patrick Rouzet' || article.imageCredit.license !== 'CC BY-SA 3.0') {
+            throw Error('Invalid image or license metadata');
+          }
+          fs.writeFileSync(path, result);
+          JS
+
+      - name: Commit image-only availability fix without editorial changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-10-20-mougins-fontmerle-valmasque.jpg content/news/2026-10-20-mougins-fontmerle-valmasque.json
+          if git diff --cached --quiet; then
+            echo 'Original image already hosted locally.'
+            exit 0
+          fi
+          git commit -m 'fix(news): serve approved Fontmerle photo locally to prevent mobile loading failures'
+          git pull --rebase origin main
+          git push origin HEAD:main
