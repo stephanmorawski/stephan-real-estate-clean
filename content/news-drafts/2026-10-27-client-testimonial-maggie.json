@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-27-testimonial-maggie",
-  "workflowStatus": "direct_request",
+  "workflowStatus": "qa_pending",
   "eventType": "editorial_direct_request",
   "receivedAt": "2026-10-27T09:47:48Z",
   "sourceChannel": "outlook",
@@ -14,12 +14,30 @@
   "image": {
     "originalFilename": "google.png",
     "mime": "image/png",
-    "bytes": 1835934,
+    "bytes": 1761272,
     "source": "Outlook attachment 2026-10-27",
-    "policy": "reuse unmodified supplied image; verify file bytes, license/authorization, responsive display; do not re-create Google marks"
+    "policy": "reuse unmodified supplied image; verify file bytes, license/authorization, responsive display; do not re-create Google marks",
+    "providerReportedSizeBytes": 1835934,
+    "width": 1254,
+    "height": 1254,
+    "sha256": "442831fc4f2c68559ed22565b0879fd49c8debb2a075c11a5e2acc397fea4c97",
+    "gitBlobSha": "83b2c9637a0dd5007cdc2542c781ae4daf130bf8",
+    "path": "public/news/2026-10-27-maggie-google.png",
+    "authorization": "Original image provided by Stephan for publication; unaltered."
   },
   "messageSummary": "Stephan supplied full English and French testimonial post about a returning client, with an existing graphic. Preserve the provided text and original visual; review public naming, testimonials and any translation discrepancies. No new generic news proposals while active.",
-  "publicationAuthorizedBy": "direct_request_pending_release_checks",
-  "nextAction": "build_PR_preview_FR_EN_from_approved_direct_request_then_QA_then_release_if_auth_confirmed",
-  "sensitiveContent": "Do not copy the private email message into public registry; retrieve it from Outlook."
+  "publicationAuthorizedBy": "direct approval confirmed by Olivier after Stephan agreement (2026-10-27)",
+  "nextAction": "await automated end-to-end production QA success and perform full final checks, then confirm in existing Stephan Outlook thread and mark published",
+  "sensitiveContent": "Do not copy the private email message into public registry; retrieve it from Outlook.",
+  "version": 1,
+  "publication": {
+    "pullRequest": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/44",
+    "mergedCommit": "36cf4115a4bcb7c51f04bf369ba3ddc1ed93db7d",
+    "vercelDeployment": "dpl_6TgzzzSFP2YJG974aVcgfoD3MHJ6",
+    "productionReady": true,
+    "qaRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40510469172",
+    "qaStatus": "in_progress",
+    "urlFr": "https://www.cotedazuragency.com/fr/actualites/2026-10-27-temoignage-client-confiance",
+    "urlEn": "https://www.cotedazuragency.com/en/actualites/2026-10-27-temoignage-client-confiance"
+  }
 }
