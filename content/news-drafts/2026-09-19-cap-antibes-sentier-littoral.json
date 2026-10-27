@@ -1,8 +1,8 @@
 {
   "workflowStatus": "published",
-  "gmailThreadId": "1a0bab6a203a702a",
-  "originGmailThreadId": "1a0b86b2aead2fa7",
-  "previousRevisionThreadId": "1a0ba1666a358d51",
+  "gmailThreadFingerprint": "sha256:18825405ae0baea3b6c66c091cbadb24e4e81750492b021434650a3cb7d26bbd",
+  "originGmailThreadFingerprint": "sha256:47b9890882d978d04b58b4623c0292dd77d99e97fcb60be8fcfc7d25af7a2f66",
+  "previousRevisionThreadFingerprint": "sha256:2ae33cc9cccd9cdb09647337e178b90480e5b39853475da541acfdc3eda18355",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "2",
   "approvedKeyword": "APPROUVER",
@@ -16,7 +16,7 @@
   "publicationVisualPath": "/news/2026-09-19-cap-antibes-sentier-littoral.jpg",
   "revision": {
     "requestedBy": "stephan@cotedazuragency.com",
-    "gmailMessageId": "1a0bac643559fe94",
+    "gmailMessageFingerprint": "sha256:a95fcf23d75af039716df8a38c5b54f234d86c62ddfc63bfe965da9319c7521b",
     "request": "Reuse the very first photo concept and remove the backpackers.",
     "resolution": "Prepared a no-people visual in the same coastal-path spirit, but Gmail connector egress could not attach the generated file. Sent Stephan a verified Antibes visual link on Unsplash, with the path clearly visible and no walkers/backpacks. Kept workflowStatus=waiting_approval and requested final APPROUVER."
   },
