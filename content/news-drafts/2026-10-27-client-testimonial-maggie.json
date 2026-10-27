@@ -36,7 +36,7 @@
     "vercelDeployment": "dpl_6TgzzzSFP2YJG974aVcgfoD3MHJ6",
     "productionReady": true,
     "qaRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40510469172",
-    "qaStatus": "in_progress",
+    "qaStatus": "success",
     "urlFr": "https://www.cotedazuragency.com/fr/actualites/2026-10-27-temoignage-client-confiance",
     "urlEn": "https://www.cotedazuragency.com/en/actualites/2026-10-27-temoignage-client-confiance"
   },
