@@ -1,0 +1,25 @@
+{
+  "cycleId": "caa-2026-10-27-testimonial-maggie",
+  "workflowStatus": "direct_request",
+  "eventType": "editorial_direct_request",
+  "receivedAt": "2026-10-27T09:47:48Z",
+  "sourceChannel": "outlook",
+  "requestTitle": "POST en anglais et Français / on garde la même image / merci",
+  "contentType": "bilingual_client_testimonial",
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "requestedAction": "prepare_and_publish_testimonial_FR_EN_keeping_exact_supplied_image",
+  "image": {
+    "originalFilename": "google.png",
+    "mime": "image/png",
+    "bytes": 1835934,
+    "source": "Outlook attachment 2026-10-27",
+    "policy": "reuse unmodified supplied image; verify file bytes, license/authorization, responsive display; do not re-create Google marks"
+  },
+  "messageSummary": "Stephan supplied full English and French testimonial post about a returning client, with an existing graphic. Preserve the provided text and original visual; review public naming, testimonials and any translation discrepancies. No new generic news proposals while active.",
+  "publicationAuthorizedBy": "direct_request_pending_release_checks",
+  "nextAction": "build_PR_preview_FR_EN_from_approved_direct_request_then_QA_then_release_if_auth_confirmed",
+  "sensitiveContent": "Do not copy the private email message into public registry; retrieve it from Outlook."
+}
