@@ -94,7 +94,7 @@ export default async function NewsDetailPage({ params }) {
 
         {article.image ? (
           <div className="mt-10 overflow-hidden rounded-[28px] bg-zinc-100">
-            <img src={article.image} alt={article.imageAlt || article.title} className={(article.image === '/news/partenariat-financement-2026-10-17-fr.png' || article.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'h-auto w-full bg-white object-contain' : 'h-full w-full object-cover'} />
+            <img src={article.image} alt={article.imageAlt || article.title} className={(article.image === '/news/partenariat-financement-2026-10-17-fr.png' || article.image === '/news/partenariat-financement-2026-10-17-en.png' || article.image === '/news/2026-10-27-maggie-google.png') ? 'h-auto w-full bg-white object-contain' : 'h-full w-full object-cover'} />
           </div>
         ) : null}
 
