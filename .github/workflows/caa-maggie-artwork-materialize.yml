@@ -1,0 +1,44 @@
+name: Materialize approved Maggie review artwork
+on:
+  push:
+    branches:
+      - caa/editorial/2026-10-27-maggie-testimonial
+    paths:
+      - .github/workflows/caa-maggie-artwork-materialize.yml
+permissions:
+  contents: write
+concurrency:
+  group: caa-maggie-artwork-20261027
+  cancel-in-progress: false
+jobs:
+  capture-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: caa/editorial/2026-10-27-maggie-testimonial
+          fetch-depth: 0
+      - name: Download exact approved image into this branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          target='public/news/2026-10-27-maggie-google.png'
+          mkdir -p public/news
+          if [ ! -e "$target" ]; then
+            curl --fail --location --retry 3 --retry-delay 2 --connect-timeout 10 --max-time 90 'https://sb-1es36uus6nb3.vercel.run/google.png' --output "$target"
+          fi
+          test "$(file --brief --mime-type "$target")" = 'image/png'
+          test "$(wc -c < "$target")" -eq 1761272
+          printf '%s  %s\n' '442831fc4f2c68559ed22565b0879fd49c8debb2a075c11a5e2acc397fea4c97' "$target" | sha256sum -c -
+      - name: Commit only original image; remove temporary materialization workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-10-27-maggie-google.png
+          git rm -f .github/workflows/caa-maggie-artwork-materialize.yml
+          git commit -m 'feat(news): preserve exact Stephan-approved client review artwork'
+          git pull --rebase origin caa/editorial/2026-10-27-maggie-testimonial
+          git push origin HEAD:refs/heads/caa/editorial/2026-10-27-maggie-testimonial
