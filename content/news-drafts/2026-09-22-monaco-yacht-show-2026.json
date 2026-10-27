@@ -1,12 +1,12 @@
 {
   "workflowStatus": "published",
-  "gmailThreadId": "1a0cd41bea058f9d",
-  "originGmailThreadId": "1a0c81a7bb32201a",
-  "previousRevisionThreadId": "1a0c81a7bb32201a",
+  "gmailThreadFingerprint": "sha256:0f39eae06a8b4b00804727550c13b0be89df3de8216c8b1898ec4049dae75dfc",
+  "originGmailThreadFingerprint": "sha256:e02eb4a62b80dc465b9f81c9ff8b0290dd4e117db16dfafa87328286b367bffa",
+  "previousRevisionThreadFingerprint": "sha256:e02eb4a62b80dc465b9f81c9ff8b0290dd4e117db16dfafa87328286b367bffa",
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "approvedKeyword": "APPROUVER",
-  "approvalReceivedMessageId": "1a0cda21922cbf21",
+  "approvalReceivedMessageFingerprint": "sha256:3a37fdb6ce4c7e7e5f481c8616272e6c96c754fcc0c5644e4fa69af6d0704925",
   "publishSlug": "2026-09-22-monaco-yacht-show-2026",
   "publicationVisualPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
   "publicationVisualPendingMaterialization": false,
@@ -36,12 +36,12 @@
     "location": "Monaco, Monaco",
     "description": "Color photograph of multiple contemporary luxury yachts docked in Monaco harbor with elegant architecture in the background; selected in response to Stephan's request for a color image showing newer-looking yachts.",
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
-    "revisionRequestMessageId": "1a0cd5620cac7a8a",
+    "revisionRequestMessageFingerprint": "sha256:3ec2bc54ba0c1b213f1e908069d69c63b9044d5ef6608f0e0af25a95b3a556f1",
     "revisionRequest": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
     "status": "published",
     "verifiedAt": "2026-09-23T08:47:08Z",
     "sourceReachable": true,
-    "approvedByMessageId": "1a0cda21922cbf21",
+    "approvedByMessageFingerprint": "sha256:3a37fdb6ce4c7e7e5f481c8616272e6c96c754fcc0c5644e4fa69af6d0704925",
     "approvedAt": "2026-09-23T09:39:00Z",
     "materializedAt": "2026-09-23T09:59:31Z",
     "repoBlobSha": "46c34837295fb9f0fa55ed5b136c3044a81c2a38",
@@ -50,31 +50,31 @@
   "revisionHistory": [
     {
       "date": "2026-09-22",
-      "gmailMessageId": "1a0caa8e3bda03e6",
+      "gmailMessageFingerprint": "sha256:44febe4c2092442dac8f6d4f0250c2f7bd97ad3fc3513a7b7025645785dc988f",
       "request": "Peux tu changer la photo et mettre celle là",
       "resolution": "Replaced the proposed Unsplash image with Stephan's supplied Port Hercule image."
     },
     {
       "date": "2026-09-23",
-      "gmailMessageId": "1a0ccfa6e22466b0",
+      "gmailMessageFingerprint": "sha256:b98c9da9f3e9747348cb39ba0c24febb42f8ad029dfda79943d16b8d44079819",
       "request": "Replace the low-resolution screenshot currently used as the published image with an original/high-resolution photo.",
       "resolution": "Proposed a verified high-resolution Port Hercule photo by Wyatt Simpson from Unsplash; pending Stephan's explicit APPROUVER before changing production."
     },
     {
       "date": "2026-09-23",
-      "gmailMessageId": "1a0cd307881bdb36",
+      "gmailMessageFingerprint": "sha256:2555cb1eeb5d045885719bc88a0fd7ecd4bba862297e1634d691df5775c17f25",
       "request": "Cette photo ne va pas il y a une ruine à droite",
       "resolution": "Rejected the previous Unsplash visual and proposed a different high-resolution Monaco harbor photo by Jean-Paul Wettstein on Pexels, focused on yachts and city skyline and selected to avoid the ruin visible in the rejected image; pending Stephan's explicit APPROUVER."
     },
     {
       "date": "2026-09-23",
-      "gmailMessageId": "1a0cd5620cac7a8a",
+      "gmailMessageFingerprint": "sha256:3ec2bc54ba0c1b213f1e908069d69c63b9044d5ef6608f0e0af25a95b3a556f1",
       "request": "Non pas en noir et blanc, cela doit monter de nouveaux yatch",
       "resolution": "Rejected the black-and-white visual and proposed a verified color Pexels photo by Raouf Meftah showing multiple contemporary luxury yachts in Monaco harbor; pending Stephan's explicit APPROUVER."
     },
     {
       "date": "2026-09-23",
-      "gmailMessageId": "1a0cda21922cbf21",
+      "gmailMessageFingerprint": "sha256:3a37fdb6ce4c7e7e5f481c8616272e6c96c754fcc0c5644e4fa69af6d0704925",
       "request": "APPROUVER",
       "resolution": "Stephan approved the color Pexels visual by Raouf Meftah. The original JPEG was materialized to the repository, validated as image/jpeg, deployed to production, and verified on both FR and EN article URLs."
     }
@@ -118,17 +118,17 @@
     "https://www.monacoyachtshow.com/en/about-the-mys",
     "https://www.monacoyachtshow.com/en/organise-your-stay"
   ],
-  "supersededThreadIds": [
-    "1a0cab37f9c3dacd",
-    "1a0c81a7bb32201a"
+  "supersededThreadFingerprints": [
+    "sha256:031d0c6e3c94bcf0ab745d2f4f644de45661571922d946d64df3e1f53af933e2",
+    "sha256:e02eb4a62b80dc465b9f81c9ff8b0290dd4e117db16dfafa87328286b367bffa"
   ],
-  "approvalPreviewMessageId": "1a0cd41bea058f9d",
+  "approvalPreviewMessageFingerprint": "sha256:0f39eae06a8b4b00804727550c13b0be89df3de8216c8b1898ec4049dae75dfc",
   "postPublicationRevisionPending": false,
   "postPublicationRevisionType": "visual_color_modern_yachts_replacement",
-  "previousApprovalReceivedMessageId": "1a0cab8b9e501319",
+  "previousApprovalReceivedMessageFingerprint": "sha256:d820387c6cbbf47d79d9ca6e3f9f0103dcf30812afc58fc6887c20c1205f5e22",
   "previousPublishedVisual": {
     "sourceType": "provided_by_stephan",
-    "gmailMessageId": "1a0caa8e3bda03e6",
+    "gmailMessageFingerprint": "sha256:44febe4c2092442dac8f6d4f0250c2f7bd97ad3fc3513a7b7025645785dc988f",
     "gmailFilename": "image001.png",
     "repoPath": "public/news/2026-09-22-monaco-yacht-show-2026.jpg",
     "sourceSha256": "cade38088ef1657e9aece593482d292ffa5c39d3cb26c3b3d11f9eb9af14ec52",
@@ -139,7 +139,7 @@
     "sizeBytes": 7909,
     "width": 220,
     "height": 148,
-    "attachmentId": "ANGjdJ-I-2GKm4K-dXkI3LxRfkgCBiFpKKzqZfnuH-1j7Is21Ri0SmAN42S7ijWKjw2qunF4awptTh4KNZHbjot5gZrc1cmQtlnO-7pxNSwzV4b5YmsGoP9FTKRXHnfAJz99DCgO5wR82jN_sWnAccPpeCj8Lcuq_n_xHave7hwaJS1j7jOjM2av1mjZ3hKG-sN0_WtBN0zgYrnrpSdbN15-sZizFb3APNPScbEprBAJ5nficaVmVCUGpKK2baFjHJtmFD_25KYxKitoSrVafi8chLnMclu-_TZd9ekVnXc34rysyH84m9BYr4aAd03W-OAw08b_q0GTBpTCedvaVLQxC53VZRpdrX_yO5ZGitg7TojCkGxbSXdUhk6JHzct4smmSgbvvQGdm3ApGm0S",
+    "attachmentFingerprint": "sha256:5413a2ebaea9c286e6fe6a24dd01c6ac1a169f768cd777fea484d2c1d055295b",
     "previewDelivery": "Referenced Stephan's inline image in the active Gmail thread; connector could not re-attach the file directly.",
     "materializationNote": "Stephan's supplied image was converted to a web JPEG without editorial changes before publication."
   },
