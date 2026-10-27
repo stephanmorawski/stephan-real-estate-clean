@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-10-27-testimonial-maggie",
-  "workflowStatus": "qa_pending",
+  "workflowStatus": "published",
   "eventType": "editorial_direct_request",
   "receivedAt": "2026-10-27T09:47:48Z",
   "sourceChannel": "outlook",
@@ -27,7 +27,7 @@
   },
   "messageSummary": "Stephan supplied full English and French testimonial post about a returning client, with an existing graphic. Preserve the provided text and original visual; review public naming, testimonials and any translation discrepancies. No new generic news proposals while active.",
   "publicationAuthorizedBy": "direct approval confirmed by Olivier after Stephan agreement (2026-10-27)",
-  "nextAction": "await automated end-to-end production QA success and perform full final checks, then confirm in existing Stephan Outlook thread and mark published",
+  "nextAction": "closed",
   "sensitiveContent": "Do not copy the private email message into public registry; retrieve it from Outlook.",
   "version": 1,
   "publication": {
@@ -39,5 +39,29 @@
     "qaStatus": "in_progress",
     "urlFr": "https://www.cotedazuragency.com/fr/actualites/2026-10-27-temoignage-client-confiance",
     "urlEn": "https://www.cotedazuragency.com/en/actualites/2026-10-27-temoignage-client-confiance"
+  },
+  "productionQa": {
+    "status": "success",
+    "runId": 40510469172,
+    "runUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40510469172",
+    "articleRoutes": 32,
+    "browserPages": 14,
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "binaryAssets": 2,
+    "failures": 0,
+    "artifactId": 12738376395
+  },
+  "confirmation": {
+    "channel": "outlook",
+    "replyInOriginalThread": true,
+    "recipient": "Stephan",
+    "sentAtUtc": "2026-10-27T13:29:58Z",
+    "idempotencyKey": "caa-2026-10-27-testimonial-maggie:published:1",
+    "sourceMessageSha256": "dd518f4cd8b425c0d547a45b6f7f47e2f693e259568efb4c87cf2a1ab2982a6a",
+    "sentProofSha256": "8e1b5927940da7184a0cba58a6a42e639211228b39280f92f1bf8f0c437fd04a",
+    "verifiedInSentItems": true
   }
 }
