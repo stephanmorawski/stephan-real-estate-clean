@@ -6,7 +6,7 @@
   "selectedBy": "stephan@cotedazuragency.com",
   "selectedChoice": "1",
   "selectionLabel": "Se déplacer facilement sur la Côte d’Azur sans dépendre uniquement de la voiture",
-  "outlookSelectionMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEMAACsbw83upNSTYKjW-Cvmf9FAAJIUgaiAAA=",
+  "outlookSelectionMessageFingerprint": "sha256:62164b1c6d4cb296b7249bc9461334720dfb77a16ec5483d31230e1ae7d4bc96",
   "approvedKeyword": "APPROUVER",
   "publishSlug": "2026-10-06-mobilite-cote-azur-sans-voiture",
   "sources": [
@@ -62,7 +62,7 @@
     "fr": "🚆 Vivre sur la Côte d’Azur sans dépendre uniquement de la voiture ? C’est de plus en plus réaliste sur certains axes. Entre le Train ZOU! renforcé sur le littoral, le tramway de Nice entre l’aéroport, le centre et le port, et les lignes Envibus vers Sophia Antipolis, la mobilité devient un vrai critère immobilier. Pour choisir une adresse, il faut aussi regarder les temps de trajet, les gares et les correspondances. #CotedAzur #FrenchRiviera #Immobilier #Mobilité #SophiaAntipolis #Nice #Antibes",
     "en": "🚆 Living on the French Riviera without relying solely on a car is becoming increasingly realistic along key routes. With the reinforced ZOU! coastal rail service, Nice tram connections between the airport, city centre and port, and Envibus links to Sophia Antipolis, mobility is becoming a genuine property criterion. Choosing a home also means looking at commuting time, stations and connections. #FrenchRiviera #RealEstate #Mobility #SophiaAntipolis #Nice #Antibes"
   },
-  "outlookApprovalPreviewMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEJAACsbw83upNSTYKjW-Cvmf9FAAJKT9WGAAA=",
+  "outlookApprovalPreviewMessageFingerprint": "sha256:8fed9660bfbe47d37bef81f6a9dd51880ca4f0dfd782da61ed1c4052013bab7f",
   "lastWorkflowUpdate": "2026-10-06T11:34:00Z",
   "publicationVisualSourceFile": "Sunlit Riviera Tram Promenade.png",
   "lastRevision": {
@@ -78,7 +78,7 @@
     "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-06-mobilite-cote-azur-sans-voiture",
     "en": "https://www.cotedazuragency.com/en/actualites/2026-10-06-mobilite-cote-azur-sans-voiture"
   },
-  "approvalMessageId": "AAMkAGEzNDg2OTkwLTA4ZGYtNDA2YS1iNTNlLWRmMTVmM2RkNzE0ZgBGAAAAAACOCLuW_pmTSZfX39P-pwWPBwCsbw83upNSTYKjW-Cvmf9FAAAAAAEMAACsbw83upNSTYKjW-Cvmf9FAAJKT3WRAAA=",
+  "approvalMessageFingerprint": "sha256:563a51d0b26bce9d1e6d8786527c3722eadf155e38cf5021f38b9e49340b9a59",
   "approvedVisual": {
     "sourceFile": "Sunlit Riviera Tram Promenade.png",
     "format": "JPEG",
