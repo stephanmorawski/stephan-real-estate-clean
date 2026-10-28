@@ -1,0 +1,47 @@
+{
+  "cycleId": "caa-2026-10-28-editorial",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "proposalDate": "2026-10-28",
+  "proposalCategory": "Wednesday — immobilier, attractivité, économie et implantation internationale",
+  "sourceChannel": "Outlook",
+  "sentAt": "2026-10-28T07:51:47Z",
+  "sentEvidence": {
+    "marker": "CAA-proposals-20261028-v1",
+    "markerSha256": "43b316cc5031f16bfe724d94bbba20d619b53807b73d742749ca7c91e8ad7092",
+    "sentMessageSha256": "3eb077a81c7aa0c2c3a287c7f8b4aab2ab71c245254945b47e9fe059dd15ae24",
+    "verifiedInSentItems": true,
+    "recipientCount": 1
+  },
+  "approvalRequiredAfterChoice": true,
+  "publicationAuthorized": false,
+  "nextAction": "await_explicit_topic_choice_1_2_or_3",
+  "proposals": [
+    {
+      "choice": 1,
+      "title": "Nice Parc Méridia : un nouveau quartier où vivre et travailler",
+      "sources": [
+        "https://www.ecoquartiers.logement.gouv.fr/operation/2421/"
+      ],
+      "facts": "Quartier d’environ 60 hectares en projet, environ 5 450 logements prévus, 17 hectares de parc paysager dans le périmètre, ligne 3 du tramway"
+    },
+    {
+      "choice": 2,
+      "title": "Cannes Bastide Rouge : l’économie créative s’installe durablement",
+      "sources": [
+        "https://www.cannes.com/fr/index/actualites/annee-2026/mai/un-studio-d-enregistrement-de-podcasts-video-a-bastide-rouge.html"
+      ],
+      "facts": "Annonce municipale du 19 mai 2026 ; studio podcasts vidéo 32 m² prévu dès juin ; écosystème de plus de 40 startups et professionnels"
+    },
+    {
+      "choice": 3,
+      "title": "Grasse : les parfums, un écosystème tourné vers le monde",
+      "sources": [
+        "https://ich.unesco.org/fr/RL/les-savoir-faire-lies-au-parfum-en-pays-de-grasse-la-culture-de-la-plante-a-parfum-la-connaissance-des-matieres-premieres-naturelles-et-leur-transformation-l-art-de-composer-le-parfum-01207",
+        "https://simppar.fr/"
+      ],
+      "facts": "Inscription UNESCO en 2018 ; édition SIMPPAR tenue à Grasse les 26 et 27 mai 2026"
+    }
+  ],
+  "editorialNotes": "Tous les dossiers précédents sont terminés au statut published. Ne créer aucun article, visuel, Preview ou PR avant réception d’un choix. Ne pas considérer l’attente de réponse comme incident."
+}
