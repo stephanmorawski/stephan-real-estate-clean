@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-10-28-editorial",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "refused",
   "proposalDate": "2026-10-28",
   "proposalCategory": "Wednesday — immobilier, attractivité, économie et implantation internationale",
   "sourceChannel": "Outlook",
@@ -15,7 +15,7 @@
   },
   "approvalRequiredAfterChoice": true,
   "publicationAuthorized": false,
-  "nextAction": "await_explicit_topic_choice_1_2_or_3",
+  "nextAction": "No publication; no repeat proposal on 2026-10-28. Next regular slot Friday 2026-10-30 after 08:00 Europe/Paris subject to status reconciliation and recent-source verification.",
   "proposals": [
     {
       "choice": 1,
@@ -43,5 +43,18 @@
       "facts": "Inscription UNESCO en 2018 ; édition SIMPPAR tenue à Grasse les 26 et 27 mai 2026"
     }
   ],
-  "editorialNotes": "Tous les dossiers précédents sont terminés au statut published. Ne créer aucun article, visuel, Preview ou PR avant réception d’un choix. Ne pas considérer l’attente de réponse comme incident."
+  "editorialNotes": "Stephan explicitly rejected the full 28 October set as too old. No topic was selected; no article, image, Preview, or production change is authorized. Prior eight cycles remain published.",
+  "stateRevision": 2,
+  "rejectedAt": "2026-10-28T09:50:06Z",
+  "rejectionEvidence": {
+    "source": "Outlook reply to proposal marker CAA-proposals-20261028-v1",
+    "replyFingerprintSha256": "21ec8853d58f16884f78f95b4947415be38fc62650aeaab3aa5579697ef30e92",
+    "correlatedToSentVersion": 1,
+    "interpretation": "Stephan declined all three proposals; sources and events are insufficiently recent"
+  },
+  "editorialFreshnessFeedback": {
+    "identifiedProblem": "Two proposals relied on May 2026 events and another on an old standing designation; Stephan explicitly judged the batch too old on 28 October 2026.",
+    "futureRule": "For topical proposal batches, prioritize announcements within the preceding 30 days; where older context is used, require and cite a genuinely recent update. Friday evergreen items must be labeled as timeless rather than presented as new.",
+    "noResendSameDay": true
+  }
 }
