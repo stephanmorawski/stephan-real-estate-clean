@@ -1,0 +1,50 @@
+{
+  "cycleId": "caa-2026-10-29-evergreen",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "kind": "editorial_proposals",
+  "trigger": "Stephan requested timeless themes after rejecting 2026-10-28 date-bound propositions",
+  "createdAt": "2026-10-29",
+  "sourcesVerifiedAt": "2026-10-29",
+  "sentAt": "2026-10-29T09:17:50Z",
+  "proposalsVersionTag": "CAA-proposals-20261029-evergreen-v1",
+  "previousCycle": "caa-2026-10-28-editorial",
+  "options": [
+    {
+      "number": 1,
+      "title": "Biot : vivre entre village, art et nature",
+      "angle": "Vie de village, patrimoine, artistes, nature de la Brague; distinct from 20 October glass festival proposal",
+      "officialSources": [
+        "https://www.biot-tourisme.com/",
+        "https://www.biot.fr/le-verre-a-biot"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Villefranche-sur-Mer : l'art de vivre autour de la rade",
+      "angle": "Vieille ville, rade, citadelle, critères résidentiels",
+      "officialSources": [
+        "https://www.explorenicecotedazur.com/villefranche-sur-mer/",
+        "https://www.explorenicecotedazur.com/culture/citadelle-saint-elme/"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Menton : une ville-jardin au bord de la Méditerranée",
+      "angle": "Jardins historiques et patrimoine botanique, attractivité résidentielle qualitative",
+      "officialSources": [
+        "https://www.menton-riviera-merveilles.fr/menton-et-le-littoral/menton-ville-dart-et-dhistoire/sevader-dans-les-jardins/"
+      ]
+    }
+  ],
+  "evidence": {
+    "channel": "Outlook",
+    "mailboxFolder": "sentitems",
+    "verified": true,
+    "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
+    "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
+  },
+  "nextAction": "wait_for_choice_1_2_3_then_build_FR_EN_PR_preview",
+  "publicationPermitted": false,
+  "notes": "No article, PR, final visual or preview before Stephan selects an option. No new proposals while waiting_choice."
+}
