@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-10-29-evergreen",
   "version": 1,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "kind": "editorial_proposals",
   "trigger": "Stephan requested timeless themes after rejecting 2026-10-28 date-bound propositions",
   "createdAt": "2026-10-29",
@@ -44,7 +44,7 @@
     "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
     "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
   },
-  "nextAction": "delete_ephemeral_QA_workflow_and_recheck_final_SHA_preview_then_send_v1_approval",
+  "nextAction": "await_explicit_APPROUVER_or_MODIFIER_or_REFUSER_for_v1_do_not_merge_without_explicit_approval",
   "publicationPermitted": false,
   "notes": "Stephan replied '1' to version 1 of the exact 29 October options. Selection is not publication approval. Biot article exists solely on preview branch; keep main unchanged.",
   "selectedChoice": "1",
@@ -110,5 +110,32 @@
     "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857662438/artifacts/12889733294",
     "runUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857662438",
     "note": "Playwright/Next build checks and screenshot artifact SUCCESS. Overall workflow FAILED solely on cleanup step git pull --rebase rejected unstaged build changes; cleanup performed separately via connector."
-  }
+  },
+  "approvalPack": {
+    "version": "v1",
+    "messageMarker": "CAA-Biot-v1-20261029",
+    "channel": "outlook",
+    "sentTo": "stephan@cotedazuragency.com",
+    "sentAt": "2026-10-29T10:31:11Z",
+    "proof": "verified_in_Éléments_envoyés",
+    "sentMessageIdSha256": "a76d82b6651cf6d7b217ca56ba4f075dbbdfd06143a85c783f5c52e7bd0b5ece",
+    "containsFullFrEnCopy": true,
+    "containsLinkedInFrEn": true,
+    "containsPhotoAttribution": true,
+    "approvalRequested": "APPROUVER/MODIFIER/REFUSER",
+    "lastApprovedVersion": null
+  },
+  "preview": {
+    "deploymentId": "dpl_admVfKT4EDudKWLbC2pifYTH1tby",
+    "sha": "94345eff9b9df02aba433e7c4b3d24be7b43c80f",
+    "baseUrl": "https://stephan-real-estate-hcoz-dmqjcfyhe-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-10-29-biot-village-art-nature",
+    "enPath": "/en/actualites/2026-10-29-biot-village-art-nature",
+    "status": "READY",
+    "frEnHtmlStatus": 200,
+    "privateShareLink": "sent_via_Outlook_not_stored_in_public_registry",
+    "versionApiShaVerified": true,
+    "visualQaArtifactId": 12889733294
+  },
+  "lastReconciledAt": "2026-10-29"
 }
