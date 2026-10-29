@@ -44,7 +44,7 @@
     "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
     "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
   },
-  "nextAction": "inspect_preview_fr_en_browser_layout_then_send_approval_pack",
+  "nextAction": "verify_exact_SHA_preview_and_local_JPEG_then_send_full_v1_pack_to_Stephan_for_APPROUVER",
   "publicationPermitted": false,
   "notes": "Stephan replied '1' to version 1 of the exact 29 October options. Selection is not publication approval. Biot article exists solely on preview branch; keep main unchanged.",
   "selectedChoice": "1",
@@ -58,7 +58,7 @@
     "correlatedWithSentMessage": true
   },
   "articlePath": "content/news/2026-10-29-biot-village-art-nature.json",
-  "articleSlug": "biot-village-art-nature-qualite-de-vie",
+  "articleSlug": "2026-10-29-biot-village-art-nature",
   "preparationBranch": "caa/editorial/2026-10-29-biot-art-de-vivre",
   "verifiedFactsAt": "2026-10-29",
   "linkedin": {
@@ -77,12 +77,19 @@
     "sha256": "65a42be9961480026503f5feefcf663f188ae2780d73501e78ac0e4fc8e464a2",
     "sha256Status": "verified_original_bytes",
     "licenseCheckedAt": "2026-10-29",
-    "sourceBytesCheckedBy": "Wikimedia Commons metadata",
+    "sourceBytesCheckedBy": "GitHub Actions #40857188593 SHA256/MIME/dimensions/size verified",
     "browserDecode": "pending_preview",
     "crop": "contain_requested",
     "bytesVerified": 4751154,
     "widthVerified": 4128,
     "heightVerified": 3096,
-    "localPath": "/news/2026-10-29-biot-place-des-arcades.jpg"
+    "localPath": "/news/2026-10-29-biot-place-des-arcades.jpg",
+    "assetPreparationRunUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857188593"
+  },
+  "pullRequest": {
+    "number": 47,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/47",
+    "mergeAllowed": false,
+    "approvalRequired": true
   }
 }
