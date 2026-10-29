@@ -1,0 +1,117 @@
+name: Biot FR-EN desktop-mobile preview quality gate
+on:
+  push:
+    branches:
+      - caa/editorial/2026-10-29-biot-art-de-vivre
+    paths:
+      - .github/workflows/preview-biot-qa.yml
+permissions:
+  contents: write
+concurrency:
+  group: caa-biot-browser-qa
+  cancel-in-progress: false
+jobs:
+  visual-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install build and browser dependencies
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build exact editorial preview branch
+        run: npm run build
+      - name: Launch site and validate image, HTML, mobile and desktop rendering
+        shell: bash
+        run: |
+          set -euo pipefail
+          (npm start > /tmp/caa-biot-next.log 2>&1 &)
+          for i in $(seq 1 40); do
+            curl -fsS http://127.0.0.1:3000/fr/actualites/2026-10-29-biot-village-art-nature >/dev/null && break
+            sleep 3
+          done
+          mkdir -p artifacts/biot-preview
+          node --input-type=module <<'JS'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          const slug='2026-10-29-biot-village-art-nature';
+          const paths=['/fr/actualites','/en/actualites', '/fr/actualites/'+slug,'/en/actualites/'+slug];
+          const wanted='65a42be9961480026503f5feefcf663f188ae2780d73501e78ac0e4fc8e464a2';
+          const bytes=fs.readFileSync('public/news/2026-10-29-biot-place-des-arcades.jpg');
+          if(crypto.createHash('sha256').update(bytes).digest('hex')!==wanted)throw Error('JPEG SHA-256 mismatch');
+          const results=[];const failures=[];const browser=await chromium.launch();
+          try{
+            for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
+              for(const pathname of paths){
+                const context=await browser.newContext({viewport,deviceScaleFactor:1});const page=await context.newPage();
+                const jsErrors=[],badResponses=[];
+                page.on('pageerror',e=>jsErrors.push(e.message));
+                page.on('console',m=>{if(m.type()==='error')jsErrors.push(m.text())});
+                page.on('response',r=>{if(r.status()>=400 && r.url().startsWith('http://127.0.0.1:3000'))badResponses.push(r.status()+' '+r.url())});
+                try{
+                  const response=await page.goto('http://127.0.0.1:3000'+pathname,{waitUntil:'networkidle',timeout:60000});
+                  await page.evaluate(async()=>{for(const img of document.images){await img.decode().catch(()=>{});}});
+                  const inspection=await page.evaluate(()=>{
+                    const els=[...document.images].filter(i=>i.getAttribute('src')?.includes('2026-10-29-biot-place-des-arcades.jpg'));
+                    return {overflow:document.documentElement.scrollWidth>innerWidth+3,photos:els.map(img=>{const rect=img.getBoundingClientRect(),par=img.parentElement.getBoundingClientRect();return{src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,renderedWidth:rect.width,renderedHeight:rect.height,parentHeight:par.height,objectFit:getComputedStyle(img).objectFit}}),title:document.title,visibleText:document.body.innerText};
+                  });
+                  const photo=inspection.photos[0];
+                  const detail=pathname.includes(slug);
+                  const title=pathname.startsWith('/fr/')?'Biot : l’art de vivre entre village, ateliers et nature':'Biot: village life, art and nature on the French Riviera';
+                  if(response.status()!==200)failures.push(device+' '+pathname+' HTTP '+response.status());
+                  if(!inspection.visibleText.includes(title))failures.push(device+' '+pathname+' title missing');
+                  if(inspection.overflow)failures.push(device+' '+pathname+' horizontal overflow');
+                  if(!photo||!photo.complete||photo.naturalWidth!==4128||photo.naturalHeight!==3096)failures.push(device+' '+pathname+' JPEG not fully decoded');
+                  if(photo&&(photo.objectFit==='cover'||Math.abs(photo.renderedHeight-photo.renderedWidth*3096/4128)>2||Math.abs(photo.parentHeight-photo.renderedHeight)>3))failures.push(device+' '+pathname+' photo cropped or media cell stretched');
+                  if(detail&&!inspection.visibleText.includes('Abxbay'))failures.push(device+' '+pathname+' license attribution absent');
+                  failures.push(...jsErrors.map(e=>device+' '+pathname+' JS '+e),...badResponses.map(e=>device+' '+pathname+' resource '+e));
+                  await page.screenshot({path:'artifacts/biot-preview/'+device+'-'+pathname.replaceAll('/','_')+'.png',fullPage:true});
+                  results.push({device,pathname,status:response.status(),photo,titleOk:inspection.visibleText.includes(title),overflow:inspection.overflow,jsErrors,badResponses});
+                }finally{await context.close()}
+              }
+            }
+          }finally{await browser.close()}
+          const report={sourceSha:process.env.GITHUB_SHA,checkedAt:new Date().toISOString(),assetSha256:wanted,results,failures};
+          fs.writeFileSync('artifacts/biot-preview/report.json',JSON.stringify(report,null,2));
+          if(failures.length){console.error(failures.join('\n'));process.exit(1)}
+          console.log('Biot preview QA passed across 8 page/viewport combinations');
+          JS
+      - name: Save screenshots and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biot-preview-evidence-${{ github.run_id }}
+          path: artifacts/biot-preview/
+          retention-days: 30
+      - name: Record success and remove one-off workflow from review branch
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const fs=require('fs');
+          const p='content/news-drafts/2026-10-29-evergreen-proposals.json';
+          const d=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(d.workflowStatus!=='preparing'||!d.imageValidation.sha256)throw Error('Unexpected registry');
+          d.previewBrowserQA={status:'success',runId:process.env.GITHUB_RUN_ID,url:'https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/'+process.env.GITHUB_RUN_ID,sourceCommit:process.env.GITHUB_SHA,checkedRoutes:4,viewports:['desktop-1440x900','mobile-390x844'],photoDecoded:true,photoCropped:false,jsErrors:0};
+          d.workflowStatus='prepared_waiting_send';
+          d.nextAction='verify_final_preview_sha_and_send_approval_pack_v1';
+          fs.writeFileSync(p,JSON.stringify(d,null,2)+'\n');
+          JS
+          rm .github/workflows/preview-biot-qa.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/news-drafts/2026-10-29-evergreen-proposals.json .github/workflows/preview-biot-qa.yml
+          git commit -m 'test(news): certify Biot FR-EN preview mobile and desktop'
+          git pull --rebase origin caa/editorial/2026-10-29-biot-art-de-vivre
+          git push origin HEAD:caa/editorial/2026-10-29-biot-art-de-vivre
