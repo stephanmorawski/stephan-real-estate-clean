@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-10-29-evergreen",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "preparing",
   "kind": "editorial_proposals",
   "trigger": "Stephan requested timeless themes after rejecting 2026-10-28 date-bound propositions",
   "createdAt": "2026-10-29",
@@ -44,7 +44,41 @@
     "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
     "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
   },
-  "nextAction": "wait_for_choice_1_2_3_then_build_FR_EN_PR_preview",
+  "nextAction": "prepare_FR_EN_PR_preview_check_image_then_send_version1_approval_pack",
   "publicationPermitted": false,
-  "notes": "No article, PR, final visual or preview before Stephan selects an option. No new proposals while waiting_choice."
+  "notes": "Stephan replied '1' to version 1 of the exact 29 October options. Selection is not publication approval. Biot article exists solely on preview branch; keep main unchanged.",
+  "selectedChoice": "1",
+  "selectionLabel": "Biot : vivre entre village, art et nature",
+  "selectionReceivedAt": "2026-10-29T09:23:12Z",
+  "selectionEvidence": {
+    "channel": "outlook",
+    "messageIdSha256": "183e6d2f178dd1839fd3ab74863220ac1cd55f914b4d59fb3a2522b6940a4ef1",
+    "originalProposalTag": "CAA-proposals-20261029-evergreen-v1",
+    "exactReply": "1",
+    "correlatedWithSentMessage": true
+  },
+  "articlePath": "content/news/2026-10-29-biot-village-art-nature.json",
+  "articleSlug": "biot-village-art-nature-qualite-de-vie",
+  "preparationBranch": "caa/editorial/2026-10-29-biot-art-de-vivre",
+  "verifiedFactsAt": "2026-10-29",
+  "linkedin": {
+    "fr": "Biot, une autre idée de l'art de vivre sur la Côte d'Azur. Entre place des Arcades, ateliers d'art et paysages de la Brague, ce village offre une combinaison singulière de patrimoine et de nature. Pour un projet résidentiel, le cadre de vie compte autant que les critères pratiques : accès, services et déplacements. #Biot #CotedAzur #Immobilier #ArtDeVivre #FrenchRiviera",
+    "en": "Biot offers a different take on French Riviera living. From the historic Arcades Square and local art studios to the Brague countryside, the village combines heritage with time outdoors. Choosing a home also means considering everyday essentials, from local amenities to access and transport. #Biot #FrenchRiviera #RealEstate #Lifestyle #CotedAzur"
+  },
+  "imageValidation": {
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/BIOT_Place_des_Arcades_07.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:BIOT_Place_des_Arcades_07.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Abxbay",
+    "mime": "image/jpeg",
+    "width": 4128,
+    "height": 3096,
+    "bytes": 4751154,
+    "sha256": null,
+    "sha256Status": "awaiting_binary_verification",
+    "licenseCheckedAt": "2026-10-29",
+    "sourceBytesCheckedBy": "Wikimedia Commons metadata",
+    "browserDecode": "pending_preview",
+    "crop": "contain_requested"
+  }
 }
