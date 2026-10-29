@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-10-29-evergreen",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "waiting_approval",
   "kind": "editorial_proposals",
   "trigger": "Stephan requested timeless themes after rejecting 2026-10-28 date-bound propositions",
   "createdAt": "2026-10-29",
@@ -44,7 +44,98 @@
     "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
     "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
   },
-  "nextAction": "wait_for_choice_1_2_3_then_build_FR_EN_PR_preview",
+  "nextAction": "await_explicit_APPROUVER_or_MODIFIER_or_REFUSER_for_v1_do_not_merge_without_explicit_approval",
   "publicationPermitted": false,
-  "notes": "No article, PR, final visual or preview before Stephan selects an option. No new proposals while waiting_choice."
+  "notes": "Stephan replied '1' to version 1 of the exact 29 October options. Selection is not publication approval. Biot article exists solely on preview branch; keep main unchanged.",
+  "selectedChoice": "1",
+  "selectionLabel": "Biot : vivre entre village, art et nature",
+  "selectionReceivedAt": "2026-10-29T09:23:12Z",
+  "selectionEvidence": {
+    "channel": "outlook",
+    "messageIdSha256": "183e6d2f178dd1839fd3ab74863220ac1cd55f914b4d59fb3a2522b6940a4ef1",
+    "originalProposalTag": "CAA-proposals-20261029-evergreen-v1",
+    "exactReply": "1",
+    "correlatedWithSentMessage": true
+  },
+  "articlePath": "content/news/2026-10-29-biot-village-art-nature.json",
+  "articleSlug": "2026-10-29-biot-village-art-nature",
+  "preparationBranch": "caa/editorial/2026-10-29-biot-art-de-vivre",
+  "verifiedFactsAt": "2026-10-29",
+  "linkedin": {
+    "fr": "Biot, une autre idée de l'art de vivre sur la Côte d'Azur. Entre place des Arcades, ateliers d'art et paysages de la Brague, ce village offre une combinaison singulière de patrimoine et de nature. Pour un projet résidentiel, le cadre de vie compte autant que les critères pratiques : accès, services et déplacements. #Biot #CotedAzur #Immobilier #ArtDeVivre #FrenchRiviera",
+    "en": "Biot offers a different take on French Riviera living. From the historic Arcades Square and local art studios to the Brague countryside, the village combines heritage with time outdoors. Choosing a home also means considering everyday essentials, from local amenities to access and transport. #Biot #FrenchRiviera #RealEstate #Lifestyle #CotedAzur"
+  },
+  "imageValidation": {
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/BIOT_Place_des_Arcades_07.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:BIOT_Place_des_Arcades_07.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Abxbay",
+    "mime": "image/jpeg",
+    "width": 4128,
+    "height": 3096,
+    "bytes": 4751154,
+    "sha256": "65a42be9961480026503f5feefcf663f188ae2780d73501e78ac0e4fc8e464a2",
+    "sha256Status": "verified_original_bytes",
+    "licenseCheckedAt": "2026-10-29",
+    "sourceBytesCheckedBy": "GitHub Actions #40857188593 SHA256/MIME/dimensions/size verified",
+    "browserDecode": "pending_preview",
+    "crop": "contain_requested",
+    "bytesVerified": 4751154,
+    "widthVerified": 4128,
+    "heightVerified": 3096,
+    "localPath": "/news/2026-10-29-biot-place-des-arcades.jpg",
+    "assetPreparationRunUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857188593"
+  },
+  "pullRequest": {
+    "number": 47,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/47",
+    "mergeAllowed": false,
+    "approvalRequired": true
+  },
+  "previewBrowserQA": {
+    "status": "success",
+    "runId": 40857662438,
+    "sourceCommit": "3d3dc4e3aa997f6e0b475d2899e17c83b1eeb7dd",
+    "checkedRoutes": 4,
+    "viewports": [
+      "desktop-1440x900",
+      "mobile-390x844"
+    ],
+    "screenshotCount": 8,
+    "photoDecoded": true,
+    "photoCropped": false,
+    "jsErrors": 0,
+    "networkErrors": 0,
+    "artifactId": 12889733294,
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857662438/artifacts/12889733294",
+    "runUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/40857662438",
+    "note": "Playwright/Next build checks and screenshot artifact SUCCESS. Overall workflow FAILED solely on cleanup step git pull --rebase rejected unstaged build changes; cleanup performed separately via connector."
+  },
+  "approvalPack": {
+    "version": "v1",
+    "messageMarker": "CAA-Biot-v1-20261029",
+    "channel": "outlook",
+    "sentTo": "stephan@cotedazuragency.com",
+    "sentAt": "2026-10-29T10:31:11Z",
+    "proof": "verified_in_Éléments_envoyés",
+    "sentMessageIdSha256": "a76d82b6651cf6d7b217ca56ba4f075dbbdfd06143a85c783f5c52e7bd0b5ece",
+    "containsFullFrEnCopy": true,
+    "containsLinkedInFrEn": true,
+    "containsPhotoAttribution": true,
+    "approvalRequested": "APPROUVER/MODIFIER/REFUSER",
+    "lastApprovedVersion": null
+  },
+  "preview": {
+    "deploymentId": "dpl_admVfKT4EDudKWLbC2pifYTH1tby",
+    "sha": "94345eff9b9df02aba433e7c4b3d24be7b43c80f",
+    "baseUrl": "https://stephan-real-estate-hcoz-dmqjcfyhe-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-10-29-biot-village-art-nature",
+    "enPath": "/en/actualites/2026-10-29-biot-village-art-nature",
+    "status": "READY",
+    "frEnHtmlStatus": 200,
+    "privateShareLink": "sent_via_Outlook_not_stored_in_public_registry",
+    "versionApiShaVerified": true,
+    "visualQaArtifactId": 12889733294
+  },
+  "lastReconciledAt": "2026-10-29"
 }
