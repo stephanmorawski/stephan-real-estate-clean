@@ -1,0 +1,82 @@
+{
+  "cycleId": "caa-2026-10-30-lifestyle",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "proposalDate": "2026-10-30",
+  "category": "friday_lifestyle_and_future_developments",
+  "sourcesVerifiedAt": "2026-10-30",
+  "sourceChannel": "outlook",
+  "sourceThread": "existing_editorial_thread",
+  "sentAt": "2026-10-30T12:39:30Z",
+  "sentMarker": "CAA-proposals-20261030-v1",
+  "evidence": {
+    "sentMessageIdSha256": "730d85e8b87fd1b89c0b86d7ef0fc39e02164122198cc3ae7b96af6a6b51e3a5",
+    "markerSha256": "a5e548722a08fa4b28032aa25bfaa3a5092ac73e2e626b5be8cd2b018dbd6a18",
+    "verifiedInOutlookSentItems": true,
+    "selectionExpected": "1|2|3",
+    "noChoiceYet": true
+  },
+  "priorActiveCycle": {
+    "cycleId": "caa-2026-10-29-evergreen",
+    "confirmedState": "published",
+    "publishedAt": "2026-10-30T11:48:06Z"
+  },
+  "proposals": [
+    {
+      "choice": 1,
+      "subject": "Cannes-La Bocca : un front de mer repensé pour 2027",
+      "topic": "BoccaCabana phase 5",
+      "sourceDate": "2026-10-22",
+      "facts": [
+        "Phase 5 started 19 October 2026",
+        "Approximately 890 metres of seafront planned for redesign",
+        "Completion scheduled between May and summer 2027"
+      ],
+      "editorialAngle": "Future quality of life, pedestrian and cycle access; no claim of completed works or real-estate price increase",
+      "sources": [
+        "https://www.cannes.com/fr/index/actualites/annee-2026/octobre/boccacabana-la-cinquieme-phase-des-travaux-est-lancee.html"
+      ]
+    },
+    {
+      "choice": 2,
+      "subject": "Valbonne : le Moulin des Moines, patrimoine et création",
+      "topic": "Moulin des Moines Maison des Arts et de l'Artisanat",
+      "sourceDate": "2026-10-23",
+      "facts": [
+        "City seeking a project holder to rehabilitate the heritage site",
+        "Proposed future arts and craftsmanship centre",
+        "Applications due before 15 December 2026 noon"
+      ],
+      "editorialAngle": "Preservation, crafts and cultural appeal; project only, not an open facility",
+      "sources": [
+        "https://www.ville-valbonne.fr/actualite/rehabilitation-et-exploitation-du-moulin-des-moines/"
+      ]
+    },
+    {
+      "choice": 3,
+      "subject": "Mougins : l'art contemporain au cœur du village cet hiver",
+      "topic": "FAMM In Plain Sight Louisa Gagliardi",
+      "sourceDate": "2026-10-30_verified",
+      "facts": [
+        "Exhibition scheduled 6 November 2026 to 4 April 2027",
+        "Centre d'Art de Mougins, in partnership with the town",
+        "Fifteen works across two levels, per organiser"
+      ],
+      "editorialAngle": "Year-round cultural life and residential attractiveness, distinct from the existing Fontmerle/Valmasque nature article",
+      "sources": [
+        "https://famm.com/fr-fr/expositions/in-plain-sight-by-louisa-gagliardi"
+      ]
+    }
+  ],
+  "editorialReview": {
+    "duplicateCheck": "Existing content/news titles and previous proposal cycles inspected; these are new topics distinct from Biot, Valbonne village general lifestyle, Mougins Fontmerle nature and Cannes housing.",
+    "previousRejectedSuggestionsNotReused": true,
+    "draftsPrepared": false,
+    "imagesPrepared": false,
+    "pullRequestPrepared": false,
+    "previewPrepared": false
+  },
+  "publicationAuthorized": false,
+  "nextAction": "Await correlated explicit Stephan choice 1, 2 or 3; choice does not authorize publication",
+  "stateRevision": 1
+}
