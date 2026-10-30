@@ -44,7 +44,7 @@
     "messageIdSha256": "3e2cf89b371894734560916a3e19e90eb875bd1d2ca9d695d576bcb6ce0330d0",
     "triggerMessageIdSha256": "287032387924afce24f4bd0980a3c52fe7fb85a6741cafb5cf1895b4c6daf7d3"
   },
-  "nextAction": "send_single_publication_confirmation_in_existing_Outlook_thread_and_verify_sent_items",
+  "nextAction": "closed_published_no_further_action",
   "publicationPermitted": true,
   "notes": "Stephan replied '1' to version 1 of the exact 29 October options. Selection is not publication approval. Biot article exists solely on preview branch; keep main unchanged.",
   "selectedChoice": "1",
@@ -138,7 +138,7 @@
     "versionApiShaVerified": true,
     "visualQaArtifactId": 12889733294
   },
-  "lastReconciledAt": "2026-10-30T11:49:00Z",
+  "lastReconciledAt": "2026-10-30T11:53:00Z",
   "approvalEvidence": {
     "channel": "Outlook",
     "receivedAt": "2026-10-30T10:46:17Z",
@@ -179,5 +179,15 @@
   "publicationUrls": {
     "fr": "https://www.cotedazuragency.com/fr/actualites/2026-10-29-biot-village-art-nature",
     "en": "https://www.cotedazuragency.com/en/actualites/2026-10-29-biot-village-art-nature"
+  },
+  "confirmation": {
+    "channel": "Outlook",
+    "sameThread": true,
+    "sentAt": "2026-10-30T11:52:17Z",
+    "messageMarker": "CAA-Biot-published-v1-20261030",
+    "sentMessageIdSha256": "5d5d4d9d1304d5d4325f785fe57e23415a70901d54e71aea5265574712a72342",
+    "verifiedInSentItems": true,
+    "includesFrEnUrls": true,
+    "includesLinkedInFrEn": true
   }
 }
