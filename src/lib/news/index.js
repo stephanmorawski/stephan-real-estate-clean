@@ -13,6 +13,7 @@ function normalizePost({ slug, entry }, lang = 'fr') {
     imageAlt: localized.imageAlt || localized.title || '',
     imageCaption: localized.imageCaption || '',
     imageCredit: entry.imageCredit || null,
+    imageLayout: entry.imageLayout || 'cover',
     sources: Array.isArray(entry.sources)
       ? entry.sources
           .filter((item) => item && typeof item.url === 'string' && /^https:\/\//i.test(item.url))

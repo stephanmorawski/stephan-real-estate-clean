@@ -41,12 +41,12 @@ export default async function NewsPage({ params }) {
         {items.map((item) => (
           <article key={item.id} className="card-luxe overflow-hidden">
             <div className="grid gap-0 md:grid-cols-[320px_1fr]">
-              <div className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'self-start bg-white' : 'bg-zinc-100'}>
+              <div className={(item.imageLayout === 'contain' || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'self-start bg-white' : 'bg-zinc-100'}>
                 {item.image ? (
                   <img
                     src={item.image}
                     alt={item.title}
-                    className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'block h-auto w-full bg-white' : 'h-full w-full object-cover'}
+                    className={(item.imageLayout === 'contain' || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'block h-auto w-full bg-white' : 'h-full w-full object-cover'}
                   />
                 ) : null}
               </div>
