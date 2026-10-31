@@ -40,7 +40,7 @@ export default async function NewsPage({ params }) {
       <div className="mt-10 grid gap-6">
         {items.map((item) => (
           <article key={item.id} className="card-luxe overflow-hidden">
-            <div className="grid gap-0 md:grid-cols-[320px_1fr]">
+            <div className={`grid gap-0 ${item.slug === "2026-10-29-biot-village-art-nature" ? "md:grid-cols-[minmax(0,38%)_minmax(0,1fr)]" : "md:grid-cols-[320px_1fr]"}`}>
               <div className={(item.imageLayout === 'contain' || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'self-start bg-white' : 'bg-zinc-100'}>
                 {item.image ? (
                   <img
