@@ -4,14 +4,8 @@
   "publishedAt": "2026-10-29",
   "source": "Côte d’Azur Agency",
   "linkedinUrl": "",
-  "image": "/news/2026-10-29-biot-place-des-arcades.jpg",
+  "image": "/news/biot_visual_generated.jpg",
   "imageLayout": "cover",
-  "imageCredit": {
-    "author": "Abxbay",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BIOT_Place_des_Arcades_07.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-  },
   "sources": [
     {
       "url": "https://www.biot-tourisme.com/fiches/place-des-arcades/",
@@ -33,20 +27,13 @@
         "fr": "Office de tourisme de Biot — Le parc de la Brague",
         "en": "Biot Tourist Office — Brague nature park"
       }
-    },
-    {
-      "url": "https://commons.wikimedia.org/wiki/File:BIOT_Place_des_Arcades_07.jpg",
-      "label": {
-        "fr": "Wikimedia Commons — photographie et licence",
-        "en": "Wikimedia Commons — photograph and licence"
-      }
     }
   ],
   "fr": {
     "title": "Biot : l’art de vivre entre village, ateliers et nature",
     "excerpt": "À Biot, les ruelles de la place des Arcades, les ateliers d’art et la nature de la Brague composent un cadre de vie à découvrir au-delà des cartes postales.",
-    "imageAlt": "Place des Arcades dans le vieux village de Biot, avec ses façades et passages couverts",
-    "imageCaption": "Place des Arcades à Biot. Photographie d’Abxbay (2020), CC BY-SA 4.0, non modifiée.",
+    "imageAlt": "Illustration générée d’une rue de village méditerranéen évoquant Biot",
+    "imageCaption": "Illustration générée par intelligence artificielle, inspirée de l’ambiance de Biot.",
     "content": [
       "À quelques kilomètres du littoral, Biot offre une autre lecture de la Côte d’Azur. Son centre historique associe ruelles, façades anciennes, passages voûtés et commerces de village. C’est un cadre à découvrir à pied, mais aussi à considérer dans la perspective d’une vie quotidienne.",
       "Au cœur du vieux Biot, la place des Arcades témoigne de cette histoire. L’Office de tourisme décrit ses galeries couvertes, ses arches de formes variées et les portes anciennes de certains bâtiments. Les terrasses et les boutiques s’inscrivent dans un patrimoine qui conserve un usage vivant.",
@@ -59,8 +46,8 @@
   "en": {
     "title": "Biot: village life, art and nature on the French Riviera",
     "excerpt": "From the historic Arcades Square to glassmaking workshops and the Brague countryside, Biot offers a distinctive perspective on everyday life near the Riviera coast.",
-    "imageAlt": "Arcades Square in the historic village of Biot, showing old façades and covered walkways",
-    "imageCaption": "Arcades Square, Biot. Original 2020 photograph by Abxbay (CC BY-SA 4.0), unmodified.",
+    "imageAlt": "Generated illustration of a Mediterranean village street evoking Biot",
+    "imageCaption": "AI-generated illustration inspired by the atmosphere of Biot.",
     "content": [
       "Just a short distance inland from the Mediterranean, Biot offers a different perspective on life on the French Riviera. Its historic centre brings together narrow streets, traditional façades, vaulted passageways and village shops. It is a place to explore on foot, but also to consider through the lens of everyday living.",
       "At the heart of the old village, Arcades Square reflects this heritage. The local tourist office describes its covered galleries, distinctive arches and centuries-old doorways. Shops and cafés form part of an architectural setting that remains in everyday use.",
