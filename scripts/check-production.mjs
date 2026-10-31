@@ -356,6 +356,7 @@ for (const [device, viewport] of Object.entries({
             renderedWidth: rect.width,
             renderedHeight: rect.height,
             parentHeight: parentRect?.height || 0,
+            newsCardMedia: Boolean(image.closest('article.card-luxe') && image.closest('article.card-luxe')?.parentElement?.classList.contains('grid')),
             objectFit: style.objectFit,
             parentBg: parentStyle?.backgroundColor || '',
             imgBg: style.backgroundColor,
@@ -382,6 +383,17 @@ for (const [device, viewport] of Object.entries({
       for (const image of record.images) {
         if (!image.complete || image.naturalWidth === 0 || image.naturalHeight === 0) {
           failures.push(`${label}: broken image ${image.src}`);
+        }
+        // Editorial photography must fill its allocated card media cell;
+        // logos and explicitly contained brand artworks are intentionally exempt.
+        if (
+          pagePath.endsWith('/actualites') &&
+          image.newsCardMedia &&
+          /\/news\//.test(image.src) &&
+          !/partner|logo|financer|omage|maggie-google/i.test(image.src) &&
+          (image.objectFit !== 'cover' || image.parentHeight - image.renderedHeight > 3)
+        ) {
+          failures.push(`${label}: news photo does not fill card media cell: ${image.src}`);
         }
         for (const issue of brandIssues(image)) {
           failures.push(`${label}: ${issue}: ${image.src}`);
