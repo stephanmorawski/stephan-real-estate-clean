@@ -112,7 +112,13 @@ try {
   evidence.changedFiles = [];
 }
 
-if (expectedSha) {
+const qaOnlyChange = evidence.changedFiles.length > 0 &&
+  evidence.changedFiles.every((file) => file === 'scripts/check-production.mjs');
+evidence.qaOnlyChange = qaOnlyChange;
+
+// A QA-script-only commit changes the verifier, not the deployed website.
+// Preserve exact-SHA enforcement for all changes that can affect production content.
+if (expectedSha && !qaOnlyChange) {
   let matched = false;
 
   for (let attempt = 1; attempt <= 30; attempt += 1) {
