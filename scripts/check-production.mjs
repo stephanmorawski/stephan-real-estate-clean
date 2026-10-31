@@ -28,6 +28,11 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const sha256 = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 const safe = (value) => value.replace(/[^a-zA-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '') || 'root';
 
+function isEditorialPhoto(src = '') {
+  return /\/news\//.test(src) &&
+    !/partner|logo|financer|omage|maggie-google|partenariat-financement-2026-10-17/i.test(src);
+}
+
 function brandIssues({
   src = '',
   objectFit = '',
@@ -60,6 +65,11 @@ function brandIssues({
 
   return out;
 }
+
+// The CAA financing partnership banner is artwork, not editorial photography.
+assert.equal(isEditorialPhoto('/news/partenariat-financement-2026-10-17-fr.png'), false);
+assert.equal(isEditorialPhoto('/news/partenariat-financement-2026-10-17-en.png'), false);
+assert.equal(isEditorialPhoto('/news/biot-village-art-nature.jpg'), true);
 
 // Self-tests prove that known negative visual patterns are rejected.
 assert.deepEqual(
@@ -389,8 +399,7 @@ for (const [device, viewport] of Object.entries({
         if (
           pagePath.endsWith('/actualites') &&
           image.newsCardMedia &&
-          /\/news\//.test(image.src) &&
-          !/partner|logo|financer|omage|maggie-google/i.test(image.src) &&
+          isEditorialPhoto(image.src) &&
           (image.objectFit !== 'cover' || image.parentHeight - image.renderedHeight > 3)
         ) {
           failures.push(`${label}: news photo does not fill card media cell: ${image.src}`);
