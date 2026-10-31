@@ -350,6 +350,25 @@ for (const [device, viewport] of Object.entries({
       const evaluated = await page.evaluate(() => {
         const strings = [];
         const images = [];
+        // Desktop editorial cards must retain the shared 320px media column.
+        // A special layout for one story is a production regression.
+        if (innerWidth >= 768 && /\\/(fr|en)\\/actualites$/.test(location.pathname)) {
+          for (const card of document.querySelectorAll('article.card-luxe')) {
+            const mediaCell = card.querySelector('.grid > div:first-child');
+            const mediaImage = mediaCell?.querySelector('img');
+            if (!mediaCell || !mediaImage) continue;
+            const width = mediaCell.getBoundingClientRect().width;
+            if (Math.abs(width - 320) > 3) {
+              strings.push(`inconsistent news card media width: ${Math.round(width)}px (expected 320px)`);
+            }
+            if (/2026-10-29-biot-place-des-arcades/.test(mediaImage.getAttribute('src') || '')) {
+              const style = getComputedStyle(mediaImage);
+              if (style.objectFit !== 'cover') {
+                strings.push('Biot image must cover the card media area');
+              }
+            }
+          }
+        }
 
         if (document.documentElement.scrollWidth > innerWidth + 3) {
           strings.push(
