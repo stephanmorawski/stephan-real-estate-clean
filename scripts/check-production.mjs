@@ -352,7 +352,7 @@ for (const [device, viewport] of Object.entries({
         const images = [];
         // Desktop editorial cards must retain the shared 320px media column.
         // A special layout for one story is a production regression.
-        if (innerWidth >= 768 && /\\/(fr|en)\\/actualites$/.test(location.pathname)) {
+        if (innerWidth >= 768 && /\/(fr|en)\/actualites$/.test(location.pathname)) {
           for (const card of document.querySelectorAll('article.card-luxe')) {
             const mediaCell = card.querySelector('.grid > div:first-child');
             const mediaImage = mediaCell?.querySelector('img');
