@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 1,
-  "workflowStatus": "preparing",
+  "workflowStatus": "prepared_waiting_send",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -74,16 +74,17 @@
     "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
     "draftsPrepared": true,
     "imagesPrepared": true,
-    "pullRequestPrepared": false,
+    "pullRequestPrepared": true,
     "previewPrepared": false,
     "sourceReverifiedAt": "2026-11-02",
     "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
     "existingNewsReviewed": 18,
-    "seoOverlap": "No dedicated Croisette transformation article among 18 entries"
+    "seoOverlap": "No dedicated Croisette transformation article among 18 entries",
+    "manualImageReview": "FR/EN article and listing screenshots, 1440x900 and 390x844, inspected: photo aligns with standard card grid and article layout, no objectionable crop or letterboxing"
   },
   "publicationAuthorized": false,
-  "nextAction": "Materialize and verify the licensed image on the review branch; inspect preview FR/EN desktop/mobile and submit version 1 to Stephan for explicit approval.",
-  "stateRevision": 3,
+  "nextAction": "Deploy and verify a Vercel Preview on the exact review branch SHA, then send FR/EN + visual + LinkedIn pack to Stephan for APPROUVER / MODIFIER / REFUSER",
+  "stateRevision": 4,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -133,5 +134,43 @@
     "finalBytes": 620962,
     "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
     "decoded": true
+  },
+  "qaEvidence": {
+    "workflowRunId": 41469436213,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213/artifacts/13154148518",
+    "checkedCommitSha": "6706785488fc4635c5670cd11268806fe73c3575",
+    "checkedAt": "2026-11-02T15:15:39Z",
+    "result": "success",
+    "browserRoutesChecked": [
+      "/fr/actualites",
+      "/en/actualites",
+      "/fr/actualites/2026-11-02-cannes-croisette-transformation",
+      "/en/actualites/2026-11-02-cannes-croisette-transformation"
+    ],
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "observations": {
+      "http200": true,
+      "jsErrors": 0,
+      "brokenImages": 0,
+      "horizontalOverflow": 0,
+      "photoDecoded": true,
+      "photoSha256Verified": true,
+      "cardMediaDesktopPx": 320,
+      "photoCardObjectFit": "cover",
+      "articlePhotoNotLetterboxed": true,
+      "sourceAndCreditLinks": true
+    },
+    "visualInspection": "manual screenshots of French and English article and listing inspected; selected Croisette photo fits the standard layout with no objectionable crop",
+    "temporaryWorkflowRemoved": true
   }
 }
