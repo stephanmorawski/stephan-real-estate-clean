@@ -45,7 +45,7 @@ jobs:
           with Image.open(src) as im:
               im.load()
               print('original dimensions',im.size,'format',im.format)
-              if im.format != 'JPEG' or min(im.size) < 1200: raise ValueError('unexpected original image')
+              if im.format not in ('JPEG','MPO') or min(im.size) < 1200: raise ValueError('unexpected original image')
               out=ImageOps.exif_transpose(im).convert('RGB')
               out.thumbnail((1600,1200), Image.Resampling.LANCZOS)
               if min(out.size) < 800: raise ValueError('unexpected resized dimensions')
