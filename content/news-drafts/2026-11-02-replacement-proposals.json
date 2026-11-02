@@ -73,7 +73,7 @@
     "checkedPriorDraftsCount": 11,
     "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
     "draftsPrepared": true,
-    "imagesPrepared": false,
+    "imagesPrepared": true,
     "pullRequestPrepared": false,
     "previewPrepared": false,
     "sourceReverifiedAt": "2026-11-02",
@@ -83,7 +83,7 @@
   },
   "publicationAuthorized": false,
   "nextAction": "Materialize and verify the licensed image on the review branch; inspect preview FR/EN desktop/mobile and submit version 1 to Stephan for explicit approval.",
-  "stateRevision": 2,
+  "stateRevision": 3,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -123,7 +123,15 @@
     ],
     "originalBytes": 4544591,
     "originalSha1": "1bdb1414ebbfa3144a8bf57a70ed351add6fc474",
-    "integrityState": "pending_download_and_decode",
-    "imageIsHistoricNotRender": true
+    "integrityState": "verified",
+    "imageIsHistoricNotRender": true,
+    "finalMime": "image/jpeg",
+    "finalDimensions": [
+      1600,
+      1200
+    ],
+    "finalBytes": 620962,
+    "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
+    "decoded": true
   }
 }
