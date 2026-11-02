@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 1,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "revision_requested",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "FR/EN article and listing screenshots, 1440x900 and 390x844, inspected: photo aligns with standard card grid and article layout, no objectionable crop or letterboxing"
   },
   "publicationAuthorized": false,
-  "nextAction": "Await explicit APPROUVER / MODIFIER / REFUSER from Stephan correlated with pack version 1 sent 2026-11-02T15:21:50Z; do not merge or deploy production on choice 1",
-  "stateRevision": 5,
+  "nextAction": "Obtain written commercial reuse permission or rights-cleared licensed copy for the requested municipal architecture rendering; then replace image and update FR/EN image credits/captions on PR #52 branch, confirm SHA and visual QA, send version 2 pack for APPROUVER. Do not merge or publish.",
+  "stateRevision": 6,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -195,5 +195,21 @@
     "visualQAWorkflow": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213",
     "reviewPR": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/52",
     "approvalReceived": false
+  },
+  "revisionRequest": {
+    "receivedAt": "2026-11-02T15:53:37Z",
+    "sourceChannel": "Outlook",
+    "requestType": "replace_image_only",
+    "requestedFrom": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
+    "requestedAssetDescription": "Projet de réaménagement de la Croisette – visuel de projection non contractuel",
+    "copyrightCredit": "© Atelier d’Urbanité Roland Castro et Snøhetta",
+    "rightsCheck": "Official municipal legal notice states all photographs and illustrations may not be reproduced without prior written authorization; no such authorization verified as of 2026-11-02",
+    "rightsNoticeURL": "https://www.cannes.com/fr/index/mentions-legales.html",
+    "licenseStatus": "awaiting_explicit_permission_for_commercial_reproduction",
+    "proposedVersion": 2,
+    "currentPreviewStillVersion": 1,
+    "visualAssetReplaced": false,
+    "approvalV1Superseded": true,
+    "approvalV2Received": false
   }
 }
