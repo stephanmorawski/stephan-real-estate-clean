@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": false,
   "nextAction": "Obtain written commercial reuse permission or rights-cleared licensed copy for the requested municipal architecture rendering; then replace image and update FR/EN image credits/captions on PR #52 branch, confirm SHA and visual QA, send version 2 pack for APPROUVER. Do not merge or publish.",
-  "stateRevision": 6,
+  "stateRevision": 7,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -210,6 +210,10 @@
     "currentPreviewStillVersion": 1,
     "visualAssetReplaced": false,
     "approvalV1Superseded": true,
-    "approvalV2Received": false
+    "approvalV2Received": false,
+    "rightsClarificationSentAt": "2026-11-02T17:20:26Z",
+    "rightsClarificationSentVia": "outlook_reply_to_image_request",
+    "rightsClarificationVerifiedInSentItems": true,
+    "humanResponsePending": "Written reuse permission or licensed asset from Stephan"
   }
 }
