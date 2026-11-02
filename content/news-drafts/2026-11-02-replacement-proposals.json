@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 1,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -75,7 +75,7 @@
     "draftsPrepared": true,
     "imagesPrepared": true,
     "pullRequestPrepared": true,
-    "previewPrepared": false,
+    "previewPrepared": true,
     "sourceReverifiedAt": "2026-11-02",
     "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
     "existingNewsReviewed": 18,
@@ -83,8 +83,8 @@
     "manualImageReview": "FR/EN article and listing screenshots, 1440x900 and 390x844, inspected: photo aligns with standard card grid and article layout, no objectionable crop or letterboxing"
   },
   "publicationAuthorized": false,
-  "nextAction": "Deploy and verify a Vercel Preview on the exact review branch SHA, then send FR/EN + visual + LinkedIn pack to Stephan for APPROUVER / MODIFIER / REFUSER",
-  "stateRevision": 4,
+  "nextAction": "Await explicit APPROUVER / MODIFIER / REFUSER from Stephan correlated with pack version 1 sent 2026-11-02T15:21:50Z; do not merge or deploy production on choice 1",
+  "stateRevision": 5,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -172,5 +172,28 @@
     },
     "visualInspection": "manual screenshots of French and English article and listing inspected; selected Croisette photo fits the standard layout with no objectionable crop",
     "temporaryWorkflowRemoved": true
+  },
+  "approvalPack": {
+    "version": 1,
+    "articleSlug": "2026-11-02-cannes-croisette-transformation",
+    "sentAt": "2026-11-02T15:21:50Z",
+    "markerSha256": "5ad593b77ff7b9d96ebe71b33fe13f10e7b22118e1fbce89018c425b71180297",
+    "sentMessageIdSha256": "25562772c7a94749a3f9a6bf784ea4006d16ed67695b0993fe20fd1dc63cb1a8",
+    "verifiedInOutlookSentItems": true,
+    "sentVia": "reply_to_email",
+    "correlatedChoice": "1",
+    "correlatedProposalMarker": "CAA-proposals-20261102-replacement-v1",
+    "previewCommitSha": "6e8fd4d960a17b308cad4a4d2b431304e2ad517f",
+    "previewDeploymentIdSha256": "255086953e8520e0355f7b2e8761cdec429985dc7eb87aa27fa5c443d2bd7475",
+    "previewTarget": "preview",
+    "previewReady": true,
+    "previewVersionConfirmed": true,
+    "previewFRHTTP200": true,
+    "previewENHTTP200": true,
+    "sharedProtectedLinksSentPrivately": true,
+    "sourceAndImageCopyrightChecked": true,
+    "visualQAWorkflow": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213",
+    "reviewPR": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/52",
+    "approvalReceived": false
   }
 }
