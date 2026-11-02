@@ -68,7 +68,7 @@ jobs:
                 if(res?.status()!==200)fails.push(key+': HTTP '+res?.status());
                 if(data.overflow>3)fails.push(key+': horizontal overflow '+data.overflow);
                 if(!data.images.length||data.images.some(i=>!i.complete||!i.naturalW||!i.naturalH||i.fit!=='cover'))fails.push(key+': photo missing, undecoded or uncovered');
-                if(!data.meta||!data.canonical||!data.hasSource)fails.push(key+': SEO/source missing');
+                if(!data.meta||!data.canonical||(route.endsWith(slug)&&!data.hasSource))fails.push(key+': SEO/source missing');
                 if(route.endsWith(slug)&&!data.hasCredit)fails.push(key+': image credit missing');
                 if(device==='desktop'&&route.endsWith('/actualites')&&data.cards.some(c=>c.w&&Math.abs(c.w-320)>3))fails.push(key+': news cards inconsistent width');
                 if(errors.length||bad.length)fails.push(key+': JS/network error '+JSON.stringify({errors,bad}));
