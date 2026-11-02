@@ -1,0 +1,83 @@
+{
+  "cycleId": "caa-2026-11-02-replacement",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "category": "replacement_options_after_explicit_rejection",
+  "priorCycle": "caa-2026-10-30-lifestyle",
+  "priorCycleStatus": "refused",
+  "sourceChannel": "outlook",
+  "sourceThread": "reply_to_Stephan_rejection_2026-11-02",
+  "sourcesVerifiedAt": "2026-11-02",
+  "sentAt": "2026-11-02T13:34:02Z",
+  "sentMarker": "CAA-proposals-20261102-replacement-v1",
+  "proposals": [
+    {
+      "choice": 1,
+      "subject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
+      "topic": "Croisette réaménagement 2026-2028",
+      "sourceDate": "2026-09-09",
+      "facts": [
+        "Début annoncé du réaménagement des espaces publics mi-octobre 2026",
+        "Fin programmée fin 2028",
+        "295 nouvelles plantations et continuité cyclable de 3,1 km"
+      ],
+      "editorialAngle": "Evolution de l'adresse iconique haut de gamme et du cadre de vie, sans valorisation immobilière chiffrée ni travaux présentés comme achevés",
+      "sources": [
+        "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html"
+      ]
+    },
+    {
+      "choice": 2,
+      "subject": "Sophia Antipolis : des bureaux transformés en logements",
+      "topic": "Campus des Amandiers",
+      "sourceDate": "2026-09",
+      "facts": [
+        "Projet situé à Biot au sein de Sophia Antipolis",
+        "363 logements comprenant co-living, logement étudiant, logement social",
+        "3 des 5 bâtiments réhabilités; 1600 m2 de bureaux"
+      ],
+      "editorialAngle": "Transformation du tertiaire en logements, proximité entre emploi et habitation; programme non présenté comme livré",
+      "sources": [
+        "https://www.sophia-antipolis.fr/2026/09/01/le-campus-des-amandiers/"
+      ]
+    },
+    {
+      "choice": 3,
+      "subject": "Cannes : MAPIC 2026 et l'investissement immobilier international",
+      "topic": "MAPIC international retail leasing",
+      "sourceDate": "2026-11-03/04",
+      "facts": [
+        "Salon prévu les 3 et 4 novembre 2026 au Palais des Festivals",
+        "Investissement et location en immobilier commercial, à distinguer du résidentiel",
+        "4000 participants et 75 pays annoncés en prévision par organisateur"
+      ],
+      "editorialAngle": "Rayonnement économique international de Cannes, uniquement pour immobilier commercial, chiffres prévisionnels à distinguer des résultats",
+      "sources": [
+        "https://www.mapic.com/fr-fr.html",
+        "https://www.cannes.com/fr/agenda/annee-2026/novembre/mapic-2026.html"
+      ]
+    }
+  ],
+  "evidence": {
+    "channel": "Outlook",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "60839c9e0f0fe67c0fc8c85d513e94e3580ac34c1653b892740179ef802e90d0",
+    "triggerMessageIdSha256": "83daaace78db70676e2950342e5b869ca3798ba76038ecd2d9e77c7a6315f7f1",
+    "markerSha256": "800d9f529d9a67147e77842477af3fc484b19f8abdf7fa474ca43e8c580a34b3",
+    "lastRequest": "Replace all three rejected proposals; send 1/2/3 choices"
+  },
+  "editorialReview": {
+    "priorRejectedSuggestionsNotReused": true,
+    "checkedExistingNewsCount": 18,
+    "checkedPriorDraftsCount": 11,
+    "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
+    "draftsPrepared": false,
+    "imagesPrepared": false,
+    "pullRequestPrepared": false,
+    "previewPrepared": false
+  },
+  "publicationAuthorized": false,
+  "nextAction": "Await correlated reply 1, 2 or 3 from Stephan; chosen topic requires full FR/EN review and explicit APPROUVER before release",
+  "stateRevision": 1
+}
