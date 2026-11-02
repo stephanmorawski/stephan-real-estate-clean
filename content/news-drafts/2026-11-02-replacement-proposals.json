@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "preparing",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -72,12 +72,58 @@
     "checkedExistingNewsCount": 18,
     "checkedPriorDraftsCount": 11,
     "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
-    "draftsPrepared": false,
+    "draftsPrepared": true,
     "imagesPrepared": false,
     "pullRequestPrepared": false,
-    "previewPrepared": false
+    "previewPrepared": false,
+    "sourceReverifiedAt": "2026-11-02",
+    "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
+    "existingNewsReviewed": 18,
+    "seoOverlap": "No dedicated Croisette transformation article among 18 entries"
   },
   "publicationAuthorized": false,
-  "nextAction": "Await correlated reply 1, 2 or 3 from Stephan; chosen topic requires full FR/EN review and explicit APPROUVER before release",
-  "stateRevision": 1
+  "nextAction": "Materialize and verify the licensed image on the review branch; inspect preview FR/EN desktop/mobile and submit version 1 to Stephan for explicit approval.",
+  "stateRevision": 2,
+  "selectedChoice": 1,
+  "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
+  "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
+  "articleVersion": 1,
+  "choiceReceivedAt": "2026-11-02T14:05:43Z",
+  "choiceEvidence": {
+    "source": "Outlook",
+    "response": "1",
+    "replyMessageIdSha256": "fd47eabc0b5ff0883b1d836ea07ac58aa1e78658541eaeffd3df0f8646fec9c1",
+    "correlatedSentMarker": "CAA-proposals-20261102-replacement-v1",
+    "replyThreadMatched": true,
+    "selectedFromLatestProposal": true
+  },
+  "articleDraft": {
+    "slug": "2026-11-02-cannes-croisette-transformation",
+    "contentFile": "content/news/2026-11-02-cannes-croisette-transformation.json",
+    "version": 1,
+    "generatedAt": "2026-11-02",
+    "status": "preview_only_pending_explicit_approval",
+    "publicationAuthorized": false
+  },
+  "linkedin": {
+    "fr": "Cannes prépare une nouvelle étape pour la Croisette. La Ville annonce un réaménagement des espaces publics de 2026 à fin 2028 : davantage d’arbres, des traversées piétonnes repensées et une continuité cyclable de 3,1 km jusqu’au Palm Beach. Pour celles et ceux qui vivent à Cannes ou envisagent de s’y installer, le projet ouvre des perspectives sur le cadre de vie, avec des travaux à prendre en compte durant la transition. Un projet urbain à suivre, sans préjuger des prix de l’immobilier. #Cannes #Croisette #CotedAzur #Immobilier",
+    "en": "The Croisette in Cannes is entering another phase of public-space redevelopment, scheduled through late 2028. More trees, improved pedestrian crossings and a continuous 3.1 km cycle connection to Palm Beach form part of the city's plans. For residents and international buyers, the changes highlight the importance of assessing a property’s neighbourhood, including the temporary impact of construction. #Cannes #FrenchRiviera #RealEstate"
+  },
+  "imageCandidate": {
+    "path": "public/news/2026-11-02-cannes-croisette.jpg",
+    "source": "Wikimedia Commons",
+    "copyrightStatus": "CC0 1.0",
+    "author": "Benoît Prieur",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Promenade_de_La_Croisette_aux_environs_du_Square_de_Verdun_(Cannes)_en_avril_2023.JPG",
+    "originalTakenAt": "2023-04-16",
+    "originalMime": "image/jpeg",
+    "originalDimensions": [
+      4032,
+      3024
+    ],
+    "originalBytes": 4544591,
+    "originalSha1": "1bdb1414ebbfa3144a8bf57a70ed351add6fc474",
+    "integrityState": "pending_download_and_decode",
+    "imageIsHistoricNotRender": true
+  }
 }
