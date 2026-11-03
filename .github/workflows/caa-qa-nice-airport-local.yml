@@ -1,0 +1,121 @@
+name: CAA isolated Nice photo self-hosting FR/EN responsive QA
+on:
+  push:
+    branches: [fix/caa-nice-airport-image-local-20261103]
+    paths: ['.github/workflows/caa-qa-nice-airport-local.yml', 'content/news/2026-10-26-nice-north-america-routes-2027.json', 'public/news/2026-10-26-nice-airport-olivier-cleynen.jpg']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Verify exact approved image and no editorial changes
+        run: |
+          set -euo pipefail
+          PHOTO=public/news/2026-10-26-nice-airport-olivier-cleynen.jpg
+          test "$(file --brief --mime-type "$PHOTO")" = image/jpeg
+          test "$(wc -c < "$PHOTO")" -eq 1139886
+          echo "0c6a26b48815a0c00057c2f8480bc98230f69fdaadaa88056544a1a5853a1e62  $PHOTO" | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/news/2026-10-26-nice-airport-olivier-cleynen.jpg')
+          b=p.read_bytes()
+          assert b[:2]==bytes.fromhex('ffd8') and b[-2:]==bytes.fromhex('ffd9')
+          i=2; wh=None
+          while i<len(b)-9:
+              if b[i]!=255: i+=1; continue
+              while i<len(b) and b[i]==255: i+=1
+              if i>=len(b): break
+              marker=b[i];i+=1
+              if marker in (0xD8,0xD9,0x01) or 0xD0<=marker<=0xD7: continue
+              if marker==0: continue
+              size=int.from_bytes(b[i:i+2],'big')
+              assert size>=2 and i+size<=len(b),'JPEG segment invalid'
+              if marker in (0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF):
+                  wh=(int.from_bytes(b[i+5:i+7],'big'),int.from_bytes(b[i+3:i+5],'big'));break
+              i+=size
+          assert wh==(3479,1936),f'image dimensions {wh}'
+          print('Verified full original image SHA256, dimensions, JPEG markers and MIME.')
+          PY
+          node - <<'JS'
+          const fs=require('fs'),cp=require('child_process');
+          const f='content/news/2026-10-26-nice-north-america-routes-2027.json';
+          const before=JSON.parse(cp.execFileSync('git',['show','origin/main:'+f],{encoding:'utf8'}));
+          const after=JSON.parse(fs.readFileSync(f,'utf8'));
+          if(before.image!=='https://upload.wikimedia.org/wikipedia/commons/3/3a/Aerial_view_of_Nice_airport_02.jpg')throw Error('Unexpected original image');
+          if(after.image!=='/news/2026-10-26-nice-airport-olivier-cleynen.jpg')throw Error('Wrong local path');
+          before.image=after.image;
+          if(JSON.stringify(before)!==JSON.stringify(after))throw Error('Article, credit or license was modified');
+          JS
+      - name: Install dependencies and Chromium
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build and start branch
+        run: |
+          npm run build
+          (npm start -- -p 3000 >/tmp/caa-nice-qa.log 2>&1 &)
+          for n in $(seq 1 45); do if curl -fsS http://127.0.0.1:3000/fr/actualites >/dev/null; then exit 0; fi; sleep 2; done
+          cat /tmp/caa-nice-qa.log
+          exit 1
+      - name: Verify exact local asset on FR/EN desktop/mobile pages
+        run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          const base='http://127.0.0.1:3000',slug='2026-10-26-nice-north-america-routes-2027',photo='2026-10-26-nice-airport-olivier-cleynen.jpg';
+          const dir='artifacts/caa-nice-local-image';fs.mkdirSync(dir,{recursive:true});
+          const errors=[],pages=[],hash='0c6a26b48815a0c00057c2f8480bc98230f69fdaadaa88056544a1a5853a1e62';
+          const r=await fetch(base+'/news/'+photo),buf=Buffer.from(await r.arrayBuffer());
+          if(r.status!==200||!r.headers.get('content-type')?.startsWith('image/jpeg')||crypto.createHash('sha256').update(buf).digest('hex')!==hash)errors.push('local image HTTP/MIME/SHA256 mismatch');
+          const browser=await chromium.launch({headless:true});
+          try{
+            for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
+              for(const route of ['/fr/actualites','/en/actualites','/fr/actualites/'+slug,'/en/actualites/'+slug]){
+                const page=await browser.newPage({viewport});
+                const js=[],failed=[];
+                page.on('pageerror',e=>js.push(e.message));
+                page.on('console',m=>{if(m.type()==='error')js.push(m.text())});
+                page.on('response',res=>{if(res.status()>=400&&res.request().resourceType()==='image'&&res.url().includes(photo))failed.push(res.status()+' '+res.url())});
+                const key=route.replaceAll('/','_')+'_'+device;
+                try{
+                  const response=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
+                  await page.waitForLoadState('load',{timeout:15000}).catch(()=>{});
+                  await page.evaluate(async()=>await Promise.race([Promise.all([...document.images].map(i=>i.decode?.().catch(()=>null))),new Promise(r=>setTimeout(r,10000))]));
+                  const q=await page.evaluate(photo=>{
+                    const imgs=[...document.images].filter(i=>(i.getAttribute('src')||'').includes(photo));
+                    const txt=document.body.innerText;
+                    return {h1:document.querySelector('h1')?.innerText,meta:document.querySelector('meta[name="description"]')?.content,canonical:document.querySelector('link[rel="canonical"]')?.href,overflow:document.documentElement.scrollWidth-innerWidth,imgs:imgs.map(i=>({complete:i.complete,w:i.naturalWidth,h:i.naturalHeight,fit:getComputedStyle(i).objectFit})),copyright:txt.includes('Olivier Cleynen'),articleTitle:txt.includes('Nice')};
+                  },photo);
+                  pages.push({route,device,http:response?.status(),...q,js,failed});
+                  await page.screenshot({path:dir+'/'+key+'.png',fullPage:true,timeout:20000});
+                  if(response?.status()!==200||q.overflow>3||!q.meta||!q.canonical||js.length||failed.length)errors.push(key+' layout/metadata/JS/HTTP');
+                  if(!q.imgs.length||q.imgs.some(i=>!i.complete||i.w!==3479||i.h!==1936))errors.push(key+' photo decode');
+                  if(route.endsWith(slug)&&!q.copyright)errors.push(key+' attribution missing');
+                }catch(e){errors.push(key+': '+e.message)}
+                finally{await page.close()}
+              }
+            }
+          }finally{await browser.close()}
+          fs.writeFileSync(dir+'/report.json',JSON.stringify({sha:process.env.GITHUB_SHA,photoSHA256:hash,pages,errors},null,2));
+          console.log(JSON.stringify({pages:pages.map(({route,device,http,imgs,overflow,failed})=>({route,device,http,imgs,overflow,failed})),errors},null,2));
+          if(errors.length)process.exitCode=1;
+          JS
+      - name: Preserve QA report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: caa-nice-local-image-qa
+          path: artifacts/caa-nice-local-image/
+          retention-days: 14
+          if-no-files-found: warn
