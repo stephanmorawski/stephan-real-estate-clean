@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { isLang, getDict } from '@/lib/i18n';
+import { isLang } from '@/lib/i18n';
 import { buildPageMetadata } from '@/lib/seo';
 import { getAllNews } from '@/lib/news';
 
@@ -18,90 +18,80 @@ export async function generateMetadata({ params }) {
 export default async function HomePage({ params }) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
-  const t = await getDict(lang);
+  const fr = lang === 'fr';
   const latestNews = (await getAllNews(lang)).slice(0, 3);
+  const reviewUrl = `/${lang}/actualites/2026-10-27-temoignage-client-confiance`;
 
   return (
-    <main>
-      <section className="relative overflow-hidden bg-black text-white">
-        <img src="/images/hero-pool.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-80" />
-        <div className="absolute inset-0 bg-black/35" />
-
-        <div className="relative container py-16 md:py-24">
-          <div className="max-w-3xl">
-            <h1 className="font-luxe text-4xl leading-tight md:text-6xl lg:text-[64px]">
-              {t.home.heroTitle}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
-              {t.home.heroLead}
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href={`/${lang}/contact`} className="btn-gold">{t.home.ctaPrimary}</Link>
-              <Link href={`/${lang}/vente`} className="btn-dark">{t.home.ctaSecondary}</Link>
+    <main className="home-page">
+      <section className="home-hero">
+        <img src="/images/hero-pool.jpg" alt="" className="home-hero-image" fetchPriority="high" />
+        <div className="container home-hero-content">
+          <div className="home-hero-text">
+            <p className="home-kicker">Stephan Morawski · Côte d’Azur Agency</p>
+            <h1>{fr ? <>Votre projet immobilier mérite un <em>regard juste.</em></> : <>Your property deserves <em>a clear perspective.</em></>}</h1>
+            <p className="home-lead">{fr ? "Depuis plus de dix ans, j’accompagne personnellement mes clients dans les Alpes-Maritimes." : 'For over ten years, I have personally guided my clients across the Alpes-Maritimes.'}</p>
+            <p className="home-description">{fr ? 'Mon approche : vous conseiller avec sincérité, estimer votre bien à sa juste valeur et vous accompagner pour vendre dans les meilleures conditions ou trouver le bien qui vous correspond.' : 'My approach: honest advice, an accurate valuation of your property, and personal guidance to sell on the best terms or find the home that is right for you.'}</p>
+            <p className="home-signature">Stephan Morawski — Côte d’Azur Agency</p>
+            <div className="home-actions">
+              <Link href={`/${lang}/contact`} className="home-button">{fr ? 'Me contacter' : 'Contact me'} ↗</Link>
+              <a href="#expertise" className="home-button home-button-outline">{fr ? 'Mon approche' : 'My approach'}</a>
             </div>
+          </div>
+        </div>
+        <a href="#expertise" className="home-discover">{fr ? 'Découvrir' : 'Discover'} ↓</a>
+      </section>
+
+      <section className="home-section home-about" id="expertise">
+        <div className="container home-about-grid">
+          <figure className="home-portrait"><img src="/images/founder.jpg" alt="Stephan Morawski" loading="lazy" /></figure>
+          <div>
+            <p className="home-kicker">{fr ? 'L’expertise, en toute confiance' : 'Expertise you can trust'}</p>
+            <h2>{fr ? <>Une relation directe.<br />Un conseil sincère.</> : <>A personal relationship.<br />Honest advice.</>}</h2>
+            <p>{fr ? 'Je suis Stephan Morawski, fondatrice de Côte d’Azur Agency. Mon métier est de vous apporter un avis indépendant et précis, loin des estimations de complaisance. Chaque maison, chaque appartement et chaque projet mérite une stratégie adaptée au marché réel.' : 'I am Stephan Morawski, founder of Côte d’Azur Agency. My role is to offer independent, accurate advice and realistic valuations. Every house, apartment and project deserves a strategy tailored to the actual market.'}</p>
+            <p>{fr ? 'J’accompagne personnellement vendeurs et acquéreurs dans l’ensemble des Alpes-Maritimes, en français comme en anglais.' : 'I personally support sellers and buyers throughout the Alpes-Maritimes, in both French and English.'}</p>
+            <Link className="home-text-link" href={`/${lang}/agence/founder`}>{fr ? 'Découvrir mon parcours' : 'Discover my background'} ↗</Link>
           </div>
         </div>
       </section>
 
-      <section className="container py-16">
-        <div className="card-luxe p-8">
-          <h2 className="font-luxe text-3xl">{t.home.introTitle}</h2>
-          <p className="mt-4 text-zinc-700">{t.home.introText}</p>
-          <p className="mt-4 text-zinc-700">{t.home.introText2}</p>
+      <section className="home-section home-reviews" id="avis-google">
+        <div className="container home-reviews-grid">
+          <div>
+            <p className="home-kicker">{fr ? 'Ils m’ont fait confiance' : 'Trusted by my clients'}</p>
+            <h2>{fr ? 'La confiance se construit dans la durée.' : 'Trust is built over time.'}</h2>
+            <p>{fr ? 'Deux ventes, un achat : dix ans d’accompagnement auprès de Maggie et de sa famille.' : 'Two sales, one purchase: ten years of guidance for Maggie and her family.'}</p>
+            <a className="home-text-link" href="https://www.google.com/search?q=Stephan+Morawski+C%C3%B4te+d%27Azur+Agency+avis+Google" target="_blank" rel="noopener noreferrer">{fr ? 'Consulter les avis sur Google' : 'View reviews on Google'} ↗</a>
+          </div>
+          {/* FR: published testimonial; EN: original supplied artwork /news/2026-10-27-maggie-google.png. */}
+          <article className="home-review-card">
+            <p className="home-stars" aria-label={fr ? 'Avis client : 5 étoiles sur 5' : 'Client review: 5 out of 5 stars'}>★★★★★</p>
+            {fr ? <blockquote>« Toujours disponible et très agréable de travailler avec elle. »</blockquote> : <blockquote>“Always available and great to work with.”</blockquote>}
+            <footer><strong>Maggie Evans</strong><span>{fr ? 'Avis Google · témoignage publié le 27 octobre 2026' : 'Google review · testimonial published on 27 October 2026'}</span></footer>
+            <Link href={reviewUrl} className="home-text-link">{fr ? 'Lire le témoignage original' : 'Read the original testimonial'} ↗</Link>
+          </article>
         </div>
       </section>
 
-      {latestNews.length > 0 ? (
-        <section className="container pb-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A46C]">
-                {lang === 'fr' ? 'Actualités' : 'News'}
+      {latestNews.length > 0 && <section className="home-section home-news" id="actualites">
+        <div className="container">
+          <div className="home-news-head">
+            <div><p className="home-kicker">{fr ? 'L’actualité de la Côte d’Azur' : 'News from the French Riviera'}</p><h2>{fr ? 'Dernières actualités' : 'Latest news'}</h2></div>
+            <Link href={`/${lang}/actualites`} className="home-text-link">{fr ? 'Toutes les actualités' : 'All news'} ↗</Link>
+          </div>
+          <div className="home-news-grid">
+            {latestNews.map(item => <article key={item.id} className="home-news-item">
+              {item.image && <Link href={`/${lang}/actualites/${item.slug}`} aria-label={item.title} className="home-news-media"><img src={item.image} alt={item.imageAlt || item.title} loading="lazy" className={/maggie-google|partenariat|logo/i.test(item.image) ? 'home-artwork' : ''} /></Link>}
+              <div className="home-news-body">
+                <time dateTime={item.publishedAt}>{new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(item.publishedAt))}</time>
+                <h3><Link href={`/${lang}/actualites/${item.slug}`}>{item.title}</Link></h3>
+                <p>{item.excerpt}</p>
+                <Link href={`/${lang}/actualites/${item.slug}`} className="home-text-link">{fr ? 'Lire l’actualité' : 'Read article'} ↗</Link>
               </div>
-              <h2 className="mt-2 font-luxe text-3xl">
-                {lang === 'fr' ? 'Dernières actualités' : 'Latest news'}
-              </h2>
-            </div>
-            <Link
-              href={`/${lang}/actualites`}
-              className="text-sm font-medium text-zinc-800 underline underline-offset-4"
-            >
-              {lang === 'fr' ? 'Voir toutes les actualités' : 'View all news'}
-            </Link>
+            </article>)}
           </div>
-
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {latestNews.map((item) => (
-              <article key={item.id} className="card-luxe overflow-hidden">
-                {item.image ? (
-                  <div className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'bg-zinc-100' : 'aspect-[16/10] bg-zinc-100'}>
-                    <img src={item.image} alt={item.title} className={(item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png') ? 'block h-auto w-full' : 'h-full w-full object-cover'} />
-                  </div>
-                ) : null}
-                <div className="p-6">
-                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A46C]">
-                    {item.source}
-                  </div>
-                  <h3 className="mt-3 font-luxe text-2xl text-zinc-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-700">
-                    {item.excerpt}
-                  </p>
-                  <div className="mt-4 text-xs text-zinc-500">{item.publishedAt}</div>
-                  <Link
-                    href={`/${lang}/actualites/${item.slug}`}
-                    className="mt-5 inline-flex rounded-full border border-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-900"
-                  >
-                    {lang === 'fr' ? 'Lire l’actualité' : 'Read article'}
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      ) : null}
+        </div>
+      </section>}
     </main>
   );
 }

@@ -21,6 +21,10 @@ export function Footer({ lang, t }) {
   return (
     <footer className="border-t border-zinc-200 bg-white">
       <div className="container py-10 text-sm text-zinc-700">
+        <div className="home-footer-contact">
+          <div><img src="/branding/logo-full.png" alt="Côte d’Azur Agency" width="190" height="110" /><p>Stephan Morawski<br />{lang === 'fr' ? 'Votre interlocutrice immobilière dans les Alpes-Maritimes.' : 'Your property advisor in the Alpes-Maritimes.'}</p></div>
+          <div><h2>{lang === 'fr' ? 'Parlons de votre projet.' : 'Let’s discuss your project.'}</h2><a href="mailto:stephan@cotedazuragency.com">stephan@cotedazuragency.com</a><a href="tel:+33670746549">+33 (0)6 70 74 65 49</a><Link href={`/${lang}/contact`}>{lang === 'fr' ? 'Prendre contact' : 'Get in touch'} ↗</Link></div>
+        </div>
         <div className="grid gap-8 md:grid-cols-[1fr_2fr] md:items-start">
           <div>
             <div className="font-medium text-zinc-900">Côte d’Azur Agency</div>
