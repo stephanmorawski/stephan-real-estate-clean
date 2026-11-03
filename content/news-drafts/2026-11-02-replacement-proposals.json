@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 3,
-  "workflowStatus": "preparing",
+  "workflowStatus": "prepared_waiting_send",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -80,11 +80,11 @@
     "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
     "existingNewsReviewed": 18,
     "seoOverlap": "No dedicated Croisette transformation article among 18 entries",
-    "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
+    "manualImageReview": "Cannes v3 sunrise/sunset aerial image visibly inspected in desktop/mobile, cards and FR/EN articles; credit present"
   },
   "publicationAuthorized": false,
-  "nextAction": "Run exact-v3-branch Playwright FR/EN desktop/mobile QA for photo size, decode, metadata, copyright and crop; validate Vercel Preview exact SHA, send v3 review pack to Stephan and verify Sent Items. Do not merge without v3 APPROUVER.",
-  "stateRevision": 14,
+  "nextAction": "Send Cannes v3 FR/EN preview and LinkedIn approval pack in original Stephan Outlook thread; verify Sent Items and then waiting_approval. No production permission.",
+  "stateRevision": 15,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -315,7 +315,7 @@
       "description": "Aerial Cannes waterfront/Palais des Festivals at sunset, showing Croisette; factual historical photograph, not future redevelopment rendering",
       "licenseCheckedAt": "2026-11-03",
       "assetStaged": true,
-      "visualPreviewQADone": false,
+      "visualPreviewQADone": true,
       "finalSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
       "finalDimensions": [
         1600,
@@ -354,8 +354,34 @@
     "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self"
   },
   "qaEvidenceV3": {
-    "result": "pending",
-    "checkedCommitSha": null,
-    "visualInspection": "pending exact-commit FR/EN mobile/desktop and crop before send"
+    "result": "success",
+    "workflowRunId": 41724324439,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41724324439",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41724324439/artifacts/13271714938",
+    "checkedCommitSha": "75af28381d99ce6a7cc3eac0720e07f7e4ce8228",
+    "previewContentSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "previewReady": true,
+    "assetSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
+    "verifiedFRandEN": true,
+    "desktopViewport": [
+      1440,
+      900
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "screenshotsInspected": 8,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "brokenImages": 0,
+    "creditShown": true,
+    "license": "CC BY 3.0",
+    "imageCaptionHistoricNotRendering": true,
+    "cardFrameWidth": 320,
+    "visualInspection": "FR/EN listing and article screenshots opened; Cannes aerial sunset photo fully visible with no disqualifying crop or letterboxing in standard card/article frames",
+    "contentDiffBetweenQaAndPreview": "Only temporary GitHub QA workflow change; article and image unchanged",
+    "publicationAuthorized": false
   }
 }
