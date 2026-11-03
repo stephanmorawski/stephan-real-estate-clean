@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": false,
   "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER from Stephan in the correlated v2 Outlook thread. Never merge or publish based on v1 or prior authorization.",
-  "stateRevision": 11,
+  "stateRevision": 12,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -274,5 +274,19 @@
     "qaResult": "success",
     "previewContentSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
     "publicationAuthorized": false
+  },
+  "previewAccessRemediation": {
+    "requestReceivedAt": "2026-11-03T20:04:20Z",
+    "request": "Stephan reported access failure for emailed Cannes v2 preview",
+    "response": "Regenerated Vercel protected deployment share link; verified FR/EN HTTP200 on same article/photo; replied in existing Outlook thread without any content changes",
+    "sentAt": "2026-11-03T20:23:47Z",
+    "sentFolderVerified": true,
+    "sentMessageIdSha256": "d2196145f1cabefc4bb70300227cdb1a41a82f6de9ea10e6a3de168e03b4e20c",
+    "qaRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082",
+    "oldDeploymentContentCommitSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "contentDiffBetweenOldPreviewAndCurrentHead": "Only editorial draft registry and preview-QA workflow; article JSON and image unchanged",
+    "shareTokenStored": false,
+    "publicationAuthorized": false,
+    "approvalStillRequired": true
   }
 }
