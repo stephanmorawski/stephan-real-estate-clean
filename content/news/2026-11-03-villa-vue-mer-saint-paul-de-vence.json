@@ -1,7 +1,7 @@
 {
   "slug": "2026-11-03-villa-vue-mer-saint-paul-de-vence",
   "status": "published",
-  "draftVersion": 1,
+  "draftVersion": 2,
   "source": "Côte d’Azur Agency",
   "publishedAt": "2026-11-03",
   "publicationAuthorized": false,
@@ -19,34 +19,55 @@
     "license": "Agency-confirmed permission for this website and agency social network posts; no transfer of copyright inferred"
   },
   "fr": {
-    "title": "À quelques minutes de Saint-Paul-de-Vence : villa contemporaine et vue mer panoramique",
-    "excerpt": "Cinq chambres, piscine à débordement, jacuzzi et vue sur la Méditerranée : découvrez cette propriété proposée au nouveau prix de 3 350 000 €.",
+    "title": "Une vue mer panoramique exceptionnelle à quelques minutes de Saint-Paul-de-Vence !",
+    "excerpt": "Découvrez cette élégante villa contemporaine offrant une vue spectaculaire sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes.",
     "imageAlt": "Piscine à débordement et terrasse avec panorama vers la Méditerranée dans une villa proche de Saint-Paul-de-Vence",
     "imageCaption": "Villa contemporaine avec vue mer panoramique, à proximité de Saint-Paul-de-Vence. © Côte d’Azur Agency.",
     "content": [
-      "À quelques minutes de Saint-Paul-de-Vence, cette villa contemporaine bénéficie, selon les informations transmises par Côte d’Azur Agency, d’une vue panoramique sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes. L’implantation de la maison permet de profiter d’un paysage ouvert tout en conservant l’accès aux villages et aux services de l’arrière-pays azuréen.",
-      "La propriété comprend cinq chambres, dont une suite parentale avec vue mer. Ses espaces de vie lumineux s’ouvrent vers l’extérieur. Un espace indépendant est également prévu pour accueillir les invités, offrant davantage de souplesse pour recevoir famille et proches.",
-      "À l’extérieur, une piscine à débordement et un jacuzzi prolongent les espaces de détente. Les jardins paysagers complètent cet ensemble contemporain, dans un environnement tourné vers le panorama et la vie en plein air.",
-      "Le nouveau prix demandé est de 3 350 000 €. Pour apprécier la propriété dans ses détails, les acquéreurs intéressés peuvent organiser une visite privée avec Côte d’Azur Agency et obtenir les informations techniques et commerciales du dossier.",
-      "Diagnostic de performance énergétique : C (163). Émissions de gaz à effet de serre : A (5). Dépenses annuelles d’énergie estimées entre 3 150 € et 4 310 € sur la base de l’année 2022, selon les éléments transmis. Honoraires à la charge du vendeur. Informations sur les risques disponibles sur www.georisques.gouv.fr."
+      "🌊 Une vue mer panoramique exceptionnelle à quelques minutes de Saint-Paul-de-Vence !",
+      "Découvrez cette élégante villa contemporaine offrant une vue spectaculaire sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes.",
+      "✨ Les atouts de cette propriété :",
+      "✔️ 5 chambres, dont une somptueuse suite parentale avec vue mer",
+      "✔️ Espaces de vie lumineux et prestations haut de gamme",
+      "✔️ Espace indépendant pour les invités",
+      "✔️ Piscine à débordement et jacuzzi face à la mer",
+      "✔️ Jardins paysagers et intimité absolue",
+      "💎 NOUVEAU PRIX : 3 350 000 €",
+      "Une propriété rare où luxe, tranquillité et panorama d’exception se rencontrent.",
+      "📩 Contactez-moi pour une visite privée.",
+      "DPE : C (163) | GES : A (5)",
+      "Énergie : 3 150 à 4 310 €/an (2022).",
+      "Honoraires à la charge du vendeur.",
+      "Risques : www.georisques.gouv.fr"
     ]
   },
   "en": {
-    "title": "Contemporary villa with panoramic sea views near Saint-Paul-de-Vence",
-    "excerpt": "Five bedrooms, an infinity pool, jacuzzi and Mediterranean views: discover this villa with a new asking price of €3,350,000.",
+    "title": "Exceptional panoramic sea views just minutes from Saint-Paul-de-Vence!",
+    "excerpt": "Discover this elegant contemporary villa offering breathtaking Mediterranean views, stretching from Saint-Jean-Cap-Ferrat to Cap d’Antibes.",
     "imageAlt": "Infinity pool and terrace overlooking the Mediterranean at a villa near Saint-Paul-de-Vence",
     "imageCaption": "Contemporary villa with panoramic sea views near Saint-Paul-de-Vence. © Côte d’Azur Agency.",
     "content": [
-      "Just minutes from Saint-Paul-de-Vence, this contemporary villa enjoys panoramic Mediterranean views which, according to the information provided by Côte d’Azur Agency, extend from Saint-Jean-Cap-Ferrat to Cap d’Antibes. Its setting offers an open outlook while keeping the villages and amenities of the Riviera hinterland within reach.",
-      "The property features five bedrooms, including a principal suite with sea views. Bright living spaces connect with the outdoors. Separate guest accommodation adds flexibility for welcoming family and friends while maintaining a degree of independence.",
-      "Outside, an infinity pool and jacuzzi offer places to relax and enjoy the coastal panorama. Landscaped gardens complement the modern property, creating a setting designed around outdoor living and the Mediterranean scenery.",
-      "The new asking price is €3,350,000. Prospective buyers can contact Côte d’Azur Agency to arrange a private viewing and request the full property information, including practical and technical details.",
-      "Energy performance rating: C (163). Greenhouse gas emissions: A (5). Estimated annual energy costs range from €3,150 to €4,310, using 2022 as the reference year, according to the information supplied. Agency fees are payable by the seller. Information on natural and technological risks is available at www.georisques.gouv.fr."
+      "🌊 Exceptional panoramic sea views just minutes from Saint-Paul-de-Vence!",
+      "Discover this elegant contemporary villa offering breathtaking Mediterranean views, stretching from Saint-Jean-Cap-Ferrat to Cap d’Antibes.",
+      "✨ Property highlights:",
+      "✔️ 5 bedrooms, including a stunning master suite with sea views",
+      "✔️ Bright living spaces and high-end finishes",
+      "✔️ Independent guest accommodation",
+      "✔️ Infinity pool and jacuzzi overlooking the sea",
+      "✔️ Landscaped gardens and complete privacy",
+      "💎 NEW PRICE: €3,350,000",
+      "A rare property where luxury, tranquillity and exceptional views come together.",
+      "📩 Contact me to arrange a private viewing.",
+      "Côte d’Azur Agency | Your French Riviera Real Estate Partner",
+      "Energy rating: C (163) | Greenhouse gas emissions: A (5).",
+      "Estimated annual energy costs: €3,150–€4,310 (2022 reference).",
+      "Agency fees payable by the seller.",
+      "Property-risk information: www.georisques.gouv.fr."
     ]
   },
   "social": {
-    "fr": "Une vue mer panoramique à quelques minutes de Saint-Paul-de-Vence. Villa contemporaine de cinq chambres, dont une suite parentale vue mer, espaces lumineux et hébergement indépendant pour les invités. Piscine à débordement, jacuzzi, jardins paysagers. Nouveau prix : 3 350 000 €. Contactez Côte d’Azur Agency pour une visite privée. DPE C (163), GES A (5). Honoraires vendeur. Risques : georisques.gouv.fr.",
-    "en": "Panoramic Mediterranean views just minutes from Saint-Paul-de-Vence. Contemporary five-bedroom villa with a sea-view principal suite, bright living areas and independent guest accommodation. Infinity pool, jacuzzi and landscaped gardens. New asking price: €3,350,000. Contact Côte d’Azur Agency to arrange a private viewing. Energy rating C (163), emissions A (5). Seller pays agency fees. Risks: georisques.gouv.fr."
+    "fr": "🌊 Une vue mer panoramique exceptionnelle à quelques minutes de Saint-Paul-de-Vence !\nDécouvrez cette élégante villa contemporaine offrant une vue spectaculaire sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes.\n✨ Les atouts de cette propriété :\n✔️ 5 chambres, dont une somptueuse suite parentale avec vue mer\n✔️ Espaces de vie lumineux et prestations haut de gamme\n✔️ Espace indépendant pour les invités\n✔️ Piscine à débordement et jacuzzi face à la mer\n✔️ Jardins paysagers et intimité absolue\n💎 NOUVEAU PRIX : 3 350 000 €\nUne propriété rare où luxe, tranquillité et panorama d’exception se rencontrent.\n📩 Contactez-moi pour une visite privée.\nDPE : C (163) | GES : A (5)\nÉnergie : 3 150 à 4 310 €/an (2022).\nHonoraires à la charge du vendeur.\nRisques : www.georisques.gouv.fr",
+    "en": "🌊 Exceptional panoramic sea views just minutes from Saint-Paul-de-Vence!\nDiscover this elegant contemporary villa offering breathtaking Mediterranean views, stretching from Saint-Jean-Cap-Ferrat to Cap d’Antibes.\n✨ Property highlights:\n✔️ 5 bedrooms, including a stunning master suite with sea views\n✔️ Bright living spaces and high-end finishes\n✔️ Independent guest accommodation\n✔️ Infinity pool and jacuzzi overlooking the sea\n✔️ Landscaped gardens and complete privacy\n💎 NEW PRICE: €3,350,000\nA rare property where luxury, tranquillity and exceptional views come together.\n📩 Contact me to arrange a private viewing.\nCôte d’Azur Agency | Your French Riviera Real Estate Partner\nEnergy rating: C (163) | Greenhouse gas emissions: A (5).\nEstimated annual energy costs: €3,150–€4,310 (2022 reference).\nAgency fees payable by the seller.\nProperty-risk information: www.georisques.gouv.fr."
   },
   "image": "/news/villa-saint-paul-01-piscine.jpg",
   "galleryImages": [
