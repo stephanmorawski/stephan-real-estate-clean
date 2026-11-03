@@ -2,7 +2,11 @@ name: CAA cannes v3 isolated FR/EN desktop/mobile preview QA
 on:
   push:
     branches: [content/caa-2026-11-02-croisette-v1]
-    paths: ['.github/workflows/caa-cannes-preview-qa-v2.yml']
+    paths:
+      - '.github/workflows/caa-cannes-preview-qa-v2.yml'
+      - 'content/news-drafts/2026-11-02-replacement-proposals.json'
+      - 'content/news/2026-11-02-cannes-croisette-transformation.json'
+      - 'public/news/2026-11-02-cannes-croisette.jpg'
 permissions:
   contents: read
 jobs:
