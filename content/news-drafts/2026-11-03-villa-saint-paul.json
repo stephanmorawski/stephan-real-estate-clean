@@ -10,10 +10,10 @@
     "requestSummarySha256": "70137a815d38dd79b93d64ea503e3c2bb75778344ff1981beaa80e2dfd9f5574",
     "suppliedImagesCount": 4,
     "attachmentSizesBytes": [
-      2635740,
-      2426038,
-      2140422,
-      1194351
+      2631936,
+      2422366,
+      2136618,
+      1190543
     ],
     "attachmentMimes": [
       "image/jpeg",
@@ -22,8 +22,9 @@
       "image/jpeg"
     ],
     "attachmentsMaterialized": true,
-    "physicalImageQA": "pending due to temporary isolated runtime unavailable",
-    "rights": "Photographs supplied by Stephan; confirmation of website/social commercial reuse and credits not established"
+    "physicalImageQA": "passed 2026-11-03; all four attachment payloads materialized and decoded, SHA256 and dimensions recorded; original filenames omitted",
+    "rights": "Photographs supplied by Stephan; confirmation of website/social commercial reuse and credits not established",
+    "materializedInCurrentRun": true
   },
   "subject": "Villa avec vue mer panoramique à proximité de Saint-Paul-de-Vence",
   "requestedPriceEUR": 3350000,
@@ -56,15 +57,78 @@
   "editorialControls": {
     "legalDisclosuresFromRequest": true,
     "listingClaimsNotIndependentlyVerified": true,
-    "seoDuplicateCheck": "not yet complete",
+    "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
     "visualCheck": "not yet complete",
     "sha256Images": "pending physical access",
-    "articleDraftPrepared": false,
+    "articleDraftPrepared": true,
     "imagePublished": false,
     "pullRequestPrepared": false,
     "previewPrepared": false,
-    "publicationAuthorized": false
+    "publicationAuthorized": false,
+    "physicalImageQADone": true,
+    "photoRightsIndependentConfirmation": "pending; direct publishing request and photographs were supplied by Stephan but photographer/agent reuse license is not independently documented",
+    "photoCredits": "not confirmed; original file names suggest M. Restifo but do not establish authorship"
   },
-  "nextAction": "Retrieve and decode the four photographs, record SHA256, dimensions and credit/rights, inspect image suitability and SEO overlap; prepare FR/EN article with standard gallery/layout if supported, dedicated PR and canonical Vercel Preview; send versioned approval pack to Stephan; never release before correlated APPROUVER.",
-  "publicationAuthorized": false
+  "nextAction": "Commit the four SHA-verified JPEGs through an authorized binary file uploader onto the villa branch; confirm photographer/agency commercial reuse and credit, implement standard FR/EN imagery without layout regression; create dedicated PR and versioned Vercel Preview; perform desktop/mobile visual QA before sending explicit APPROUVER pack. Do not release to main.",
+  "publicationAuthorized": false,
+  "stateRevision": 1,
+  "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
+  "photoQA": {
+    "checkedAt": "2026-11-03",
+    "captureChannel": "Outlook attachments",
+    "method": "Pillow format verification and full decode; resize to 1800 width, JPEG progressive; no object additions, removal or altered content",
+    "sources": [
+      {
+        "asset": "pool",
+        "sourceSha256": "5ccc7bc777fbc2f06bb52f5b7a43498b71774f2cd476c2584d04d5c1222e37bd",
+        "finalSha256": "cc3cfc492060e95548ed3f7096bd1ff250df476423973ce1441ab1f6b3121df9",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 447375,
+        "mime": "image/jpeg",
+        "decoded": true
+      },
+      {
+        "asset": "terrace",
+        "sourceSha256": "9fff2c9c42fdf1d8eb387aa570378d9edb50807e1fbd62eb1cf4834ec262a7eb",
+        "finalSha256": "e85e8ec74a3c992ff70a5d4e290320b2501587a9cd600de6ea27d47d361f254b",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 402873,
+        "mime": "image/jpeg",
+        "decoded": true
+      },
+      {
+        "asset": "lounge",
+        "sourceSha256": "2d0a005a8918df0c528b2365e7f4eac4c96eb2e49a6b52a3cfea0e90eb41dc31",
+        "finalSha256": "3640ca0f50a0f3f110d37c37d5284fca8b9f1aef21ca691840264eece9f6134f",
+        "dimensions": [
+          1800,
+          1199
+        ],
+        "finalBytes": 193024,
+        "mime": "image/jpeg",
+        "decoded": true
+      },
+      {
+        "asset": "suite",
+        "sourceSha256": "594e63f8a8d1f95456b9c5670e895abe7212dc12dec51a4b550c077bafa83c42",
+        "finalSha256": "1d273ef9650d5346630f9785fe635634f7d866fb3e1b330b31ccf58c5189d63a",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 184108,
+        "mime": "image/jpeg",
+        "decoded": true
+      }
+    ],
+    "gpsMetadataFound": false,
+    "readyToTransferToPrivateReviewStorage": true,
+    "storedInGithub": false
+  }
 }
