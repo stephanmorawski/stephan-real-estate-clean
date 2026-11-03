@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
-  "version": 2,
-  "workflowStatus": "revision_requested",
+  "version": 3,
+  "workflowStatus": "preparing",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,12 +83,12 @@
     "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
   },
   "publicationAuthorized": false,
-  "nextAction": "Stage verified 2024 sunset Cannes aerial on the existing PR branch, optimize with unchanged standard card dimensions, update credits and article image (image-only edit), QA FR/EN desktop/mobile exact commit and visual crop, send V3 approval pack to Stephan, verify Sent Items, wait APPROUVER. Never publish on MODIFIER or v2.",
-  "stateRevision": 13,
+  "nextAction": "Run exact-v3-branch Playwright FR/EN desktop/mobile QA for photo size, decode, metadata, copyright and crop; validate Vercel Preview exact SHA, send v3 review pack to Stephan and verify Sent Items. Do not merge without v3 APPROUVER.",
+  "stateRevision": 14,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
-  "articleVersion": 2,
+  "articleVersion": 3,
   "choiceReceivedAt": "2026-11-02T14:05:43Z",
   "choiceEvidence": {
     "source": "Outlook",
@@ -112,30 +112,31 @@
   },
   "imageCandidate": {
     "path": "public/news/2026-11-02-cannes-croisette.jpg",
-    "source": "Wikimedia Commons",
-    "copyrightStatus": "Public domain (PD-self)",
-    "author": "Gilbert Bochenek",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CannesCroisettePlage.JPG",
-    "originalTakenAt": "2006-10",
-    "originalMime": "image/jpeg",
+    "source": "Wikimedia Commons — photo by Joeys Journeys, drone footage still (2024-09-13)",
+    "copyrightStatus": "CC BY 3.0",
+    "author": "Joeys Journeys",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cannes_drone_shot_in_2024.png",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "originalTakenAt": "2024-09-13",
+    "originalMime": "image/png",
     "originalDimensions": [
-      1608,
-      1134
+      3840,
+      2160
     ],
-    "originalBytes": 600891,
-    "originalSha1": "be6a6d8dcde410c682ebfd1db2c124c5c053d663",
-    "integrityState": "verified",
-    "imageIsHistoricNotRender": true,
+    "originalBytes": 7384979,
+    "originalSha1": "489d2d54d489fedc5094f66f0a162f162ed6f087",
     "finalMime": "image/jpeg",
     "finalDimensions": [
       1600,
-      1128
+      900
     ],
-    "finalBytes": 392317,
-    "finalSha256": "df741849d34dd639ce1138d0a69cfbcd19517cb1be107345d252c36e7c9d4152",
+    "finalBytes": 322271,
+    "finalSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
     "decoded": true,
     "verifiedLicenseAt": "2026-11-03",
-    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self"
+    "imageIsHistoricNotRender": true,
+    "originalCompressedAndResized": true,
+    "stagedWorkflowRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41714176756"
   },
   "qaEvidence": {
     "workflowRunId": 41469436213,
@@ -313,9 +314,48 @@
       "sizeBytes": 7384979,
       "description": "Aerial Cannes waterfront/Palais des Festivals at sunset, showing Croisette; factual historical photograph, not future redevelopment rendering",
       "licenseCheckedAt": "2026-11-03",
-      "assetStaged": false,
-      "visualPreviewQADone": false
+      "assetStaged": true,
+      "visualPreviewQADone": false,
+      "finalSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
+      "finalDimensions": [
+        1600,
+        900
+      ],
+      "finalBytes": 322271,
+      "changedArticleText": false
     },
     "v3PackSent": false
+  },
+  "imageCandidateV2": {
+    "path": "public/news/2026-11-02-cannes-croisette.jpg",
+    "source": "Wikimedia Commons",
+    "copyrightStatus": "Public domain (PD-self)",
+    "author": "Gilbert Bochenek",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CannesCroisettePlage.JPG",
+    "originalTakenAt": "2006-10",
+    "originalMime": "image/jpeg",
+    "originalDimensions": [
+      1608,
+      1134
+    ],
+    "originalBytes": 600891,
+    "originalSha1": "be6a6d8dcde410c682ebfd1db2c124c5c053d663",
+    "integrityState": "verified",
+    "imageIsHistoricNotRender": true,
+    "finalMime": "image/jpeg",
+    "finalDimensions": [
+      1600,
+      1128
+    ],
+    "finalBytes": 392317,
+    "finalSha256": "df741849d34dd639ce1138d0a69cfbcd19517cb1be107345d252c36e7c9d4152",
+    "decoded": true,
+    "verifiedLicenseAt": "2026-11-03",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self"
+  },
+  "qaEvidenceV3": {
+    "result": "pending",
+    "checkedCommitSha": null,
+    "visualInspection": "pending exact-commit FR/EN mobile/desktop and crop before send"
   }
 }
