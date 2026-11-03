@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-03-villa-saint-paul",
   "version": 2,
-  "workflowStatus": "revision_requested",
+  "workflowStatus": "prepared_waiting_send",
   "sourceChannel": "outlook",
   "requestType": "direct_article_and_social_post_with_supplied_photographs",
   "requestedAt": "2026-11-03T08:45:49Z",
@@ -84,9 +84,9 @@
     "photoRightsBlockerResolved": true,
     "imageFilesStagedInGitHub": true
   },
-  "nextAction": "Verify exact-commit v2 FR/EN preview including four decoded licensed photographs, desktop/mobile, then reply to the same Outlook thread with v2 dossier asking APPROUVER / MODIFIER / REFUSER. No production approval.",
+  "nextAction": "Reply in Stephan Outlook thread with v2 approval pack; verify Sent Items before waiting_approval. No merge/production.",
   "publicationAuthorized": false,
-  "stateRevision": 6,
+  "stateRevision": 7,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -224,5 +224,30 @@
     "correlatedPackVersion": 1,
     "requestedBy": "Stephan",
     "status": "applied_to_branch_pending_qa"
+  },
+  "qaEvidenceV2": {
+    "workflowRunId": 41707624256,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707624256",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707624256/artifacts/13267750742",
+    "result": "success",
+    "sourceContentSha": "7f6668ef51f753e3ebcc8fe0e7da2afd2c3bba44",
+    "qaCommitSha": "3533625576854a513e8c05a566dd31d685061382",
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "browserRoutesChecked": 8,
+    "decodedImages": 4,
+    "verifiedFinalSHA256": true,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "previewSameRenderedFiles": true,
+    "publicationAuthorized": false
   }
 }
