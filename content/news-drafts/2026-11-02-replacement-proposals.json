@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
   },
   "publicationAuthorized": false,
-  "nextAction": "Send v2 approval pack in correlated Outlook thread, verify Sent Items before waiting_approval. DO NOT MERGE OR DEPLOY.",
-  "stateRevision": 10,
+  "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER from Stephan in the correlated v2 Outlook thread. Never merge or publish based on v1 or prior authorization.",
+  "stateRevision": 11,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -260,5 +260,19 @@
     "horizontalOverflow": 0,
     "qaWorkflowOnlyDiffFromPreview": true,
     "productionAuthorized": false
+  },
+  "approvalPackV2": {
+    "version": 2,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T20:00:20Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "199b5afb59811d568170f5d7d44a2b4d425c8637685843aeb26ee3cef6255ab5",
+    "correlatedMarkerSha256": "5f0b2c109ff84207d1634a2b11309dd6d3479ca1811acb0041fce1f99b0ac449",
+    "sourceRevision": "MODIFIER",
+    "qaRunId": 41707618082,
+    "qaResult": "success",
+    "previewContentSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "publicationAuthorized": false
   }
 }
