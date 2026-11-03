@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
-  "version": 1,
-  "workflowStatus": "revision_requested",
+  "version": 2,
+  "workflowStatus": "preparing",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -73,22 +73,22 @@
     "checkedPriorDraftsCount": 11,
     "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
     "draftsPrepared": true,
-    "imagesPrepared": true,
+    "imagesPrepared": false,
     "pullRequestPrepared": true,
     "previewPrepared": true,
     "sourceReverifiedAt": "2026-11-02",
     "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
     "existingNewsReviewed": 18,
     "seoOverlap": "No dedicated Croisette transformation article among 18 entries",
-    "manualImageReview": "FR/EN article and listing screenshots, 1440x900 and 390x844, inspected: photo aligns with standard card grid and article layout, no objectionable crop or letterboxing"
+    "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
   },
   "publicationAuthorized": false,
-  "nextAction": "Obtain written commercial reuse permission or rights-cleared licensed copy for the requested municipal architecture rendering; then replace image and update FR/EN image credits/captions on PR #52 branch, confirm SHA and visual QA, send version 2 pack for APPROUVER. Do not merge or publish.",
-  "stateRevision": 7,
+  "nextAction": "Materialize source-verified public-domain Cannes beach photo on PR #52; verify license, binary SHA256, visual FR/EN desktop/mobile, then email version 2 for explicit APPROUVER / MODIFIER / REFUSER. No publish.",
+  "stateRevision": 8,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
-  "articleVersion": 1,
+  "articleVersion": 2,
   "choiceReceivedAt": "2026-11-02T14:05:43Z",
   "choiceEvidence": {
     "source": "Outlook",
@@ -113,27 +113,26 @@
   "imageCandidate": {
     "path": "public/news/2026-11-02-cannes-croisette.jpg",
     "source": "Wikimedia Commons",
-    "copyrightStatus": "CC0 1.0",
-    "author": "Benoît Prieur",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Promenade_de_La_Croisette_aux_environs_du_Square_de_Verdun_(Cannes)_en_avril_2023.JPG",
-    "originalTakenAt": "2023-04-16",
+    "copyrightStatus": "Public domain (PD-self)",
+    "author": "Gilbert Bochenek",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CannesCroisettePlage.JPG",
+    "originalTakenAt": "2006-10",
     "originalMime": "image/jpeg",
     "originalDimensions": [
-      4032,
-      3024
+      1608,
+      1134
     ],
-    "originalBytes": 4544591,
-    "originalSha1": "1bdb1414ebbfa3144a8bf57a70ed351add6fc474",
-    "integrityState": "verified",
+    "originalBytes": 600891,
+    "originalSha1": "be6a6d8dcde410c682ebfd1db2c124c5c053d663",
+    "integrityState": "pending exact-source verification",
     "imageIsHistoricNotRender": true,
-    "finalMime": "image/jpeg",
-    "finalDimensions": [
-      1600,
-      1200
-    ],
-    "finalBytes": 620962,
-    "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
-    "decoded": true
+    "finalMime": null,
+    "finalDimensions": null,
+    "finalBytes": null,
+    "finalSha256": null,
+    "decoded": false,
+    "verifiedLicenseAt": "2026-11-03",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self"
   },
   "qaEvidence": {
     "workflowRunId": 41469436213,
@@ -215,5 +214,18 @@
     "rightsClarificationSentVia": "outlook_reply_to_image_request",
     "rightsClarificationVerifiedInSentItems": true,
     "humanResponsePending": "Written reuse permission or licensed asset from Stephan"
+  },
+  "editorialRevisionRequest": {
+    "receivedAt": "2026-11-03T19:34:51Z",
+    "messageIdSha256": "c95956625af522a189bcfb7f67d1109635db0e973b604549356d52ce61cf9563",
+    "instruction": "Choose an inspiring Cannes photograph with demonstrably unrestricted commercial reproduction; no municipal rendering; resubmit changed image for review.",
+    "correlatedArticleVersion": 1,
+    "requestedBy": "Stephan",
+    "status": "in_progress"
+  },
+  "previousImageCandidate": {
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Promenade_de_La_Croisette_aux_environs_du_Square_de_Verdun_(Cannes)_en_avril_2023.JPG",
+    "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
+    "license": "CC0 1.0"
   }
 }
