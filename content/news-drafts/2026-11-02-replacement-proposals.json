@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 2,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "revision_requested",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
   },
   "publicationAuthorized": false,
-  "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER from Stephan in the correlated v2 Outlook thread. Never merge or publish based on v1 or prior authorization.",
-  "stateRevision": 12,
+  "nextAction": "Stage verified 2024 sunset Cannes aerial on the existing PR branch, optimize with unchanged standard card dimensions, update credits and article image (image-only edit), QA FR/EN desktop/mobile exact commit and visual crop, send V3 approval pack to Stephan, verify Sent Items, wait APPROUVER. Never publish on MODIFIER or v2.",
+  "stateRevision": 13,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -288,5 +288,34 @@
     "shareTokenStored": false,
     "publicationAuthorized": false,
     "approvalStillRequired": true
+  },
+  "editorialRevisionRequestV3": {
+    "receivedAt": "2026-11-03T20:25:02Z",
+    "responseIdHash": "08eea58a2b5ce723dc75c160efc09ae268c51adf56ad121fa2886ebc1460d735",
+    "channel": "Outlook",
+    "correlatedPackVersion": 2,
+    "requestedChange": "MODIFIER: mettre une photographie de Cannes plus inspirante",
+    "interpretation": "Change image and associated truthful credit only; preserve FR/EN article and standard news dimensions",
+    "pendingVersion": 3,
+    "approvedForPublication": false,
+    "visualSourceCandidate": {
+      "url": "https://commons.wikimedia.org/wiki/File:Cannes_drone_shot_in_2024.png",
+      "author": "Joeys Journeys",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "date": "2024-09-13",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "mime": "image/png",
+      "sourceSha1": "489d2d54d489fedc5094f66f0a162f162ed6f087",
+      "sizeBytes": 7384979,
+      "description": "Aerial Cannes waterfront/Palais des Festivals at sunset, showing Croisette; factual historical photograph, not future redevelopment rendering",
+      "licenseCheckedAt": "2026-11-03",
+      "assetStaged": false,
+      "visualPreviewQADone": false
+    },
+    "v3PackSent": false
   }
 }
