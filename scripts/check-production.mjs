@@ -302,9 +302,11 @@ for (const [device, viewport] of Object.entries({
   desktop: { width: 1440, height: 900 },
   mobile: { width: 390, height: 844 },
 })) {
-  for (const pagePath of browserPages) {
-    // A fresh browser per page bounds memory use for full-page screenshots.
-    const browser = await chromium.launch(launchOptions);
+  // One Chromium per viewport, independent contexts for each page.
+  const browser = await chromium.launch(launchOptions);
+  try {
+    for (const pagePath of browserPages) {
+    const pageStartedAt = Date.now();
     const context = await browser.newContext({ viewport, deviceScaleFactor: 1 });
     const page = await context.newPage();
     const label = `${safe(pagePath)}_${device}`;
@@ -327,14 +329,15 @@ for (const [device, viewport] of Object.entries({
 
     try {
       const response = await page.goto(`${base}${pagePath}`, {
-        waitUntil: 'networkidle',
-        timeout: 60_000,
+        waitUntil: 'domcontentloaded',
+        timeout: 30_000,
       });
 
       if (!response || response.status() >= 400) {
         failures.push(`${label}: HTTP ${response?.status()}`);
       }
 
+      await page.waitForLoadState('load', { timeout: 15_000 }).catch(() => {});
       await page.evaluate(async () => {
         const step = Math.max(300, Math.floor(innerHeight * 0.75));
         for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
@@ -342,9 +345,10 @@ for (const [device, viewport] of Object.entries({
           await new Promise((resolve) => setTimeout(resolve, 25));
         }
         scrollTo(0, 0);
-        await Promise.all(
-          [...document.images].map((image) => image.decode?.().catch(() => null))
-        );
+        await Promise.race([
+          Promise.all([...document.images].map((image) => image.decode?.().catch(() => null))),
+          new Promise((resolve) => setTimeout(resolve, 12_000)),
+        ]);
       });
 
       const evaluated = await page.evaluate(() => {
@@ -443,13 +447,21 @@ for (const [device, viewport] of Object.entries({
       await page.screenshot({
         path: path.join(dir, `${label}.png`),
         fullPage: true,
+        timeout: 25_000,
       });
     } catch (error) {
       failures.push(`${label}: ${error.message}`);
     } finally {
+      evidence.lastCompletedPage = {
+        device, path: pagePath, durationMs: Date.now() - pageStartedAt,
+        at: new Date().toISOString(),
+      };
+      fs.writeFileSync(path.join(dir, 'report.json'), JSON.stringify({ ...evidence, failures }, null, 2));
       await context.close();
-      await browser.close();
     }
+  }
+  } finally {
+    await browser.close();
   }
 }
 
