@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 2,
-  "workflowStatus": "preparing",
+  "workflowStatus": "prepared_waiting_send",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "Pending v2 replacement image and new FR/EN screenshots"
   },
   "publicationAuthorized": false,
-  "nextAction": "Run exact-commit PR #52 browser visual QA FR/EN desktop/mobile and send v2 pack for APPROUVER / MODIFIER / REFUSER. No publication authorization.",
-  "stateRevision": 9,
+  "nextAction": "Send v2 approval pack in correlated Outlook thread, verify Sent Items before waiting_approval. DO NOT MERGE OR DEPLOY.",
+  "stateRevision": 10,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -230,5 +230,35 @@
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Promenade_de_La_Croisette_aux_environs_du_Square_de_Verdun_(Cannes)_en_avril_2023.JPG",
     "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
     "license": "CC0 1.0"
+  },
+  "qaEvidenceV2": {
+    "workflowRunId": 41707618082,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082/artifacts/13266520733",
+    "result": "success",
+    "sourceContentSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "checkedQaCommitSha": "239cd2544b7ec1d6f93771cca87d7dcddba3fcea",
+    "browserRoutesChecked": [
+      "/fr/actualites",
+      "/en/actualites",
+      "/fr/actualites/2026-11-02-cannes-croisette-transformation",
+      "/en/actualites/2026-11-02-cannes-croisette-transformation"
+    ],
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "imagesLoaded": true,
+    "imageSha256Verified": true,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "qaWorkflowOnlyDiffFromPreview": true,
+    "productionAuthorized": false
   }
 }
