@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 3,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "Cannes v3 sunrise/sunset aerial image visibly inspected in desktop/mobile, cards and FR/EN articles; credit present"
   },
   "publicationAuthorized": false,
-  "nextAction": "Send Cannes v3 FR/EN preview and LinkedIn approval pack in original Stephan Outlook thread; verify Sent Items and then waiting_approval. No production permission.",
-  "stateRevision": 15,
+  "nextAction": "Wait for explicit APPROUVER, MODIFIER or REFUSER from Stephan correlated with Cannes v3 sent 2026-11-03T21:57:57Z. Do not publish on earlier choices or revisions.",
+  "stateRevision": 16,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -324,7 +324,7 @@
       "finalBytes": 322271,
       "changedArticleText": false
     },
-    "v3PackSent": false
+    "v3PackSent": true
   },
   "imageCandidateV2": {
     "path": "public/news/2026-11-02-cannes-croisette.jpg",
@@ -382,6 +382,23 @@
     "cardFrameWidth": 320,
     "visualInspection": "FR/EN listing and article screenshots opened; Cannes aerial sunset photo fully visible with no disqualifying crop or letterboxing in standard card/article frames",
     "contentDiffBetweenQaAndPreview": "Only temporary GitHub QA workflow change; article and image unchanged",
+    "publicationAuthorized": false
+  },
+  "approvalPackV3": {
+    "version": 3,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T21:57:57Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "64ebb7ca8b6db7553c27cd22c90134f1579a1e2618442d323044bb11493d8d11",
+    "sentBodySha256": "9dce062b1385d7b63152b9205a44df87ee8c83013323ca767d269a044f516f6b",
+    "correlatedRevisionReceivedAt": "2026-11-03T20:25:02Z",
+    "qaRunId": 41724324439,
+    "qaResult": "success",
+    "qaCommitSha": "75af28381d99ce6a7cc3eac0720e07f7e4ce8228",
+    "previewContentSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "shareLinkExpires": "2026-11-04T20:54:05Z",
     "publicationAuthorized": false
   }
 }
