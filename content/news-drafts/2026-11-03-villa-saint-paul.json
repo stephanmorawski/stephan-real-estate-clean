@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-03-villa-saint-paul",
   "version": 2,
-  "workflowStatus": "approval_received",
+  "workflowStatus": "published",
   "sourceChannel": "outlook",
   "requestType": "direct_article_and_social_post_with_supplied_photographs",
   "requestedAt": "2026-11-03T08:45:49Z",
@@ -71,10 +71,10 @@
     "legalDisclosuresFromRequest": true,
     "listingClaimsNotIndependentlyVerified": true,
     "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
-    "visualCheck": "v1 only; v2 must be checked on its exact content commit before submitting to Stephan.",
+    "visualCheck": "Villa v2 manually reviewed on FR/EN desktop/mobile preview screenshots; production FR/EN pages, content, credits, 4 photo references and current SHA checked; global production browser QA passed 2026-11-03T22:16:20Z.",
     "sha256Images": "Four optimized JPEG files uploaded as verified Git blobs to dedicated review branch; SHA256 recorded in photoQA.sources, original source hashes unchanged",
     "articleDraftPrepared": true,
-    "imagePublished": false,
+    "imagePublished": true,
     "pullRequestPrepared": true,
     "previewPrepared": true,
     "publicationAuthorized": false,
@@ -84,9 +84,9 @@
     "photoRightsBlockerResolved": true,
     "imageFilesStagedInGitHub": true
   },
-  "nextAction": "Clean temporary QA workflow from PR #53, merge approved v2 with CAS head SHA, confirm canonical production deployment SHA, verify all FR/EN content, images and responsive QA, then confirm to Stephan only after QA pass.",
+  "nextAction": "Terminal: published. No replay; continue only new explicitly versioned editorial requests.",
   "publicationAuthorized": true,
-  "stateRevision": 9,
+  "stateRevision": 10,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -273,5 +273,41 @@
     "correlatedSentMessageIdSha256": "2bb22ec9ac68348f07d7b744115b840878823acf1e94dd6b77b542859c558f33",
     "correlatedPackMarkerSha256": "24022fc9f6c3e2378ec7577929a156cd65a8e9912d8c275efe5fdce18fd7ec0a",
     "confirmedExactLatestVersion": true
+  },
+  "publicationEvidence": {
+    "editorialApproval": {
+      "version": 2,
+      "replyReceivedAt": "2026-11-03T20:05:04Z",
+      "approvalMessageIdSha256": "115a8f29979c59c79795777d114cba37b8e70ecf2d858dffa670d5a0825b3332",
+      "correlatedPackSentAt": "2026-11-03T20:01:39Z"
+    },
+    "mergedPR": 53,
+    "releaseCommitSha": "ff3725ff56b8ef61a3b45a1fd787d26baa1ca013",
+    "canonicalProjectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
+    "qaVerifiedProductionCommit": "d50e54237a7f3940532015e8be0bd65d698fd3a0",
+    "liveCommitEndpoint": "https://www.cotedazuragency.com/api/version",
+    "publishedURLs": {
+      "fr": "https://www.cotedazuragency.com/fr/actualites/2026-11-03-villa-vue-mer-saint-paul-de-vence",
+      "en": "https://www.cotedazuragency.com/en/actualites/2026-11-03-villa-vue-mer-saint-paul-de-vence"
+    },
+    "postProductionQA": {
+      "runId": 41728964009,
+      "result": "success",
+      "verifiedAt": "2026-11-03T22:16:20Z",
+      "checkedArticleRoutes": 36,
+      "checkedBrowserPages": 24,
+      "failedChecks": 0,
+      "reportSHA256": "f6ad67cd85b7e65c8a7043a23e0eb7423b0c796e3fe1f7a3381e4b665eb8931a",
+      "artifactId": 13276240342,
+      "visualEvidence": "FR/EN article desktop/mobile screenshot checked from v2 preview artifact 13267750742; production listing desktop/mobile screenshot checked from production QA artifact 13276240342; card hero photo decoded and correct size; no novel crop issue visible"
+    },
+    "finalConfirmation": {
+      "channel": "Outlook",
+      "inReplyTo": "approved version 2 in existing villa conversation",
+      "sentAt": "2026-11-03T22:25:53Z",
+      "verifiedInSentItems": true,
+      "sentMessageIdSha256": "9d4b10ec5382f72204c6d812d7dbb38aa95b5afd96859203912e912c4dacd7f2",
+      "frEnLinksAndLinkedInTextsIncluded": true
+    }
   }
 }
