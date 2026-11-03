@@ -71,8 +71,8 @@
     "legalDisclosuresFromRequest": true,
     "listingClaimsNotIndependentlyVerified": true,
     "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
-    "visualCheck": "not yet complete",
-    "sha256Images": "Four optimized image SHA256 hashes validated against QA archive; binary objects not yet transferred to GitHub",
+    "visualCheck": "pending Vercel Preview and visual desktop/mobile inspection",
+    "sha256Images": "Four optimized JPEG files uploaded as verified Git blobs to dedicated review branch; SHA256 recorded in photoQA.sources, original source hashes unchanged",
     "articleDraftPrepared": true,
     "imagePublished": false,
     "pullRequestPrepared": false,
@@ -81,69 +81,108 @@
     "physicalImageQADone": true,
     "photoRightsIndependentConfirmation": "Stephan explicitly confirmed agency credit and website/social reuse in Outlook reply; no independent chain-of-title audit.",
     "photoCredits": "© Côte d’Azur Agency",
-    "photoRightsBlockerResolved": true
+    "photoRightsBlockerResolved": true,
+    "imageFilesStagedInGitHub": true
   },
-  "nextAction": "With photo rights now explicitly confirmed, transfer four previously QA-verified optimized JPEG binaries to dedicated review branch (no edits on main), verify matching SHA256 on uploaded files, finish FR/EN article layout and PR/Preview QA, then send versioned pack for distinct APPROUVER / MODIFIER / REFUSER; do not publish on photo authorization alone.",
+  "nextAction": "Open one dedicated draft PR, build Preview of exact commit, verify FR/EN listing and article image gallery on mobile/desktop and metadata, then send a distinct versioned approval pack; no merge before explicit APPROUVER.",
   "publicationAuthorized": false,
-  "stateRevision": 3,
+  "stateRevision": 4,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
     "captureChannel": "Outlook attachments",
-    "method": "Pillow format verification and full decode; resize to 1800 width, JPEG progressive; no object additions, removal or altered content",
+    "method": "Pillow 12.3.0, verified source SHA256 per Outlook original; EXIF orientation normalized, 1800px-wide proportional resize, progressive optimized JPEG quality 85; full decode passed; new final SHA256 logged",
     "sources": [
       {
         "asset": "pool",
         "sourceSha256": "5ccc7bc777fbc2f06bb52f5b7a43498b71774f2cd476c2584d04d5c1222e37bd",
-        "finalSha256": "cc3cfc492060e95548ed3f7096bd1ff250df476423973ce1441ab1f6b3121df9",
+        "finalSha256": "d3630e3bdc5f96efd2a4066a7206ed559c42a90d292b62ff1ba75d02d9303508",
         "dimensions": [
           1800,
           1200
         ],
-        "finalBytes": 447375,
+        "finalBytes": 369292,
         "mime": "image/jpeg",
-        "decoded": true
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-01-piscine.jpg"
       },
       {
         "asset": "terrace",
         "sourceSha256": "9fff2c9c42fdf1d8eb387aa570378d9edb50807e1fbd62eb1cf4834ec262a7eb",
-        "finalSha256": "e85e8ec74a3c992ff70a5d4e290320b2501587a9cd600de6ea27d47d361f254b",
+        "finalSha256": "f61291bafbbf5c00cff9e68d76a37cfcc7b988a9bea33551faa1374258f923d9",
         "dimensions": [
           1800,
           1200
         ],
-        "finalBytes": 402873,
+        "finalBytes": 349563,
         "mime": "image/jpeg",
-        "decoded": true
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-02-terrasse-vue-mer.jpg"
       },
       {
         "asset": "lounge",
         "sourceSha256": "2d0a005a8918df0c528b2365e7f4eac4c96eb2e49a6b52a3cfea0e90eb41dc31",
-        "finalSha256": "3640ca0f50a0f3f110d37c37d5284fca8b9f1aef21ca691840264eece9f6134f",
+        "finalSha256": "54630512a61235a9a6511ebed234ee0251258d5313c3852ad790a04a8289eb0a",
         "dimensions": [
           1800,
           1199
         ],
-        "finalBytes": 193024,
+        "finalBytes": 175517,
         "mime": "image/jpeg",
-        "decoded": true
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-03-salon.jpg"
       },
       {
         "asset": "suite",
         "sourceSha256": "594e63f8a8d1f95456b9c5670e895abe7212dc12dec51a4b550c077bafa83c42",
-        "finalSha256": "1d273ef9650d5346630f9785fe635634f7d866fb3e1b330b31ccf58c5189d63a",
+        "finalSha256": "023bb2b78c8ffa6280afa6067c5eee7ec2684af8fb70c7db45e35e045c280d21",
         "dimensions": [
           1800,
           1200
         ],
-        "finalBytes": 184108,
+        "finalBytes": 167875,
         "mime": "image/jpeg",
-        "decoded": true
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-04-suite.jpg"
       }
     ],
     "gpsMetadataFound": false,
-    "readyToTransferToPrivateReviewStorage": true,
-    "storedInGithub": false
+    "readyToTransferToPrivateReviewStorage": false,
+    "storedInGithub": true
   },
-  "checkedAt": "2026-11-03T14:40:00Z"
+  "checkedAt": "2026-11-03T15:08:03.119Z",
+  "assetTransport": {
+    "method": "Temporary restricted sandbox downloaded authorized Outlook attachments, verified original SHA256, optimized and transferred as immutable Git blobs; no signed URLs or secrets committed",
+    "branchOnly": true,
+    "files": [
+      {
+        "path": "public/news/villa-saint-paul-01-piscine.jpg",
+        "gitBlobSha": "9b9b2d116e96f577cbdb743984047b4246c4d8ce",
+        "sha256": "d3630e3bdc5f96efd2a4066a7206ed559c42a90d292b62ff1ba75d02d9303508",
+        "bytes": 369292,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-02-terrasse-vue-mer.jpg",
+        "gitBlobSha": "a343dd93c27eb4d5ea58aba2bce987a3d384c88c",
+        "sha256": "f61291bafbbf5c00cff9e68d76a37cfcc7b988a9bea33551faa1374258f923d9",
+        "bytes": 349563,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-03-salon.jpg",
+        "gitBlobSha": "fbbc5551313d962ed205487325aafc14df291a04",
+        "sha256": "54630512a61235a9a6511ebed234ee0251258d5313c3852ad790a04a8289eb0a",
+        "bytes": 175517,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-04-suite.jpg",
+        "gitBlobSha": "9807d8b1c99ec3ce497eef8145e32cda6b2bb7c8",
+        "sha256": "023bb2b78c8ffa6280afa6067c5eee7ec2684af8fb70c7db45e35e045c280d21",
+        "bytes": 167875,
+        "mime": "image/jpeg"
+      }
+    ]
+  }
 }

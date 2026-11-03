@@ -116,6 +116,19 @@ export default async function NewsDetailPage({ params }) {
           </div>
         ) : null}
 
+        {article.galleryImages?.length ? (
+          <div className="mt-5">
+            <div className="grid gap-4 sm:grid-cols-3">
+              {article.galleryImages.map((photo) => (
+                <figure key={photo.src} className="overflow-hidden rounded-2xl bg-zinc-100">
+                  <img src={photo.src} alt={photo.alt || article.title} loading="lazy" className="aspect-[3/2] h-auto w-full object-cover" />
+                </figure>
+              ))}
+            </div>
+            <p className="mt-2 text-sm text-zinc-500">© Côte d’Azur Agency</p>
+          </div>
+        ) : null}
+
         <div className="mt-10 space-y-6 text-lg leading-relaxed text-zinc-700">
           {article.content.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>

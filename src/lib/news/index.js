@@ -14,6 +14,12 @@ function normalizePost({ slug, entry }, lang = 'fr') {
     imageCaption: localized.imageCaption || '',
     imageCredit: entry.imageCredit || null,
     imageLayout: entry.imageLayout || 'cover',
+    galleryImages: Array.isArray(entry.galleryImages)
+      ? entry.galleryImages.filter((photo) => photo && typeof photo.src === 'string' && photo.src.startsWith('/news/')).map((photo) => ({
+          src: photo.src,
+          alt: typeof photo.alt === 'string' ? photo.alt : photo.alt?.[lang] || photo.alt?.fr || ''
+        }))
+      : [],
     sources: Array.isArray(entry.sources)
       ? entry.sources
           .filter((item) => item && typeof item.url === 'string' && /^https:\/\//i.test(item.url))

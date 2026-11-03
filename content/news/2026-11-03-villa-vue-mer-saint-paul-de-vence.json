@@ -1,9 +1,9 @@
 {
   "slug": "2026-11-03-villa-vue-mer-saint-paul-de-vence",
-  "status": "draft",
+  "status": "published",
   "draftVersion": 1,
   "source": "Côte d’Azur Agency — brief immobilier transmis le 3 novembre 2026",
-  "publishedAt": "",
+  "publishedAt": "2026-11-03",
   "publicationAuthorized": false,
   "imageLayout": "cover",
   "imagePlan": {
@@ -14,7 +14,7 @@
       "villa-saint-paul-04-suite.jpg"
     ],
     "rightsStatus": "confirmed by Stephan in Outlook 2026-11-03T14:33:25Z",
-    "assetStatus": "locally validated; not yet committed to repo",
+    "assetStatus": "staged in dedicated GitHub review branch; not live",
     "credit": "© Côte d’Azur Agency",
     "license": "Agency-confirmed permission for this website and agency social network posts; no transfer of copyright inferred"
   },
@@ -47,5 +47,30 @@
   "social": {
     "fr": "Une vue mer panoramique à quelques minutes de Saint-Paul-de-Vence. Villa contemporaine de cinq chambres, dont une suite parentale vue mer, espaces lumineux et hébergement indépendant pour les invités. Piscine à débordement, jacuzzi, jardins paysagers. Nouveau prix : 3 350 000 €. Contactez Côte d’Azur Agency pour une visite privée. DPE C (163), GES A (5). Honoraires vendeur. Risques : georisques.gouv.fr.",
     "en": "Panoramic Mediterranean views just minutes from Saint-Paul-de-Vence. Contemporary five-bedroom villa with a sea-view principal suite, bright living areas and independent guest accommodation. Infinity pool, jacuzzi and landscaped gardens. New asking price: €3,350,000. Contact Côte d’Azur Agency to arrange a private viewing. Energy rating C (163), emissions A (5). Seller pays agency fees. Risks: georisques.gouv.fr."
-  }
+  },
+  "image": "/news/villa-saint-paul-01-piscine.jpg",
+  "galleryImages": [
+    {
+      "src": "/news/villa-saint-paul-02-terrasse-vue-mer.jpg",
+      "alt": {
+        "fr": "Terrasse de la villa et panorama sur la Méditerranée",
+        "en": "Villa terrace with panoramic Mediterranean views"
+      }
+    },
+    {
+      "src": "/news/villa-saint-paul-03-salon.jpg",
+      "alt": {
+        "fr": "Salon lumineux de la villa contemporaine",
+        "en": "Light-filled living room of the contemporary villa"
+      }
+    },
+    {
+      "src": "/news/villa-saint-paul-04-suite.jpg",
+      "alt": {
+        "fr": "Suite parentale de la villa",
+        "en": "Principal suite in the villa"
+      }
+    }
+  ],
+  "previewOnly": true
 }
