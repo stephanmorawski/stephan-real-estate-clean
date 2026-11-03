@@ -23,7 +23,7 @@
     ],
     "attachmentsMaterialized": true,
     "physicalImageQA": "passed 2026-11-03; all four attachment payloads materialized and decoded, SHA256 and dimensions recorded; original filenames omitted",
-    "rights": "Photographs supplied by Stephan; confirmation of website/social commercial reuse and credits not established",
+    "rights": "Stephan explicitly confirmed on 2026-11-03T14:33:25Z authorized reproduction of supplied photographs for website and agency social networks; attribution: © Côte d’Azur Agency. This does not approve publication.",
     "materializedInCurrentRun": true,
     "photoRightsRequest": {
       "sentAt": "2026-11-03T13:38:15Z",
@@ -31,7 +31,12 @@
       "sentFolderVerified": true,
       "sentMessageIdSha256": "d251f7fcaa961723a1862fe601c5086e10075f1544d633a29755b48401bbdddd",
       "requested": "Photographer credit and agency rights for website/social reuse",
-      "replyStatus": "awaiting"
+      "replyStatus": "confirmed",
+      "replyReceivedAt": "2026-11-03T14:33:25Z",
+      "replyMessageIdSha256": "9ead8011a21569895ad7aa0f70d084207955f3e69a3bb4616376a0d8f321b3de",
+      "credit": "© Côte d’Azur Agency",
+      "permissionScope": "website and agency social network posts",
+      "approvalForPublication": false
     }
   },
   "subject": "Villa avec vue mer panoramique à proximité de Saint-Paul-de-Vence",
@@ -74,12 +79,13 @@
     "previewPrepared": false,
     "publicationAuthorized": false,
     "physicalImageQADone": true,
-    "photoRightsIndependentConfirmation": "explicit confirmation requested via Outlook reply 2026-11-03; pending",
-    "photoCredits": "not confirmed; original file names suggest M. Restifo but do not establish authorship"
+    "photoRightsIndependentConfirmation": "Stephan explicitly confirmed agency credit and website/social reuse in Outlook reply; no independent chain-of-title audit.",
+    "photoCredits": "© Côte d’Azur Agency",
+    "photoRightsBlockerResolved": true
   },
-  "nextAction": "Await Stephan reply confirming photo attribution and commercial reproduction rights. Separately unblock authorized JPEG binary upload to the dedicated villa branch, then prepare standard FR/EN layout, a dedicated draft PR, canonical Vercel Preview, and visual QA. Send approval pack only after all checks. No publication until a correlated APPROUVER.",
+  "nextAction": "With photo rights now explicitly confirmed, transfer four previously QA-verified optimized JPEG binaries to dedicated review branch (no edits on main), verify matching SHA256 on uploaded files, finish FR/EN article layout and PR/Preview QA, then send versioned pack for distinct APPROUVER / MODIFIER / REFUSER; do not publish on photo authorization alone.",
   "publicationAuthorized": false,
-  "stateRevision": 2,
+  "stateRevision": 3,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -139,5 +145,5 @@
     "readyToTransferToPrivateReviewStorage": true,
     "storedInGithub": false
   },
-  "checkedAt": "2026-11-03T13:40:00Z"
+  "checkedAt": "2026-11-03T14:40:00Z"
 }
