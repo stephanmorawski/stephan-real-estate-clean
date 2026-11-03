@@ -1,4 +1,4 @@
-name: CAA cannes v2 isolated FR/EN desktop/mobile preview QA
+name: CAA cannes v3 isolated FR/EN desktop/mobile preview QA
 on:
   push:
     branches: [content/caa-2026-11-02-croisette-v1]
@@ -25,19 +25,19 @@ jobs:
       - name: Build this exact review branch
         run: |
           npm run build
-          (npm start -- -p 3000 > /tmp/caa-preview-v2.log 2>&1 &)
+          (npm start -- -p 3000 > /tmp/caa-preview-v3.log 2>&1 &)
           for n in $(seq 1 45); do
             if curl -fsS http://127.0.0.1:3000/fr/actualites >/dev/null; then exit 0; fi
             sleep 2
           done
-          cat /tmp/caa-preview-v2.log
+          cat /tmp/caa-preview-v3.log
           exit 1
       - name: Validate rendered bilingual pages, actual image bytes and responsive layouts
         env:
           CAA_KIND: cannes
           CAA_SLUG: 2026-11-02-cannes-croisette-transformation
           CAA_REGISTRY: content/news-drafts/2026-11-02-replacement-proposals.json
-          CAA_CREDIT: "Gilbert Bochenek"
+          CAA_CREDIT: "Joeys Journeys"
         run: |
           node --input-type=module <<'JS'
           import {chromium} from 'playwright';
@@ -52,8 +52,8 @@ jobs:
             ? [{url:'/'+registry.imageCandidate.path.replace(/^public\//,''),hash:registry.imageCandidate.finalSha256}]
             : registry.photoQA.sources.map(x=>({url:x.assetPath,hash:x.finalSha256}));
           const failures=[]; const out={kind,commit:process.env.GITHUB_SHA,registryVersion:registry.version,assets:[],pages:[],failures};
-          const dir='artifacts/caa-'+kind+'-v2';fs.mkdirSync(dir,{recursive:true});
-          if(registry.version!==2||registry.publicationAuthorized||article.draftVersion!==2&&kind==='villa')failures.push('invalid version or publication authorization');
+          const dir='artifacts/caa-'+kind+'-v3';fs.mkdirSync(dir,{recursive:true});
+          if(registry.version!==3||registry.publicationAuthorized||article.draftVersion!==2&&kind==='villa')failures.push('invalid version or publication authorization');
           for(const item of urls){
             try {
               const res=await fetch(base+item.url);
@@ -109,7 +109,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: caa-cannes-preview-v2-evidence
-          path: artifacts/caa-cannes-v2/
+          name: caa-cannes-preview-v3-evidence
+          path: artifacts/caa-cannes-v3/
           retention-days: 14
           if-no-files-found: warn
