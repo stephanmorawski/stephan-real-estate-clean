@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-03-villa-saint-paul",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "sourceChannel": "outlook",
   "requestType": "direct_article_and_social_post_with_supplied_photographs",
   "requestedAt": "2026-11-03T08:45:49Z",
@@ -84,9 +84,9 @@
     "photoRightsBlockerResolved": true,
     "imageFilesStagedInGitHub": true
   },
-  "nextAction": "Reply in Stephan Outlook thread with v2 approval pack; verify Sent Items before waiting_approval. No merge/production.",
+  "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER from Stephan in the correlated v2 Outlook thread. Never merge or publish based on v1 or prior authorization.",
   "publicationAuthorized": false,
-  "stateRevision": 7,
+  "stateRevision": 8,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -248,6 +248,20 @@
     "jsErrors": 0,
     "horizontalOverflow": 0,
     "previewSameRenderedFiles": true,
+    "publicationAuthorized": false
+  },
+  "approvalPackV2": {
+    "version": 2,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T20:01:39Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "2bb22ec9ac68348f07d7b744115b840878823acf1e94dd6b77b542859c558f33",
+    "correlatedMarkerSha256": "24022fc9f6c3e2378ec7577929a156cd65a8e9912d8c275efe5fdce18fd7ec0a",
+    "sourceRevision": "MODIFIER",
+    "qaRunId": 41707624256,
+    "qaResult": "success",
+    "previewContentSha": "7f6668ef51f753e3ebcc8fe0e7da2afd2c3bba44",
     "publicationAuthorized": false
   }
 }
