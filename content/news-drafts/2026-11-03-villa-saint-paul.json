@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-03-villa-saint-paul",
-  "version": 1,
-  "workflowStatus": "waiting_approval",
+  "version": 2,
+  "workflowStatus": "revision_requested",
   "sourceChannel": "outlook",
   "requestType": "direct_article_and_social_post_with_supplied_photographs",
   "requestedAt": "2026-11-03T08:45:49Z",
@@ -60,8 +60,8 @@
     "sellerPaysFees": true
   },
   "postDraft": {
-    "fr": "Une vue mer panoramique à quelques minutes de Saint-Paul-de-Vence. Cette villa contemporaine offre un panorama sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes. Cinq chambres, dont une suite parentale avec vue mer, de lumineux espaces de vie, un espace invités indépendant, une piscine à débordement, un jacuzzi et des jardins paysagers. Nouveau prix : 3 350 000 €. Contactez Côte d’Azur Agency pour organiser une visite privée.",
-    "en": "Panoramic sea views just minutes from Saint-Paul-de-Vence. This contemporary villa overlooks the Mediterranean, from Saint-Jean-Cap-Ferrat to Cap d’Antibes. Five bedrooms, including a principal suite with sea views, bright living spaces, independent guest accommodation, an infinity pool, a jacuzzi and landscaped gardens. New price: €3,350,000. Contact Côte d’Azur Agency to arrange a private viewing."
+    "fr": "🌊 Une vue mer panoramique exceptionnelle à quelques minutes de Saint-Paul-de-Vence !\nDécouvrez cette élégante villa contemporaine offrant une vue spectaculaire sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes.\n✨ Les atouts de cette propriété :\n✔️ 5 chambres, dont une somptueuse suite parentale avec vue mer\n✔️ Espaces de vie lumineux et prestations haut de gamme\n✔️ Espace indépendant pour les invités\n✔️ Piscine à débordement et jacuzzi face à la mer\n✔️ Jardins paysagers et intimité absolue\n💎 NOUVEAU PRIX : 3 350 000 €\nUne propriété rare où luxe, tranquillité et panorama d’exception se rencontrent.\n📩 Contactez-moi pour une visite privée.\nDPE : C (163) | GES : A (5)\nÉnergie : 3 150 à 4 310 €/an (2022).\nHonoraires à la charge du vendeur.\nRisques : www.georisques.gouv.fr",
+    "en": "🌊 Exceptional panoramic sea views just minutes from Saint-Paul-de-Vence!\nDiscover this elegant contemporary villa offering breathtaking Mediterranean views, stretching from Saint-Jean-Cap-Ferrat to Cap d’Antibes.\n✨ Property highlights:\n✔️ 5 bedrooms, including a stunning master suite with sea views\n✔️ Bright living spaces and high-end finishes\n✔️ Independent guest accommodation\n✔️ Infinity pool and jacuzzi overlooking the sea\n✔️ Landscaped gardens and complete privacy\n💎 NEW PRICE: €3,350,000\nA rare property where luxury, tranquillity and exceptional views come together.\n📩 Contact me to arrange a private viewing.\nCôte d’Azur Agency | Your French Riviera Real Estate Partner\nEnergy rating: C (163) | Greenhouse gas emissions: A (5).\nEstimated annual energy costs: €3,150–€4,310 (2022 reference).\nAgency fees payable by the seller.\nProperty-risk information: www.georisques.gouv.fr."
   },
   "mandatoryDisclosure": {
     "fr": "DPE : C (163) | GES : A (5). Dépenses énergétiques estimées : 3 150–4 310 € par an (référence 2022). Honoraires à la charge du vendeur. Informations sur les risques : www.georisques.gouv.fr.",
@@ -71,7 +71,7 @@
     "legalDisclosuresFromRequest": true,
     "listingClaimsNotIndependentlyVerified": true,
     "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
-    "visualCheck": "PASSED on 2026-11-03: final v1 content SHA 35dc98a17938818d63c08e50f137e1fe6af3143b; FR/EN detail and listing, desktop/mobile, all four JPEGs decoded, credits, pricing, titles/meta, no horizontal overflow or console JS errors",
+    "visualCheck": "v1 only; v2 must be checked on its exact content commit before submitting to Stephan.",
     "sha256Images": "Four optimized JPEG files uploaded as verified Git blobs to dedicated review branch; SHA256 recorded in photoQA.sources, original source hashes unchanged",
     "articleDraftPrepared": true,
     "imagePublished": false,
@@ -84,9 +84,9 @@
     "photoRightsBlockerResolved": true,
     "imageFilesStagedInGitHub": true
   },
-  "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER on the last emailed villa version 1. Rights confirmation for the supplied photographs is not editorial publication approval. No merge/production before explicit matched APPROUVER.",
+  "nextAction": "Verify exact-commit v2 FR/EN preview including four decoded licensed photographs, desktop/mobile, then reply to the same Outlook thread with v2 dossier asking APPROUVER / MODIFIER / REFUSER. No production approval.",
   "publicationAuthorized": false,
-  "stateRevision": 5,
+  "stateRevision": 6,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -215,5 +215,14 @@
     ],
     "fourSuppliedImagesDecoded": true,
     "publicationAuthorized": false
+  },
+  "editorialRevisionRequest": {
+    "receivedAt": "2026-11-03T19:29:37Z",
+    "messageIdSha256": "6569cd7a8d689d2647d105e1766f7dd82173178d405d0b81f840d4d047223f6d",
+    "instruction": "MODIFIER — Mets le texte que j'avais mis",
+    "basis": "The FR original explicitly repeated by Stephan; EN original taken from his initial 2026-11-03 message",
+    "correlatedPackVersion": 1,
+    "requestedBy": "Stephan",
+    "status": "applied_to_branch_pending_qa"
   }
 }
