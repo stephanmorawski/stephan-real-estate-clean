@@ -1,0 +1,115 @@
+name: CAA villa v2 isolated FR/EN desktop/mobile preview QA
+on:
+  push:
+    branches: [content/caa-2026-11-03-villa-saint-paul-v1]
+    paths: ['.github/workflows/caa-villa-preview-qa-v2.yml']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies and Playwright
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build this exact review branch
+        run: |
+          npm run build
+          (npm start -- -p 3000 > /tmp/caa-preview-v2.log 2>&1 &)
+          for n in $(seq 1 45); do
+            if curl -fsS http://127.0.0.1:3000/fr/actualites >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/caa-preview-v2.log
+          exit 1
+      - name: Validate rendered bilingual pages, actual image bytes and responsive layouts
+        env:
+          CAA_KIND: villa
+          CAA_SLUG: 2026-11-03-villa-vue-mer-saint-paul-de-vence
+          CAA_REGISTRY: content/news-drafts/2026-11-03-villa-saint-paul.json
+          CAA_CREDIT: "Côte d’Azur Agency"
+        run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          const base='http://127.0.0.1:3000';
+          const kind=process.env.CAA_KIND;
+          const slug=process.env.CAA_SLUG;
+          const registry=JSON.parse(fs.readFileSync(process.env.CAA_REGISTRY,'utf8'));
+          const article=JSON.parse(fs.readFileSync('content/news/'+slug+'.json','utf8'));
+          const urls=kind==='cannes'
+            ? [{url:'/'+registry.imageCandidate.path.replace(/^public\//,''),hash:registry.imageCandidate.finalSha256}]
+            : registry.photoQA.sources.map(x=>({url:x.assetPath,hash:x.finalSha256}));
+          const failures=[]; const out={kind,commit:process.env.GITHUB_SHA,registryVersion:registry.version,assets:[],pages:[],failures};
+          const dir='artifacts/caa-'+kind+'-v2';fs.mkdirSync(dir,{recursive:true});
+          if(registry.version!==2||registry.publicationAuthorized||article.draftVersion!==2&&kind==='villa')failures.push('invalid version or publication authorization');
+          for(const item of urls){
+            try {
+              const res=await fetch(base+item.url);
+              const data=Buffer.from(await res.arrayBuffer());
+              const got=crypto.createHash('sha256').update(data).digest('hex');
+              out.assets.push({url:item.url,status:res.status,type:res.headers.get('content-type'),bytes:data.length,hash:got});
+              if(!item.hash||got!==item.hash||res.status!==200||!res.headers.get('content-type')?.startsWith('image/jpeg'))failures.push('image mismatch '+item.url);
+            }catch(e){failures.push('image error '+item.url+':'+e.message)}
+          }
+          const routes=['/fr/actualites','/en/actualites','/fr/actualites/'+slug,'/en/actualites/'+slug];
+          const browser=await chromium.launch({headless:true});
+          for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
+            for(const route of routes){
+              const page=await browser.newPage({viewport,deviceScaleFactor:1});
+              const errors=[],bad=[];
+              page.on('pageerror',e=>errors.push(e.message));
+              page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+              page.on('response',res=>{if(res.url().startsWith(base)&&res.status()>=400&&['document','image','script','stylesheet'].includes(res.request().resourceType()))bad.push(res.status()+' '+res.url())});
+              try{
+                const res=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
+                await page.waitForLoadState('load',{timeout:15000}).catch(()=>{});
+                await page.evaluate(async()=>{await Promise.race([Promise.all([...document.images].map(i=>i.decode?.().catch(()=>null))),new Promise(r=>setTimeout(r,12000))]);});
+                const data=await page.evaluate(({files,credit,kind})=>{
+                  const body=document.body.innerText;
+                  const target=[...document.images].filter(i=>files.some(f=>(i.getAttribute('src')||'').includes(f)));
+                  const cards=[...document.querySelectorAll('article.card-luxe')].map(card=>({w:card.querySelector('.grid > div:first-child')?.getBoundingClientRect().width,src:card.querySelector('img')?.getAttribute('src')||''}));
+                  return {h1:document.querySelector('h1')?.innerText,meta:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,overflow:document.documentElement.scrollWidth-innerWidth,photo:target.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,fit:getComputedStyle(i).objectFit})),creditShown:body.includes(credit),containsOriginalFR:body.includes('NOUVEAU PRIX : 3 350 000 €'),containsOriginalEN:body.includes('NEW PRICE: €3,350,000'),hasRisks:body.includes('georisques.gouv.fr'),hasCannesSource:document.body.innerHTML.includes('la-croisette-les-travaux'),cards};
+                },{files:urls.map(x=>x.url),credit:process.env.CAA_CREDIT,kind});
+                const key=route.replaceAll('/','_')+'_'+device;
+                await page.screenshot({path:dir+'/'+key+'.png',fullPage:true,timeout:25000});
+                out.pages.push({route,device,status:res?.status(),...data,jsErrors:errors,networkErrors:bad});
+                if(res?.status()!==200)failures.push(key+' HTTP '+res?.status());
+                if(data.overflow>3)failures.push(key+' overflow '+data.overflow);
+                if(!data.photo.length||data.photo.some(x=>!x.complete||!x.naturalWidth))failures.push(key+' image not decoded or missing');
+                if(!data.meta||!data.canonical)failures.push(key+' metadata missing');
+                if(device==='desktop'&&route.endsWith('/actualites')&&data.cards.some(x=>x.w&&Math.abs(x.w-320)>3))failures.push(key+' card width mismatch');
+                if(route.endsWith(slug)){
+                  if(!data.creditShown)failures.push(key+' image credit absent');
+                  if(kind==='villa'&&(!data.hasRisks||route.startsWith('/fr')&&!data.containsOriginalFR||route.startsWith('/en')&&!data.containsOriginalEN))failures.push(key+' original requested text missing');
+                  if(kind==='cannes'&&!data.hasCannesSource)failures.push(key+' official source missing');
+                }
+                if(errors.length||bad.length)failures.push(key+' runtime errors '+JSON.stringify({errors,bad}));
+              }catch(e){failures.push(route+' '+device+': '+e.message)}
+              finally{await page.close()}
+            }
+          }
+          await browser.close();
+          fs.writeFileSync(dir+'/report.json',JSON.stringify(out,null,2));
+          console.log(JSON.stringify({kind,sha:out.commit,assets:out.assets,pages:out.pages.map(p=>({route:p.route,device:p.device,status:p.status,photos:p.photo.length,overflow:p.overflow})),failures},null,2));
+          if(failures.length)process.exitCode=1;
+          JS
+      - name: Save report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: caa-villa-preview-v2-evidence
+          path: artifacts/caa-villa-v2/
+          retention-days: 14
+          if-no-files-found: warn
