@@ -38,7 +38,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           b=Path('public/news/2026-10-26-nice-airport-olivier-cleynen.jpg').read_bytes()
-          assert b[:2] == b'\\xff\\xd8' and b[-2:] == b'\\xff\\xd9', 'Invalid JPEG markers'
+          assert b[:2] == bytes.fromhex('ffd8') and b[-2:] == bytes.fromhex('ffd9'), 'Invalid JPEG markers'
           i=2
           size=None
           while i < len(b)-8:
