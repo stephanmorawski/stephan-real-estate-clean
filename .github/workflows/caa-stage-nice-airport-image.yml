@@ -1,0 +1,69 @@
+name: CAA stage verified Nice airport image on isolated branch
+on:
+  push:
+    branches: [fix/caa-nice-airport-image-local-20261103]
+    paths: ['.github/workflows/caa-stage-nice-airport-image.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: caa-stage-nice-airport-image-20261103
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact isolated branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/caa-nice-airport-image-local-20261103
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Download and verify the already-approved image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          target='public/news/2026-10-26-nice-airport-olivier-cleynen.jpg'
+          curl --fail --location --retry 3 --retry-all-errors --retry-delay 3 --connect-timeout 12 --max-time 110 \
+            --user-agent 'CoteDAzurAgencyEditorialAsset/1.0 (Wikimedia Commons attribution)' \
+            'https://upload.wikimedia.org/wikipedia/commons/3/3a/Aerial_view_of_Nice_airport_02.jpg' \
+            --output "$target"
+          test "$(file --brief --mime-type "$target")" = 'image/jpeg'
+          test "$(wc -c < "$target")" -eq 1139886
+          echo '0c6a26b48815a0c00057c2f8480bc98230f69fdaadaa88056544a1a5853a1e62  '"$target" | sha256sum --check --status
+          python3 - <<'PY'
+          from PIL import Image
+          im=Image.open('public/news/2026-10-26-nice-airport-olivier-cleynen.jpg')
+          im.load()
+          assert im.format == 'JPEG'
+          assert im.size == (3479,1936)
+          print('Decoded source image:', im.size)
+          PY
+      - name: Change only URL to identical self-hosted photograph
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const fs=require('node:fs');
+          const file='content/news/2026-10-26-nice-north-america-routes-2027.json';
+          const j=JSON.parse(fs.readFileSync(file,'utf8'));
+          const expected='https://upload.wikimedia.org/wikipedia/commons/3/3a/Aerial_view_of_Nice_airport_02.jpg';
+          if (j.status!=='published' || j.image!==expected || j.imageCredit?.author!=='Olivier Cleynen' || j.imageCredit?.license!=='CC BY-SA 4.0') throw Error('Unexpected editorial content; no change');
+          j.image='/news/2026-10-26-nice-airport-olivier-cleynen.jpg';
+          fs.writeFileSync(file,JSON.stringify(j,null,2)+'\n');
+          JS
+      - name: Remove temporary job; commit strictly on review branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -- .github/workflows/caa-stage-nice-airport-image.yml
+          git add public/news/2026-10-26-nice-airport-olivier-cleynen.jpg content/news/2026-10-26-nice-north-america-routes-2027.json
+          git diff --cached --check
+          git commit -m 'fix(news): serve identical verified CC BY-SA Nice airport photo locally'
+          git push origin HEAD:fix/caa-nice-airport-image-local-20261103
