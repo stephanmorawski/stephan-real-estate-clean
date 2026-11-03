@@ -1,0 +1,75 @@
+name: Stage public-domain Cannes photo for editorial v2
+on:
+  push:
+    branches:
+      - content/caa-2026-11-02-croisette-v1
+    paths:
+      - '.github/workflows/caa-stage-croisette-image-v2.yml'
+permissions:
+  contents: write
+concurrency:
+  group: caa-croisette-stage-image-v2
+  cancel-in-progress: false
+jobs:
+  materialize-public-domain-photo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout dedicated editorial branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/caa-2026-11-02-croisette-v1
+          fetch-depth: 0
+      - name: Download and verify public-domain Commons photograph
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/caa-cannes public/news
+          curl --fail --location --retry 1 --retry-delay 2 --connect-timeout 15 --max-time 150 \
+            --user-agent 'CoteDAzurAgencyEditorial/1.0 (https://www.cotedazuragency.com)' \
+            'https://upload.wikimedia.org/wikipedia/commons/d/d6/CannesCroisettePlage.JPG' \
+            --output /tmp/caa-cannes/original.jpg
+          echo 'be6a6d8dcde410c682ebfd1db2c124c5c053d663  /tmp/caa-cannes/original.jpg' | sha1sum --check --status
+          test "$(file --brief --mime-type /tmp/caa-cannes/original.jpg)" = image/jpeg
+          python3 -m pip install --disable-pip-version-check --quiet pillow
+          python3 - <<'PY'
+          from PIL import Image,ImageOps
+          import json,hashlib,pathlib
+          src=pathlib.Path('/tmp/caa-cannes/original.jpg')
+          dst=pathlib.Path('public/news/2026-11-02-cannes-croisette.jpg')
+          with Image.open(src) as im:
+              im.load()
+              if im.format!='JPEG' or im.size!=(1608,1134): raise ValueError('unverified source image')
+              converted=ImageOps.exif_transpose(im).convert('RGB')
+              converted.thumbnail((1600,1200),Image.Resampling.LANCZOS)
+              converted.save(dst,format='JPEG',quality=88,optimize=True,progressive=True)
+          with Image.open(dst) as ck:
+              ck.verify()
+          with Image.open(dst) as ck:
+              ck.load()
+              dims=ck.size
+          if dims != (1600,1128): raise ValueError(f'unexpected output dimensions {dims}')
+          binary=dst.read_bytes()
+          if not (60000<len(binary)<1600000): raise ValueError('invalid image byte count')
+          sha256=hashlib.sha256(binary).hexdigest()
+          p=pathlib.Path('content/news-drafts/2026-11-02-replacement-proposals.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          if data.get('cycleId')!='caa-2026-11-02-replacement' or data.get('version')!=2 or data.get('workflowStatus')!='preparing' or data.get('publicationAuthorized'):
+              raise ValueError('unexpected editorial cycle state')
+          data['imageCandidate'].update({'integrityState':'verified','finalMime':'image/jpeg','finalDimensions':list(dims),'finalBytes':len(binary),'finalSha256':sha256,'decoded':True})
+          data['editorialReview']['imagesPrepared']=True
+          data['stateRevision']=data.get('stateRevision',0)+1
+          data['nextAction']='Run exact-commit PR #52 browser visual QA FR/EN desktop/mobile and send v2 pack for APPROUVER / MODIFIER / REFUSER. No publication authorization.'
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps({'sha256':sha256,'size':len(binary),'dimensions':dims}))
+          PY
+      - name: Commit new validated JPEG and remove temporary staging workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm '.github/workflows/caa-stage-croisette-image-v2.yml'
+          git add public/news/2026-11-02-cannes-croisette.jpg content/news-drafts/2026-11-02-replacement-proposals.json
+          git commit -m 'assets(news): replace Croisette preview with verified public-domain Cannes beach photo'
+          git push origin HEAD:content/caa-2026-11-02-croisette-v1
