@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-03-villa-saint-paul",
   "version": 1,
-  "workflowStatus": "preparing",
+  "workflowStatus": "waiting_approval",
   "sourceChannel": "outlook",
   "requestType": "direct_article_and_social_post_with_supplied_photographs",
   "requestedAt": "2026-11-03T08:45:49Z",
@@ -71,12 +71,12 @@
     "legalDisclosuresFromRequest": true,
     "listingClaimsNotIndependentlyVerified": true,
     "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
-    "visualCheck": "pending Vercel Preview and visual desktop/mobile inspection",
+    "visualCheck": "PASSED on 2026-11-03: final v1 content SHA 35dc98a17938818d63c08e50f137e1fe6af3143b; FR/EN detail and listing, desktop/mobile, all four JPEGs decoded, credits, pricing, titles/meta, no horizontal overflow or console JS errors",
     "sha256Images": "Four optimized JPEG files uploaded as verified Git blobs to dedicated review branch; SHA256 recorded in photoQA.sources, original source hashes unchanged",
     "articleDraftPrepared": true,
     "imagePublished": false,
-    "pullRequestPrepared": false,
-    "previewPrepared": false,
+    "pullRequestPrepared": true,
+    "previewPrepared": true,
     "publicationAuthorized": false,
     "physicalImageQADone": true,
     "photoRightsIndependentConfirmation": "Stephan explicitly confirmed agency credit and website/social reuse in Outlook reply; no independent chain-of-title audit.",
@@ -84,9 +84,9 @@
     "photoRightsBlockerResolved": true,
     "imageFilesStagedInGitHub": true
   },
-  "nextAction": "Open one dedicated draft PR, build Preview of exact commit, verify FR/EN listing and article image gallery on mobile/desktop and metadata, then send a distinct versioned approval pack; no merge before explicit APPROUVER.",
+  "nextAction": "Await explicit APPROUVER, MODIFIER or REFUSER on the last emailed villa version 1. Rights confirmation for the supplied photographs is not editorial publication approval. No merge/production before explicit matched APPROUVER.",
   "publicationAuthorized": false,
-  "stateRevision": 4,
+  "stateRevision": 5,
   "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
   "photoQA": {
     "checkedAt": "2026-11-03",
@@ -184,5 +184,36 @@
         "mime": "image/jpeg"
       }
     ]
+  },
+  "approvalPack": {
+    "version": "v1",
+    "status": "waiting_approval",
+    "responseRequested": [
+      "APPROUVER",
+      "MODIFIER",
+      "REFUSER"
+    ],
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T15:39:24Z",
+    "sentFolderVerified": true,
+    "sentMessageIdSha256": "a2c64db7540170d6571a1cc5f11d95985737dd2a5bb5bf99f015107027cc6c27",
+    "sentBodySha256": "d4c57d83104af8f555cc70d3704fbc975b9dca96a5f0dab936654b44d243614f",
+    "pullRequestNumber": 53,
+    "previewDeploymentId": "dpl_A8JrY8m7jajmrcxmzw1TRNWJntXP",
+    "previewContentCommitSha": "35dc98a17938818d63c08e50f137e1fe6af3143b",
+    "previewStatus": "READY",
+    "qaReportSha256": "ab1957db11d533750413b56c4187e7098a3dc54354bef8a567ea24fc6b94a3e9",
+    "verifiedPages": [
+      "fr-article-desktop",
+      "fr-article-mobile",
+      "en-article-desktop",
+      "en-article-mobile",
+      "fr-list-desktop",
+      "fr-list-mobile",
+      "en-list-desktop",
+      "en-list-mobile"
+    ],
+    "fourSuppliedImagesDecoded": true,
+    "publicationAuthorized": false
   }
 }
