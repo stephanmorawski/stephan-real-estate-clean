@@ -349,6 +349,28 @@ for (const [device, viewport] of Object.entries({
           Promise.all([...document.images].map((image) => image.decode?.().catch(() => null))),
           new Promise((resolve) => setTimeout(resolve, 12_000)),
         ]);
+
+        // A rapid synthetic sweep can skip IntersectionObserver activation
+        // for lazy home-news images. Revisit any still-unloaded visible
+        // image exactly as a real reader would, without changing loading,
+        // ignoring failures, or weakening the broken-image assertions.
+        for (const image of [...document.images]) {
+          const rect = image.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0 ||
+              (image.complete && image.naturalWidth > 0)) continue;
+          image.scrollIntoView({ block: 'center', behavior: 'instant' });
+          await new Promise((resolve) => setTimeout(resolve, 250));
+          const deadline = Date.now() + 6000;
+          while (Date.now() < deadline && (!image.complete || image.naturalWidth === 0)) {
+            await new Promise((resolve) => setTimeout(resolve, 150));
+            if (image.complete && image.naturalWidth === 0) break;
+          }
+          await Promise.race([
+            image.decode?.().catch(() => null) || Promise.resolve(),
+            new Promise((resolve) => setTimeout(resolve, 4000)),
+          ]);
+        }
+        scrollTo(0, 0);
       });
 
       const evaluated = await page.evaluate(() => {
