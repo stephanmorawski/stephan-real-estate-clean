@@ -1,0 +1,277 @@
+{
+  "cycleId": "caa-2026-11-03-villa-saint-paul",
+  "version": 2,
+  "workflowStatus": "approval_received",
+  "sourceChannel": "outlook",
+  "requestType": "direct_article_and_social_post_with_supplied_photographs",
+  "requestedAt": "2026-11-03T08:45:49Z",
+  "evidence": {
+    "requestIdSha256": "bbde0f5d00bf5e76aefb10f7fa2aa3344a5b5798478a591597d3556b1731f368",
+    "requestSummarySha256": "70137a815d38dd79b93d64ea503e3c2bb75778344ff1981beaa80e2dfd9f5574",
+    "suppliedImagesCount": 4,
+    "attachmentSizesBytes": [
+      2631936,
+      2422366,
+      2136618,
+      1190543
+    ],
+    "attachmentMimes": [
+      "image/jpeg",
+      "image/jpeg",
+      "image/jpeg",
+      "image/jpeg"
+    ],
+    "attachmentsMaterialized": true,
+    "physicalImageQA": "passed 2026-11-03; all four attachment payloads materialized and decoded, SHA256 and dimensions recorded; original filenames omitted",
+    "rights": "Stephan explicitly confirmed on 2026-11-03T14:33:25Z authorized reproduction of supplied photographs for website and agency social networks; attribution: © Côte d’Azur Agency. This does not approve publication.",
+    "materializedInCurrentRun": true,
+    "photoRightsRequest": {
+      "sentAt": "2026-11-03T13:38:15Z",
+      "channel": "Outlook",
+      "sentFolderVerified": true,
+      "sentMessageIdSha256": "d251f7fcaa961723a1862fe601c5086e10075f1544d633a29755b48401bbdddd",
+      "requested": "Photographer credit and agency rights for website/social reuse",
+      "replyStatus": "confirmed",
+      "replyReceivedAt": "2026-11-03T14:33:25Z",
+      "replyMessageIdSha256": "9ead8011a21569895ad7aa0f70d084207955f3e69a3bb4616376a0d8f321b3de",
+      "credit": "© Côte d’Azur Agency",
+      "permissionScope": "website and agency social network posts",
+      "approvalForPublication": false
+    }
+  },
+  "subject": "Villa avec vue mer panoramique à proximité de Saint-Paul-de-Vence",
+  "requestedPriceEUR": 3350000,
+  "sourceFactsFromStephan": {
+    "bedrooms": 5,
+    "features": [
+      "suite parentale vue mer",
+      "espace indépendant invités",
+      "piscine à débordement",
+      "jacuzzi",
+      "jardins paysagers"
+    ],
+    "energyLabel": "C (163)",
+    "emissionsLabel": "A (5)",
+    "estimatedAnnualEnergyCostEUR": [
+      3150,
+      4310
+    ],
+    "energyEstimateReferenceYear": 2022,
+    "sellerPaysFees": true
+  },
+  "postDraft": {
+    "fr": "🌊 Une vue mer panoramique exceptionnelle à quelques minutes de Saint-Paul-de-Vence !\nDécouvrez cette élégante villa contemporaine offrant une vue spectaculaire sur la Méditerranée, de Saint-Jean-Cap-Ferrat au Cap d’Antibes.\n✨ Les atouts de cette propriété :\n✔️ 5 chambres, dont une somptueuse suite parentale avec vue mer\n✔️ Espaces de vie lumineux et prestations haut de gamme\n✔️ Espace indépendant pour les invités\n✔️ Piscine à débordement et jacuzzi face à la mer\n✔️ Jardins paysagers et intimité absolue\n💎 NOUVEAU PRIX : 3 350 000 €\nUne propriété rare où luxe, tranquillité et panorama d’exception se rencontrent.\n📩 Contactez-moi pour une visite privée.\nDPE : C (163) | GES : A (5)\nÉnergie : 3 150 à 4 310 €/an (2022).\nHonoraires à la charge du vendeur.\nRisques : www.georisques.gouv.fr",
+    "en": "🌊 Exceptional panoramic sea views just minutes from Saint-Paul-de-Vence!\nDiscover this elegant contemporary villa offering breathtaking Mediterranean views, stretching from Saint-Jean-Cap-Ferrat to Cap d’Antibes.\n✨ Property highlights:\n✔️ 5 bedrooms, including a stunning master suite with sea views\n✔️ Bright living spaces and high-end finishes\n✔️ Independent guest accommodation\n✔️ Infinity pool and jacuzzi overlooking the sea\n✔️ Landscaped gardens and complete privacy\n💎 NEW PRICE: €3,350,000\nA rare property where luxury, tranquillity and exceptional views come together.\n📩 Contact me to arrange a private viewing.\nCôte d’Azur Agency | Your French Riviera Real Estate Partner\nEnergy rating: C (163) | Greenhouse gas emissions: A (5).\nEstimated annual energy costs: €3,150–€4,310 (2022 reference).\nAgency fees payable by the seller.\nProperty-risk information: www.georisques.gouv.fr."
+  },
+  "mandatoryDisclosure": {
+    "fr": "DPE : C (163) | GES : A (5). Dépenses énergétiques estimées : 3 150–4 310 € par an (référence 2022). Honoraires à la charge du vendeur. Informations sur les risques : www.georisques.gouv.fr.",
+    "en": "Energy rating: C (163) | Greenhouse gas emissions: A (5). Estimated annual energy costs: €3,150–€4,310 (2022 reference). Agency fees payable by the seller. Property-risk information: www.georisques.gouv.fr."
+  },
+  "editorialControls": {
+    "legalDisclosuresFromRequest": true,
+    "listingClaimsNotIndependentlyVerified": true,
+    "seoDuplicateCheck": "18 existing published article files reviewed; Saint-Paul-de-Vence lifestyle article exists, but this property-specific new-price post is separate; avoid duplicating evergreen copy",
+    "visualCheck": "v1 only; v2 must be checked on its exact content commit before submitting to Stephan.",
+    "sha256Images": "Four optimized JPEG files uploaded as verified Git blobs to dedicated review branch; SHA256 recorded in photoQA.sources, original source hashes unchanged",
+    "articleDraftPrepared": true,
+    "imagePublished": false,
+    "pullRequestPrepared": true,
+    "previewPrepared": true,
+    "publicationAuthorized": false,
+    "physicalImageQADone": true,
+    "photoRightsIndependentConfirmation": "Stephan explicitly confirmed agency credit and website/social reuse in Outlook reply; no independent chain-of-title audit.",
+    "photoCredits": "© Côte d’Azur Agency",
+    "photoRightsBlockerResolved": true,
+    "imageFilesStagedInGitHub": true
+  },
+  "nextAction": "Clean temporary QA workflow from PR #53, merge approved v2 with CAS head SHA, confirm canonical production deployment SHA, verify all FR/EN content, images and responsive QA, then confirm to Stephan only after QA pass.",
+  "publicationAuthorized": true,
+  "stateRevision": 9,
+  "draftContentFile": "content/news/2026-11-03-villa-vue-mer-saint-paul-de-vence.json",
+  "photoQA": {
+    "checkedAt": "2026-11-03",
+    "captureChannel": "Outlook attachments",
+    "method": "Pillow 12.3.0, verified source SHA256 per Outlook original; EXIF orientation normalized, 1800px-wide proportional resize, progressive optimized JPEG quality 85; full decode passed; new final SHA256 logged",
+    "sources": [
+      {
+        "asset": "pool",
+        "sourceSha256": "5ccc7bc777fbc2f06bb52f5b7a43498b71774f2cd476c2584d04d5c1222e37bd",
+        "finalSha256": "d3630e3bdc5f96efd2a4066a7206ed559c42a90d292b62ff1ba75d02d9303508",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 369292,
+        "mime": "image/jpeg",
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-01-piscine.jpg"
+      },
+      {
+        "asset": "terrace",
+        "sourceSha256": "9fff2c9c42fdf1d8eb387aa570378d9edb50807e1fbd62eb1cf4834ec262a7eb",
+        "finalSha256": "f61291bafbbf5c00cff9e68d76a37cfcc7b988a9bea33551faa1374258f923d9",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 349563,
+        "mime": "image/jpeg",
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-02-terrasse-vue-mer.jpg"
+      },
+      {
+        "asset": "lounge",
+        "sourceSha256": "2d0a005a8918df0c528b2365e7f4eac4c96eb2e49a6b52a3cfea0e90eb41dc31",
+        "finalSha256": "54630512a61235a9a6511ebed234ee0251258d5313c3852ad790a04a8289eb0a",
+        "dimensions": [
+          1800,
+          1199
+        ],
+        "finalBytes": 175517,
+        "mime": "image/jpeg",
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-03-salon.jpg"
+      },
+      {
+        "asset": "suite",
+        "sourceSha256": "594e63f8a8d1f95456b9c5670e895abe7212dc12dec51a4b550c077bafa83c42",
+        "finalSha256": "023bb2b78c8ffa6280afa6067c5eee7ec2684af8fb70c7db45e35e045c280d21",
+        "dimensions": [
+          1800,
+          1200
+        ],
+        "finalBytes": 167875,
+        "mime": "image/jpeg",
+        "decoded": true,
+        "assetPath": "/news/villa-saint-paul-04-suite.jpg"
+      }
+    ],
+    "gpsMetadataFound": false,
+    "readyToTransferToPrivateReviewStorage": false,
+    "storedInGithub": true
+  },
+  "checkedAt": "2026-11-03T15:08:03.119Z",
+  "assetTransport": {
+    "method": "Temporary restricted sandbox downloaded authorized Outlook attachments, verified original SHA256, optimized and transferred as immutable Git blobs; no signed URLs or secrets committed",
+    "branchOnly": true,
+    "files": [
+      {
+        "path": "public/news/villa-saint-paul-01-piscine.jpg",
+        "gitBlobSha": "9b9b2d116e96f577cbdb743984047b4246c4d8ce",
+        "sha256": "d3630e3bdc5f96efd2a4066a7206ed559c42a90d292b62ff1ba75d02d9303508",
+        "bytes": 369292,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-02-terrasse-vue-mer.jpg",
+        "gitBlobSha": "a343dd93c27eb4d5ea58aba2bce987a3d384c88c",
+        "sha256": "f61291bafbbf5c00cff9e68d76a37cfcc7b988a9bea33551faa1374258f923d9",
+        "bytes": 349563,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-03-salon.jpg",
+        "gitBlobSha": "fbbc5551313d962ed205487325aafc14df291a04",
+        "sha256": "54630512a61235a9a6511ebed234ee0251258d5313c3852ad790a04a8289eb0a",
+        "bytes": 175517,
+        "mime": "image/jpeg"
+      },
+      {
+        "path": "public/news/villa-saint-paul-04-suite.jpg",
+        "gitBlobSha": "9807d8b1c99ec3ce497eef8145e32cda6b2bb7c8",
+        "sha256": "023bb2b78c8ffa6280afa6067c5eee7ec2684af8fb70c7db45e35e045c280d21",
+        "bytes": 167875,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  "approvalPack": {
+    "version": "v1",
+    "status": "waiting_approval",
+    "responseRequested": [
+      "APPROUVER",
+      "MODIFIER",
+      "REFUSER"
+    ],
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T15:39:24Z",
+    "sentFolderVerified": true,
+    "sentMessageIdSha256": "a2c64db7540170d6571a1cc5f11d95985737dd2a5bb5bf99f015107027cc6c27",
+    "sentBodySha256": "d4c57d83104af8f555cc70d3704fbc975b9dca96a5f0dab936654b44d243614f",
+    "pullRequestNumber": 53,
+    "previewDeploymentId": "dpl_A8JrY8m7jajmrcxmzw1TRNWJntXP",
+    "previewContentCommitSha": "35dc98a17938818d63c08e50f137e1fe6af3143b",
+    "previewStatus": "READY",
+    "qaReportSha256": "ab1957db11d533750413b56c4187e7098a3dc54354bef8a567ea24fc6b94a3e9",
+    "verifiedPages": [
+      "fr-article-desktop",
+      "fr-article-mobile",
+      "en-article-desktop",
+      "en-article-mobile",
+      "fr-list-desktop",
+      "fr-list-mobile",
+      "en-list-desktop",
+      "en-list-mobile"
+    ],
+    "fourSuppliedImagesDecoded": true,
+    "publicationAuthorized": false
+  },
+  "editorialRevisionRequest": {
+    "receivedAt": "2026-11-03T19:29:37Z",
+    "messageIdSha256": "6569cd7a8d689d2647d105e1766f7dd82173178d405d0b81f840d4d047223f6d",
+    "instruction": "MODIFIER — Mets le texte que j'avais mis",
+    "basis": "The FR original explicitly repeated by Stephan; EN original taken from his initial 2026-11-03 message",
+    "correlatedPackVersion": 1,
+    "requestedBy": "Stephan",
+    "status": "applied_to_branch_pending_qa"
+  },
+  "qaEvidenceV2": {
+    "workflowRunId": 41707624256,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707624256",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707624256/artifacts/13267750742",
+    "result": "success",
+    "sourceContentSha": "7f6668ef51f753e3ebcc8fe0e7da2afd2c3bba44",
+    "qaCommitSha": "3533625576854a513e8c05a566dd31d685061382",
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "browserRoutesChecked": 8,
+    "decodedImages": 4,
+    "verifiedFinalSHA256": true,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "previewSameRenderedFiles": true,
+    "publicationAuthorized": false
+  },
+  "approvalPackV2": {
+    "version": 2,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T20:01:39Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "2bb22ec9ac68348f07d7b744115b840878823acf1e94dd6b77b542859c558f33",
+    "correlatedMarkerSha256": "24022fc9f6c3e2378ec7577929a156cd65a8e9912d8c275efe5fdce18fd7ec0a",
+    "sourceRevision": "MODIFIER",
+    "qaRunId": 41707624256,
+    "qaResult": "success",
+    "previewContentSha": "7f6668ef51f753e3ebcc8fe0e7da2afd2c3bba44",
+    "publicationAuthorized": false
+  },
+  "approvalEvidenceV2": {
+    "version": 2,
+    "source": "Outlook",
+    "reply": "APPROUVER",
+    "replyReceivedAt": "2026-11-03T20:05:04Z",
+    "replyMessageIdSha256": "115a8f29979c59c79795777d114cba37b8e70ecf2d858dffa670d5a0825b3332",
+    "correlatedSentMessageIdSha256": "2bb22ec9ac68348f07d7b744115b840878823acf1e94dd6b77b542859c558f33",
+    "correlatedPackMarkerSha256": "24022fc9f6c3e2378ec7577929a156cd65a8e9912d8c275efe5fdce18fd7ec0a",
+    "confirmedExactLatestVersion": true
+  }
+}
