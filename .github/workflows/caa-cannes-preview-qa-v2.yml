@@ -80,7 +80,7 @@ jobs:
                   const body=document.body.innerText;
                   const target=[...document.images].filter(i=>files.some(f=>(i.getAttribute('src')||'').includes(f)));
                   const cards=[...document.querySelectorAll('article.card-luxe')].map(card=>({w:card.querySelector('.grid > div:first-child')?.getBoundingClientRect().width,src:card.querySelector('img')?.getAttribute('src')||''}));
-                  return {h1:document.querySelector('h1')?.innerText,meta:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,overflow:document.documentElement.scrollWidth-innerWidth,photo:target.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,fit:getComputedStyle(i).objectFit})),creditShown:body.includes(credit),containsOriginalFR:body.includes('NOUVEAU PRIX : 3 350 000 €'),containsOriginalEN:body.includes('NEW PRICE: €3,350,000'),hasRisks:body.includes('georisques.gouv.fr'),hasCannesSource:document.body.innerHTML.includes('la-croisette-les-travaux'),cards};
+                  return {h1:document.querySelector('h1')?.innerText,meta:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,overflow:document.documentElement.scrollWidth-innerWidth,photo:target.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,fit:getComputedStyle(i).objectFit})),creditShown:body.includes(credit),outdatedImageCaption:body.includes('Gilbert Bochenek') || body.includes('octobre 2006') || body.includes('October 2006'),containsOriginalFR:body.includes('NOUVEAU PRIX : 3 350 000 €'),containsOriginalEN:body.includes('NEW PRICE: €3,350,000'),hasRisks:body.includes('georisques.gouv.fr'),hasCannesSource:document.body.innerHTML.includes('la-croisette-les-travaux'),cards};
                 },{files:urls.map(x=>x.url),credit:process.env.CAA_CREDIT,kind});
                 const key=route.replaceAll('/','_')+'_'+device;
                 await page.screenshot({path:dir+'/'+key+'.png',fullPage:true,timeout:25000});
@@ -92,6 +92,7 @@ jobs:
                 if(device==='desktop'&&route.endsWith('/actualites')&&data.cards.some(x=>x.w&&Math.abs(x.w-320)>3))failures.push(key+' card width mismatch');
                 if(route.endsWith(slug)){
                   if(!data.creditShown)failures.push(key+' image credit absent');
+                  if(data.outdatedImageCaption)failures.push(key+' obsolete v2 image caption present');
                   if(kind==='villa'&&(!data.hasRisks||route.startsWith('/fr')&&!data.containsOriginalFR||route.startsWith('/en')&&!data.containsOriginalEN))failures.push(key+' original requested text missing');
                   if(kind==='cannes'&&!data.hasCannesSource)failures.push(key+' official source missing');
                 }
