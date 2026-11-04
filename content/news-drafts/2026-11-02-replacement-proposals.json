@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 3,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "approval_received",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -82,9 +82,9 @@
     "seoOverlap": "No dedicated Croisette transformation article among 18 entries",
     "manualImageReview": "Cannes v3 sunrise/sunset aerial image visibly inspected in desktop/mobile, cards and FR/EN articles; credit present"
   },
-  "publicationAuthorized": false,
-  "nextAction": "Wait for explicit APPROUVER, MODIFIER or REFUSER from Stephan correlated with Cannes v3 sent 2026-11-03T21:57:57Z. Do not publish on earlier choices or revisions.",
-  "stateRevision": 16,
+  "publicationAuthorized": true,
+  "nextAction": "Merge authorized PR #52 at expected head SHA after confirming exact v3 content unchanged; then deploy, run post-production QA and confirm by Outlook",
+  "stateRevision": 17,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -399,7 +399,8 @@
     "previewContentSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
     "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
     "shareLinkExpires": "2026-11-04T20:54:05Z",
-    "publicationAuthorized": false
+    "publicationAuthorized": false,
+    "approvalReceived": true
   },
   "previewAccessRenewal": {
     "version": 3,
@@ -416,5 +417,21 @@
     "editorialContentUnchanged": true,
     "approvalVersionUnchanged": true,
     "publicationAuthorized": false
+  },
+  "approvalEvidenceV3": {
+    "version": 3,
+    "sourceChannel": "Outlook",
+    "receivedAt": "2026-11-04T20:17:33Z",
+    "response": "APPOUVER",
+    "interpretedAs": "APPROUVER",
+    "interpretation": "Unambiguous one-letter typo in direct reply to v3 explicit approval request; quoted thread identifies unchanged reviewed v3",
+    "replyMessageIdSha256": "74d1720ae57508c73a435b46e7a664875b616726de137546f0d9dc6ad60cd342",
+    "replyBodyKeywordSha256": "0e156660e962774f757be1bfa0a090b0c78c753e4e63be729d2d9fe82cc5ec36",
+    "correlatedReviewPackSentAt": "2026-11-03T21:57:57Z",
+    "correlatedAccessRenewalSentAt": "2026-11-04T19:45:33Z",
+    "sourceAndLicenseRecheckedAt": "2026-11-04",
+    "qaVerifiedWorkflowRun": 41724324439,
+    "approvalUsedFor": "cannes-croisette-v3-only",
+    "previousVersionsSuperseded": true
   }
 }
