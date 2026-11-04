@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
-  "version": 1,
-  "workflowStatus": "waiting_choice",
+  "version": 3,
+  "workflowStatus": "approval_received",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -72,12 +72,366 @@
     "checkedExistingNewsCount": 18,
     "checkedPriorDraftsCount": 11,
     "duplicateCheck": "Existing content/news titles and drafts inspected; no same-topic article found",
-    "draftsPrepared": false,
-    "imagesPrepared": false,
-    "pullRequestPrepared": false,
-    "previewPrepared": false
+    "draftsPrepared": true,
+    "imagesPrepared": true,
+    "pullRequestPrepared": true,
+    "previewPrepared": true,
+    "sourceReverifiedAt": "2026-11-02",
+    "factSource": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
+    "existingNewsReviewed": 18,
+    "seoOverlap": "No dedicated Croisette transformation article among 18 entries",
+    "manualImageReview": "Cannes v3 sunrise/sunset aerial image visibly inspected in desktop/mobile, cards and FR/EN articles; credit present"
   },
-  "publicationAuthorized": false,
-  "nextAction": "Await correlated reply 1, 2 or 3 from Stephan; chosen topic requires full FR/EN review and explicit APPROUVER before release",
-  "stateRevision": 1
+  "publicationAuthorized": true,
+  "nextAction": "Merge authorized PR #52 at expected head SHA after confirming exact v3 content unchanged; then deploy, run post-production QA and confirm by Outlook",
+  "stateRevision": 17,
+  "selectedChoice": 1,
+  "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
+  "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
+  "articleVersion": 3,
+  "choiceReceivedAt": "2026-11-02T14:05:43Z",
+  "choiceEvidence": {
+    "source": "Outlook",
+    "response": "1",
+    "replyMessageIdSha256": "fd47eabc0b5ff0883b1d836ea07ac58aa1e78658541eaeffd3df0f8646fec9c1",
+    "correlatedSentMarker": "CAA-proposals-20261102-replacement-v1",
+    "replyThreadMatched": true,
+    "selectedFromLatestProposal": true
+  },
+  "articleDraft": {
+    "slug": "2026-11-02-cannes-croisette-transformation",
+    "contentFile": "content/news/2026-11-02-cannes-croisette-transformation.json",
+    "version": 1,
+    "generatedAt": "2026-11-02",
+    "status": "preview_only_pending_explicit_approval",
+    "publicationAuthorized": false
+  },
+  "linkedin": {
+    "fr": "Cannes prépare une nouvelle étape pour la Croisette. La Ville annonce un réaménagement des espaces publics de 2026 à fin 2028 : davantage d’arbres, des traversées piétonnes repensées et une continuité cyclable de 3,1 km jusqu’au Palm Beach. Pour celles et ceux qui vivent à Cannes ou envisagent de s’y installer, le projet ouvre des perspectives sur le cadre de vie, avec des travaux à prendre en compte durant la transition. Un projet urbain à suivre, sans préjuger des prix de l’immobilier. #Cannes #Croisette #CotedAzur #Immobilier",
+    "en": "The Croisette in Cannes is entering another phase of public-space redevelopment, scheduled through late 2028. More trees, improved pedestrian crossings and a continuous 3.1 km cycle connection to Palm Beach form part of the city's plans. For residents and international buyers, the changes highlight the importance of assessing a property’s neighbourhood, including the temporary impact of construction. #Cannes #FrenchRiviera #RealEstate"
+  },
+  "imageCandidate": {
+    "path": "public/news/2026-11-02-cannes-croisette.jpg",
+    "source": "Wikimedia Commons — photo by Joeys Journeys, drone footage still (2024-09-13)",
+    "copyrightStatus": "CC BY 3.0",
+    "author": "Joeys Journeys",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cannes_drone_shot_in_2024.png",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "originalTakenAt": "2024-09-13",
+    "originalMime": "image/png",
+    "originalDimensions": [
+      3840,
+      2160
+    ],
+    "originalBytes": 7384979,
+    "originalSha1": "489d2d54d489fedc5094f66f0a162f162ed6f087",
+    "finalMime": "image/jpeg",
+    "finalDimensions": [
+      1600,
+      900
+    ],
+    "finalBytes": 322271,
+    "finalSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
+    "decoded": true,
+    "verifiedLicenseAt": "2026-11-03",
+    "imageIsHistoricNotRender": true,
+    "originalCompressedAndResized": true,
+    "stagedWorkflowRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41714176756"
+  },
+  "qaEvidence": {
+    "workflowRunId": 41469436213,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213/artifacts/13154148518",
+    "checkedCommitSha": "6706785488fc4635c5670cd11268806fe73c3575",
+    "checkedAt": "2026-11-02T15:15:39Z",
+    "result": "success",
+    "browserRoutesChecked": [
+      "/fr/actualites",
+      "/en/actualites",
+      "/fr/actualites/2026-11-02-cannes-croisette-transformation",
+      "/en/actualites/2026-11-02-cannes-croisette-transformation"
+    ],
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "observations": {
+      "http200": true,
+      "jsErrors": 0,
+      "brokenImages": 0,
+      "horizontalOverflow": 0,
+      "photoDecoded": true,
+      "photoSha256Verified": true,
+      "cardMediaDesktopPx": 320,
+      "photoCardObjectFit": "cover",
+      "articlePhotoNotLetterboxed": true,
+      "sourceAndCreditLinks": true
+    },
+    "visualInspection": "manual screenshots of French and English article and listing inspected; selected Croisette photo fits the standard layout with no objectionable crop",
+    "temporaryWorkflowRemoved": true
+  },
+  "approvalPack": {
+    "version": 1,
+    "articleSlug": "2026-11-02-cannes-croisette-transformation",
+    "sentAt": "2026-11-02T15:21:50Z",
+    "markerSha256": "5ad593b77ff7b9d96ebe71b33fe13f10e7b22118e1fbce89018c425b71180297",
+    "sentMessageIdSha256": "25562772c7a94749a3f9a6bf784ea4006d16ed67695b0993fe20fd1dc63cb1a8",
+    "verifiedInOutlookSentItems": true,
+    "sentVia": "reply_to_email",
+    "correlatedChoice": "1",
+    "correlatedProposalMarker": "CAA-proposals-20261102-replacement-v1",
+    "previewCommitSha": "6e8fd4d960a17b308cad4a4d2b431304e2ad517f",
+    "previewDeploymentIdSha256": "255086953e8520e0355f7b2e8761cdec429985dc7eb87aa27fa5c443d2bd7475",
+    "previewTarget": "preview",
+    "previewReady": true,
+    "previewVersionConfirmed": true,
+    "previewFRHTTP200": true,
+    "previewENHTTP200": true,
+    "sharedProtectedLinksSentPrivately": true,
+    "sourceAndImageCopyrightChecked": true,
+    "visualQAWorkflow": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41469436213",
+    "reviewPR": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/52",
+    "approvalReceived": false
+  },
+  "revisionRequest": {
+    "receivedAt": "2026-11-02T15:53:37Z",
+    "sourceChannel": "Outlook",
+    "requestType": "replace_image_only",
+    "requestedFrom": "https://www.cannes.com/fr/index/actualites/annee-2026/septembre/la-croisette-les-travaux-de-surface-debutent-mi-octobre.html",
+    "requestedAssetDescription": "Projet de réaménagement de la Croisette – visuel de projection non contractuel",
+    "copyrightCredit": "© Atelier d’Urbanité Roland Castro et Snøhetta",
+    "rightsCheck": "Official municipal legal notice states all photographs and illustrations may not be reproduced without prior written authorization; no such authorization verified as of 2026-11-02",
+    "rightsNoticeURL": "https://www.cannes.com/fr/index/mentions-legales.html",
+    "licenseStatus": "awaiting_explicit_permission_for_commercial_reproduction",
+    "proposedVersion": 2,
+    "currentPreviewStillVersion": 1,
+    "visualAssetReplaced": false,
+    "approvalV1Superseded": true,
+    "approvalV2Received": false,
+    "rightsClarificationSentAt": "2026-11-02T17:20:26Z",
+    "rightsClarificationSentVia": "outlook_reply_to_image_request",
+    "rightsClarificationVerifiedInSentItems": true,
+    "humanResponsePending": "Written reuse permission or licensed asset from Stephan"
+  },
+  "editorialRevisionRequest": {
+    "receivedAt": "2026-11-03T19:34:51Z",
+    "messageIdSha256": "c95956625af522a189bcfb7f67d1109635db0e973b604549356d52ce61cf9563",
+    "instruction": "Choose an inspiring Cannes photograph with demonstrably unrestricted commercial reproduction; no municipal rendering; resubmit changed image for review.",
+    "correlatedArticleVersion": 1,
+    "requestedBy": "Stephan",
+    "status": "in_progress"
+  },
+  "previousImageCandidate": {
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Promenade_de_La_Croisette_aux_environs_du_Square_de_Verdun_(Cannes)_en_avril_2023.JPG",
+    "finalSha256": "11aa7e1a87be7141bc515cf167eed77bd920d6c7e06b2a1a8896033bb4ad0728",
+    "license": "CC0 1.0"
+  },
+  "qaEvidenceV2": {
+    "workflowRunId": 41707618082,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082/artifacts/13266520733",
+    "result": "success",
+    "sourceContentSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "checkedQaCommitSha": "239cd2544b7ec1d6f93771cca87d7dcddba3fcea",
+    "browserRoutesChecked": [
+      "/fr/actualites",
+      "/en/actualites",
+      "/fr/actualites/2026-11-02-cannes-croisette-transformation",
+      "/en/actualites/2026-11-02-cannes-croisette-transformation"
+    ],
+    "viewports": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "imagesLoaded": true,
+    "imageSha256Verified": true,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "qaWorkflowOnlyDiffFromPreview": true,
+    "productionAuthorized": false
+  },
+  "approvalPackV2": {
+    "version": 2,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T20:00:20Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "199b5afb59811d568170f5d7d44a2b4d425c8637685843aeb26ee3cef6255ab5",
+    "correlatedMarkerSha256": "5f0b2c109ff84207d1634a2b11309dd6d3479ca1811acb0041fce1f99b0ac449",
+    "sourceRevision": "MODIFIER",
+    "qaRunId": 41707618082,
+    "qaResult": "success",
+    "previewContentSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "publicationAuthorized": false
+  },
+  "previewAccessRemediation": {
+    "requestReceivedAt": "2026-11-03T20:04:20Z",
+    "request": "Stephan reported access failure for emailed Cannes v2 preview",
+    "response": "Regenerated Vercel protected deployment share link; verified FR/EN HTTP200 on same article/photo; replied in existing Outlook thread without any content changes",
+    "sentAt": "2026-11-03T20:23:47Z",
+    "sentFolderVerified": true,
+    "sentMessageIdSha256": "d2196145f1cabefc4bb70300227cdb1a41a82f6de9ea10e6a3de168e03b4e20c",
+    "qaRun": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41707618082",
+    "oldDeploymentContentCommitSha": "6258df75833390ade46e5a827bd04d3ccf8e201f",
+    "contentDiffBetweenOldPreviewAndCurrentHead": "Only editorial draft registry and preview-QA workflow; article JSON and image unchanged",
+    "shareTokenStored": false,
+    "publicationAuthorized": false,
+    "approvalStillRequired": true
+  },
+  "editorialRevisionRequestV3": {
+    "receivedAt": "2026-11-03T20:25:02Z",
+    "responseIdHash": "08eea58a2b5ce723dc75c160efc09ae268c51adf56ad121fa2886ebc1460d735",
+    "channel": "Outlook",
+    "correlatedPackVersion": 2,
+    "requestedChange": "MODIFIER: mettre une photographie de Cannes plus inspirante",
+    "interpretation": "Change image and associated truthful credit only; preserve FR/EN article and standard news dimensions",
+    "pendingVersion": 3,
+    "approvedForPublication": false,
+    "visualSourceCandidate": {
+      "url": "https://commons.wikimedia.org/wiki/File:Cannes_drone_shot_in_2024.png",
+      "author": "Joeys Journeys",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "date": "2024-09-13",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "mime": "image/png",
+      "sourceSha1": "489d2d54d489fedc5094f66f0a162f162ed6f087",
+      "sizeBytes": 7384979,
+      "description": "Aerial Cannes waterfront/Palais des Festivals at sunset, showing Croisette; factual historical photograph, not future redevelopment rendering",
+      "licenseCheckedAt": "2026-11-03",
+      "assetStaged": true,
+      "visualPreviewQADone": true,
+      "finalSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
+      "finalDimensions": [
+        1600,
+        900
+      ],
+      "finalBytes": 322271,
+      "changedArticleText": false
+    },
+    "v3PackSent": true
+  },
+  "imageCandidateV2": {
+    "path": "public/news/2026-11-02-cannes-croisette.jpg",
+    "source": "Wikimedia Commons",
+    "copyrightStatus": "Public domain (PD-self)",
+    "author": "Gilbert Bochenek",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CannesCroisettePlage.JPG",
+    "originalTakenAt": "2006-10",
+    "originalMime": "image/jpeg",
+    "originalDimensions": [
+      1608,
+      1134
+    ],
+    "originalBytes": 600891,
+    "originalSha1": "be6a6d8dcde410c682ebfd1db2c124c5c053d663",
+    "integrityState": "verified",
+    "imageIsHistoricNotRender": true,
+    "finalMime": "image/jpeg",
+    "finalDimensions": [
+      1600,
+      1128
+    ],
+    "finalBytes": 392317,
+    "finalSha256": "df741849d34dd639ce1138d0a69cfbcd19517cb1be107345d252c36e7c9d4152",
+    "decoded": true,
+    "verifiedLicenseAt": "2026-11-03",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self"
+  },
+  "qaEvidenceV3": {
+    "result": "success",
+    "workflowRunId": 41724324439,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41724324439",
+    "artifactUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/41724324439/artifacts/13271714938",
+    "checkedCommitSha": "75af28381d99ce6a7cc3eac0720e07f7e4ce8228",
+    "previewContentSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "previewReady": true,
+    "assetSha256": "2209052ec31e812b36ff20339199407ccfb6348a17b423b7771ed6e0367e9404",
+    "verifiedFRandEN": true,
+    "desktopViewport": [
+      1440,
+      900
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "screenshotsInspected": 8,
+    "jsErrors": 0,
+    "horizontalOverflow": 0,
+    "brokenImages": 0,
+    "creditShown": true,
+    "license": "CC BY 3.0",
+    "imageCaptionHistoricNotRendering": true,
+    "cardFrameWidth": 320,
+    "visualInspection": "FR/EN listing and article screenshots opened; Cannes aerial sunset photo fully visible with no disqualifying crop or letterboxing in standard card/article frames",
+    "contentDiffBetweenQaAndPreview": "Only temporary GitHub QA workflow change; article and image unchanged",
+    "publicationAuthorized": false
+  },
+  "approvalPackV3": {
+    "version": 3,
+    "channel": "Outlook",
+    "sentAt": "2026-11-03T21:57:57Z",
+    "sentFolder": "sentitems",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "64ebb7ca8b6db7553c27cd22c90134f1579a1e2618442d323044bb11493d8d11",
+    "sentBodySha256": "9dce062b1385d7b63152b9205a44df87ee8c83013323ca767d269a044f516f6b",
+    "correlatedRevisionReceivedAt": "2026-11-03T20:25:02Z",
+    "qaRunId": 41724324439,
+    "qaResult": "success",
+    "qaCommitSha": "75af28381d99ce6a7cc3eac0720e07f7e4ce8228",
+    "previewContentSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "shareLinkExpires": "2026-11-04T20:54:05Z",
+    "publicationAuthorized": false,
+    "approvalReceived": true
+  },
+  "previewAccessRenewal": {
+    "version": 3,
+    "reason": "Existing 23-hour Vercel Preview share link was expiring; reissued limited-duration access to unchanged reviewed v3.",
+    "samePreviewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "samePreviewCommitSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "newLinkExpiresAt": "2026-11-11T19:44:47Z",
+    "channel": "Outlook",
+    "sentAt": "2026-11-04T19:45:33Z",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "d10e2826297b6c770e9b4910c06da9da3223c0d06eab9ae05a5341478c1e7b96",
+    "recipients": "original editorial reviewer only; address omitted",
+    "url": "omitted; only in private email",
+    "editorialContentUnchanged": true,
+    "approvalVersionUnchanged": true,
+    "publicationAuthorized": false
+  },
+  "approvalEvidenceV3": {
+    "version": 3,
+    "sourceChannel": "Outlook",
+    "receivedAt": "2026-11-04T20:17:33Z",
+    "response": "APPOUVER",
+    "interpretedAs": "APPROUVER",
+    "interpretation": "Unambiguous one-letter typo in direct reply to v3 explicit approval request; quoted thread identifies unchanged reviewed v3",
+    "replyMessageIdSha256": "74d1720ae57508c73a435b46e7a664875b616726de137546f0d9dc6ad60cd342",
+    "replyBodyKeywordSha256": "0e156660e962774f757be1bfa0a090b0c78c753e4e63be729d2d9fe82cc5ec36",
+    "correlatedReviewPackSentAt": "2026-11-03T21:57:57Z",
+    "correlatedAccessRenewalSentAt": "2026-11-04T19:45:33Z",
+    "sourceAndLicenseRecheckedAt": "2026-11-04",
+    "qaVerifiedWorkflowRun": 41724324439,
+    "approvalUsedFor": "cannes-croisette-v3-only",
+    "previousVersionsSuperseded": true
+  }
 }
