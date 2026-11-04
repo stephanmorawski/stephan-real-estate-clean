@@ -400,5 +400,21 @@
     "previewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
     "shareLinkExpires": "2026-11-04T20:54:05Z",
     "publicationAuthorized": false
+  },
+  "previewAccessRenewal": {
+    "version": 3,
+    "reason": "Existing 23-hour Vercel Preview share link was expiring; reissued limited-duration access to unchanged reviewed v3.",
+    "samePreviewDeploymentId": "dpl_GYXekWey2Nb69dRNcXXC5EDdypEP",
+    "samePreviewCommitSha": "cc7d24c98484206b3e9b04633befd8316989ad62",
+    "newLinkExpiresAt": "2026-11-11T19:44:47Z",
+    "channel": "Outlook",
+    "sentAt": "2026-11-04T19:45:33Z",
+    "verifiedInSentItems": true,
+    "sentMessageIdSha256": "d10e2826297b6c770e9b4910c06da9da3223c0d06eab9ae05a5341478c1e7b96",
+    "recipients": "original editorial reviewer only; address omitted",
+    "url": "omitted; only in private email",
+    "editorialContentUnchanged": true,
+    "approvalVersionUnchanged": true,
+    "publicationAuthorized": false
   }
 }
