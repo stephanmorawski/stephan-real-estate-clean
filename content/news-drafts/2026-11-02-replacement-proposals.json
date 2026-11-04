@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": true,
   "nextAction": "Perform full post-production QA on current canonical alias and SHA including FR/EN, images, console and desktop/mobile; obtain Post-production quality gate successful run; only then mark published and send Stephan confirmation",
-  "stateRevision": 18,
+  "stateRevision": 19,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -440,7 +440,7 @@
     "mergeSha": "1fe44fdef8bcfb92b3b070214d50d9146c8898b9",
     "prMerged": true,
     "vercelProjectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
-    "deploymentId": "dpl_7HGbt5bc8XBkNex4ZoKJSMdEF8U6",
+    "deploymentId": "dpl_HZyX9Jk2gr5h5UVrQ9cNvGYhezZt",
     "deploymentCommitSha": "1fe44fdef8bcfb92b3b070214d50d9146c8898b9",
     "target": "production",
     "state": "READY",
@@ -451,6 +451,11 @@
     "postProductionQualityGateSuccess": false,
     "visualDesktopMobileVerified": false,
     "finalConfirmationEmailSent": false,
-    "linkedinCopyInDraft": true
+    "linkedinCopyInDraft": true,
+    "firstDeploymentId": "dpl_7HGbt5bc8XBkNex4ZoKJSMdEF8U6",
+    "productionAliasVerifiedDeploymentId": "dpl_HZyX9Jk2gr5h5UVrQ9cNvGYhezZt",
+    "secondDeploymentSameSha": true,
+    "manualDeployAndAutomaticDeployBothReadySameSha": true,
+    "activeAliasRecapturedAfterAutoDeployment": true
   }
 }
