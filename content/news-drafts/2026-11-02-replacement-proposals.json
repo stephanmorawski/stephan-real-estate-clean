@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-02-replacement",
   "version": 3,
-  "workflowStatus": "approval_received",
+  "workflowStatus": "qa_pending",
   "category": "replacement_options_after_explicit_rejection",
   "priorCycle": "caa-2026-10-30-lifestyle",
   "priorCycleStatus": "refused",
@@ -83,8 +83,8 @@
     "manualImageReview": "Cannes v3 sunrise/sunset aerial image visibly inspected in desktop/mobile, cards and FR/EN articles; credit present"
   },
   "publicationAuthorized": true,
-  "nextAction": "Merge authorized PR #52 at expected head SHA after confirming exact v3 content unchanged; then deploy, run post-production QA and confirm by Outlook",
-  "stateRevision": 17,
+  "nextAction": "Perform full post-production QA on current canonical alias and SHA including FR/EN, images, console and desktop/mobile; obtain Post-production quality gate successful run; only then mark published and send Stephan confirmation",
+  "stateRevision": 18,
   "selectedChoice": 1,
   "selectedSubject": "Cannes : la Croisette entre dans une nouvelle phase de transformation",
   "selectedArticleSlug": "2026-11-02-cannes-croisette-transformation",
@@ -433,5 +433,24 @@
     "qaVerifiedWorkflowRun": 41724324439,
     "approvalUsedFor": "cannes-croisette-v3-only",
     "previousVersionsSuperseded": true
+  },
+  "releaseEvidence": {
+    "version": 3,
+    "prNumber": 52,
+    "mergeSha": "1fe44fdef8bcfb92b3b070214d50d9146c8898b9",
+    "prMerged": true,
+    "vercelProjectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
+    "deploymentId": "dpl_7HGbt5bc8XBkNex4ZoKJSMdEF8U6",
+    "deploymentCommitSha": "1fe44fdef8bcfb92b3b070214d50d9146c8898b9",
+    "target": "production",
+    "state": "READY",
+    "canonicalAliasAttached": true,
+    "verifiedAt": "2026-11-04",
+    "publicationInProduction": true,
+    "qualityGate": "awaiting full post-production verification",
+    "postProductionQualityGateSuccess": false,
+    "visualDesktopMobileVerified": false,
+    "finalConfirmationEmailSent": false,
+    "linkedinCopyInDraft": true
   }
 }
