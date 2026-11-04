@@ -32,7 +32,7 @@ export default async function HomePage({ params }) {
             <h1>{fr ? <>Votre projet immobilier mérite un <em>regard juste.</em></> : <>Your property deserves <em>a clear perspective.</em></>}</h1>
             <p className="home-lead">{fr ? "Depuis plus de dix ans, j’accompagne personnellement mes clients dans les Alpes-Maritimes." : 'For over ten years, I have personally guided my clients across the Alpes-Maritimes.'}</p>
             <p className="home-description">{fr ? 'Mon approche : vous conseiller avec sincérité, estimer votre bien à sa juste valeur et vous accompagner pour vendre dans les meilleures conditions ou trouver le bien qui vous correspond.' : 'My approach: honest advice, an accurate valuation of your property, and personal guidance to sell on the best terms or find the home that is right for you.'}</p>
-            <p className="home-signature">Stephan Morawski — Côte d’Azur Agency</p>
+            <p className="home-signature">Stephan Morawski · Côte d’Azur Agency</p>
             <div className="home-actions">
               <Link href={`/${lang}/contact`} className="home-button">{fr ? 'Me contacter' : 'Contact me'} ↗</Link>
               <a href="#expertise" className="home-button home-button-outline">{fr ? 'Mon approche' : 'My approach'}</a>
