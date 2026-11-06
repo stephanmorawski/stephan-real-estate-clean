@@ -1,14 +1,18 @@
 {
   "cycleId": "caa-2026-11-06-evergreen",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_choice",
   "type": "friday-evergreen-proposals",
   "proposalDate": "2026-11-06",
   "verifiedAt": "2026-11-06",
-  "sentAt": null,
+  "sentAt": "2026-11-06T19:57:35Z",
   "sourceChannel": "Outlook",
-  "sentSubject": null,
-  "sentEvidence": null,
+  "sentSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
+    "sha256": "dfd42e8cc4039a0c4853e4b6daf60fc86de93431b70e5e65fb070fcd7fc5fd9e"
+  },
   "proposals": [
     {
       "choice": 1,
@@ -60,8 +64,8 @@
   ],
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "reply_with_replacement_choice_set_v2_and_verify_sent_items",
-  "notes": "Stephan rejected all V1 topics and explicitly requested replacements; V2 is an in-thread revision of the same cycle, not a new cadence batch. No article, image, PR or Preview before 1/2/3 choice.",
+  "nextAction": "await_explicit_1_2_3_choice_from_Stephan_for_version_2",
+  "notes": "Previous 3 subjects explicitly rejected at 19:24Z; three replacements verified and sent in the same Outlook thread at 19:57:35Z. Choice is not approval; no article or deployment.",
   "previousVersions": [
     {
       "version": 1,
