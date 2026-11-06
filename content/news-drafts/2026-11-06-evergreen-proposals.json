@@ -1,58 +1,55 @@
 {
   "cycleId": "caa-2026-11-06-evergreen",
-  "version": 1,
-  "workflowStatus": "waiting_choice",
+  "version": 2,
+  "workflowStatus": "prepared_waiting_send",
   "type": "friday-evergreen-proposals",
   "proposalDate": "2026-11-06",
   "verifiedAt": "2026-11-06",
-  "sentAt": "2026-11-06T07:31:23Z",
+  "sentAt": null,
   "sourceChannel": "Outlook",
-  "sentSubject": "Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
-  "sentEvidence": {
-    "status": "verified_in_sent_items",
-    "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
-    "sha256": "9437733e4d38e1b230206b21ad9599cb16472ca274b70ba4588353ad6cc5c378"
-  },
+  "sentSubject": null,
+  "sentEvidence": null,
   "proposals": [
     {
       "choice": 1,
-      "title": "Cannes-La Bocca : un jardin de quartier réinventé",
-      "sourceDate": "2026-11-03",
+      "title": "Cannes : Vatel Academy, un campus et 344 logements pour 2028",
+      "sourceDate": "2026-09-29",
       "facts": [
-        "Jardin de l’Azuréenne à La Frayère réaménagé sur 3 000 m²",
-        "Aire de jeux pour enfants de 120 m², street workout de 273 m² et parkour de 240 m²",
-        "Jardin rénové dans le programme de renouvellement urbain Nouvelle Frayère"
+        "Ouverture prévue en septembre 2028 du campus Vatel Academy de Cannes-La Bocca",
+        "Capacité pouvant atteindre 1 000 étudiants et 344 logements pour étudiants et jeunes actifs",
+        "Investissement annoncé de 56 M€ et 100 emplois permanents attendus"
       ],
-      "angle": "Qualité de vie familiale et équipements de proximité à Cannes-La Bocca ; ne pas extrapoler un impact sur les prix immobiliers",
+      "angle": "Implantation d'un campus professionnalisant, besoins résidentiels et attractivité de l'enseignement à Cannes ; ne pas présenter les logements comme déjà livrés",
       "sources": [
-        "https://cannes.com/fr/index/actualites/annee-2026/novembre/la-frayere-le-jardin-de-l-azureenne-renove-et-securise.html"
+        "https://cannes.com/fr/index/actualites/annee-2026/septembre/le-campus-vatel-academy-ouvrira-a-cannes-en-septembre-2028.html"
       ]
     },
     {
       "choice": 2,
-      "title": "Cannes : 29 affiches pour redécouvrir la ville",
-      "sourceDate": "2026-11-03",
+      "title": "Cannes-La Bocca : un réseau de chaleur renouvelable pour 95 bâtiments",
+      "sourceDate": "2026-09-14",
       "facts": [
-        "Exposition Cannes à l’affiche aux Archives municipales ouverte du 6 novembre 2026 au 11 juin 2027",
-        "29 affiches anciennes des XIXe et XXe siècles",
-        "Entrée libre à l’Espace Calmette"
+        "Mise en service programmée au printemps 2027",
+        "8,7 km de réseau alimentant 95 bâtiments à La Frayère, Ranguin et Bastide Rouge",
+        "Mix énergétique annoncé à 80 % renouvelable, 35 GWh/an"
       ],
-      "angle": "Patrimoine visuel, profondeur culturelle et art de vivre cannois ; distinct des chantiers de la Croisette",
+      "angle": "Qualité résidentielle, performance énergétique des quartiers et coûts de chauffage ; distinguer projections et réalisations, sans promettre une baisse de charges",
       "sources": [
-        "https://cannes.com/fr/index/actualites/annee-2026/novembre/expo-cannes-s-affiche-aux-archives-municipales.html"
+        "https://cannes.com/fr/index/actualites/annee-2026/septembre/cannes-la-bocca-le-reseau-de-chaleur-biomasse-avance.html"
       ]
     },
     {
       "choice": 3,
-      "title": "Valbonne-Sophia Antipolis : une oasis citoyenne à la médiathèque Colette",
-      "sourceDate": "2026-11-04",
+      "title": "Mougins : sécheresse 2026, un point de vigilance pour les propriétaires",
+      "sourceDate": "2026-11-05",
       "facts": [
-        "Végétalisation du parvis de la médiathèque Colette avec Mission Hortus et Ville de Valbonne",
-        "Inauguration annoncée pour le 21 novembre 2026"
+        "La commune envisage de demander la reconnaissance de catastrophe naturelle au titre de la sécheresse 2026",
+        "Recensement des propriétaires concernés par des désordres apparus pendant l'année 2026",
+        "La commune invite à déclarer les dommages à la mairie et dès à présent auprès de l'assureur ; aucune reconnaissance n'est encore accordée"
       ],
-      "angle": "Espaces de proximité et services culturels pour les familles résidentes autour de Sophia Antipolis, sans surestimer la portée du projet",
+      "angle": "Information pratique et prudente sur les risques du bâti, utile aux résidents et acquéreurs ; ne présumer ni d'un sinistre généralisé, ni d'une indemnisation",
       "sources": [
-        "https://www.ville-valbonne.fr/evenement/inauguration-de-loasis-citoyenne/"
+        "https://mougins.fr/phenomene-secheresse-2026-procedure-de-reconnaissance-catastrophe-naturelle/"
       ]
     }
   ],
@@ -63,6 +60,66 @@
   ],
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "wait_for_explicit_choice_from_Stephan_in_outlook",
-  "notes": "Choice 1/2/3 does not authorize publication. No article, visual, PR or Vercel Preview created at this stage. Draft kept on dedicated branch; main untouched."
+  "nextAction": "reply_with_replacement_choice_set_v2_and_verify_sent_items",
+  "notes": "Stephan rejected all V1 topics and explicitly requested replacements; V2 is an in-thread revision of the same cycle, not a new cadence batch. No article, image, PR or Preview before 1/2/3 choice.",
+  "previousVersions": [
+    {
+      "version": 1,
+      "status": "refused",
+      "sentAt": "2026-11-06T07:31:23Z",
+      "sentSubject": "Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+      "sentEvidence": {
+        "status": "verified_in_sent_items",
+        "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
+        "sha256": "9437733e4d38e1b230206b21ad9599cb16472ca274b70ba4588353ad6cc5c378"
+      },
+      "proposals": [
+        {
+          "choice": 1,
+          "title": "Cannes-La Bocca : un jardin de quartier réinventé",
+          "sourceDate": "2026-11-03",
+          "facts": [
+            "Jardin de l’Azuréenne à La Frayère réaménagé sur 3 000 m²",
+            "Aire de jeux pour enfants de 120 m², street workout de 273 m² et parkour de 240 m²",
+            "Jardin rénové dans le programme de renouvellement urbain Nouvelle Frayère"
+          ],
+          "angle": "Qualité de vie familiale et équipements de proximité à Cannes-La Bocca ; ne pas extrapoler un impact sur les prix immobiliers",
+          "sources": [
+            "https://cannes.com/fr/index/actualites/annee-2026/novembre/la-frayere-le-jardin-de-l-azureenne-renove-et-securise.html"
+          ]
+        },
+        {
+          "choice": 2,
+          "title": "Cannes : 29 affiches pour redécouvrir la ville",
+          "sourceDate": "2026-11-03",
+          "facts": [
+            "Exposition Cannes à l’affiche aux Archives municipales ouverte du 6 novembre 2026 au 11 juin 2027",
+            "29 affiches anciennes des XIXe et XXe siècles",
+            "Entrée libre à l’Espace Calmette"
+          ],
+          "angle": "Patrimoine visuel, profondeur culturelle et art de vivre cannois ; distinct des chantiers de la Croisette",
+          "sources": [
+            "https://cannes.com/fr/index/actualites/annee-2026/novembre/expo-cannes-s-affiche-aux-archives-municipales.html"
+          ]
+        },
+        {
+          "choice": 3,
+          "title": "Valbonne-Sophia Antipolis : une oasis citoyenne à la médiathèque Colette",
+          "sourceDate": "2026-11-04",
+          "facts": [
+            "Végétalisation du parvis de la médiathèque Colette avec Mission Hortus et Ville de Valbonne",
+            "Inauguration annoncée pour le 21 novembre 2026"
+          ],
+          "angle": "Espaces de proximité et services culturels pour les familles résidentes autour de Sophia Antipolis, sans surestimer la portée du projet",
+          "sources": [
+            "https://www.ville-valbonne.fr/evenement/inauguration-de-loasis-citoyenne/"
+          ]
+        }
+      ],
+      "refusedAt": "2026-11-06T19:24:04Z",
+      "refusalReason": "All three proposed subjects rejected; replacement subjects requested",
+      "replyFingerprintType": "sha256(utc|subject|decision_text)",
+      "replyFingerprintSha256": "cd069de209833019825de89e2e9fe01865484fdb3bc59f890d3f2b3202c7f959"
+    }
+  ]
 }
