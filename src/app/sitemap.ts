@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: page.lang === 'fr' ? 0.85 : 0.8,
   }))
 
-  const newsSlugs = await getAllNewsSlugs()
+  const newsSlugs: string[] = await getAllNewsSlugs()
   const newsEntries: MetadataRoute.Sitemap = newsSlugs.flatMap((slug) =>
     LANGS.map((lang) => ({
       url: `${SITE_URL}/${lang}/actualites/${slug}`,
