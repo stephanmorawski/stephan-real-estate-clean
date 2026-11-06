@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getSeoPages } from '@/lib/seo-pages'
+import { getAllNewsSlugs } from '@/lib/news'
 
 const LANGS = ['fr', 'en'] as const
 const SITE_URL = 'https://www.cotedazuragency.com'
@@ -75,7 +76,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: page.lang === 'fr' ? 0.85 : 0.8,
   }))
 
+  const newsSlugs = await getAllNewsSlugs()
+  const newsEntries: MetadataRoute.Sitemap = newsSlugs.flatMap((slug) =>
+    LANGS.map((lang) => ({
+      url: `${SITE_URL}/${lang}/actualites/${slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    }))
+  )
+
   const saleUrls = await getSaleUrls(SITE_URL)
 
-  return [...entries, ...seoEntries, ...saleUrls]
+  return [...entries, ...seoEntries, ...newsEntries, ...saleUrls]
 }
