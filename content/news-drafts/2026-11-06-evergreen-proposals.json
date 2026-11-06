@@ -1,0 +1,68 @@
+{
+  "cycleId": "caa-2026-11-06-evergreen",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "type": "friday-evergreen-proposals",
+  "proposalDate": "2026-11-06",
+  "verifiedAt": "2026-11-06",
+  "sentAt": "2026-11-06T07:31:23Z",
+  "sourceChannel": "Outlook",
+  "sentSubject": "Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
+    "sha256": "9437733e4d38e1b230206b21ad9599cb16472ca274b70ba4588353ad6cc5c378"
+  },
+  "proposals": [
+    {
+      "choice": 1,
+      "title": "Cannes-La Bocca : un jardin de quartier réinventé",
+      "sourceDate": "2026-11-03",
+      "facts": [
+        "Jardin de l’Azuréenne à La Frayère réaménagé sur 3 000 m²",
+        "Aire de jeux pour enfants de 120 m², street workout de 273 m² et parkour de 240 m²",
+        "Jardin rénové dans le programme de renouvellement urbain Nouvelle Frayère"
+      ],
+      "angle": "Qualité de vie familiale et équipements de proximité à Cannes-La Bocca ; ne pas extrapoler un impact sur les prix immobiliers",
+      "sources": [
+        "https://cannes.com/fr/index/actualites/annee-2026/novembre/la-frayere-le-jardin-de-l-azureenne-renove-et-securise.html"
+      ]
+    },
+    {
+      "choice": 2,
+      "title": "Cannes : 29 affiches pour redécouvrir la ville",
+      "sourceDate": "2026-11-03",
+      "facts": [
+        "Exposition Cannes à l’affiche aux Archives municipales ouverte du 6 novembre 2026 au 11 juin 2027",
+        "29 affiches anciennes des XIXe et XXe siècles",
+        "Entrée libre à l’Espace Calmette"
+      ],
+      "angle": "Patrimoine visuel, profondeur culturelle et art de vivre cannois ; distinct des chantiers de la Croisette",
+      "sources": [
+        "https://cannes.com/fr/index/actualites/annee-2026/novembre/expo-cannes-s-affiche-aux-archives-municipales.html"
+      ]
+    },
+    {
+      "choice": 3,
+      "title": "Valbonne-Sophia Antipolis : une oasis citoyenne à la médiathèque Colette",
+      "sourceDate": "2026-11-04",
+      "facts": [
+        "Végétalisation du parvis de la médiathèque Colette avec Mission Hortus et Ville de Valbonne",
+        "Inauguration annoncée pour le 21 novembre 2026"
+      ],
+      "angle": "Espaces de proximité et services culturels pour les familles résidentes autour de Sophia Antipolis, sans surestimer la portée du projet",
+      "sources": [
+        "https://www.ville-valbonne.fr/evenement/inauguration-de-loasis-citoyenne/"
+      ]
+    }
+  ],
+  "rejectedTopicsExcluded": [
+    "cannes-la-bocca-boccacabana-phase-5",
+    "valbonne-moulin-des-moines",
+    "mougins-famm-louisa-gagliardi"
+  ],
+  "publicationAuthorized": false,
+  "approvalRequiredAfterChoice": true,
+  "nextAction": "wait_for_explicit_choice_from_Stephan_in_outlook",
+  "notes": "Choice 1/2/3 does not authorize publication. No article, visual, PR or Vercel Preview created at this stage. Draft kept on dedicated branch; main untouched."
+}
