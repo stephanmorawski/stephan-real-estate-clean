@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-06-evergreen",
   "version": 2,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "refused",
   "type": "friday-evergreen-proposals",
   "proposalDate": "2026-11-06",
   "verifiedAt": "2026-11-06",
@@ -64,8 +64,8 @@
   ],
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "await_explicit_1_2_3_choice_from_Stephan_for_version_2",
-  "notes": "Previous 3 subjects explicitly rejected at 19:24Z; three replacements verified and sent in the same Outlook thread at 19:57:35Z. Choice is not approval; no article or deployment.",
+  "nextAction": "close_rejected_cycle_and_wait_until_next_eligible_editorial_proposal_day; check for newer Stephan instructions before proposing",
+  "notes": "Previous 3 subjects explicitly rejected at 19:24Z; three replacements verified and sent in the same Outlook thread at 19:57:35Z. Choice is not approval; no article or deployment. Rejected entirely by Stephan 2026-11-07T15:30:41Z; new buyer-acquisition editorial direction recorded. No new proposal sent; no publication.",
   "previousVersions": [
     {
       "version": 1,
@@ -125,5 +125,26 @@
       "replyFingerprintType": "sha256(utc|subject|decision_text)",
       "replyFingerprintSha256": "cd069de209833019825de89e2e9fe01865484fdb3bc59f890d3f2b3202c7f959"
     }
-  ]
+  ],
+  "rejectedAt": "2026-11-07T15:30:41Z",
+  "rejection": {
+    "sourceChannel": "Outlook",
+    "responseAt": "2026-11-07T15:30:41Z",
+    "rejectedVersion": 2,
+    "scope": "all_three_proposals",
+    "reason": "Stephan rejected all v2 alternatives. Editorial objective is to attract new buyers by conveying aspirational Côte d’Azur lifestyle and compelling reasons to relocate; avoid municipal operational topics and negative/risk topics as lead editorial angles.",
+    "replyFingerprintType": "sha256(utc|subject|normalized_decision_text)",
+    "replyFingerprintSha256": "de2e622b32c30d0b4abcb75303df361e30c7975fd86a0ecd4dc43b7bdaf8a0df"
+  },
+  "editorialDirectionForNextCycle": {
+    "primaryGoal": "Attract new property buyers and international relocations to the Côte d’Azur",
+    "positioning": "Aspirational lifestyle and compelling reasons to settle or acquire a home, with verifiable timely local facts",
+    "excludeExamples": [
+      "utility network construction",
+      "municipal administrative notices or drought claims",
+      "student housing as a stand-alone buyer-facing hook",
+      "minor municipal cultural or garden announcements without demonstrable major appeal"
+    ],
+    "source": "Stephan Outlook reply 2026-11-07T15:30:41Z"
+  }
 }
