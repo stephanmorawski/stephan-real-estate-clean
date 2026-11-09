@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-09-editorial",
   "version": 1,
-  "workflowStatus": "preparing",
+  "workflowStatus": "waiting_approval",
   "kind": "monday-recent-news-proposals",
   "proposalDate": "2026-11-09",
   "sourceChannel": "Outlook",
@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "redeploy_this_exact_final_image_SHA_for_preview_FR_EN_QA_before_APPROUVER_email",
+  "nextAction": "await_explicit_latest_version_APPROUVER_MODIFIER_REFUSER_from_Stephan; no_merge_or_publication_without_approval",
   "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
@@ -135,17 +135,18 @@
       "sourceShotDate": "2021-07-21",
       "isIllustrativeArchive": true,
       "fullJpegDecode": "passed_with_Pillow_960x455",
-      "cropVisualDesktopMobile": "pending_preview_inspection",
+      "cropVisualDesktopMobile": "article_hero_full_image_no_crop_at_1440_and_390_px; news_listing_uses_existing_standard_card_crop_320x314_on_desktop",
       "assetUpload": "verified_full_git_blob_size_and_SHA1",
       "originalSource": "Wikimedia Commons",
       "sourceAndLicenseVerifiedAt": "2026-11-09",
-      "transform": "Resized and recompressed JPEG; no content crop"
+      "transform": "Resized and recompressed JPEG; no content crop",
+      "visualQA": "GitHub Actions isolated Playwright 8 routes; 0 failures; 0 warnings; screenshot archive id 13664137535; 2026-11-09"
     },
     "linkedin": {
       "fr": "Cannes ne se résume pas à l’été. Pour la Saint-Sylvestre 2026, la Ville annonce un réveillon gratuit sur la baie : 5 minutes de drones lumineux suivies de 15 minutes de feux d’artifice, autour de la 80e édition du Festival de Cannes. Un rendez-vous face à la mer qui illustre l’art de vivre sur la Riviera, même en hiver. En raison des travaux de la Croisette, les organisateurs recommandent l’esplanade Favre Lebret. Programme officiel : https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #CotedAzur #FrenchRiviera #ArtDeVivre",
       "en": "Cannes is more than a summer destination. For New Year’s Eve 2026, the city is planning a free display above the bay: five minutes of illuminated drones followed by fifteen minutes of fireworks, with a theme honouring the 80th Cannes Film Festival. It is a glimpse of the French Riviera’s year-round appeal. Due to ongoing Croisette works, organisers recommend viewing from Esplanade Favre Lebret. Official programme: https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #FrenchRiviera #Lifestyle #RealEstate"
     },
-    "articleStatus": "FR_EN_localized_prepared"
+    "articleStatus": "FR_EN_complete_qa_passed_waiting_explicit_approval"
   },
   "pullRequest": {
     "number": 61,
@@ -153,20 +154,48 @@
     "draft": true,
     "base": "main",
     "branch": "caa/editorial-2026-11-09-choice",
-    "headSha": "a3d27964ebdd039e62cff08c33d047ac511c65fa",
-    "mergeAllowed": false
+    "headSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "mergeAllowed": false,
+    "reviewedContentSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7"
   },
   "preview": {
-    "deploymentId": "dpl_HZkHUWtdEynzTJNDfxxpv4T4XhWK",
-    "sha": "a3d27964ebdd039e62cff08c33d047ac511c65fa",
+    "deploymentId": "dpl_HUvgjTovHmkQLwcRtnGD4ktcu4D9",
+    "sha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
     "state": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-1g6f29jtg-oliviers-projects-f3562ae3.vercel.app",
+    "baseUrl": "https://stephan-real-estate-hcoz-3utg7uy6a-oliviers-projects-f3562ae3.vercel.app",
     "frPath": "/fr/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
     "enPath": "/en/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
-    "actualHtmlQa": "blocked_by_Vercel_Authentication",
-    "mobileDesktopQa": "not_completed",
-    "imageDecodeQa": "not_completed",
-    "isProduction": false
+    "actualHtmlQa": "FR_EN_preview_200_h1_title_description_canonical_og_960x455_source_and_license_verified",
+    "mobileDesktopQa": "Playwright_390_1440_8_routes_0_failures_0_console_and_network_errors",
+    "imageDecodeQa": "full_960x455_JPEG_verified_and_decoded",
+    "isProduction": false,
+    "qaWorkflowRunId": 42597595346,
+    "qaArtifactId": 13664137535,
+    "qaRunConclusion": "success",
+    "qaCheckCount": 8,
+    "qaFailureCount": 0,
+    "qaWarningCount": 0,
+    "previewAccess": "Vercel_Authentication; temporary_review_links_sent_privately_not_stored_in_repo"
   },
-  "idempotencyKey": "caa-2026-11-09-editorial:preparing:1"
+  "idempotencyKey": "caa-2026-11-09-editorial:preparing:1",
+  "approvalPack": {
+    "version": "v1",
+    "status": "verified_in_outlook_sent_items",
+    "sentAt": "2026-11-09T10:05:50Z",
+    "sentEvidence": {
+      "status": "verified_in_sent_items",
+      "recipientCount": 1,
+      "fingerprintType": "sha256(cycleId|step|sent_utc|recipient|reviewed_content_sha)",
+      "sha256": "06cea05b813107dc7a6c4f5b558dc5aa2e8475aa073dee68f0ba9df9a7caddcb",
+      "idempotencyKey": "caa-2026-11-09-editorial:approval_pack:v1",
+      "bodyMarker": "CÔTE D'AZUR AGENCY — VALIDATION ÉDITORIALE V1"
+    },
+    "reviewedContentCommitSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "qaRunId": 42597595346,
+    "shaMatchesPreview": true,
+    "decision": "pending_human_explicit_reply",
+    "approvalReceived": false,
+    "mergeAuthorized": false,
+    "publicationAuthorized": false
+  }
 }
