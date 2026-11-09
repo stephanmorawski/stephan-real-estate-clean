@@ -1,0 +1,89 @@
+{
+  "cycleId": "caa-2026-11-09-editorial",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "kind": "monday-recent-news-proposals",
+  "proposalDate": "2026-11-09",
+  "sourceChannel": "Outlook",
+  "originalThreadSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+  "sentAt": "2026-11-09T07:25:50Z",
+  "verifiedAt": "2026-11-09",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
+    "sha256": "5230728645948568cc5e82cf6b622d2c74f4be28c404857b8661e56a1070520f",
+    "verifiedInSentItems": true,
+    "bodySelectionMarker": "Sélection éditoriale du lundi 9 novembre 2026",
+    "recipientCount": 1,
+    "idempotencyKey": "caa-2026-11-09-editorial:proposals:1"
+  },
+  "previousCycle": {
+    "cycleId": "caa-2026-11-06-evergreen",
+    "status": "refused",
+    "version": 2,
+    "rejectedAt": "2026-11-07T15:30:41Z"
+  },
+  "priorApprovalCycle": {
+    "cycleId": "caa-2026-10-26-editorial",
+    "status": "published",
+    "action": "do_not_republish"
+  },
+  "proposals": [
+    {
+      "choice": 1,
+      "title": "Cannes : un rayonnement international qui ne s'arrête jamais",
+      "sourceDate": "2026-11-03",
+      "facts": [
+        "Cannes is again finalist in 2026 World Travel Awards world-leading festival and event destination category",
+        "Cannes won in this category in 2022, 2023, 2024 and 2025",
+        "City of Cannes announced Nov 3 the voting extension until Nov 9; 2026 winner is not yet announced"
+      ],
+      "angle": "International prestige and lively year-round Riviera setting for prospective overseas buyers; do not claim 2026 victory or property capital appreciation",
+      "sources": [
+        "https://www.cannes.com/fr/index/actualites/annee-2026/novembre/world-travel-awards-2026-cannes-en-finale-mondiale-votez-jusqu-au-9-novembre.html",
+        "https://www.worldtravelawards.com/"
+      ]
+    },
+    {
+      "choice": 2,
+      "title": "Cannes 2027 : Béjart Ballet Lausanne, une soirée d'exception",
+      "sourceDate": "2026-11-04",
+      "facts": [
+        "Two Ballet Lausanne performances at Cannes Palais des Festivals on July 10 2027 17:00 and 21:00",
+        "Programme includes Le Sacre du printemps, Béjart et nous, Boléro; marks Maurice Béjart centenary and 40th anniversary of troupe",
+        "Official ticket sales opened on Nov 4 2026"
+      ],
+      "angle": "World-class arts available locally as a marker of life on the Riviera, not an event that has already happened",
+      "sources": [
+        "https://www.palaisdesfestivals.com/espace-presse/communiques/le-bejart-ballet-lausanne-a-cannes/",
+        "https://www.palaisdesfestivals.com/offres/bejart-ballet-lausanne-cannes-fr-6876037/"
+      ]
+    },
+    {
+      "choice": 3,
+      "title": "Un réveillon face à la baie de Cannes : drones et feu d'artifice",
+      "sourceDate": "2026-11-02",
+      "facts": [
+        "Cannes tourism official published New Year's Eve bay programme with 5-minute drone show then 15 minutes of fireworks",
+        "Theme references the Cannes Film Festival's 80th edition",
+        "Official event listing last updated on 2026-11-02"
+      ],
+      "angle": "Aspirational winter Riviera evenings and all-season seaside living, not a repeated unchanged holiday calendar",
+      "sources": [
+        "https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/"
+      ]
+    }
+  ],
+  "editorialChecks": {
+    "existingDraftsInspected": 13,
+    "existingPublishedNewsInspected": 20,
+    "priorRejectedSubjectsExcluded": true,
+    "priority": "aspirational-buyer-acquisition",
+    "seoDuplicationCheck": "No published news targeting these three precise 2026-2027 event and recognition facts; older published Croisette and Riviera articles are broader; distinct topic, no duplicate content.",
+    "candidateScope": "three distinct stories; no article, visual, PR or preview created before selection"
+  },
+  "publicationAuthorized": false,
+  "approvalRequiredAfterChoice": true,
+  "nextAction": "await_explicit_choice_1_2_3_from_Stephan_on_outlook; do_not_prepare_article_or_publish_until_choice",
+  "lastReconciledAt": "2026-11-09T07:25:50Z"
+}
