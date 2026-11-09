@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": true,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "send_single_publication_confirmation_to_Stephan_in_same_outlook_thread; verify_sent_items; monitor_prod_and_update_confirmation_proof_only",
+  "nextAction": "none; continue hourly monitoring; do not republish or resend without new explicit instruction",
   "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
@@ -248,7 +248,16 @@
     "evidenceUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/42629895853/artifacts/13680497170"
   },
   "confirmation": {
-    "status": "pending_send_and_verification",
-    "idempotencyKey": "caa-2026-11-09-editorial:published_confirmation:v1"
+    "status": "verified_in_outlook_sent_items",
+    "sentAt": "2026-11-09T14:03:12Z",
+    "recipientCount": 1,
+    "channel": "Outlook",
+    "threadReply": true,
+    "contentMarker": "Publication confirmée après ton « APPROUVER »",
+    "fingerprintType": "sha256(cycleId|published_confirmation|sentUtc|version|releasedCommitSha)",
+    "sha256": "8741df6e662209571a102851e42aeec101cfd4e8bf215fba683fbed085dd801e",
+    "idempotencyKey": "caa-2026-11-09-editorial:published_confirmation:v1",
+    "linkedinStatus": "prepared_not_published",
+    "urlsIncluded": true
   }
 }
