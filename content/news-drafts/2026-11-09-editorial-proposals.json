@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-09-editorial",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "choice_received",
   "kind": "monday-recent-news-proposals",
   "proposalDate": "2026-11-09",
   "sourceChannel": "Outlook",
@@ -84,6 +84,24 @@
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "await_explicit_choice_1_2_3_from_Stephan_on_outlook; do_not_prepare_article_or_publish_until_choice",
-  "lastReconciledAt": "2026-11-09T07:25:50Z"
+  "nextAction": "verify_sources_and_visual_prepare_fr_en_linkedin_on_branch_and_preview; request_explicit_APPROUVER_after_QA",
+  "lastReconciledAt": "2026-11-09T08:37:27Z",
+  "selectedChoice": 3,
+  "choiceReceivedAt": "2026-11-09T08:37:27Z",
+  "choiceEvidence": {
+    "channel": "Outlook",
+    "replyTextNormalized": "3",
+    "verifiedAgainst": "2026-11-09T07:25:50Z",
+    "replyFromExpectedCorrespondent": true,
+    "sourceSubjectMatchesSentThread": true,
+    "replyVerifiedAt": "2026-11-09",
+    "idempotencyKey": "caa-2026-11-09-editorial:choice:1"
+  },
+  "selectedArticle": {
+    "workingSlug": "2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "status": "not_started",
+    "visualStatus": "to_validate",
+    "frEnStatus": "to_prepare",
+    "publicationAuthorized": false
+  }
 }
