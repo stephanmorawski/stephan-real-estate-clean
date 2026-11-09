@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-09-editorial",
   "version": 1,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "approval_received",
   "kind": "monday-recent-news-proposals",
   "proposalDate": "2026-11-09",
   "sourceChannel": "Outlook",
@@ -82,9 +82,9 @@
     "seoDuplicationCheck": "No published news targeting these three precise 2026-2027 event and recognition facts; older published Croisette and Riviera articles are broader; distinct topic, no duplicate content.",
     "candidateScope": "three distinct stories; no article, visual, PR or preview created before selection"
   },
-  "publicationAuthorized": false,
+  "publicationAuthorized": true,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "await_explicit_latest_version_APPROUVER_MODIFIER_REFUSER_from_Stephan; no_merge_or_publication_without_approval",
+  "nextAction": "verify_PR_expected_head_and_merge_after_explicit_approval; deploy_exact_merge_sha; run_full_postproduction_QA; do_not_mark_published_before_verified",
   "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
@@ -155,7 +155,7 @@
     "base": "main",
     "branch": "caa/editorial-2026-11-09-choice",
     "headSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
-    "mergeAllowed": false,
+    "mergeAllowed": true,
     "reviewedContentSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7"
   },
   "preview": {
@@ -193,9 +193,21 @@
     "reviewedContentCommitSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
     "qaRunId": 42597595346,
     "shaMatchesPreview": true,
-    "decision": "pending_human_explicit_reply",
-    "approvalReceived": false,
-    "mergeAuthorized": false,
-    "publicationAuthorized": false
+    "decision": "APPROUVER",
+    "approvalReceived": true,
+    "mergeAuthorized": true,
+    "publicationAuthorized": true
+  },
+  "approvalEvidence": {
+    "version": "v1",
+    "approvedAt": "2026-11-09T13:00:07Z",
+    "channel": "Outlook",
+    "replyTextNormalized": "APPROUVER",
+    "correlatedWithApprovalPackSentAt": "2026-11-09T10:05:50Z",
+    "reviewedContentCommitSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "verifiedFromExpectedCorrespondent": true,
+    "hashMethod": "sha256(cycleId|approval|receivedUTC|normalizedReply|contentCommit)",
+    "sha256": "52b105d12e0b4bb81b8826e0fb935be68a1f5db3401d28ef4c8dc16271b7766d",
+    "idempotencyKey": "caa-2026-11-09-editorial:approval:v1"
   }
 }
