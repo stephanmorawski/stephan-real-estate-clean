@@ -85,7 +85,7 @@ jobs:
                     return {lang:document.documentElement.lang,h1,overflow:document.documentElement.scrollWidth-innerWidth,
                       photo:imgs.map(i=>({src:i.getAttribute('src'),complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,renderW:i.getBoundingClientRect().width,renderH:i.getBoundingClientRect().height,objectFit:getComputedStyle(i).objectFit})),
                       cropRatio:crop,hasCredit:body.includes('Horizon06')&&body.includes('CC BY-SA 4.0'),
-                      hasArchivedCaption:body.includes('2021')&&body.includes('archive'),
+                      hasArchivedCaption:body.includes('2021')&&/archive/i.test(body),
                       hasOfficialSource:document.body.innerHTML.includes('palaisdesfestivals.com/offres/feu-dartifice'),
                       hasEvent:body.includes('Cannes')&&body.includes('2026'),
                       storyLinked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
@@ -102,7 +102,7 @@ jobs:
                     if(details.cropRatio!==null&&details.cropRatio>.03)failures.push(key+' article hero crop ratio '+details.cropRatio);
                     if(!details.hasCredit||!details.hasArchivedCaption||!details.hasOfficialSource)failures.push(key+' credit/archive/source missing');
                     if(!details.metadata.ogImage?.includes(imagePath))failures.push(key+' OG image mismatch');
-                    if(details.metadata.ogWidth!=='960'||details.metadata.ogHeight!=='455')warnings.push(key+' OG declared dimensions differ from actual 960x455 JPEG');
+                    if(details.metadata.ogWidth!=='960'||details.metadata.ogHeight!=='455')failures.push(key+' OG declared dimensions differ from actual 960x455 JPEG');
                   } else if(!details.storyLinked){failures.push(key+' selected news not in listing')}
                 }catch(e){failures.push(lang+suffix+' '+device+' '+e.message)}
                 finally{await page.close()}

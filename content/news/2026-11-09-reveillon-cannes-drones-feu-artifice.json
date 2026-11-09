@@ -6,6 +6,8 @@
   "linkedinUrl": "",
   "image": "/news/2026-11-09-cannes-feu-artifice-horizon06.jpg",
   "imageLayout": "cover",
+  "imageWidth": 960,
+  "imageHeight": 455,
   "imageCredit": {
     "author": "Horizon06",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:20210721_223025_Festival_pyrotechnique_de_Cannes_2021.jpg",
