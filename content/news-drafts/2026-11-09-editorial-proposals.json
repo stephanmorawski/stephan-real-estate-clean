@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "prepare_exact_commit_PR_and_preview_then_validate_real_final_image_and_FR_EN_desktop_mobile_before_approval_email",
+  "nextAction": "resolve_access_to_private_preview_for_fr_en_qa_and_upload_generated_or_final_licensed_jpeg_to_public/news; then_send_APPROUVER_pack",
   "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
@@ -144,5 +144,27 @@
       "fr": "Cannes ne se résume pas à l’été. Pour la Saint-Sylvestre 2026, la Ville annonce un réveillon gratuit sur la baie : 5 minutes de drones lumineux suivies de 15 minutes de feux d’artifice, autour de la 80e édition du Festival de Cannes. Un rendez-vous face à la mer qui illustre l’art de vivre sur la Riviera, même en hiver. En raison des travaux de la Croisette, les organisateurs recommandent l’esplanade Favre Lebret. Programme officiel : https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #CotedAzur #FrenchRiviera #ArtDeVivre",
       "en": "Cannes is more than a summer destination. For New Year’s Eve 2026, the city is planning a free display above the bay: five minutes of illuminated drones followed by fifteen minutes of fireworks, with a theme honouring the 80th Cannes Film Festival. It is a glimpse of the French Riviera’s year-round appeal. Due to ongoing Croisette works, organisers recommend viewing from Esplanade Favre Lebret. Official programme: https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #FrenchRiviera #Lifestyle #RealEstate"
     }
-  }
+  },
+  "pullRequest": {
+    "number": 61,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/61",
+    "draft": true,
+    "base": "main",
+    "branch": "caa/editorial-2026-11-09-choice",
+    "headSha": "a3d27964ebdd039e62cff08c33d047ac511c65fa",
+    "mergeAllowed": false
+  },
+  "preview": {
+    "deploymentId": "dpl_HZkHUWtdEynzTJNDfxxpv4T4XhWK",
+    "sha": "a3d27964ebdd039e62cff08c33d047ac511c65fa",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-1g6f29jtg-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "enPath": "/en/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "actualHtmlQa": "blocked_by_Vercel_Authentication",
+    "mobileDesktopQa": "not_completed",
+    "imageDecodeQa": "not_completed",
+    "isProduction": false
+  },
+  "idempotencyKey": "caa-2026-11-09-editorial:preparing:1"
 }
