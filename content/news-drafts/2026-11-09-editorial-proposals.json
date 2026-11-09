@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-09-editorial",
   "version": 1,
-  "workflowStatus": "approval_received",
+  "workflowStatus": "published",
   "kind": "monday-recent-news-proposals",
   "proposalDate": "2026-11-09",
   "sourceChannel": "Outlook",
@@ -84,7 +84,7 @@
   },
   "publicationAuthorized": true,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "verify_PR_expected_head_and_merge_after_explicit_approval; deploy_exact_merge_sha; run_full_postproduction_QA; do_not_mark_published_before_verified",
+  "nextAction": "send_single_publication_confirmation_to_Stephan_in_same_outlook_thread; verify_sent_items; monitor_prod_and_update_confirmation_proof_only",
   "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
@@ -209,5 +209,46 @@
     "hashMethod": "sha256(cycleId|approval|receivedUTC|normalizedReply|contentCommit)",
     "sha256": "52b105d12e0b4bb81b8826e0fb935be68a1f5db3401d28ef4c8dc16271b7766d",
     "idempotencyKey": "caa-2026-11-09-editorial:approval:v1"
+  },
+  "publishedAt": "2026-11-09",
+  "publishedAtUtc": "2026-11-09T13:59:24Z",
+  "production": {
+    "projectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
+    "deploymentId": "dpl_2dpqKkJNDBFF7UShSkUpPT3Krizk",
+    "deployedCommitSha": "3cd0d53a1d09df45e826c311c70a209b63a42829",
+    "alias": "www.cotedazuragency.com",
+    "target": "production",
+    "releaseVerifiedAt": "2026-11-09T13:59:24Z",
+    "frUrl": "https://www.cotedazuragency.com/fr/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "enUrl": "https://www.cotedazuragency.com/en/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "imageAsset": "/news/2026-11-09-cannes-feu-artifice-horizon06.jpg",
+    "publishedViaPR": 61
+  },
+  "qualityGate": {
+    "workflowRunId": 42629895853,
+    "artifactId": 13680497170,
+    "conclusion": "success",
+    "checkedCommitSha": "3cd0d53a1d09df45e826c311c70a209b63a42829",
+    "checkedProductionUrl": "https://www.cotedazuragency.com",
+    "articleRoutes": 40,
+    "browserRoutes": 14,
+    "viewports": [
+      1440,
+      390
+    ],
+    "browserPages": 28,
+    "verifiedBinaryAssets": 2,
+    "failures": 0,
+    "jsErrors": 0,
+    "brokenImages": 0,
+    "missingTitles": 0,
+    "visualChecks": "FR desktop and mobile screenshots inspected; article image displays at 960:455 ratio with no crop; EN responsive images decoded and dimensions checked",
+    "imageAttribution": "Horizon06 Wikimedia Commons CC BY-SA 4.0 visibly credited FR/EN",
+    "finishedAt": "2026-11-09T13:59:24Z",
+    "evidenceUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/42629895853/artifacts/13680497170"
+  },
+  "confirmation": {
+    "status": "pending_send_and_verification",
+    "idempotencyKey": "caa-2026-11-09-editorial:published_confirmation:v1"
   }
 }
