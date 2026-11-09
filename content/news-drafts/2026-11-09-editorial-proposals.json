@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-09-editorial",
   "version": 1,
-  "workflowStatus": "choice_received",
+  "workflowStatus": "preparing",
   "kind": "monday-recent-news-proposals",
   "proposalDate": "2026-11-09",
   "sourceChannel": "Outlook",
@@ -84,8 +84,8 @@
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "nextAction": "verify_sources_and_visual_prepare_fr_en_linkedin_on_branch_and_preview; request_explicit_APPROUVER_after_QA",
-  "lastReconciledAt": "2026-11-09T08:37:27Z",
+  "nextAction": "prepare_exact_commit_PR_and_preview_then_validate_real_final_image_and_FR_EN_desktop_mobile_before_approval_email",
+  "lastReconciledAt": "2026-11-09",
   "selectedChoice": 3,
   "choiceReceivedAt": "2026-11-09T08:37:27Z",
   "choiceEvidence": {
@@ -98,10 +98,51 @@
     "idempotencyKey": "caa-2026-11-09-editorial:choice:1"
   },
   "selectedArticle": {
-    "workingSlug": "2026-11-09-reveillon-cannes-drones-feu-artifice",
-    "status": "not_started",
-    "visualStatus": "to_validate",
-    "frEnStatus": "to_prepare",
-    "publicationAuthorized": false
+    "slug": "2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "path": "content/news/2026-11-09-reveillon-cannes-drones-feu-artifice.json",
+    "status": "fr_en_drafted_preview_only",
+    "publishedStatusInBranchOnly": true,
+    "publicationAuthorized": false,
+    "sourceVerifiedAt": "2026-11-09",
+    "sourceUrls": [
+      "https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/",
+      "https://cotedazurfrance.fr/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807444/"
+    ],
+    "factChecks": {
+      "programmePublished": "2026-11-02T16:09",
+      "plannedEvent": "Saint-Sylvestre 31 December 2026 at midnight",
+      "droneMinutes": 5,
+      "fireworksMinutes": 15,
+      "theme": "80th Cannes Film Festival edition",
+      "price": "free",
+      "soundFrom": "23:00 along Croisette",
+      "recommendedViewing": "Esplanade Favre Lebret owing to Croisette works",
+      "note": "Official calendar '31 Dec 00:00' ambiguous; article says New Year's Eve at midnight, not 31 December 00:00"
+    },
+    "seoCheck": "Distinct seasonal Cannes New Year 2026 event; do not duplicate Croisette redevelopment article. The city panorama currently reuses a credited 2024 image provisionally.",
+    "visual": {
+      "workingImage": "/news/2026-11-02-cannes-croisette.jpg",
+      "workingImagePurpose": "licensed archive cover to check layout in preview; not photo of future fireworks",
+      "workingImageCredit": "Joeys Journeys, CC BY 3.0",
+      "workingImageLicenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "workingImageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cannes_drone_shot_in_2024.png",
+      "workingImageBytesFromGitHub": 322271,
+      "workingImageDecodedInThisRun": false,
+      "preferredGeneratedAsset": {
+        "mime": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "bytes": 384747,
+        "sha256": "1f2d5c387ae39c5fed05a68e902ee0679f8bf98c3798d7420c974fc3e318de2c",
+        "kind": "AI illustration",
+        "attribution": "Illustration générée par IA, représentation non contractuelle du réveillon 2026",
+        "gitHubUpload": "pending"
+      },
+      "validationStatus": "pending_preferred_visual_upload_and_preview_image_qa"
+    },
+    "linkedin": {
+      "fr": "Cannes ne se résume pas à l’été. Pour la Saint-Sylvestre 2026, la Ville annonce un réveillon gratuit sur la baie : 5 minutes de drones lumineux suivies de 15 minutes de feux d’artifice, autour de la 80e édition du Festival de Cannes. Un rendez-vous face à la mer qui illustre l’art de vivre sur la Riviera, même en hiver. En raison des travaux de la Croisette, les organisateurs recommandent l’esplanade Favre Lebret. Programme officiel : https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #CotedAzur #FrenchRiviera #ArtDeVivre",
+      "en": "Cannes is more than a summer destination. For New Year’s Eve 2026, the city is planning a free display above the bay: five minutes of illuminated drones followed by fifteen minutes of fireworks, with a theme honouring the 80th Cannes Film Festival. It is a glimpse of the French Riviera’s year-round appeal. Due to ongoing Croisette works, organisers recommend viewing from Esplanade Favre Lebret. Official programme: https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #FrenchRiviera #Lifestyle #RealEstate"
+    }
   }
 }
