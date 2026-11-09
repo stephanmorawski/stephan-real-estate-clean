@@ -14,6 +14,8 @@ function normalizePost({ slug, entry }, lang = 'fr') {
     imageCaption: localized.imageCaption || '',
     imageCredit: entry.imageCredit || null,
     imageLayout: entry.imageLayout || 'cover',
+    imageWidth: entry.imageWidth || undefined,
+    imageHeight: entry.imageHeight || undefined,
     galleryImages: Array.isArray(entry.galleryImages)
       ? entry.galleryImages.filter((photo) => photo && typeof photo.src === 'string' && photo.src.startsWith('/news/')).map((photo) => ({
           src: photo.src,

@@ -64,7 +64,9 @@ export async function generateMetadata({ params }) {
     description: truncateText(article.excerpt || article.title, 160),
     lang,
     pathname: `/${lang}/actualites/${slug}`,
-    image: article.image || '/images/hero-pool.jpg'
+    image: article.image || '/images/hero-pool.jpg',
+    imageWidth: article.imageWidth || 1200,
+    imageHeight: article.imageHeight || 630
   });
 }
 

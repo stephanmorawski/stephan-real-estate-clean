@@ -11,6 +11,8 @@ export function buildPageMetadata({
   lang,
   pathname,
   image = '/images/hero-pool.jpg',
+  imageWidth = 1200,
+  imageHeight = 630,
   includeLanguageAlternates = true,
 }) {
   const baseUrl = 'https://www.cotedazuragency.com';
@@ -47,8 +49,8 @@ export function buildPageMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          width: imageWidth,
+          height: imageHeight,
           alt: title,
         },
       ],

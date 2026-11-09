@@ -1,0 +1,125 @@
+name: CAA Nov 09 Cannes preview QA (draft only)
+on:
+  push:
+    branches:
+      - caa/editorial-2026-11-09-choice
+    paths:
+      - .github/workflows/caa-2026-11-09-preview-check.yml
+permissions:
+  contents: read
+jobs:
+  preview-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Build and start this exact branch
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          npm run build
+          (npm start -- -p 3000 >/tmp/caa-2026-11-09-preview.log 2>&1 &)
+          for i in $(seq 1 50); do
+            if curl -fsS http://localhost:3000/fr/actualites >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/caa-2026-11-09-preview.log
+          exit 1
+      - name: Check FR EN desktop mobile imagery links metadata and console
+        run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          const slug='2026-11-09-reveillon-cannes-drones-feu-artifice';
+          const registry=JSON.parse(fs.readFileSync('content/news-drafts/2026-11-09-editorial-proposals.json','utf8'));
+          const article=JSON.parse(fs.readFileSync('content/news/'+slug+'.json','utf8'));
+          const filePath=registry.selectedArticle.visual.assetPath;
+          const imagePath='/'+filePath.replace(/^public\//,'');
+          const bytes=fs.readFileSync(filePath);
+          const hash=crypto.createHash('sha256').update(bytes).digest('hex');
+          const failures=[],warnings=[],pages=[];
+          const output='artifacts/caa-2026-11-09-preview';
+          fs.mkdirSync(output,{recursive:true});
+          if(registry.cycleId!=='caa-2026-11-09-editorial'||registry.selectedChoice!==3||registry.publicationAuthorized!==false)failures.push('unexpected cycle state');
+          if(registry.workflowStatus!=='preparing')failures.push('unexpected workflow state');
+          if(hash!==registry.selectedArticle.visual.assetSha256||bytes.length!==registry.selectedArticle.visual.assetBytes)failures.push('JPEG SHA256/size mismatch');
+          if(bytes[0]!==0xff||bytes[1]!==0xd8||bytes.at(-2)!==0xff||bytes.at(-1)!==0xd9)failures.push('invalid or truncated JPEG');
+          if(!article.imageCredit?.licenseUrl?.includes('creativecommons.org/licenses/by-sa/4.0'))failures.push('image license missing');
+          const browser=await chromium.launch({headless:true});
+          const base='http://127.0.0.1:3000';
+          for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
+            for(const lang of ['fr','en']){
+              for(const suffix of ['/actualites','/actualites/'+slug]){
+                const path='/'+lang+suffix;
+                const errors=[],bad=[];
+                const page=await browser.newPage({viewport,deviceScaleFactor:1});
+                page.on('pageerror',e=>errors.push(e.message));
+                page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text())});
+                page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)bad.push(r.status()+' '+r.url())});
+                try{
+                  const response=await page.goto(base+path,{waitUntil:'networkidle',timeout:30000});
+                  await page.evaluate(async()=>{await Promise.all([...document.images].map(i=>i.decode().catch(()=>null)))});
+                  const details=await page.evaluate(({slug,imagePath})=>{
+                    const h1=document.querySelector('h1')?.innerText;
+                    const imgs=[...document.images].filter(i=>(i.getAttribute('src')||'').includes(imagePath));
+                    const articleImg=imgs[0];
+                    const rect=articleImg?.getBoundingClientRect();
+                    const crop=rect?Math.abs(rect.width/rect.height-articleImg.naturalWidth/articleImg.naturalHeight)/ (articleImg.naturalWidth/articleImg.naturalHeight):null;
+                    const body=document.body.innerText;
+                    const metadata={
+                      title:document.title,
+                      description:document.querySelector('meta[name="description"]')?.content,
+                      canonical:document.querySelector('link[rel="canonical"]')?.href,
+                      alternateFr:document.querySelector('link[hreflang="fr"]')?.href,
+                      alternateEn:document.querySelector('link[hreflang="en"]')?.href,
+                      ogImage:document.querySelector('meta[property="og:image"]')?.content,
+                      ogWidth:document.querySelector('meta[property="og:image:width"]')?.content,
+                      ogHeight:document.querySelector('meta[property="og:image:height"]')?.content,
+                    };
+                    return {lang:document.documentElement.lang,h1,overflow:document.documentElement.scrollWidth-innerWidth,
+                      photo:imgs.map(i=>({src:i.getAttribute('src'),complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,renderW:i.getBoundingClientRect().width,renderH:i.getBoundingClientRect().height,objectFit:getComputedStyle(i).objectFit})),
+                      cropRatio:crop,hasCredit:body.includes('Horizon06')&&body.includes('CC BY-SA 4.0'),
+                      hasArchivedCaption:body.includes('2021')&&/archive/i.test(body),
+                      hasOfficialSource:document.body.innerHTML.includes('palaisdesfestivals.com/offres/feu-dartifice'),
+                      hasEvent:body.includes('Cannes')&&body.includes('2026'),
+                      storyLinked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
+                      metadata};
+                  },{slug,imagePath});
+                  const isArticle=suffix.includes(slug), key=lang+'-'+(isArticle?'article':'index')+'-'+device;
+                  await page.screenshot({path:output+'/'+key+'.png',fullPage:true});
+                  pages.push({path,device,status:response?.status(),...details,errors,bad});
+                  if(response?.status()!==200||details.lang!==lang||!details.metadata.description||!details.metadata.canonical)failures.push(key+' document language/response/SEO');
+                  if(details.overflow>3)failures.push(key+' horizontal overflow '+details.overflow);
+                  if(errors.length||bad.length)failures.push(key+' JS/network '+JSON.stringify({errors,bad}));
+                  if(isArticle){
+                    if(!details.photo.length||details.photo.some(p=>!p.complete||p.width!==960||p.height!==455))failures.push(key+' image failed to decode/dimensions');
+                    if(details.cropRatio!==null&&details.cropRatio>.03)failures.push(key+' article hero crop ratio '+details.cropRatio);
+                    if(!details.hasCredit||!details.hasArchivedCaption||!details.hasOfficialSource)failures.push(key+' credit/archive/source missing');
+                    if(!details.metadata.ogImage?.includes(imagePath))failures.push(key+' OG image mismatch');
+                    if(details.metadata.ogWidth!=='960'||details.metadata.ogHeight!=='455')failures.push(key+' OG declared dimensions differ from actual 960x455 JPEG');
+                  } else if(!details.storyLinked){failures.push(key+' selected news not in listing')}
+                }catch(e){failures.push(lang+suffix+' '+device+' '+e.message)}
+                finally{await page.close()}
+              }
+            }
+          }
+          await browser.close();
+          const report={cycleId:registry.cycleId,workflowVersion:registry.version,sha:process.env.GITHUB_SHA,image:{path:filePath,bytes:bytes.length,sha256:hash},pages,warnings,failures};
+          fs.writeFileSync(output+'/report.json',JSON.stringify(report,null,2));
+          console.log(JSON.stringify({sha:report.sha,image:report.image,pages:pages.map(p=>({path:p.path,device:p.device,status:p.status,overflow:p.overflow,photo:p.photo,cropRatio:p.cropRatio,errors:p.errors,bad:p.bad})),warnings,failures},null,2));
+          if(failures.length)process.exitCode=1;
+          JS
+      - name: Archive QA report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: caa-2026-11-09-preview-qa
+          path: artifacts/caa-2026-11-09-preview/
+          retention-days: 14
+          if-no-files-found: warn

@@ -1,0 +1,213 @@
+{
+  "cycleId": "caa-2026-11-09-editorial",
+  "version": 1,
+  "workflowStatus": "approval_received",
+  "kind": "monday-recent-news-proposals",
+  "proposalDate": "2026-11-09",
+  "sourceChannel": "Outlook",
+  "originalThreadSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+  "sentAt": "2026-11-09T07:25:50Z",
+  "verifiedAt": "2026-11-09",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "fingerprintType": "sha256(canonical_subject|sent_utc|recipient)",
+    "sha256": "5230728645948568cc5e82cf6b622d2c74f4be28c404857b8661e56a1070520f",
+    "verifiedInSentItems": true,
+    "bodySelectionMarker": "Sélection éditoriale du lundi 9 novembre 2026",
+    "recipientCount": 1,
+    "idempotencyKey": "caa-2026-11-09-editorial:proposals:1"
+  },
+  "previousCycle": {
+    "cycleId": "caa-2026-11-06-evergreen",
+    "status": "refused",
+    "version": 2,
+    "rejectedAt": "2026-11-07T15:30:41Z"
+  },
+  "priorApprovalCycle": {
+    "cycleId": "caa-2026-10-26-editorial",
+    "status": "published",
+    "action": "do_not_republish"
+  },
+  "proposals": [
+    {
+      "choice": 1,
+      "title": "Cannes : un rayonnement international qui ne s'arrête jamais",
+      "sourceDate": "2026-11-03",
+      "facts": [
+        "Cannes is again finalist in 2026 World Travel Awards world-leading festival and event destination category",
+        "Cannes won in this category in 2022, 2023, 2024 and 2025",
+        "City of Cannes announced Nov 3 the voting extension until Nov 9; 2026 winner is not yet announced"
+      ],
+      "angle": "International prestige and lively year-round Riviera setting for prospective overseas buyers; do not claim 2026 victory or property capital appreciation",
+      "sources": [
+        "https://www.cannes.com/fr/index/actualites/annee-2026/novembre/world-travel-awards-2026-cannes-en-finale-mondiale-votez-jusqu-au-9-novembre.html",
+        "https://www.worldtravelawards.com/"
+      ]
+    },
+    {
+      "choice": 2,
+      "title": "Cannes 2027 : Béjart Ballet Lausanne, une soirée d'exception",
+      "sourceDate": "2026-11-04",
+      "facts": [
+        "Two Ballet Lausanne performances at Cannes Palais des Festivals on July 10 2027 17:00 and 21:00",
+        "Programme includes Le Sacre du printemps, Béjart et nous, Boléro; marks Maurice Béjart centenary and 40th anniversary of troupe",
+        "Official ticket sales opened on Nov 4 2026"
+      ],
+      "angle": "World-class arts available locally as a marker of life on the Riviera, not an event that has already happened",
+      "sources": [
+        "https://www.palaisdesfestivals.com/espace-presse/communiques/le-bejart-ballet-lausanne-a-cannes/",
+        "https://www.palaisdesfestivals.com/offres/bejart-ballet-lausanne-cannes-fr-6876037/"
+      ]
+    },
+    {
+      "choice": 3,
+      "title": "Un réveillon face à la baie de Cannes : drones et feu d'artifice",
+      "sourceDate": "2026-11-02",
+      "facts": [
+        "Cannes tourism official published New Year's Eve bay programme with 5-minute drone show then 15 minutes of fireworks",
+        "Theme references the Cannes Film Festival's 80th edition",
+        "Official event listing last updated on 2026-11-02"
+      ],
+      "angle": "Aspirational winter Riviera evenings and all-season seaside living, not a repeated unchanged holiday calendar",
+      "sources": [
+        "https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/"
+      ]
+    }
+  ],
+  "editorialChecks": {
+    "existingDraftsInspected": 13,
+    "existingPublishedNewsInspected": 20,
+    "priorRejectedSubjectsExcluded": true,
+    "priority": "aspirational-buyer-acquisition",
+    "seoDuplicationCheck": "No published news targeting these three precise 2026-2027 event and recognition facts; older published Croisette and Riviera articles are broader; distinct topic, no duplicate content.",
+    "candidateScope": "three distinct stories; no article, visual, PR or preview created before selection"
+  },
+  "publicationAuthorized": true,
+  "approvalRequiredAfterChoice": true,
+  "nextAction": "verify_PR_expected_head_and_merge_after_explicit_approval; deploy_exact_merge_sha; run_full_postproduction_QA; do_not_mark_published_before_verified",
+  "lastReconciledAt": "2026-11-09",
+  "selectedChoice": 3,
+  "choiceReceivedAt": "2026-11-09T08:37:27Z",
+  "choiceEvidence": {
+    "channel": "Outlook",
+    "replyTextNormalized": "3",
+    "verifiedAgainst": "2026-11-09T07:25:50Z",
+    "replyFromExpectedCorrespondent": true,
+    "sourceSubjectMatchesSentThread": true,
+    "replyVerifiedAt": "2026-11-09",
+    "idempotencyKey": "caa-2026-11-09-editorial:choice:1"
+  },
+  "selectedArticle": {
+    "slug": "2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "path": "content/news/2026-11-09-reveillon-cannes-drones-feu-artifice.json",
+    "status": "fr_en_drafted_preview_only",
+    "publishedStatusInBranchOnly": true,
+    "publicationAuthorized": false,
+    "sourceVerifiedAt": "2026-11-09",
+    "sourceUrls": [
+      "https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/",
+      "https://cotedazurfrance.fr/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807444/"
+    ],
+    "factChecks": {
+      "programmePublished": "2026-11-02T16:09",
+      "plannedEvent": "Saint-Sylvestre 31 December 2026 at midnight",
+      "droneMinutes": 5,
+      "fireworksMinutes": 15,
+      "theme": "80th Cannes Film Festival edition",
+      "price": "free",
+      "soundFrom": "23:00 along Croisette",
+      "recommendedViewing": "Esplanade Favre Lebret owing to Croisette works",
+      "note": "Official calendar '31 Dec 00:00' ambiguous; article says New Year's Eve at midnight, not 31 December 00:00"
+    },
+    "seoCheck": "Distinct seasonal Cannes New Year 2026 event; do not duplicate Croisette redevelopment article. The city panorama currently reuses a credited 2024 image provisionally.",
+    "visual": {
+      "assetPath": "public/news/2026-11-09-cannes-feu-artifice-horizon06.jpg",
+      "assetMime": "image/jpeg",
+      "assetBytes": 50577,
+      "assetWidth": 960,
+      "assetHeight": 455,
+      "assetSha256": "175dfec091f008fd8f6f26076795c8283a6e9874b0c3a555cc8c4038eab766a1",
+      "assetGitBlobSha": "667340148d6c3d0015764e2597178a273198e92d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20210721_223025_Festival_pyrotechnique_de_Cannes_2021.jpg",
+      "author": "Horizon06",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceShotDate": "2021-07-21",
+      "isIllustrativeArchive": true,
+      "fullJpegDecode": "passed_with_Pillow_960x455",
+      "cropVisualDesktopMobile": "article_hero_full_image_no_crop_at_1440_and_390_px; news_listing_uses_existing_standard_card_crop_320x314_on_desktop",
+      "assetUpload": "verified_full_git_blob_size_and_SHA1",
+      "originalSource": "Wikimedia Commons",
+      "sourceAndLicenseVerifiedAt": "2026-11-09",
+      "transform": "Resized and recompressed JPEG; no content crop",
+      "visualQA": "GitHub Actions isolated Playwright 8 routes; 0 failures; 0 warnings; screenshot archive id 13664137535; 2026-11-09"
+    },
+    "linkedin": {
+      "fr": "Cannes ne se résume pas à l’été. Pour la Saint-Sylvestre 2026, la Ville annonce un réveillon gratuit sur la baie : 5 minutes de drones lumineux suivies de 15 minutes de feux d’artifice, autour de la 80e édition du Festival de Cannes. Un rendez-vous face à la mer qui illustre l’art de vivre sur la Riviera, même en hiver. En raison des travaux de la Croisette, les organisateurs recommandent l’esplanade Favre Lebret. Programme officiel : https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #CotedAzur #FrenchRiviera #ArtDeVivre",
+      "en": "Cannes is more than a summer destination. For New Year’s Eve 2026, the city is planning a free display above the bay: five minutes of illuminated drones followed by fifteen minutes of fireworks, with a theme honouring the 80th Cannes Film Festival. It is a glimpse of the French Riviera’s year-round appeal. Due to ongoing Croisette works, organisers recommend viewing from Esplanade Favre Lebret. Official programme: https://www.palaisdesfestivals.com/offres/feu-dartifice-du-nouvel-an-show-de-drones-cannes-fr-3807135/ #Cannes #FrenchRiviera #Lifestyle #RealEstate"
+    },
+    "articleStatus": "FR_EN_complete_qa_passed_waiting_explicit_approval"
+  },
+  "pullRequest": {
+    "number": 61,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/61",
+    "draft": true,
+    "base": "main",
+    "branch": "caa/editorial-2026-11-09-choice",
+    "headSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "mergeAllowed": true,
+    "reviewedContentSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7"
+  },
+  "preview": {
+    "deploymentId": "dpl_HUvgjTovHmkQLwcRtnGD4ktcu4D9",
+    "sha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-3utg7uy6a-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "enPath": "/en/actualites/2026-11-09-reveillon-cannes-drones-feu-artifice",
+    "actualHtmlQa": "FR_EN_preview_200_h1_title_description_canonical_og_960x455_source_and_license_verified",
+    "mobileDesktopQa": "Playwright_390_1440_8_routes_0_failures_0_console_and_network_errors",
+    "imageDecodeQa": "full_960x455_JPEG_verified_and_decoded",
+    "isProduction": false,
+    "qaWorkflowRunId": 42597595346,
+    "qaArtifactId": 13664137535,
+    "qaRunConclusion": "success",
+    "qaCheckCount": 8,
+    "qaFailureCount": 0,
+    "qaWarningCount": 0,
+    "previewAccess": "Vercel_Authentication; temporary_review_links_sent_privately_not_stored_in_repo"
+  },
+  "idempotencyKey": "caa-2026-11-09-editorial:preparing:1",
+  "approvalPack": {
+    "version": "v1",
+    "status": "verified_in_outlook_sent_items",
+    "sentAt": "2026-11-09T10:05:50Z",
+    "sentEvidence": {
+      "status": "verified_in_sent_items",
+      "recipientCount": 1,
+      "fingerprintType": "sha256(cycleId|step|sent_utc|recipient|reviewed_content_sha)",
+      "sha256": "06cea05b813107dc7a6c4f5b558dc5aa2e8475aa073dee68f0ba9df9a7caddcb",
+      "idempotencyKey": "caa-2026-11-09-editorial:approval_pack:v1",
+      "bodyMarker": "CÔTE D'AZUR AGENCY — VALIDATION ÉDITORIALE V1"
+    },
+    "reviewedContentCommitSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "qaRunId": 42597595346,
+    "shaMatchesPreview": true,
+    "decision": "APPROUVER",
+    "approvalReceived": true,
+    "mergeAuthorized": true,
+    "publicationAuthorized": true
+  },
+  "approvalEvidence": {
+    "version": "v1",
+    "approvedAt": "2026-11-09T13:00:07Z",
+    "channel": "Outlook",
+    "replyTextNormalized": "APPROUVER",
+    "correlatedWithApprovalPackSentAt": "2026-11-09T10:05:50Z",
+    "reviewedContentCommitSha": "b89397b4162ff5f52f1524e6c0d66f33ef0abdb7",
+    "verifiedFromExpectedCorrespondent": true,
+    "hashMethod": "sha256(cycleId|approval|receivedUTC|normalizedReply|contentCommit)",
+    "sha256": "52b105d12e0b4bb81b8826e0fb935be68a1f5db3401d28ef4c8dc16271b7766d",
+    "idempotencyKey": "caa-2026-11-09-editorial:approval:v1"
+  }
+}
