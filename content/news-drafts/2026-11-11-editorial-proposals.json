@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "preparing",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -60,12 +60,12 @@
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
-  "articlePrepared": false,
+  "articlePrepared": true,
   "visualPrepared": false,
   "pullRequestPrepared": false,
   "previewPrepared": false,
-  "idempotencyKey": "caa-2026-11-11-editorial|replacement_proposals|v2",
-  "nextAction": "Wait for Stephan's explicit choice 1/2/3 responding to replacement proposals V2. Previous V1 selection options invalidated. Choice is not permission to publish.",
+  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2",
+  "nextAction": "Materialize CC BY-SA archive JPEG to selected review branch, verify actual decoded bytes/dimensions/SHA256, PR and exact commit Vercel Preview and desktop/mobile QA; send APPROUVER/MODIFIER/REFUSER pack, verify sent items; do not publish.",
   "previousVersions": [
     {
       "version": 1,
@@ -130,5 +130,60 @@
     ],
     "reason": "Two recent Cannes posts; replace all prior choices rather than interpret as selection or publication approval."
   },
-  "sourcesVerifiedAt": "2026-11-11"
+  "sourcesVerifiedAt": "2026-11-11",
+  "selectedChoice": 2,
+  "choiceReceivedAt": "2026-11-11T11:03:44Z",
+  "choiceEvidence": {
+    "channel": "outlook",
+    "messageIdSha256": "48686262dcd2360f192e0101e42af2fcd1ff8df86956271eb096cc4aebf637f7",
+    "replyTextSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "replyTextNormalized": "2",
+    "matchedProposalVersion": 2,
+    "matchedSentAt": "2026-11-11T10:19:09Z",
+    "matchedConversation": true,
+    "verifiedAt": "2026-11-11",
+    "idempotencyKey": "caa-2026-11-11-editorial|choice_received|v2"
+  },
+  "selectedArticle": {
+    "slug": "2026-11-11-antibes-garoupe-plage-publique",
+    "path": "content/news/2026-11-11-antibes-garoupe-plage-publique.json",
+    "sourceVerifiedAt": "2026-11-11",
+    "sourceUrls": [
+      "https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux",
+      "https://www.nicematin.com/loisirs/balade/nouveaux-amenagements-accessibilite-environnement-les-travaux-de-la-garoupe-transforment-deja-cette-plage-bien-connue-d-antibes-10725253"
+    ],
+    "factCheck": {
+      "municipalAnnouncement": "2026-10-05",
+      "openPublicSection": true,
+      "reclaimedSandSqM": 900,
+      "expectedCompletion": "2026-12",
+      "liftsPlanned": 3,
+      "stairsPlanned": 6,
+      "workInProgress": true,
+      "avoidAssertingCompletion": true
+    },
+    "seoCheck": "Différent du guide existant sur le sentier littoral (3,7 km). Cette publication concerne le réaménagement des espaces publics de La Garoupe et l’accessibilité, non la randonnée. Aucun chiffre d'effet immobilier.",
+    "visual": {
+      "assetPath": "public/news/2026-11-11-antibes-garoupe-abxbay.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_01.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Plage_de_la_garoupe_01.jpg",
+      "author": "Abxbay",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "originalShotDate": "2023-03-10",
+      "isIllustrativeArchive": true,
+      "alterations": "proportional resize no crop JPEG",
+      "expectedMime": "image/jpeg",
+      "expectedWidth": 720,
+      "expectedHeight": 960,
+      "status": "materialization_pending"
+    },
+    "linkedin": {
+      "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
+      "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
+    },
+    "articleStatus": "FR_EN_written_on_review_branch_visual_pending"
+  },
+  "preparationStartedAt": "2026-11-11T11:03:44Z",
+  "reviewBranch": "caa/editorial-2026-11-11-choice-2"
 }
