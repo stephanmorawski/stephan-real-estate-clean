@@ -1,0 +1,71 @@
+{
+  "cycleId": "caa-2026-11-11-editorial",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "kind": "wednesday-attractiveness-economy-international",
+  "proposalDate": "2026-11-11",
+  "sourceChannel": "outlook",
+  "originalThreadSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+  "sentAt": "2026-11-11T09:43:09Z",
+  "verifiedAt": "2026-11-11",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "markerSha256": "c3b7be075fce42b864bb803bc98ceb507dde5ef70812571117e76495cecf1ede",
+    "sentMessageIdSha256": "63843fd9a03e05b2c5131b761a309476a6ea31b526eef7ca68cc3a6a60fde1b0",
+    "sentCanonicalSha256": "be21ac527b7549bc150af9d4102b989620010970c95f92501f9e0221eaf1783b",
+    "recipient": "editorial_approver",
+    "verifiedFolder": "outlook_sentitems"
+  },
+  "proposals": [
+    {
+      "choice": 1,
+      "title": "Sophia Antipolis : la 3D temps réel ouvre des perspectives pour les visites immobilières",
+      "factSourceDate": "2026-11-04",
+      "sources": [
+        "https://incubateurpca.org/2026/11/04/les-nouveaux-incubes-3/"
+      ],
+      "facts": "OnTheFly rejoint l'incubateur. Reconstitution progressive 3D à partir d'une vidéo au smartphone ; immobilier et architecture figurent parmi les débouchés envisagés. Projet en phase de structuration, pas de disponibilité commerciale affirmée.",
+      "angle": "Innovation sophipolitaine et découverte de biens à distance pour acheteurs internationaux ; potentiel et non produit déjà opérationnel."
+    },
+    {
+      "choice": 2,
+      "title": "Sophia Antipolis entre dans le réseau européen de recherche en IA ELLIS",
+      "factSourceDate": "2026-10-29",
+      "sources": [
+        "https://ellis.eu/news/five-new-units-join-ellis-network-cote-dazur-hamburg-innsbruck-ireland-norway",
+        "https://ellis.eu/research/sites/unit-cote-dazur",
+        "https://www.sophianet.com/article/ia-sophia-antipolis-entree-reseau-europeen-excellence-ellis"
+      ],
+      "facts": "Côte d'Azur parmi cinq unités ELLIS annoncées le 29 octobre (49 unités au total), unité établie le 1 octobre, avec EURECOM, IMT, Inria. Couverture locale le 10 novembre.",
+      "angle": "Attractivité professionnelle et scientifique internationale, sans estimation de prix immobiliers."
+    },
+    {
+      "choice": 3,
+      "title": "Cannes accueille un nouveau rendez-vous international du quantique",
+      "factSourceDate": "2026-11-05",
+      "sources": [
+        "https://www.worldquantumcannesfestival.com/conferences-program",
+        "https://www.cote-azur.cci.fr/evenement/world-quantum-cannes-festival/",
+        "https://www.investincotedazur.com/en/evenements/world-quantum-cannes-festival-2026-technologies-quantiques/"
+      ],
+      "facts": "World Quantum Cannes Festival au Palais des Festivals les 17 et 18 novembre 2026, chercheurs, industriels et investisseurs ; première édition confirmée par média local.",
+      "angle": "Cannes comme point de rencontre international entre science, économie et art de vivre ; aucun effet immobilier chiffré allégué."
+    }
+  ],
+  "editorialChecks": {
+    "priorPublishedNewsCount": 21,
+    "priorDraftsCount": 14,
+    "alreadySentTodayBeforeThis": false,
+    "preexistingActiveCycles": false,
+    "priorRejectedTopicsNotReused": true,
+    "seoCheck": "Unique angles versus existing generic Sophia technology coverage and Cannes events; no new article or final visual created at proposal stage."
+  },
+  "publicationAuthorized": false,
+  "approvalRequiredAfterChoice": true,
+  "articlePrepared": false,
+  "visualPrepared": false,
+  "pullRequestPrepared": false,
+  "previewPrepared": false,
+  "idempotencyKey": "caa-2026-11-11-editorial|proposals_sent|v1",
+  "nextAction": "Wait for explicit choice 1/2/3 from Stephan in same Outlook thread. A choice is not publication approval."
+}
