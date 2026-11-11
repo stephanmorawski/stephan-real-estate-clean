@@ -186,7 +186,7 @@
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "revision2_FR_EN_unchanged_sunny_photo_preview_ready_QA_passed_waiting_approval_pack_send"
+    "articleStatus": "revision2_FR_EN_unchanged_sunny_photo_preview_ready_QA_passed_waiting_approval"
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
   "reviewBranch": "caa/editorial-2026-11-11-choice-2",
@@ -249,7 +249,7 @@
     "approvalReceived": false,
     "supersededByRevision": false
   },
-  "lastReconciledAt": "2026-11-11T12:27:11Z",
+  "lastReconciledAt": "2026-11-11T14:52:05Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -333,12 +333,14 @@
   ],
   "pendingApprovalPack": {
     "version": 2,
-    "status": "prepared_waiting_send",
+    "status": "waiting_approval",
     "markerSha256": "c6afb88e6061b5f3b5be3aac5d90c551672b0e14b7ca732e9526d54e6a43aab9",
     "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
     "revisionOf": 1,
     "replyTo": "revision_request_in_same_outlook_thread",
     "idempotencyKey": "caa-2026-11-11-editorial|approval_pack|v2-pack2",
-    "requiresExplicitApproval": true
+    "requiresExplicitApproval": true,
+    "sentAt": "2026-11-11T12:21:34Z",
+    "sentEvidenceStatus": "verified_in_sent_items"
   }
 }
