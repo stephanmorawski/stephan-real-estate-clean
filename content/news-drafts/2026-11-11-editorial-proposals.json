@@ -61,7 +61,7 @@
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
   "articlePrepared": true,
-  "visualPrepared": false,
+  "visualPrepared": true,
   "pullRequestPrepared": false,
   "previewPrepared": false,
   "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2",
@@ -176,7 +176,15 @@
       "expectedMime": "image/jpeg",
       "expectedWidth": 720,
       "expectedHeight": 960,
-      "status": "materialization_pending"
+      "status": "materialized_verified",
+      "assetMime": "image/jpeg",
+      "assetBytes": 143092,
+      "assetWidth": 720,
+      "assetHeight": 960,
+      "assetSha256": "f15d87f44d8e116c10544cd226a6ea78702fe456d3e7ba616bb2b45f73e4e85a",
+      "decodedWithPillow": true,
+      "originalFile": "Plage_de_la_garoupe_01.jpg",
+      "archiveDate": "2023-03-10"
     },
     "linkedin": {
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
