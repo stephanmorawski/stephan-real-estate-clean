@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|prepared_waiting_send|v2-pack1",
-  "nextAction": "Deploy exact final branch review SHA as nonproduction Vercel Preview; inspect FR/EN; send pack to Stephan via same Outlook thread for APPROUVER/MODIFIER/REFUSER, verify in Sent Items. Never publish on choice 2.",
+  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v2-pack1",
+  "nextAction": "Await Stephan's explicit APPROUVER / MODIFIER / REFUSER in same Outlook thread referring to approval pack v1; on APPROUVER only verify exact last sent version and content SHA, then merge and deploy with full production QA; no publication now.",
   "previousVersions": [
     {
       "version": 1,
@@ -204,15 +204,15 @@
     "mergeAllowed": false
   },
   "preview": {
-    "deploymentId": "dpl_G2EC2hRR8CLdBh3uZGY5UskkXuzo",
-    "sha": "f6c730f03d04af9c7cae975f58ea15f493bc706e",
+    "deploymentId": "dpl_7ec7jhvw7gmQzPas3TPLR2WVsCX9",
+    "sha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
     "state": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-3doad3y0n-oliviers-projects-f3562ae3.vercel.app",
+    "baseUrl": "https://stephan-real-estate-hcoz-9yd17lvyh-oliviers-projects-f3562ae3.vercel.app",
     "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
     "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
-    "htmlFR": "HTTP200_title_description_canonical_og_image_source_credit_present",
-    "htmlEN": "HTTP200_title_description_canonical_og_image_source_credit_present",
-    "access": "Vercel_Authentication; review link must be sent privately",
+    "htmlFR": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "htmlEN": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "access": "Vercel_Authentication; temporary_signed_review_links_sent_only_to_approver_not_in_public_repo",
     "isProduction": false
   },
   "qa": {
@@ -236,5 +236,24 @@
     }
   },
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
-  "preparedAt": "2026-11-11T11:36:24Z"
+  "preparedAt": "2026-11-11T11:36:24Z",
+  "approvalPack": {
+    "version": 1,
+    "markerSha256": "f3976b2669a5d25f8c02a3e2e02d066198d690f4d6ab9ab2e86e412e9492ddf1",
+    "status": "verified_in_sent_items",
+    "sentAt": "2026-11-11T11:40:37Z",
+    "sentMessageIdSha256": "29fc3cbbf0ec16f2ad28a2d5fc48999395d73ab52b6b5be892055afe9d5ded65",
+    "sentCanonicalSha256": "64f253b97cdd199c5f948947dde1e13707b421a88a9b4bd90fd96dd6ffc71622",
+    "recipient": "editorial_approver",
+    "sentFolder": "outlook_sentitems",
+    "matchedThread": true,
+    "expectedAnswer": [
+      "APPROUVER",
+      "MODIFIER",
+      "REFUSER"
+    ],
+    "reviewedContentSha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
+    "approvalReceived": false
+  },
+  "lastReconciledAt": "2026-11-11T11:40:37Z"
 }
