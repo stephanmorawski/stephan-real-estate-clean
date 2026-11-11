@@ -1,14 +1,20 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_choice",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
   "originalThreadSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
-  "sentAt": null,
+  "sentAt": "2026-11-11T10:19:09Z",
   "verifiedAt": "2026-11-11",
-  "sentEvidence": null,
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "recipient": "editorial_approver",
+    "verifiedFolder": "outlook_sentitems",
+    "markerSha256": "45818de1e2c57b58cf3ae14b9b09a94819bedbec6e7146a343b52f984960dbba",
+    "sentMessageIdSha256": "660181dd16dee84c65701a63e07bfd5cc2aba49785de45a7bf0815c5dfff68eb"
+  },
   "proposals": [
     {
       "choice": 1,
@@ -59,7 +65,7 @@
   "pullRequestPrepared": false,
   "previewPrepared": false,
   "idempotencyKey": "caa-2026-11-11-editorial|replacement_proposals|v2",
-  "nextAction": "Send v2 in reply to Stephan's 2026-11-11 09:55:05 UTC request, verify in Outlook Sent Items, then mark waiting_choice; a numerical selection never permits publication.",
+  "nextAction": "Wait for Stephan's explicit choice 1/2/3 responding to replacement proposals V2. Previous V1 selection options invalidated. Choice is not permission to publish.",
   "previousVersions": [
     {
       "version": 1,
