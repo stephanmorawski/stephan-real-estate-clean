@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "preparing",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -63,9 +63,9 @@
   "articlePrepared": true,
   "visualPrepared": true,
   "pullRequestPrepared": true,
-  "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v2-pack1",
-  "nextAction": "Await Stephan's explicit APPROUVER / MODIFIER / REFUSER in same Outlook thread referring to approval pack v1; on APPROUVER only verify exact last sent version and content SHA, then merge and deploy with full production QA; no publication now.",
+  "previewPrepared": false,
+  "idempotencyKey": "caa-2026-11-11-editorial|revision_requested|v2-pack1-rev1",
+  "nextAction": "Revision requested by Stephan 2026-11-11 11:44:02 UTC: sunny blue-sky photograph only. Rebuild exact SHA Preview, FR/EN desktop/mobile image QA, then email approval pack v2 in same Outlook thread. Do NOT merge before new APPROUVER.",
   "previousVersions": [
     {
       "version": 1,
@@ -164,33 +164,29 @@
     },
     "seoCheck": "Différent du guide existant sur le sentier littoral (3,7 km). Cette publication concerne le réaménagement des espaces publics de La Garoupe et l’accessibilité, non la randonnée. Aucun chiffre d'effet immobilier.",
     "visual": {
-      "assetPath": "public/news/2026-11-11-antibes-garoupe-abxbay.jpg",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_01.jpg",
-      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Plage_de_la_garoupe_01.jpg",
+      "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Plage_de_la_garoupe_03.jpg",
       "author": "Abxbay",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "originalShotDate": "2023-03-10",
       "isIllustrativeArchive": true,
-      "alterations": "proportional resize no crop JPEG",
-      "expectedMime": "image/jpeg",
-      "expectedWidth": 720,
-      "expectedHeight": 960,
-      "status": "materialized_verified",
+      "alterations": "proportional resize without crop JPEG quality 85",
       "assetMime": "image/jpeg",
-      "assetBytes": 143092,
+      "assetBytes": 157855,
       "assetWidth": 720,
       "assetHeight": 960,
-      "assetSha256": "f15d87f44d8e116c10544cd226a6ea78702fe456d3e7ba616bb2b45f73e4e85a",
+      "assetSha256": "f9fc8caf7c88d427467299b3b362f90561a60afed6249241b78c622b08102e40",
       "decodedWithPillow": true,
-      "originalFile": "Plage_de_la_garoupe_01.jpg",
-      "archiveDate": "2023-03-10"
+      "sourceOriginalDimensions": "3096x4128",
+      "status": "materialized_verified"
     },
     "linkedin": {
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "FR_EN_completed_licensed_visual_verified_preview_ready_QA_passed_waiting_send"
+    "articleStatus": "FR_EN_unmodified_new_licensed_sunny_archive_visual_materialized_preview_QA_pending"
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
   "reviewBranch": "caa/editorial-2026-11-11-choice-2",
@@ -203,38 +199,8 @@
     "draft": true,
     "mergeAllowed": false
   },
-  "preview": {
-    "deploymentId": "dpl_7ec7jhvw7gmQzPas3TPLR2WVsCX9",
-    "sha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
-    "state": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-9yd17lvyh-oliviers-projects-f3562ae3.vercel.app",
-    "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
-    "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
-    "htmlFR": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
-    "htmlEN": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
-    "access": "Vercel_Authentication; temporary_signed_review_links_sent_only_to_approver_not_in_public_repo",
-    "isProduction": false
-  },
-  "qa": {
-    "workflowRunId": 43013080632,
-    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43013080632",
-    "workflowSha": "131fa95ddacb250d4f385ba926776b10274e088e",
-    "result": "success",
-    "artifactId": 13851726460,
-    "checks": 8,
-    "failures": 0,
-    "photoDecoded": true,
-    "photoNonCropped": true,
-    "desktopAndMobile": true,
-    "consoleErrors": 0,
-    "networkErrors": 0,
-    "overflows": 0,
-    "assetSha256": "f15d87f44d8e116c10544cd226a6ea78702fe456d3e7ba616bb2b45f73e4e85a",
-    "previousAttempt": {
-      "runId": 43012738542,
-      "failedReason": "Playwright 1.56.1 unsupported Ubuntu 26.04 runner; resolved using Playwright 1.64.1"
-    }
-  },
+  "preview": null,
+  "qa": null,
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
   "approvalPack": {
@@ -253,7 +219,51 @@
       "REFUSER"
     ],
     "reviewedContentSha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
-    "approvalReceived": false
+    "approvalReceived": false,
+    "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-11T11:40:37Z"
+  "lastReconciledAt": "2026-11-11T11:40:37Z",
+  "revisionReceived": {
+    "receivedAt": "2026-11-11T11:44:02Z",
+    "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
+    "messageIdSha256": "be017ff503e45a13949dc30b735a598beed96734a5045e96af7dadcf47aac799",
+    "type": "MODIFIER",
+    "scope": "Photo uniquement : soleil et ciel bleu ; article FR/EN et autres contenus inchangés",
+    "matchedApprovalPack": 1,
+    "revisionNumber": 1,
+    "consumed": true
+  },
+  "pendingApprovalPackVersion": 2,
+  "previousPreview": {
+    "deploymentId": "dpl_7ec7jhvw7gmQzPas3TPLR2WVsCX9",
+    "sha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-9yd17lvyh-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "htmlFR": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "htmlEN": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "access": "Vercel_Authentication; temporary_signed_review_links_sent_only_to_approver_not_in_public_repo",
+    "isProduction": false
+  },
+  "previousQa": {
+    "workflowRunId": 43013080632,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43013080632",
+    "workflowSha": "131fa95ddacb250d4f385ba926776b10274e088e",
+    "result": "success",
+    "artifactId": 13851726460,
+    "checks": 8,
+    "failures": 0,
+    "photoDecoded": true,
+    "photoNonCropped": true,
+    "desktopAndMobile": true,
+    "consoleErrors": 0,
+    "networkErrors": 0,
+    "overflows": 0,
+    "assetSha256": "f15d87f44d8e116c10544cd226a6ea78702fe456d3e7ba616bb2b45f73e4e85a",
+    "previousAttempt": {
+      "runId": 43012738542,
+      "failedReason": "Playwright 1.56.1 unsupported Ubuntu 26.04 runner; resolved using Playwright 1.64.1"
+    }
+  }
 }
