@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "preparing",
+  "workflowStatus": "prepared_waiting_send",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -62,10 +62,10 @@
   "approvalRequiredAfterChoice": true,
   "articlePrepared": true,
   "visualPrepared": true,
-  "pullRequestPrepared": false,
-  "previewPrepared": false,
-  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2",
-  "nextAction": "Materialize CC BY-SA archive JPEG to selected review branch, verify actual decoded bytes/dimensions/SHA256, PR and exact commit Vercel Preview and desktop/mobile QA; send APPROUVER/MODIFIER/REFUSER pack, verify sent items; do not publish.",
+  "pullRequestPrepared": true,
+  "previewPrepared": true,
+  "idempotencyKey": "caa-2026-11-11-editorial|prepared_waiting_send|v2-pack1",
+  "nextAction": "Deploy exact final branch review SHA as nonproduction Vercel Preview; inspect FR/EN; send pack to Stephan via same Outlook thread for APPROUVER/MODIFIER/REFUSER, verify in Sent Items. Never publish on choice 2.",
   "previousVersions": [
     {
       "version": 1,
@@ -190,8 +190,51 @@
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "FR_EN_written_on_review_branch_visual_pending"
+    "articleStatus": "FR_EN_completed_licensed_visual_verified_preview_ready_QA_passed_waiting_send"
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
-  "reviewBranch": "caa/editorial-2026-11-11-choice-2"
+  "reviewBranch": "caa/editorial-2026-11-11-choice-2",
+  "approvalPackVersion": 1,
+  "pullRequest": {
+    "number": 62,
+    "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/62",
+    "branch": "caa/editorial-2026-11-11-choice-2",
+    "base": "main",
+    "draft": true,
+    "mergeAllowed": false
+  },
+  "preview": {
+    "deploymentId": "dpl_G2EC2hRR8CLdBh3uZGY5UskkXuzo",
+    "sha": "f6c730f03d04af9c7cae975f58ea15f493bc706e",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-3doad3y0n-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "htmlFR": "HTTP200_title_description_canonical_og_image_source_credit_present",
+    "htmlEN": "HTTP200_title_description_canonical_og_image_source_credit_present",
+    "access": "Vercel_Authentication; review link must be sent privately",
+    "isProduction": false
+  },
+  "qa": {
+    "workflowRunId": 43013080632,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43013080632",
+    "workflowSha": "131fa95ddacb250d4f385ba926776b10274e088e",
+    "result": "success",
+    "artifactId": 13851726460,
+    "checks": 8,
+    "failures": 0,
+    "photoDecoded": true,
+    "photoNonCropped": true,
+    "desktopAndMobile": true,
+    "consoleErrors": 0,
+    "networkErrors": 0,
+    "overflows": 0,
+    "assetSha256": "f15d87f44d8e116c10544cd226a6ea78702fe456d3e7ba616bb2b45f73e4e85a",
+    "previousAttempt": {
+      "runId": 43012738542,
+      "failedReason": "Playwright 1.56.1 unsupported Ubuntu 26.04 runner; resolved using Playwright 1.64.1"
+    }
+  },
+  "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
+  "preparedAt": "2026-11-11T11:36:24Z"
 }
