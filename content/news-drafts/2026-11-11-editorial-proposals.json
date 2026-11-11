@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "workflowStatus": "waiting_approval",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|prepared_waiting_send|v2-pack2",
-  "nextAction": "Send approval pack v2 as a reply to Stephan's 2026-11-11 11:44:02Z MODIFIER in the existing Outlook thread; check Sent Items, then waiting_approval. Do not merge, deploy to production, or reuse v1 approval.",
+  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v2-pack2",
+  "nextAction": "Wait for Stephan's explicit APPROUVER, MODIFIER or REFUSER for approval pack v2 reference CAA-approval-20261111-v2-review2 sent 2026-11-11T12:21:34Z. No publication unless APPROUVER of latest reviewed version. PR #62 remains draft, production unchanged.",
   "previousVersions": [
     {
       "version": 1,
@@ -190,7 +190,7 @@
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
   "reviewBranch": "caa/editorial-2026-11-11-choice-2",
-  "approvalPackVersion": 1,
+  "approvalPackVersion": 2,
   "pullRequest": {
     "number": 62,
     "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/62",
@@ -232,12 +232,11 @@
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
   "approvalPack": {
-    "version": 1,
-    "markerSha256": "f3976b2669a5d25f8c02a3e2e02d066198d690f4d6ab9ab2e86e412e9492ddf1",
+    "version": 2,
+    "markerSha256": "c6afb88e6061b5f3b5be3aac5d90c551672b0e14b7ca732e9526d54e6a43aab9",
     "status": "verified_in_sent_items",
-    "sentAt": "2026-11-11T11:40:37Z",
-    "sentMessageIdSha256": "29fc3cbbf0ec16f2ad28a2d5fc48999395d73ab52b6b5be892055afe9d5ded65",
-    "sentCanonicalSha256": "64f253b97cdd199c5f948947dde1e13707b421a88a9b4bd90fd96dd6ffc71622",
+    "sentAt": "2026-11-11T12:21:34Z",
+    "sentMessageIdSha256": "da72fbede0d8011a6ce48c73c2cc1d4c2ed8adef352dcf8faa4dc26ca901af93",
     "recipient": "editorial_approver",
     "sentFolder": "outlook_sentitems",
     "matchedThread": true,
@@ -246,11 +245,11 @@
       "MODIFIER",
       "REFUSER"
     ],
-    "reviewedContentSha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
+    "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
     "approvalReceived": false,
-    "supersededByRevision": true
+    "supersededByRevision": false
   },
-  "lastReconciledAt": "2026-11-11T12:14:00Z",
+  "lastReconciledAt": "2026-11-11T12:27:11Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -261,7 +260,6 @@
     "revisionNumber": 1,
     "consumed": true
   },
-  "pendingApprovalPackVersion": 2,
   "previousPreview": {
     "deploymentId": "dpl_7ec7jhvw7gmQzPas3TPLR2WVsCX9",
     "sha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
@@ -313,6 +311,24 @@
       "reviewedContentSha": "aba19e3c8a7c11749132aba3481f3a723c356ef7",
       "approvalReceived": false,
       "supersededByRevision": true
+    },
+    {
+      "version": 2,
+      "markerSha256": "c6afb88e6061b5f3b5be3aac5d90c551672b0e14b7ca732e9526d54e6a43aab9",
+      "status": "verified_in_sent_items",
+      "sentAt": "2026-11-11T12:21:34Z",
+      "sentMessageIdSha256": "da72fbede0d8011a6ce48c73c2cc1d4c2ed8adef352dcf8faa4dc26ca901af93",
+      "recipient": "editorial_approver",
+      "sentFolder": "outlook_sentitems",
+      "matchedThread": true,
+      "expectedAnswer": [
+        "APPROUVER",
+        "MODIFIER",
+        "REFUSER"
+      ],
+      "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
+      "approvalReceived": false,
+      "supersededByRevision": false
     }
   ],
   "pendingApprovalPack": {
