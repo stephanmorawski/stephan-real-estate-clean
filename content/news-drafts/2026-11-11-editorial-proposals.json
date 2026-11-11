@@ -1,55 +1,45 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
-  "version": 1,
-  "workflowStatus": "waiting_choice",
+  "version": 2,
+  "workflowStatus": "prepared_waiting_send",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
   "originalThreadSubject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
-  "sentAt": "2026-11-11T09:43:09Z",
+  "sentAt": null,
   "verifiedAt": "2026-11-11",
-  "sentEvidence": {
-    "status": "verified_in_sent_items",
-    "markerSha256": "c3b7be075fce42b864bb803bc98ceb507dde5ef70812571117e76495cecf1ede",
-    "sentMessageIdSha256": "63843fd9a03e05b2c5131b761a309476a6ea31b526eef7ca68cc3a6a60fde1b0",
-    "sentCanonicalSha256": "be21ac527b7549bc150af9d4102b989620010970c95f92501f9e0221eaf1783b",
-    "recipient": "editorial_approver",
-    "verifiedFolder": "outlook_sentitems"
-  },
+  "sentEvidence": null,
   "proposals": [
     {
       "choice": 1,
-      "title": "Sophia Antipolis : la 3D temps réel ouvre des perspectives pour les visites immobilières",
+      "title": "Valbonne Sophia Antipolis : une oasis citoyenne au cœur du quartier des Dolines",
       "factSourceDate": "2026-11-04",
       "sources": [
-        "https://incubateurpca.org/2026/11/04/les-nouveaux-incubes-3/"
+        "https://www.ville-valbonne.fr/evenement/inauguration-de-loasis-citoyenne/"
       ],
-      "facts": "OnTheFly rejoint l'incubateur. Reconstitution progressive 3D à partir d'une vidéo au smartphone ; immobilier et architecture figurent parmi les débouchés envisagés. Projet en phase de structuration, pas de disponibilité commerciale affirmée.",
-      "angle": "Innovation sophipolitaine et découverte de biens à distance pour acheteurs internationaux ; potentiel et non produit déjà opérationnel."
+      "facts": "Le parvis de la Médiathèque Colette, route des Dolines, a été végétalisé en oasis citoyenne par la médiathèque, la Ville et Mission Hortus. Inauguration prévue le 21 novembre 2026 à 11h30, non encore passée.",
+      "angle": "Une réalisation concrète illustrant les espaces de proximité et la qualité de vie pour les familles qui travaillent à Sophia Antipolis ; ne pas présenter l'inauguration comme achevée."
     },
     {
       "choice": 2,
-      "title": "Sophia Antipolis entre dans le réseau européen de recherche en IA ELLIS",
-      "factSourceDate": "2026-10-29",
+      "title": "Antibes : la Garoupe se transforme et redonne de la place à la plage publique",
+      "factSourceDate": "2026-10-05",
       "sources": [
-        "https://ellis.eu/news/five-new-units-join-ellis-network-cote-dazur-hamburg-innsbruck-ireland-norway",
-        "https://ellis.eu/research/sites/unit-cote-dazur",
-        "https://www.sophianet.com/article/ia-sophia-antipolis-entree-reseau-europeen-excellence-ellis"
+        "https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux",
+        "https://www.nicematin.com/loisirs/balade/nouveaux-amenagements-accessibilite-environnement-les-travaux-de-la-garoupe-transforment-deja-cette-plage-bien-connue-d-antibes-10725253"
       ],
-      "facts": "Côte d'Azur parmi cinq unités ELLIS annoncées le 29 octobre (49 unités au total), unité établie le 1 octobre, avec EURECOM, IMT, Inria. Couverture locale le 10 novembre.",
-      "angle": "Attractivité professionnelle et scientifique internationale, sans estimation de prix immobiliers."
+      "facts": "La Ville annonce un réaménagement progressif avec restitution de 900 m² de sable, nouvelle plage publique déjà ouverte, promenade végétalisée et dispositifs d'accessibilité ; livraison générale visée en fin d'année 2026.",
+      "angle": "Traiter les nouveaux espaces publics et l'accessibilité de la Garoupe, pas la randonnée du sentier littoral déjà couverte sur le site. Distinguer ouvrages terminés et prévus."
     },
     {
       "choice": 3,
-      "title": "Cannes accueille un nouveau rendez-vous international du quantique",
-      "factSourceDate": "2026-11-05",
+      "title": "Antibes : des écoles mieux adaptées à la chaleur à l'horizon 2027",
+      "factSourceDate": "2026-10-07",
       "sources": [
-        "https://www.worldquantumcannesfestival.com/conferences-program",
-        "https://www.cote-azur.cci.fr/evenement/world-quantum-cannes-festival/",
-        "https://www.investincotedazur.com/en/evenements/world-quantum-cannes-festival-2026-technologies-quantiques/"
+        "https://www.antibes-juanlespins.com/information/actualites/un-plan-de-rafraichissement-des-ecoles-en-2027"
       ],
-      "facts": "World Quantum Cannes Festival au Palais des Festivals les 17 et 18 novembre 2026, chercheurs, industriels et investisseurs ; première édition confirmée par média local.",
-      "angle": "Cannes comme point de rencontre international entre science, économie et art de vivre ; aucun effet immobilier chiffré allégué."
+      "facts": "La Ville annonce la généralisation de ventilateurs fixes dans les classes au printemps 2027, une salle refuge climatisée par école, et la poursuite des plantations dans les cours. 75 arbres plantés depuis 2021 dans quatre groupes scolaires selon la Ville.",
+      "angle": "Pour les familles qui s'installent près de Sophia Antipolis, montrer l'importance concrète des équipements scolaires et de l'adaptation climatique, sans alléguer un impact immobilier chiffré."
     }
   ],
   "editorialChecks": {
@@ -58,7 +48,9 @@
     "alreadySentTodayBeforeThis": false,
     "preexistingActiveCycles": false,
     "priorRejectedTopicsNotReused": true,
-    "seoCheck": "Unique angles versus existing generic Sophia technology coverage and Cannes events; no new article or final visual created at proposal stage."
+    "seoCheck": "Valbonne oasis: distinct from Valbonne village lifestyle. Antibes Garoupe renovation: distinct from existing Cap d'Antibes sentier walking guide. Antibes schools climate adaptation: distinct from international schools article.",
+    "newProposalScope": "Valbonne et Antibes, conformément à la réponse de Stephan ; Mougins examiné sans nouveauté assez forte",
+    "replacementForVersion": 1
   },
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
@@ -66,6 +58,71 @@
   "visualPrepared": false,
   "pullRequestPrepared": false,
   "previewPrepared": false,
-  "idempotencyKey": "caa-2026-11-11-editorial|proposals_sent|v1",
-  "nextAction": "Wait for explicit choice 1/2/3 from Stephan in same Outlook thread. A choice is not publication approval."
+  "idempotencyKey": "caa-2026-11-11-editorial|replacement_proposals|v2",
+  "nextAction": "Send v2 in reply to Stephan's 2026-11-11 09:55:05 UTC request, verify in Outlook Sent Items, then mark waiting_choice; a numerical selection never permits publication.",
+  "previousVersions": [
+    {
+      "version": 1,
+      "workflowStatus": "waiting_choice",
+      "sentAt": "2026-11-11T09:43:09Z",
+      "sentEvidence": {
+        "status": "verified_in_sent_items",
+        "markerSha256": "c3b7be075fce42b864bb803bc98ceb507dde5ef70812571117e76495cecf1ede",
+        "sentMessageIdSha256": "63843fd9a03e05b2c5131b761a309476a6ea31b526eef7ca68cc3a6a60fde1b0",
+        "sentCanonicalSha256": "be21ac527b7549bc150af9d4102b989620010970c95f92501f9e0221eaf1783b",
+        "recipient": "editorial_approver",
+        "verifiedFolder": "outlook_sentitems"
+      },
+      "proposals": [
+        {
+          "choice": 1,
+          "title": "Sophia Antipolis : la 3D temps réel ouvre des perspectives pour les visites immobilières",
+          "factSourceDate": "2026-11-04",
+          "sources": [
+            "https://incubateurpca.org/2026/11/04/les-nouveaux-incubes-3/"
+          ],
+          "facts": "OnTheFly rejoint l'incubateur. Reconstitution progressive 3D à partir d'une vidéo au smartphone ; immobilier et architecture figurent parmi les débouchés envisagés. Projet en phase de structuration, pas de disponibilité commerciale affirmée.",
+          "angle": "Innovation sophipolitaine et découverte de biens à distance pour acheteurs internationaux ; potentiel et non produit déjà opérationnel."
+        },
+        {
+          "choice": 2,
+          "title": "Sophia Antipolis entre dans le réseau européen de recherche en IA ELLIS",
+          "factSourceDate": "2026-10-29",
+          "sources": [
+            "https://ellis.eu/news/five-new-units-join-ellis-network-cote-dazur-hamburg-innsbruck-ireland-norway",
+            "https://ellis.eu/research/sites/unit-cote-dazur",
+            "https://www.sophianet.com/article/ia-sophia-antipolis-entree-reseau-europeen-excellence-ellis"
+          ],
+          "facts": "Côte d'Azur parmi cinq unités ELLIS annoncées le 29 octobre (49 unités au total), unité établie le 1 octobre, avec EURECOM, IMT, Inria. Couverture locale le 10 novembre.",
+          "angle": "Attractivité professionnelle et scientifique internationale, sans estimation de prix immobiliers."
+        },
+        {
+          "choice": 3,
+          "title": "Cannes accueille un nouveau rendez-vous international du quantique",
+          "factSourceDate": "2026-11-05",
+          "sources": [
+            "https://www.worldquantumcannesfestival.com/conferences-program",
+            "https://www.cote-azur.cci.fr/evenement/world-quantum-cannes-festival/",
+            "https://www.investincotedazur.com/en/evenements/world-quantum-cannes-festival-2026-technologies-quantiques/"
+          ],
+          "facts": "World Quantum Cannes Festival au Palais des Festivals les 17 et 18 novembre 2026, chercheurs, industriels et investisseurs ; première édition confirmée par média local.",
+          "angle": "Cannes comme point de rencontre international entre science, économie et art de vivre ; aucun effet immobilier chiffré allégué."
+        }
+      ],
+      "invalidatedBy": "replacement_requested"
+    }
+  ],
+  "revisionRequest": {
+    "receivedAt": "2026-11-11T09:55:05Z",
+    "messageIdSha256": "a9c2b08f7d991185b08890236ef3457367b9b09b654c9419a6825cb93b839583",
+    "requestTextSha256": "6b986ad4f7037582db1ad03163a3f0a41411e91da557d52d9dbea2c2bf6d2a16",
+    "classification": "requested_new_local_choices",
+    "scope": [
+      "Valbonne",
+      "Mougins",
+      "Antibes"
+    ],
+    "reason": "Two recent Cannes posts; replace all prior choices rather than interpret as selection or publication approval."
+  },
+  "sourcesVerifiedAt": "2026-11-11"
 }
