@@ -1,0 +1,40 @@
+name: CAA temporary import Stephan selected photo (PR only)
+on:
+  push:
+    branches:
+      - caa/editorial-2026-11-11-choice-2
+    paths:
+      - .github/workflows/caa-import-stephan-garoupe-photo-20261112.yml
+permissions:
+  contents: write
+jobs:
+  import-photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Retrieve exactly supplied photo (temporary private preview route)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news
+          curl --fail --location --silent --show-error --max-time 60 --output public/news/2026-11-11-antibes-garoupe-stephan-requested.png https://sb-6bk93rfbe96s.vercel.run/garoupe-stephan.png
+          echo 'bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e  public/news/2026-11-11-antibes-garoupe-stephan-requested.png' | sha256sum --check
+          python3 - <<'PY'
+          import struct
+          p='public/news/2026-11-11-antibes-garoupe-stephan-requested.png'
+          with open(p,'rb') as f: h=f.read(24)
+          assert h[:8]==b'\x89PNG\r\n\x1a\n'
+          assert struct.unpack('>II', h[16:24])==(1360,811)
+          PY
+      - name: Commit selected photo to review branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-11-11-antibes-garoupe-stephan-requested.png
+          git diff --cached --quiet && exit 0
+          git commit -m 'CAA: add precisely the Garoupe photo Stephan supplied in review reply'
+          git push origin HEAD:refs/heads/caa/editorial-2026-11-11-choice-2
