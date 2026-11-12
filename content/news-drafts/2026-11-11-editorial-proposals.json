@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "revision_requested",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v2-pack2",
-  "nextAction": "Wait for Stephan's explicit APPROUVER, MODIFIER or REFUSER for approval pack v2 reference CAA-approval-20261111-v2-review2 sent 2026-11-11T12:21:34Z. No publication unless APPROUVER of latest reviewed version. PR #62 remains draft, production unchanged.",
+  "idempotencyKey": "caa-2026-11-11-editorial|revision_requested|v2-pack2-revision2",
+  "nextAction": "Prepare pack v3 with image attached by Stephan in 2026-11-12 reply; verify source and usage rights, preserve image framing, validate FR/EN preview and resend APPROUVER/MODIFIER/REFUSER; do not merge or publish.",
   "previousVersions": [
     {
       "version": 1,
@@ -247,9 +247,9 @@
     ],
     "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
     "approvalReceived": false,
-    "supersededByRevision": false
+    "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-11T14:52:05Z",
+  "lastReconciledAt": "2026-11-12T16:58:56Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -332,15 +332,26 @@
     }
   ],
   "pendingApprovalPack": {
+    "status": "superseded_by_revision",
     "version": 2,
-    "status": "waiting_approval",
-    "markerSha256": "c6afb88e6061b5f3b5be3aac5d90c551672b0e14b7ca732e9526d54e6a43aab9",
-    "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
-    "revisionOf": 1,
-    "replyTo": "revision_request_in_same_outlook_thread",
-    "idempotencyKey": "caa-2026-11-11-editorial|approval_pack|v2-pack2",
-    "requiresExplicitApproval": true,
-    "sentAt": "2026-11-11T12:21:34Z",
-    "sentEvidenceStatus": "verified_in_sent_items"
+    "approvalReceived": false
+  },
+  "latestRevisionReceived": {
+    "receivedAt": "2026-11-12T16:28:33Z",
+    "messageIdSha256": "e29b778c157a500ca917f4d42d93f4217f0907d6af7be051d0025aef4f989d69",
+    "requestTextSha256": "1fa11638b4552b00d4707babb8cad0e956587c8fe7fa3625f277a4355ed3863a",
+    "type": "MODIFIER",
+    "scope": "Remplacer uniquement la photographie de La Garoupe par celle fournie en pièce jointe intégrée au courriel du 12 novembre, décrite comme celle du premier email; conserver article FR/EN et LinkedIn.",
+    "matchedApprovalPack": 2,
+    "revisionNumber": 2,
+    "receivedImage": {
+      "format": "PNG",
+      "dimensions": "1360x811",
+      "bytes": 2359996,
+      "sha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
+      "provenance": "inline_image_in_approver_reply",
+      "rightsStatus": "source_author_license_unverified"
+    },
+    "consumed": true
   }
 }
