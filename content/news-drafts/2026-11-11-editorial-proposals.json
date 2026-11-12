@@ -64,8 +64,8 @@
   "visualPrepared": false,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2-revision2-photo",
-  "nextAction": "Complete Playwright FR/EN desktop/mobile QA for exact user-supplied image, obtain Stephan's confirmation of photo source/photographer and rights, then issue full approval pack v3 in same Outlook thread. Pack v2 superseded. No publication.",
+  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2-photo-qa-pass-rights-wait",
+  "nextAction": "Wait for response from Stephan to Outlook photo copyright/credit confirmation sent and verified 2026-11-12T17:20:15Z. Then update credit, rerun QA if changed, send full approval pack v3 and verify Sent Items; wait explicit APPROUVER on v3, never merge early. Do not send duplicate photo-rights inquiry.",
   "previousVersions": [
     {
       "version": 1,
@@ -231,9 +231,19 @@
   "qa": {
     "workflowRunId": 43267941708,
     "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43267941708",
-    "status": "in_progress",
-    "checksPlanned": 8,
-    "photoSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e"
+    "workflowSha": "c9882b36a80d21717c720f1d7d6eed3052f32480",
+    "result": "success",
+    "artifactId": 13966184184,
+    "checks": 8,
+    "failures": 0,
+    "desktopAndMobile": true,
+    "photoDecoded": true,
+    "photoNonCropped": true,
+    "consoleErrors": 0,
+    "networkErrors": 0,
+    "overflows": 0,
+    "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
+    "checkedArticleImageAndMetadata": true
   },
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
@@ -255,7 +265,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-12T17:20:00Z",
+  "lastReconciledAt": "2026-11-12T17:21:47.024Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -339,11 +349,12 @@
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "photo_integrated_preview_ready_qa_running_rights_pending",
+    "status": "prepared_but_not_sendable_pending_photo_rights_confirmation",
     "sent": false,
     "approvalReceived": false,
     "requiresImageRightsAndCredit": true,
-    "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097"
+    "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
+    "nextGate": "Stephan confirms source/license/photo credit; then resend complete pack for explicit approval"
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-12T16:28:33Z",
@@ -392,5 +403,16 @@
     "overflows": 0,
     "assetSha256": "f9fc8caf7c88d427467299b3b362f90561a60afed6249241b78c622b08102e40",
     "checkedArticleImageAndMetadata": true
+  },
+  "photoRightsRequest": {
+    "channel": "outlook",
+    "status": "verified_in_sent_items",
+    "sentAt": "2026-11-12T17:20:15Z",
+    "sentMessageIdSha256": "152788c34f5da24e982b02ef4c9d564a0571f36b1dcd1e8dc5633fc1a7ae6a25",
+    "sentMarkerSha256": "2510ea6286ec43431207cdb1b3457f91fa516285881a8806310af62cec63ca67",
+    "recipient": "editorial_approver",
+    "request": "Photographer identity, original source, and web plus LinkedIn reproduction permission for Stephan-supplied PNG",
+    "matchedThread": true,
+    "approvalPackSent": false
   }
 }
