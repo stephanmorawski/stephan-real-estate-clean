@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "revision_requested",
+  "workflowStatus": "preparing",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -61,11 +61,11 @@
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
   "articlePrepared": true,
-  "visualPrepared": true,
+  "visualPrepared": false,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|revision_requested|v2-pack2-revision2",
-  "nextAction": "Prepare pack v3 with image attached by Stephan in 2026-11-12 reply; verify source and usage rights, preserve image framing, validate FR/EN preview and resend APPROUVER/MODIFIER/REFUSER; do not merge or publish.",
+  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2-revision2-photo",
+  "nextAction": "Complete Playwright FR/EN desktop/mobile QA for exact user-supplied image, obtain Stephan's confirmation of photo source/photographer and rights, then issue full approval pack v3 in same Outlook thread. Pack v2 superseded. No publication.",
   "previousVersions": [
     {
       "version": 1,
@@ -164,6 +164,27 @@
     },
     "seoCheck": "Différent du guide existant sur le sentier littoral (3,7 km). Cette publication concerne le réaménagement des espaces publics de La Garoupe et l’accessibilité, non la randonnée. Aucun chiffre d'effet immobilier.",
     "visual": {
+      "assetPath": "public/news/2026-11-11-antibes-garoupe-stephan-requested.png",
+      "source": "inline_attachment_from_Stephan_reply_2026-11-12",
+      "author": "to_be_confirmed",
+      "license": "reproduction_rights_unverified",
+      "licenseUrl": "",
+      "isIllustrativeArchive": true,
+      "alterations": "no crop or retouch; supplied PNG as received",
+      "assetMime": "image/png",
+      "assetBytes": 2359996,
+      "assetWidth": 1360,
+      "assetHeight": 811,
+      "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
+      "decodedWithPillow": true,
+      "status": "integrated_preview_only_rights_pending"
+    },
+    "linkedin": {
+      "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
+      "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
+    },
+    "articleStatus": "revision2_FR_EN_unchanged_sunny_photo_preview_ready_QA_passed_waiting_approval",
+    "visualPreviousReview2": {
       "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
       "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Plage_de_la_garoupe_03.jpg",
@@ -181,12 +202,7 @@
       "decodedWithPillow": true,
       "sourceOriginalDimensions": "3096x4128",
       "status": "materialized_verified"
-    },
-    "linkedin": {
-      "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
-      "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
-    },
-    "articleStatus": "revision2_FR_EN_unchanged_sunny_photo_preview_ready_QA_passed_waiting_approval"
+    }
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
   "reviewBranch": "caa/editorial-2026-11-11-choice-2",
@@ -200,34 +216,24 @@
     "mergeAllowed": false
   },
   "preview": {
-    "deploymentId": "dpl_F9hx33diLvVfRAeyyeDMfmPGU51K",
-    "sha": "db6d953587da5768073d7a38e76906b9582a242b",
+    "deploymentId": "dpl_5DuevUMsTXJDZG1FfLSmrXXYEhjX",
+    "sha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
     "state": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-28j5rs3sb-oliviers-projects-f3562ae3.vercel.app",
+    "baseUrl": "https://stephan-real-estate-hcoz-ogk5ajc65-oliviers-projects-f3562ae3.vercel.app",
     "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
     "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
-    "htmlFR": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
-    "htmlEN": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
-    "jpeg": "HTTP200_image_jpeg_157855B_verified_SHA256",
-    "access": "Vercel_Authentication; short_lived_signed_review_links_only_in_Outlook_approval_email_no_public_repo",
+    "htmlFR": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
+    "htmlEN": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
+    "png": "HTTP200_image_png_2359996B_SHA256_confirmed_in_git",
+    "access": "Vercel_Authentication; signed_review_links_only_Outlook_never_in_public_repo",
     "isProduction": false
   },
   "qa": {
-    "workflowRunId": 43018180748,
-    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43018180748",
-    "workflowSha": "0ec20a0c4e40299b83351568ab85e04bb2f2117d",
-    "result": "success",
-    "artifactId": 13854056142,
-    "checks": 8,
-    "failures": 0,
-    "desktopAndMobile": true,
-    "photoDecoded": true,
-    "photoNonCropped": true,
-    "consoleErrors": 0,
-    "networkErrors": 0,
-    "overflows": 0,
-    "assetSha256": "f9fc8caf7c88d427467299b3b362f90561a60afed6249241b78c622b08102e40",
-    "checkedArticleImageAndMetadata": true
+    "workflowRunId": 43267941708,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43267941708",
+    "status": "in_progress",
+    "checksPlanned": 8,
+    "photoSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e"
   },
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
@@ -249,7 +255,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-12T16:58:56Z",
+  "lastReconciledAt": "2026-11-12T17:20:00Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -328,13 +334,16 @@
       ],
       "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
       "approvalReceived": false,
-      "supersededByRevision": false
+      "supersededByRevision": true
     }
   ],
   "pendingApprovalPack": {
-    "status": "superseded_by_revision",
-    "version": 2,
-    "approvalReceived": false
+    "version": 3,
+    "status": "photo_integrated_preview_ready_qa_running_rights_pending",
+    "sent": false,
+    "approvalReceived": false,
+    "requiresImageRightsAndCredit": true,
+    "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097"
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-12T16:28:33Z",
@@ -353,5 +362,35 @@
       "rightsStatus": "source_author_license_unverified"
     },
     "consumed": true
+  },
+  "previewPreviousReview2": {
+    "deploymentId": "dpl_F9hx33diLvVfRAeyyeDMfmPGU51K",
+    "sha": "db6d953587da5768073d7a38e76906b9582a242b",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-28j5rs3sb-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "htmlFR": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "htmlEN": "HTTP200_actual_HTML_title_description_canonical_og_image_source_credit",
+    "jpeg": "HTTP200_image_jpeg_157855B_verified_SHA256",
+    "access": "Vercel_Authentication; short_lived_signed_review_links_only_in_Outlook_approval_email_no_public_repo",
+    "isProduction": false
+  },
+  "qaReview2": {
+    "workflowRunId": 43018180748,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43018180748",
+    "workflowSha": "0ec20a0c4e40299b83351568ab85e04bb2f2117d",
+    "result": "success",
+    "artifactId": 13854056142,
+    "checks": 8,
+    "failures": 0,
+    "desktopAndMobile": true,
+    "photoDecoded": true,
+    "photoNonCropped": true,
+    "consoleErrors": 0,
+    "networkErrors": 0,
+    "overflows": 0,
+    "assetSha256": "f9fc8caf7c88d427467299b3b362f90561a60afed6249241b78c622b08102e40",
+    "checkedArticleImageAndMetadata": true
   }
 }
