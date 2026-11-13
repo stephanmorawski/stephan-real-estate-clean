@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "preparing",
+  "workflowStatus": "revision_requested",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": false,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v3-rights-confirmed-credit-pending",
-  "nextAction": "Await Stephan's exact authorized photo credit in Outlook. Clarification requested and verified in Sent Items on 2026-11-13T08:23:28Z. On response, validate credit and image permission, recheck review content SHA/Preview and send pack v3 for explicit APPROUVER / MODIFIER / REFUSER. No new editorial proposals or publication in the meantime.",
+  "idempotencyKey": "caa-2026-11-11-editorial|visual_reproposal|v3-candidate1",
+  "nextAction": "Await Stephan's response to one verified visual alternative proposal in existing Outlook thread. If accepted, replace the uncredited Stephan-supplied PNG with a licensed Pexels image, preserve FR/EN/LinkedIn text, validate actual photo dimensions/hash/credit and desktop/mobile Preview, then submit new pack v3 for explicit APPROUVER/MODIFIER/REFUSER. No merge, no deployment, no competing proposals.",
   "previousVersions": [
     {
       "version": 1,
@@ -177,7 +177,7 @@
       "assetHeight": 811,
       "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
       "decodedWithPillow": true,
-      "status": "integrated_preview_only_rights_pending"
+      "status": "excluded_after_2026-11-13_revision_missing_photographer_credit_do_not_publish"
     },
     "linkedin": {
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
@@ -265,7 +265,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-13T08:23:28Z",
+  "lastReconciledAt": "2026-11-13T14:30:44Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -349,30 +349,22 @@
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "prepared_but_not_sendable_pending_photo_credit",
+    "status": "invalidated_by_new_visual_revision",
     "sent": false,
     "approvalReceived": false,
     "requiresImageRightsAndCredit": true,
     "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
-    "nextGate": "photographer/source credit required despite rights confirmation; verify any Outlook follow-up send before retry"
+    "nextGate": "Wait for Stephan's selection of licensed replacement image; make and QA new FR/EN Preview, then send a new explicit approval pack"
   },
   "latestRevisionReceived": {
-    "receivedAt": "2026-11-12T16:28:33Z",
-    "messageIdSha256": "e29b778c157a500ca917f4d42d93f4217f0907d6af7be051d0025aef4f989d69",
-    "requestTextSha256": "1fa11638b4552b00d4707babb8cad0e956587c8fe7fa3625f277a4355ed3863a",
+    "receivedAt": "2026-11-13T14:01:26Z",
+    "channel": "outlook",
     "type": "MODIFIER",
-    "scope": "Remplacer uniquement la photographie de La Garoupe par celle fournie en pièce jointe intégrée au courriel du 12 novembre, décrite comme celle du premier email; conserver article FR/EN et LinkedIn.",
-    "matchedApprovalPack": 2,
-    "revisionNumber": 2,
-    "receivedImage": {
-      "format": "PNG",
-      "dimensions": "1360x811",
-      "bytes": 2359996,
-      "sha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
-      "provenance": "inline_image_in_approver_reply",
-      "rightsStatus": "source_author_license_unverified"
-    },
-    "consumed": true
+    "messageIdSha256": "83ff1fc599574015d9cc44cc7f56e325595f2a112846e697b7b67a675fb558cd",
+    "textSha256": "299cd1f7ea08f4b1368455c86d76d9607fd05d8f1a71645f95e3576489ef1224",
+    "scope": "Only replace image; Stephan reports no photographer credit available and requests an attractive sunny photograph",
+    "consumed": true,
+    "matchedApprovalPack": 2
   },
   "previewPreviousReview2": {
     "deploymentId": "dpl_F9hx33diLvVfRAeyyeDMfmPGU51K",
@@ -438,5 +430,22 @@
     "matchedThread": true,
     "request": "Exact photographer name or explicitly authorized photographic credit for Stephan-supplied La Garoupe PNG",
     "approvalPackSent": false
+  },
+  "photoCandidateProposal": {
+    "status": "waiting_stephan_visual_choice",
+    "sourceUrl": "https://www.pexels.com/fr-fr/photo/cote-rocheuse-pittoresque-par-une-journee-ensoleillee-33350419/",
+    "photographer": "Nini Wisti",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "attribution": "Photo : Nini Wisti / Pexels",
+    "geographyNote": "Illustrative coastline near Antibes; not documentation of La Garoupe works",
+    "sentAt": "2026-11-13T14:30:44Z",
+    "sentEvidence": {
+      "status": "verified_in_sent_items",
+      "folder": "outlook_sentitems",
+      "messageIdSha256": "1f44c356ddee19200fb5ce12960ce1619ca8a2d5ebeff37e7dd4dedbca43ceda"
+    },
+    "sentVersion": "photo_candidate1",
+    "approvalForPublication": false
   }
 }
