@@ -65,7 +65,7 @@
   "pullRequestPrepared": true,
   "previewPrepared": true,
   "idempotencyKey": "caa-2026-11-11-editorial|preparing|v3-rights-confirmed-credit-pending",
-  "nextAction": "The 2026-11-12T17:22:21Z Outlook reply 'Oui' confirmed photo use rights but provided no photographer/source credit. Verify whether credit clarification reply attempted 2026-11-13 was sent (Outlook tool error; effect unknown) before retrying. Obtain precise photographer or authorized credit, then send pack v3 for explicit APPROUVER. No publication permitted.",
+  "nextAction": "Await Stephan's exact authorized photo credit in Outlook. Clarification requested and verified in Sent Items on 2026-11-13T08:23:28Z. On response, validate credit and image permission, recheck review content SHA/Preview and send pack v3 for explicit APPROUVER / MODIFIER / REFUSER. No new editorial proposals or publication in the meantime.",
   "previousVersions": [
     {
       "version": 1,
@@ -265,7 +265,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-13T04:45:45Z",
+  "lastReconciledAt": "2026-11-13T08:23:28Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -424,7 +424,19 @@
     "photographerOrCredit": "not_specified",
     "licenseDocumentation": "not_provided",
     "approvalForPublication": false,
-    "photoCreditClarificationSend": "attempt_failed_unknown_effect_verify_sent_before_retry",
+    "photoCreditClarificationSend": "verified_in_sent_items",
     "verifiedOn": "2026-11-13"
+  },
+  "photoCreditClarification": {
+    "channel": "outlook",
+    "status": "verified_in_sent_items",
+    "sentAt": "2026-11-13T08:23:28Z",
+    "sentMessageIdSha256": "500f142c3ea63d0d2c50db58c07de09b844f846ec2b0f1e235643bc8d5857020",
+    "bodySha256": "f121903dddfb437925546023d8516d59ff46157be4046cad4287e778bf5ed7fc",
+    "markerSha256": "28dac0178f14bb81add50e5ace072962247e86007b6ed0c621bdae274907b3aa",
+    "recipient": "editorial_approver",
+    "matchedThread": true,
+    "request": "Exact photographer name or explicitly authorized photographic credit for Stephan-supplied La Garoupe PNG",
+    "approvalPackSent": false
   }
 }
