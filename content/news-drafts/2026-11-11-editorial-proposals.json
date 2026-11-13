@@ -64,8 +64,8 @@
   "visualPrepared": false,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v2-photo-qa-pass-rights-wait",
-  "nextAction": "Wait for response from Stephan to Outlook photo copyright/credit confirmation sent and verified 2026-11-12T17:20:15Z. Then update credit, rerun QA if changed, send full approval pack v3 and verify Sent Items; wait explicit APPROUVER on v3, never merge early. Do not send duplicate photo-rights inquiry.",
+  "idempotencyKey": "caa-2026-11-11-editorial|preparing|v3-rights-confirmed-credit-pending",
+  "nextAction": "The 2026-11-12T17:22:21Z Outlook reply 'Oui' confirmed photo use rights but provided no photographer/source credit. Verify whether credit clarification reply attempted 2026-11-13 was sent (Outlook tool error; effect unknown) before retrying. Obtain precise photographer or authorized credit, then send pack v3 for explicit APPROUVER. No publication permitted.",
   "previousVersions": [
     {
       "version": 1,
@@ -265,7 +265,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-12T17:21:47.024Z",
+  "lastReconciledAt": "2026-11-13T04:45:45Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -349,12 +349,12 @@
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "prepared_but_not_sendable_pending_photo_rights_confirmation",
+    "status": "prepared_but_not_sendable_pending_photo_credit",
     "sent": false,
     "approvalReceived": false,
     "requiresImageRightsAndCredit": true,
     "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
-    "nextGate": "Stephan confirms source/license/photo credit; then resend complete pack for explicit approval"
+    "nextGate": "photographer/source credit required despite rights confirmation; verify any Outlook follow-up send before retry"
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-12T16:28:33Z",
@@ -414,5 +414,17 @@
     "request": "Photographer identity, original source, and web plus LinkedIn reproduction permission for Stephan-supplied PNG",
     "matchedThread": true,
     "approvalPackSent": false
+  },
+  "photoRightsConfirmation": {
+    "receivedAt": "2026-11-12T17:22:21Z",
+    "replyTextSha256": "0a90407639c4155a2fa08ac4c97bfd08fa4856b31f167978918ffe0f1fa8defa",
+    "source": "outlook_same_editorial_thread",
+    "answer": "Oui",
+    "reproductionRights": "confirmed_by_Stephan_for_site_and_LinkedIn",
+    "photographerOrCredit": "not_specified",
+    "licenseDocumentation": "not_provided",
+    "approvalForPublication": false,
+    "photoCreditClarificationSend": "attempt_failed_unknown_effect_verify_sent_before_retry",
+    "verifiedOn": "2026-11-13"
   }
 }
