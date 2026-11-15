@@ -7,11 +7,11 @@ export async function generateMetadata({ params }) {
   const { lang } = await params;
   return buildPageMetadata({
     title: lang === 'fr'
-      ? 'Côte d’Azur Agency | Agence immobilière de prestige'
-      : 'Côte d’Azur Agency | Luxury Real Estate Agency',
+      ? 'À propos de Côte d’Azur Agency | Stephan Morawski'
+      : 'About Côte d’Azur Agency | Stephan Morawski',
     description: lang === 'fr'
-      ? 'Découvrez Côte d’Azur Agency, agence immobilière indépendante spécialisée dans l’immobilier de prestige sur la Côte d’Azur.'
-      : 'Discover Côte d’Azur Agency, an independent luxury real estate agency specialising in the French Riviera.',
+      ? 'Découvrez le parcours de Stephan Morawski, l’approche indépendante de Côte d’Azur Agency et son réseau de partenaires dans les Alpes-Maritimes.'
+      : 'Meet Stephan Morawski and discover Côte d’Azur Agency’s independent approach, local expertise and trusted partner network in the Alpes-Maritimes.',
     lang,
     pathname: `/${lang}/agence`
   });
@@ -69,12 +69,12 @@ export default async function AgencePage({ params }) {
   return (
     <main className="container py-16">
       <h1 className="font-luxe text-4xl">
-        Côte d’Azur Agency
+        {lang === 'fr' ? 'À propos de Côte d’Azur Agency' : 'About Côte d’Azur Agency'}
       </h1>
       <p className="mt-3 max-w-3xl text-zinc-700">
         {lang === 'fr'
-          ? 'Agence immobilière indépendante spécialisée dans l’immobilier de prestige sur la Côte d’Azur, nous accompagnons vendeurs et acquéreurs avec une approche personnalisée, discrète et exigeante.'
-          : 'An independent agency specialising in luxury real estate on the French Riviera, we support sellers and buyers through a personalised, discreet and exacting approach.'}
+          ? 'Découvrez Stephan Morawski, sa méthode de conseil immobilier indépendant, son parcours et les expertises réunies par Côte d’Azur Agency.'
+          : 'Meet Stephan Morawski and discover the independent advisory approach, background and trusted expertise behind Côte d’Azur Agency.'}
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
