@@ -10,6 +10,7 @@ on:
       - 'src/**'
       - 'scripts/check-production.mjs'
       - 'scripts/check-property-cards.mjs'
+      - 'scripts/serve-qa-property-fixture.mjs'
       - 'scripts/generate-news-index.mjs'
       - '.github/workflows/post-production-quality.yml'
       - 'middleware.js'
@@ -22,6 +23,9 @@ on:
       - '.github/workflows/post-production-quality.yml'
       - 'scripts/check-production.mjs'
       - 'scripts/check-property-cards.mjs'
+      - 'scripts/serve-qa-property-fixture.mjs'
+      - 'src/components/Header.js'
+      - 'src/app/[lang]/vente/**'
   deployment_status:
   workflow_dispatch:
     inputs:
@@ -69,18 +73,44 @@ jobs:
           npm ci
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
-      # On a verifier-only PR, smoke-test the existing production/base SHA.
-      # This is not a claim that the PR's website changes were preview-tested.
+      # PR checks use public catalogue fixtures, not production credentials.
+      # They do not certify production: push/deployment checks below use the real domain.
+      - name: Build and serve the PR for isolated layout tests
+        if: github.event_name == 'pull_request'
+        env:
+          APIMO_BASE_URL: http://127.0.0.1:4174
+          APIMO_PROVIDER_CODE: qa
+          APIMO_API_KEY: qa-placeholder-not-a-secret
+          APIMO_AGENCY_CODE: qa
+          VERCEL_GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: |
+          node scripts/serve-qa-property-fixture.mjs > /tmp/caa-fixture.log 2>&1 &
+          fixture_ready=0
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4174/agencies/qa/properties > /dev/null; then fixture_ready=1; break; fi
+            sleep 2
+          done
+          if [ "$fixture_ready" != 1 ]; then cat /tmp/caa-fixture.log; exit 1; fi
+          npm run build
+          npm run start -- --hostname 127.0.0.1 --port 4173 > /tmp/caa-next.log 2>&1 &
+          app_ready=0
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/api/version > /dev/null; then app_ready=1; break; fi
+            sleep 2
+          done
+          if [ "$app_ready" != 1 ]; then cat /tmp/caa-next.log; exit 1; fi
       - name: Verify the live production deployment
+        if: github.event_name != 'pull_request'
         env:
           SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
-          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.event.pull_request.base.sha || github.sha }}
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.sha }}
         run: node scripts/check-production.mjs
       - name: Verify all property prices across responsive layouts
         if: ${{ !cancelled() }}
         env:
-          SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
-          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.event.pull_request.base.sha || github.sha }}
+          SITE_URL: ${{ github.event_name == 'pull_request' && 'http://127.0.0.1:4173' || inputs.url || 'https://www.cotedazuragency.com' }}
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || inputs.expected_sha || github.event.deployment.sha || github.sha }}
         run: node scripts/check-property-cards.mjs
       - name: Upload screenshots and report
         if: always()
