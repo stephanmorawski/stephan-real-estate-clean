@@ -2,21 +2,26 @@ name: Post-production quality gate
 
 on:
   push:
-    branches:
-      - main
-    # Only changes affecting the rendered website should trigger expensive browser QA.
-    # Editorial workflow-registry updates in content/news-drafts are not deployments.
+    branches: [main]
     paths:
       - 'content/news/**'
       - 'public/news/**'
       - 'public/partners/**'
       - 'src/**'
       - 'scripts/check-production.mjs'
+      - 'scripts/check-property-cards.mjs'
       - 'scripts/generate-news-index.mjs'
+      - '.github/workflows/post-production-quality.yml'
       - 'middleware.js'
       - 'next.config.*'
       - 'package.json'
       - 'package-lock.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/post-production-quality.yml'
+      - 'scripts/check-production.mjs'
+      - 'scripts/check-property-cards.mjs'
   deployment_status:
   workflow_dispatch:
     inputs:
@@ -33,46 +38,50 @@ permissions:
   deployments: read
 
 concurrency:
-  group: post-production-${{ github.event.deployment.id || github.sha || github.ref }}
+  group: post-production-${{ github.event.pull_request.number || github.event.deployment.id || github.sha || github.ref }}
   cancel-in-progress: true
 
 jobs:
   verify:
     if: >-
       github.event_name == 'push' ||
+      github.event_name == 'pull_request' ||
       github.event_name == 'workflow_dispatch' ||
       (github.event.deployment_status.state == 'success' &&
        github.event.deployment.environment == 'Production' &&
        (contains(github.event.deployment_status.target_url, 'stephan-real-estate-hcoz') ||
         contains(github.event.deployment_status.environment_url, 'cotedazuragency.com')))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
-
     steps:
-      - name: Check out the deployed commit
+      - name: Check out the verifier and matching content
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.deployment.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || inputs.expected_sha || github.event.deployment.sha || github.sha }}
           fetch-depth: 2
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-
       - name: Install project and browser dependencies
         run: |
           npm ci
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
-
+      # On a verifier-only PR, smoke-test the existing production/base SHA.
+      # This is not a claim that the PR's website changes were preview-tested.
       - name: Verify the live production deployment
         env:
           SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
-          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.sha }}
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.event.pull_request.base.sha || github.sha }}
         run: node scripts/check-production.mjs
-
+      - name: Verify all property prices across responsive layouts
+        if: ${{ !cancelled() }}
+        env:
+          SITE_URL: ${{ inputs.url || 'https://www.cotedazuragency.com' }}
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || github.event.pull_request.base.sha || github.sha }}
+        run: node scripts/check-property-cards.mjs
       - name: Upload screenshots and report
         if: always()
         uses: actions/upload-artifact@v4
