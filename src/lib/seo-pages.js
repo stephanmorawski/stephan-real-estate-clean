@@ -3,7 +3,7 @@ export const seoPages = [
     lang: 'fr',
     slug: 'agence-immobiliere-valbonne',
     title: 'Agence immobilière à Valbonne | Côte d’Azur Agency',
-    description: 'Côte d’Azur Agency accompagne vendeurs et acquéreurs à Valbonne pour l’immobilier de prestige, les villas familiales et les propriétés proches de Sophia Antipolis.',
+    description: 'Côte d’Azur Agency accompagne vendeurs et acquéreurs à Valbonne pour les villas familiales, propriétés de prestige et biens proches de Sophia Antipolis.',
     h1: 'Agence immobilière à Valbonne',
     kicker: 'Valbonne · Sophia Antipolis · Opio · Le Rouret',
     lead: 'À Valbonne, le marché immobilier se structure autour de villas familiales, de propriétés proches des écoles internationales et de résidences recherchées à proximité de Sophia Antipolis.',
@@ -52,7 +52,7 @@ export const seoPages = [
   {
     lang: 'fr',
     slug: 'immobilier-prestige-mougins',
-    title: 'Immobilier de prestige à Mougins | Villas et propriétés de luxe',
+    title: 'Immobilier de prestige à Mougins | Villas de luxe',
     description: 'Accompagnement immobilier de prestige à Mougins pour villas familiales, propriétés de luxe et maisons proches des écoles internationales.',
     h1: 'Immobilier de prestige à Mougins',
     kicker: 'Mougins · Cannes · écoles internationales',
