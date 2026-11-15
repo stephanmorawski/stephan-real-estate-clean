@@ -25,7 +25,12 @@ export default async function HomePage({ params }) {
   return (
     <main className="home-page">
       <section className="home-hero">
-        <img src="/images/hero-pool.jpg" alt="" className="home-hero-image" fetchPriority="high" />
+        <img
+          src="/images/hero-pool.jpg"
+          alt={fr ? 'Villa avec piscine sur la Côte d’Azur' : 'Luxury villa with pool on the French Riviera'}
+          className="home-hero-image"
+          fetchPriority="high"
+        />
         <div className="container home-hero-content">
           <div className="home-hero-text">
             <p className="home-kicker">Stephan Morawski · Côte d’Azur Agency</p>
