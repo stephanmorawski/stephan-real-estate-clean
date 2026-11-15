@@ -21,12 +21,73 @@ function attribute(tag, name) {
   return tag.match(new RegExp(`\\b${name}\\s*=\\s*["']([^"']*)["']`, 'i'))?.[1] || '';
 }
 
+// CSS line-height is not a clipping boundary when overflow is visible. Windows
+// font metrics can exceed that line box. Check actual text against real clips.
+function auditCards(selector) {
+  const rect = r => ({ top: r.top, left: r.left, right: r.right, bottom: r.bottom, width: r.width, height: r.height });
+  const cards = [...document.querySelectorAll(selector)].map(card => {
+    const title = card.querySelector('h2');
+    const price = [...(title?.parentElement?.children || [])].find(el => el.tagName === 'DIV' && /€|prix sur demande|price on request/i.test(el.textContent || ''));
+    const issues = [];
+    let geometry = null;
+    if (!price) issues.push('price or on-request label missing');
+    if (price) {
+      const r = price.getBoundingClientRect();
+      const range = document.createRange();
+      range.selectNodeContents(price);
+      const text = range.getBoundingClientRect();
+      geometry = { element: rect(r), text: rect(text), lineHeight: getComputedStyle(price).lineHeight, overflow: getComputedStyle(price).overflow };
+      if (r.width <= 0 || r.height <= 0 || text.width <= 0 || text.height <= 0) issues.push('price has no visible size');
+      for (let el = price; el && el !== document.body; el = el.parentElement) {
+        const css = getComputedStyle(el);
+        const outer = el.getBoundingClientRect();
+        if (css.display === 'none' || css.visibility === 'hidden' || css.contentVisibility === 'hidden' || Number(css.opacity) === 0) issues.push('price hidden');
+        if (/hidden|clip|auto|scroll/.test(css.overflowY) && (text.top < outer.top - 2 || text.bottom > outer.bottom + 2)) issues.push('price text clipped vertically by overflow');
+        if (/hidden|clip|auto|scroll/.test(css.overflowX) && (text.left < outer.left - 2 || text.right > outer.right + 2)) issues.push('price text clipped horizontally by overflow');
+      }
+      const outer = card.getBoundingClientRect();
+      if (text.top < outer.top - 2 || text.bottom > outer.bottom + 2 || text.left < outer.left - 2 || text.right > outer.right + 2) issues.push('price text outside card');
+    }
+    const images = [...card.querySelectorAll('img')].map(img => ({ complete: img.complete, naturalWidth: img.naturalWidth, naturalHeight: img.naturalHeight }));
+    if (images.some(img => !img.complete || !img.naturalWidth)) issues.push('property image not decoded');
+    return { href: card.getAttribute('href'), title: title?.textContent?.trim(), price: price?.textContent?.trim() || null, geometry, images, issues: [...new Set(issues)] };
+  });
+  return { cards, horizontalOverflow: Math.max(0, document.documentElement.scrollWidth - innerWidth) };
+}
+
+async function verifyAssertions(browser) {
+  const context = await browser.newContext({ viewport: { width: 800, height: 600 } });
+  const page = await context.newPage();
+  const cases = [
+    { name: 'small line-height with visible overflow', priceCss: 'font-size:20px;line-height:10px;overflow:visible', expected: null },
+    { name: 'price clipped by its own overflow', priceCss: 'height:1px;overflow:hidden', expected: 'clipped vertically' },
+    { name: 'price clipped by ancestor', containerCss: 'height:25px;overflow:hidden', expected: 'clipped vertically' },
+    { name: 'price missing', missing: true, expected: 'missing' },
+    { name: 'price display none', priceCss: 'display:none', expected: 'hidden' },
+  ];
+  const results = [];
+  try {
+    for (const test of cases) {
+      await page.setContent(`<div class="card" style="display:block;width:300px;padding:30px;overflow:hidden;font:16px Arial"><div style="${test.containerCss || ''}"><h2 style="margin:0 0 10px;font-size:16px;line-height:20px">Test property</h2>${test.missing ? '' : `<div style="${test.priceCss || ''}">1 890 000 €</div>`}</div></div>`);
+      const result = await page.evaluate(auditCards, '.card');
+      const issues = result.cards[0].issues;
+      const passed = test.expected ? issues.some(issue => issue.includes(test.expected)) : issues.length === 0;
+      results.push({ name: test.name, passed, issues, geometry: result.cards[0].geometry });
+    }
+  } finally {
+    await context.close();
+  }
+  report.assertionSelfTests = results;
+  if (results.some(test => !test.passed)) throw new Error('Price visibility assertion self-test failed');
+}
+
 try {
   report.version = await (await get(`${base}/api/version`)).json();
   if (!/^[a-f0-9]{40}$/i.test(report.version.commitSha || '')) throw new Error('No valid deployed SHA');
   if (expectedSha && report.version.commitSha !== expectedSha) throw new Error(`Expected ${expectedSha}, served ${report.version.commitSha}`);
   browser = await chromium.launch({ channel: 'msedge', headless: true });
   report.browserVersion = browser.version();
+  await verifyAssertions(browser);
 
   for (const lang of ['fr', 'en']) {
     let reference;
@@ -55,33 +116,7 @@ try {
           scrollTo({ top: 0, left: 0, behavior: 'instant' });
           await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         });
-        const result = await page.evaluate(selector => {
-          const cards = [...document.querySelectorAll(selector)].map(card => {
-            const title = card.querySelector('h2');
-            const price = [...(title?.parentElement?.children || [])].find(el => el.tagName === 'DIV' && /€|prix sur demande|price on request/i.test(el.textContent || ''));
-            const issues = [];
-            if (!price) issues.push('price or on-request label missing');
-            if (price) {
-              const r = price.getBoundingClientRect();
-              const range = document.createRange();
-              range.selectNodeContents(price);
-              const text = range.getBoundingClientRect();
-              if (r.width <= 0 || r.height <= 0) issues.push('price has no visible size');
-              if (text.width > r.width + 2 || text.height > r.height + 2) issues.push('price text clipped');
-              for (let el = price; el && el !== document.body; el = el.parentElement) {
-                const css = getComputedStyle(el);
-                const outer = el.getBoundingClientRect();
-                if (css.display === 'none' || css.visibility === 'hidden' || Number(css.opacity) === 0) issues.push('price hidden');
-                if (/hidden|clip|auto|scroll/.test(css.overflowY) && (r.top < outer.top - 2 || r.bottom > outer.bottom + 2)) issues.push('price clipped vertically');
-                if (/hidden|clip|auto|scroll/.test(css.overflowX) && (r.left < outer.left - 2 || r.right > outer.right + 2)) issues.push('price clipped horizontally');
-              }
-              if (r.bottom > card.getBoundingClientRect().bottom + 2) issues.push('price outside card');
-            }
-            for (const img of card.querySelectorAll('img')) if (!img.complete || !img.naturalWidth) issues.push('property image not decoded');
-            return { href: card.getAttribute('href'), title: title?.textContent?.trim(), price: price?.textContent?.trim() || null, issues: [...new Set(issues)] };
-          });
-          return { cards, horizontalOverflow: Math.max(0, document.documentElement.scrollWidth - innerWidth) };
-        }, selector);
+        const result = await page.evaluate(auditCards, selector);
         if (!result.cards.length) throw new Error('Empty catalogue');
         const signature = JSON.stringify(result.cards.map(({ href, price }) => ({ href, price })));
         if (reference && reference !== signature) report.failures.push(`${label}: catalogue changed during audit`);
