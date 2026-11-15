@@ -10,8 +10,8 @@ const seoLinks = {
     ['Estimation Côte d’Azur', '/fr/estimation-immobiliere-cote-azur'],
   ],
   en: [
-    ['French Riviera real estate', '/en/french-riviera-real-estate'],
-    ['Luxury villas French Riviera', '/en/luxury-villa-for-sale-french-riviera'],
+    ['French Riviera property guide', '/en/french-riviera-real-estate'],
+    ['Luxury villas for sale', '/en/luxury-villa-for-sale-french-riviera'],
   ],
 };
 
@@ -34,7 +34,7 @@ export function Footer({ lang, t }) {
             </div>
           </div>
 
-          <nav aria-label={lang === 'fr' ? 'Expertise immobilière locale' : 'French Riviera real estate expertise'}>
+          <nav aria-label={lang === 'fr' ? 'Expertise immobilière locale' : 'French Riviera property expertise'}>
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
               {lang === 'fr' ? 'Expertise locale' : 'Explore the French Riviera'}
             </div>
