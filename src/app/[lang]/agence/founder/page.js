@@ -1,25 +1,60 @@
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
 import { isLang } from '@/lib/i18n';
 import { buildPageMetadata } from '@/lib/seo';
 import fs from 'node:fs';
 import path from 'node:path';
 
+const BASE_URL = 'https://www.cotedazuragency.com';
+
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   return buildPageMetadata({
-    title: 'Founder | Côte d’Azur Agency',
+    title: lang === 'fr'
+      ? 'Stephan Morawski, fondateur | Côte d’Azur Agency'
+      : 'Stephan Morawski, Founder | Côte d’Azur Agency',
     description: lang === 'fr'
-      ? 'Le parcours et la vision de la fondatrice de Côte d’Azur Agency.'
-      : 'The founder’s background and vision behind Côte d’Azur Agency.',
+      ? 'Découvrez le parcours de Stephan Morawski, fondateur de Côte d’Azur Agency, et sa vision du conseil immobilier sur la Côte d’Azur.'
+      : 'Discover Stephan Morawski’s background, the founder of Côte d’Azur Agency, and his approach to French Riviera property advice.',
     lang,
     pathname: `/${lang}/agence/founder`
   });
 }
 
+async function FounderSchema({ lang }) {
+  const nonce = (await headers()).get('x-nonce') || undefined;
+  const pageUrl = `${BASE_URL}/${lang}/agence/founder`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${pageUrl}#profile`,
+    url: pageUrl,
+    name: lang === 'fr'
+      ? 'Stephan Morawski, fondateur de Côte d’Azur Agency'
+      : 'Stephan Morawski, founder of Côte d’Azur Agency',
+    inLanguage: lang === 'fr' ? 'fr-FR' : 'en-GB',
+    mainEntity: {
+      '@id': `${BASE_URL}/#stephan-morawski`,
+    },
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`,
+    },
+  };
+
+  return (
+    <script
+      nonce={nonce}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 function Heading() {
   return (
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
-      <div className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A46C]">
+      <div className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7541]">
         Founder
       </div>
       <div className="text-xl font-medium tracking-[0.02em] text-zinc-900 md:text-2xl">
@@ -51,7 +86,7 @@ function FRText() {
         </p>
         <p>
           Avant de me consacrer pleinement à l’immobilier de prestige, j’ai occupé pendant dix ans le poste de
-          directrice administrative et financière. Cette expérience m’a apporté une maîtrise exigeante du
+          directeur administratif et financier. Cette expérience m’a apporté une maîtrise exigeante du
           management, de la négociation, de la gestion de projet et de la relation client.
         </p>
         <p>
@@ -88,7 +123,7 @@ function ENText() {
 
       <div className="mt-10 space-y-6 text-lg leading-relaxed text-zinc-700">
         <p>
-          For more than ten years, I have evolved in real estate on the French Riviera with one strong conviction:
+          For more than ten years, I have worked in real estate on the French Riviera with one strong conviction:
           excellence is not claimed, it is demonstrated.
         </p>
         <p>
@@ -120,18 +155,19 @@ export default async function FounderPage({ params }) {
 
   return (
     <main className="container py-16">
+      <FounderSchema lang={lang} />
       <div className="grid gap-10 lg:grid-cols-[480px_minmax(0,1fr)] lg:items-start">
         <div className="lg:sticky lg:top-28">
           <div className="overflow-hidden rounded-[32px] bg-zinc-100 shadow-soft ring-1 ring-[var(--gold-light)]">
             {hasImage ? (
               <img
                 src="/images/founder.jpg"
-                alt="Founder"
+                alt="Stephan Morawski, founder of Côte d’Azur Agency"
                 className="h-full w-full object-cover"
               />
             ) : (
               <div className="flex aspect-[4/5] items-center justify-center bg-zinc-100 text-zinc-500">
-                Founder photo
+                Stephan Morawski
               </div>
             )}
           </div>

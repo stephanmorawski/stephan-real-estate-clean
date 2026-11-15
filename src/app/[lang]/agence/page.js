@@ -20,8 +20,8 @@ export async function generateMetadata({ params }) {
 const cards = {
   fr: [
     {
-      title: 'Founder',
-      text: 'Un parcours exigeant, une culture du service et une approche premium de l’immobilier sur la Côte d’Azur.',
+      title: 'Fondateur',
+      text: 'Le parcours de Stephan Morawski, sa culture du service et son approche de l’immobilier sur la Côte d’Azur.',
       href: '/agence/founder',
       cta: 'Découvrir'
     },
@@ -30,6 +30,12 @@ const cards = {
       text: 'Une lecture moderne du marché, enrichie par l’expertise terrain et les nouveaux outils de recherche.',
       href: '/agence/expertises',
       cta: 'Explorer'
+    },
+    {
+      title: 'Guides',
+      text: 'Des réponses structurées sur le choix d’un conseiller, le mandat de recherche, la valorisation et le processus d’achat.',
+      href: '/guides',
+      cta: 'Lire les guides'
     },
     {
       title: 'Partenaires',
@@ -41,15 +47,21 @@ const cards = {
   en: [
     {
       title: 'Founder',
-      text: 'A demanding background, a service-driven culture and a premium real estate approach on the French Riviera.',
+      text: 'Stephan Morawski’s background, service culture and approach to French Riviera real estate.',
       href: '/agence/founder',
       cta: 'Discover'
     },
     {
-      title: 'Expertises',
+      title: 'Expertise',
       text: 'A modern reading of the market, combining local expertise with intelligent research tools.',
       href: '/agence/expertises',
       cta: 'Explore'
+    },
+    {
+      title: 'Guides',
+      text: 'Structured answers on choosing an advisor, search mandates, property valuation and the buying process.',
+      href: '/guides',
+      cta: 'Read the guides'
     },
     {
       title: 'Partners',
@@ -77,7 +89,7 @@ export default async function AgencePage({ params }) {
           : 'Meet Stephan Morawski and discover the independent advisory approach, background and trusted expertise behind Côte d’Azur Agency.'}
       </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {list.map((item) => (
           <div key={item.title} className="card-luxe flex flex-col p-8">
             <h2 className="font-luxe text-3xl text-zinc-900">{item.title}</h2>
