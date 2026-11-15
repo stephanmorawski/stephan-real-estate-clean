@@ -17,7 +17,10 @@ export async function generateMetadata({ params }) {
       : "Luxury real estate agency on the French Riviera for tailored property sales and acquisitions in Valbonne, Mougins, Biot, Cannes and Théoule-sur-Mer.",
     lang,
     pathname: isFr ? '/fr/agence-immobiliere-cote-d-azur' : '/en/agence-immobiliere-cote-d-azur',
-    image: '/images/hero-pool.jpg'
+    image: '/images/hero-pool.jpg',
+    // The English route is permanently redirected to /en, so it must not be
+    // advertised as a hreflang alternate from the French landing page.
+    includeLanguageAlternates: false,
   });
 }
 
