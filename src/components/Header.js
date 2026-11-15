@@ -4,7 +4,7 @@ export function Header({ lang, t }) {
   return (
     <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur">
       <div className="container py-5">
-        <div className="hidden md:grid md:grid-cols-[280px_1fr_auto] md:items-center md:gap-8">
+        <div className="hidden lg:grid lg:grid-cols-[280px_1fr_auto] lg:items-center lg:gap-8">
           <Link href={`/${lang}`} className="block justify-self-start">
             <div className="flex flex-col items-center text-center">
               <img
@@ -33,7 +33,7 @@ export function Header({ lang, t }) {
           </div>
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div className="flex items-start justify-between gap-4">
             <Link href={`/${lang}`} className="block">
               <div className="flex flex-col items-center text-center">
