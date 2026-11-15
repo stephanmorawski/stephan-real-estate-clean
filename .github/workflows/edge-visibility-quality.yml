@@ -1,0 +1,76 @@
+name: Microsoft Edge production visibility
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/check-edge-visibility.mjs'
+      - '.github/workflows/edge-visibility-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-edge-visibility.mjs'
+      - '.github/workflows/edge-visibility-quality.yml'
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: Optional exact SHA expected on the canonical production domain
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: edge-visibility-${{ github.event.pull_request.number || github.event.deployment.id || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  edge-windows:
+    if: >-
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'deployment_status' &&
+       github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production' &&
+       (contains(github.event.deployment_status.target_url, 'stephan-real-estate-hcoz') ||
+        contains(github.event.deployment_status.environment_url, 'cotedazuragency.com')))
+    runs-on: windows-2022
+    timeout-minutes: 15
+    steps:
+      - name: Check out the read-only verifier
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+
+      - name: Install isolated Playwright and Microsoft Edge
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force .edge-qa | Out-Null
+          Set-Content -Path .edge-qa/package.json -Value '{"name":"caa-edge-qa","version":"1.0.0","private":true}'
+          Copy-Item scripts/check-edge-visibility.mjs .edge-qa/check-edge-visibility.mjs
+          npm --prefix .edge-qa install --ignore-scripts --no-package-lock --no-audit --no-fund playwright@1.56.1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node .edge-qa/node_modules/playwright/cli.js install msedge
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Check the public production site in real Edge
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha || github.event.deployment.sha || '' }}
+        run: node .edge-qa/check-edge-visibility.mjs
+
+      - name: Upload Edge screenshots and deployment evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: edge-visibility-${{ github.run_id }}
+          path: artifacts/edge-visibility/
+          retention-days: 30
+          if-no-files-found: warn
