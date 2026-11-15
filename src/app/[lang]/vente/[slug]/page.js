@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { isLang } from '@/lib/i18n';
 import { buildPageMetadata, truncateText } from '@/lib/seo';
-import { getAllNewsSlugs, getNewsBySlug } from '@/lib/news';
-import { getMandatBySlug } from '@/lib/apimo';
+import { getMandatBySlug, getMandats } from '@/lib/apimo';
 import { headers } from 'next/headers';
 
 function formatPrice(value, lang) {
@@ -101,11 +100,13 @@ export async function generateMetadata({ params }) {
       title: lang === 'fr' ? 'Bien immobilier | Côte d’Azur Agency' : 'Property | Côte d’Azur Agency',
       description: lang === 'fr' ? 'Bien à la vente sur la Côte d’Azur.' : 'Property for sale on the French Riviera.',
       lang,
-      pathname: `/${lang}/vente/${slug}`
+      pathname: `/${lang}/vente/${slug}`,
+      includeLanguageAlternates: false
     });
   }
 
-  const title = `${mandat.title}${mandat.locationLabel ? ` à ${mandat.locationLabel}` : ''} | Côte d’Azur Agency`;
+  const locationJoiner = lang === 'fr' ? ' à ' : ' in ';
+  const title = `${mandat.title}${mandat.locationLabel ? `${locationJoiner}${mandat.locationLabel}` : ''} | Côte d’Azur Agency`;
   const description = truncateText(
     mandat.description ||
       (lang === 'fr'
@@ -114,12 +115,32 @@ export async function generateMetadata({ params }) {
     160
   );
 
+  const alternateLang = lang === 'fr' ? 'en' : 'fr';
+  let alternatePath = null;
+
+  try {
+    const alternateMandats = await getMandats(alternateLang);
+    const alternateMandat = (alternateMandats || []).find(
+      (item) =>
+        (mandat.id && item.id === mandat.id) ||
+        (mandat.ref && item.ref === mandat.ref)
+    );
+
+    if (alternateMandat?.slug) {
+      alternatePath = `/${alternateLang}/vente/${alternateMandat.slug}`;
+    }
+  } catch (e) {
+    console.error('SALE_METADATA_ALTERNATE_ERROR', e);
+  }
+
   return buildPageMetadata({
     title,
     description,
     lang,
     pathname: `/${lang}/vente/${slug}`,
-    image: mandat.pictures?.[0] || '/images/hero-pool.jpg'
+    image: mandat.pictures?.[0] || '/images/hero-pool.jpg',
+    includeLanguageAlternates: Boolean(alternatePath),
+    ...(alternatePath ? { alternatePath } : {})
   });
 }
 
