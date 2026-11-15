@@ -2,6 +2,15 @@ import { NextResponse } from 'next/server';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
+const PERMANENT_REDIRECTS = new Map([
+  ['/fr/agence-cote-dazur', '/fr/agence-immobiliere-cote-d-azur'],
+  ['/en/agence-cote-dazur', '/en'],
+  ['/fr/cote-d-azur-real-estate', '/fr/agence-immobiliere-cote-d-azur'],
+  ['/en/cote-d-azur-real-estate', '/en/french-riviera-real-estate'],
+  ['/en/agence-immobiliere-cote-d-azur', '/en'],
+  ['/en/agent-immobilier-cote-d-azur', '/en/french-riviera-real-estate'],
+]);
+
 function buildCsp(nonce) {
   return [
     "default-src 'self'",
@@ -54,6 +63,13 @@ export function middleware(req) {
     response.headers.set('Content-Security-Policy', csp);
     return response;
   };
+
+  const permanentTarget = PERMANENT_REDIRECTS.get(pathname);
+  if (permanentTarget) {
+    const url = req.nextUrl.clone();
+    url.pathname = permanentTarget;
+    return redirectWithSecurityHeaders(url, 308);
+  }
 
   if (pathname === '/fr/legal') {
     const url = req.nextUrl.clone();
