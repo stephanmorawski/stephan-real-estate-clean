@@ -17,7 +17,9 @@ export async function generateMetadata({ params }) {
       : "Property advisor on the French Riviera for discreet, tailored support in acquisition, sale and high-end property search projects.",
     lang,
     pathname: isFr ? '/fr/agent-immobilier-cote-d-azur' : '/en/agent-immobilier-cote-d-azur',
-    image: '/images/hero-pool.jpg'
+    image: '/images/hero-pool.jpg',
+    // The English route now redirects to the dedicated property guide.
+    includeLanguageAlternates: false,
   });
 }
 
