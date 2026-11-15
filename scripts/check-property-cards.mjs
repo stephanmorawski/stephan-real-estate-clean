@@ -6,7 +6,7 @@ const base = (process.env.SITE_URL || 'https://www.cotedazuragency.com').replace
 const expectedSha = (process.env.EXPECTED_SHA || '').trim();
 const dir = 'artifacts/post-production/sales';
 fs.mkdirSync(dir, { recursive: true });
-const report = { base, expectedSha, startedAt: new Date().toISOString(), version: null, pages: [], failures: [] };
+const report = { base, scope: base.includes('127.0.0.1') ? 'PR build with public catalogue fixtures' : 'live deployment', expectedSha, startedAt: new Date().toISOString(), version: null, pages: [], failures: [] };
 const sizes = [[320, 844], [390, 844], [768, 1024], [1024, 768], [1440, 720], [1440, 900], [1920, 1080]];
 let browser;
 try {
@@ -34,9 +34,13 @@ try {
           await page.waitForTimeout(80);
         }
         await page.evaluate(async () => {
-          await Promise.all([...document.querySelectorAll('main section.grid img')].map(image => image.decode().catch(() => null)));
-          scrollTo(0, 0);
+          await Promise.race([
+            Promise.all([...document.querySelectorAll('main section.grid img')].map(image => image.decode().catch(() => null))),
+            new Promise(resolve => setTimeout(resolve, 12000)),
+          ]);
           await document.fonts.ready;
+          scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         });
         const result = await page.evaluate(selector => {
           const visible = element => {
