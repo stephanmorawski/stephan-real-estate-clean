@@ -85,7 +85,7 @@ export default async function VentePage({ params }) {
   const gridClass = getGridClass(visibleMandats.length);
 
   return (
-    <main className="container flex min-h-[calc(100vh-166px)] flex-col px-4 py-5 md:h-[calc(100vh-166px)] md:min-h-[560px] md:overflow-hidden md:py-5">
+    <main className="container flex min-h-[calc(100vh-166px)] flex-col px-4 py-5">
       <header className="mx-auto mb-4 max-w-4xl shrink-0 text-center md:mb-4">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C6A46C] md:text-[11px]">
           {lang === 'fr' ? 'Catalogue des biens' : 'Property catalogue'}
@@ -105,7 +105,7 @@ export default async function VentePage({ params }) {
           {t.sale.empty}
         </div>
       ) : (
-        <section className={`grid flex-1 auto-rows-auto gap-3 overflow-visible md:auto-rows-fr md:gap-3 md:overflow-hidden ${gridClass}`}>
+        <section className={`grid flex-1 auto-rows-auto gap-3 overflow-visible md:flex-none ${gridClass}`}>
           {visibleMandats.map((m) => {
             const href = `/${lang}/vente/${m.slug}`;
             const picture = getMainPicture(m);
@@ -118,7 +118,7 @@ export default async function VentePage({ params }) {
                 href={href}
                 className="group flex min-h-0 flex-col overflow-hidden rounded-[18px] bg-white shadow-soft ring-1 ring-[var(--gold-light)] transition duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:ring-[#C6A46C]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-zinc-100 md:aspect-auto md:h-[62%] md:min-h-[132px]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-zinc-100 md:aspect-auto md:h-[clamp(132px,18vh,220px)]">
                   {picture ? (
                     <img
                       src={picture}
