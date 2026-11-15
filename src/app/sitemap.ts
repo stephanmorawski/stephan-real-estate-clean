@@ -5,6 +5,29 @@ import { getAllNewsSlugs } from '@/lib/news'
 const LANGS = ['fr', 'en'] as const
 const SITE_URL = 'https://www.cotedazuragency.com'
 
+const STATIC_URLS = {
+  fr: [
+    '',
+    '/vente',
+    '/services',
+    '/agence',
+    '/actualites',
+    '/agence-immobiliere-cote-d-azur',
+    '/agent-immobilier-cote-d-azur',
+    '/contact',
+    '/mentions-legales',
+  ],
+  en: [
+    '',
+    '/vente',
+    '/services',
+    '/agence',
+    '/actualites',
+    '/contact',
+    '/mentions-legales',
+  ],
+} as const
+
 async function getSaleUrls(baseUrl: string): Promise<MetadataRoute.Sitemap> {
   try {
     const { getMandats } = await import('@/lib/apimo')
@@ -18,7 +41,6 @@ async function getSaleUrls(baseUrl: string): Promise<MetadataRoute.Sitemap> {
 
         entries.push({
           url: `${baseUrl}/${lang}/vente/${item.slug}`,
-          lastModified: new Date(),
           changeFrequency: 'weekly',
           priority: 0.8,
         })
@@ -33,45 +55,27 @@ async function getSaleUrls(baseUrl: string): Promise<MetadataRoute.Sitemap> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticUrls = [
-    '',
-    '/vente',
-    '/services',
-    '/agence',
-    '/agence-cote-dazur',
-    '/agence-immobiliere-cote-d-azur',
-    '/agent-immobilier-cote-d-azur',
-    '/cote-d-azur-real-estate',
-    '/contact',
-    '/mentions-legales',
-  ]
-
   const entries: MetadataRoute.Sitemap = []
 
   for (const lang of LANGS) {
-    for (const path of staticUrls) {
+    for (const path of STATIC_URLS[lang]) {
       entries.push({
         url: `${SITE_URL}/${lang}${path}`,
-        lastModified: new Date(),
-        changeFrequency: path === '' ? 'weekly' : 'monthly',
+        changeFrequency: path === '' || path === '/actualites' ? 'weekly' : 'monthly',
         priority:
           path === ''
             ? 1.0
-            : (
-                path === '/agence-cote-dazur' ||
-                path === '/agence-immobiliere-cote-d-azur' ||
-                path === '/agent-immobilier-cote-d-azur' ||
-                path === '/cote-d-azur-real-estate'
-              )
-            ? 0.9
-            : 0.7,
+            : path === '/agence-immobiliere-cote-d-azur'
+              ? 0.9
+              : path === '/actualites'
+                ? 0.8
+                : 0.7,
       })
     }
   }
 
   const seoEntries: MetadataRoute.Sitemap = getSeoPages().map((page) => ({
     url: `${SITE_URL}/${page.lang}/${page.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: page.lang === 'fr' ? 0.85 : 0.8,
   }))

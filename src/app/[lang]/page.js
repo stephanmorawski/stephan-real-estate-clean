@@ -7,10 +7,10 @@ import { getAllNews } from '@/lib/news';
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const title = lang === 'en'
-    ? 'Côte d’Azur Agency | Luxury Real Estate on the French Riviera'
+    ? 'French Riviera Real Estate Agency | Côte d’Azur Agency'
     : 'Côte d’Azur Agency | Immobilier de prestige sur la Côte d’Azur';
   const description = lang === 'en'
-    ? 'Côte d’Azur Agency advises French and international clients on luxury property sales and acquisitions across the French Riviera.'
+    ? 'Independent French Riviera real estate agency for luxury property sales, purchases and discreet searches in Cannes, Mougins, Valbonne, Biot and Théoule-sur-Mer.'
     : 'Côte d’Azur Agency accompagne vendeurs et acquéreurs dans leurs projets immobiliers de prestige à Valbonne, Cannes, Mougins, Biot, Antibes et sur la Côte d’Azur.';
   return buildPageMetadata({ title, description, lang, pathname: `/${lang}` });
 }
@@ -30,7 +30,7 @@ export default async function HomePage({ params }) {
           <div className="home-hero-text">
             <p className="home-kicker">Stephan Morawski · Côte d’Azur Agency</p>
             <h1>{fr ? <>Votre projet immobilier mérite un <em>regard juste.</em></> : <>Your property deserves <em>a clear perspective.</em></>}</h1>
-            <p className="home-lead">{fr ? "Depuis plus de dix ans, j’accompagne personnellement mes clients dans les Alpes-Maritimes." : 'For over ten years, I have personally guided my clients across the Alpes-Maritimes.'}</p>
+            <p className="home-lead">{fr ? "Depuis plus de dix ans, j’accompagne personnellement mes clients dans les Alpes-Maritimes." : 'For over ten years, I have personally guided buyers and sellers across the French Riviera and the Alpes-Maritimes.'}</p>
             <p className="home-description">{fr ? 'Mon approche : vous conseiller avec sincérité, estimer votre bien à sa juste valeur et vous accompagner pour vendre dans les meilleures conditions ou trouver le bien qui vous correspond.' : 'My approach: honest advice, an accurate valuation of your property, and personal guidance to sell on the best terms or find the home that is right for you.'}</p>
             <p className="home-signature">Stephan Morawski · Côte d’Azur Agency</p>
             <div className="home-actions">
@@ -50,6 +50,26 @@ export default async function HomePage({ params }) {
             <h2>{fr ? <>Une relation directe.<br />Un conseil sincère.</> : <>A personal relationship.<br />Honest advice.</>}</h2>
             <p>{fr ? 'Je suis Stephan Morawski, fondatrice de Côte d’Azur Agency. Mon métier est de vous apporter un avis indépendant et précis, loin des estimations de complaisance. Chaque maison, chaque appartement et chaque projet mérite une stratégie adaptée au marché réel.' : 'I am Stephan Morawski, founder of Côte d’Azur Agency. My role is to offer independent, accurate advice and realistic valuations. Every house, apartment and project deserves a strategy tailored to the actual market.'}</p>
             <p>{fr ? 'J’accompagne personnellement vendeurs et acquéreurs dans l’ensemble des Alpes-Maritimes, en français comme en anglais.' : 'I personally support sellers and buyers throughout the Alpes-Maritimes, in both French and English.'}</p>
+            <nav
+              aria-label={fr ? 'Expertises immobilières locales' : 'French Riviera property expertise'}
+              className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm"
+            >
+              {fr ? (
+                <>
+                  <Link href="/fr/agence-immobiliere-cote-d-azur">Agence immobilière Côte d’Azur</Link>
+                  <Link href="/fr/agence-immobiliere-valbonne">Valbonne</Link>
+                  <Link href="/fr/agence-immobiliere-biot">Biot</Link>
+                  <Link href="/fr/immobilier-prestige-mougins">Mougins</Link>
+                  <Link href="/fr/appartement-vue-mer-cannes">Cannes</Link>
+                  <Link href="/fr/villa-vue-mer-theoule-sur-mer">Théoule-sur-Mer</Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/en/french-riviera-real-estate">French Riviera property guide</Link>
+                  <Link href="/en/luxury-villa-for-sale-french-riviera">Luxury villas for sale</Link>
+                </>
+              )}
+            </nav>
             <Link className="home-text-link" href={`/${lang}/agence/founder`}>{fr ? 'Découvrir mon parcours' : 'Discover my background'} ↗</Link>
           </div>
         </div>

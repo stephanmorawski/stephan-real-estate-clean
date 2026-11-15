@@ -49,6 +49,27 @@ export default function SeoLandingPage({ page, lang }) {
   const relatedPages = getSeoPages().filter(
     (candidate) => candidate.lang === lang && candidate.slug !== page.slug,
   );
+  const authorityPage = lang === 'fr'
+    ? {
+        href: '/fr/agence-immobiliere-cote-d-azur',
+        label: 'Agence immobilière Côte d’Azur',
+      }
+    : {
+        href: '/en',
+        label: 'French Riviera real estate agency',
+      };
+  const relatedLinks = [
+    {
+      key: `authority-${lang}`,
+      href: authorityPage.href,
+      label: authorityPage.label,
+    },
+    ...relatedPages.map((related) => ({
+      key: `${related.lang}-${related.slug}`,
+      href: `/${related.lang}/${related.slug}`,
+      label: related.h1,
+    })),
+  ];
 
   return (
     <main className="bg-[#f7f3ed]">
@@ -121,13 +142,13 @@ export default function SeoLandingPage({ page, lang }) {
           <h2 className="text-2xl font-semibold text-zinc-950">{copy.relatedTitle}</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-zinc-700">{copy.relatedIntro}</p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedPages.map((related) => (
+            {relatedLinks.map((related) => (
               <Link
-                key={related.slug}
-                href={`/${related.lang}/${related.slug}`}
+                key={related.key}
+                href={related.href}
                 className="rounded-2xl border border-zinc-200 px-5 py-4 text-sm font-medium text-zinc-900 transition hover:border-zinc-400"
               >
-                {related.h1}
+                {related.label}
               </Link>
             ))}
           </div>

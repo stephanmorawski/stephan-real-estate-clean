@@ -152,35 +152,35 @@ export const seoPages = [
   {
     lang: 'en',
     slug: 'french-riviera-real-estate',
-    title: 'French Riviera Real Estate | Côte d’Azur Agency',
-    description: 'French Riviera real estate advisor for luxury villas, sea-view properties, second homes and off-market opportunities.',
-    h1: 'French Riviera real estate',
-    kicker: 'Luxury property · South of France · Côte d’Azur',
-    lead: 'Côte d’Azur Agency advises international buyers and sellers across the French Riviera, with a focus on selected villas, family homes, sea-view properties and confidential opportunities.',
-    cta: 'Discuss a French Riviera project',
-    keywords: ['French Riviera real estate', 'French Riviera property for sale', 'luxury real estate French Riviera', 'French Riviera property advisor'],
+    title: 'French Riviera Real Estate Guide | Côte d’Azur Agency',
+    description: 'Guide to buying and selling property on the French Riviera, with local market insight, luxury homes, off-market searches and advice for international clients.',
+    h1: 'Buying property on the French Riviera',
+    kicker: 'Property search · local markets · international buyers',
+    lead: 'A practical guide for international buyers and sellers comparing French Riviera locations, luxury homes, sea-view properties and confidential property searches.',
+    cta: 'Discuss a French Riviera property search',
+    keywords: ['French Riviera real estate', 'buy property French Riviera', 'French Riviera property market', 'property search French Riviera'],
     sections: [
       {
-        heading: 'A selective property advisor',
-        body: 'Buying or selling on the French Riviera requires local knowledge, discretion and a clear understanding of each micro-market, from Valbonne and Biot to Cannes, Mougins, Vence and Théoule-sur-Mer.'
+        heading: 'Choosing the right French Riviera location',
+        body: 'Valbonne, Biot, Mougins, Cannes, Vence and Théoule-sur-Mer offer different lifestyles, access, property types and long-term value profiles. A useful search starts by comparing these micro-markets rather than treating the coast as a single market.'
       },
       {
-        heading: 'Luxury villas and second homes',
-        body: 'International clients often look for sea views, privacy, easy airport access, proximity to international schools and reliable long-term value.'
+        heading: 'Buying and selling property in France',
+        body: 'International clients benefit from a structured brief, realistic pricing, clear due diligence and coordination with the relevant legal and technical professionals throughout the transaction.'
       },
       {
-        heading: 'Off-market property search',
-        body: 'Some opportunities are not publicly listed. A tailored search process helps qualify the right properties before arranging selected visits.'
+        heading: 'A structured property search',
+        body: 'A selective search process combines public listings, local market knowledge and confidential opportunities so that visits focus on properties aligned with the required location, lifestyle and budget.'
       }
     ]
   },
   {
     lang: 'en',
     slug: 'luxury-villa-for-sale-french-riviera',
-    title: 'Luxury Villa for Sale on the French Riviera',
-    description: 'Buy or sell a luxury villa on the French Riviera with a local property advisor focused on quality, discretion and market relevance.',
-    h1: 'Luxury villa for sale on the French Riviera',
-    kicker: 'Sea view villas · family homes · off-market opportunities',
+    title: 'Luxury Villas for Sale on the French Riviera | Local Advisor',
+    description: 'Explore luxury villas for sale on the French Riviera with local guidance across Cannes, Mougins, Valbonne, Biot and Théoule-sur-Mer.',
+    h1: 'Luxury villas for sale on the French Riviera',
+    kicker: 'Sea-view villas · family homes · off-market opportunities',
     lead: 'The French Riviera luxury villa market is driven by location, views, privacy, outdoor living, access to Nice airport and proximity to international schools.',
     cta: 'Start a villa search',
     keywords: ['luxury villa for sale French Riviera', 'sea view villa French Riviera', 'buy a house on the French Riviera', 'second home French Riviera'],
