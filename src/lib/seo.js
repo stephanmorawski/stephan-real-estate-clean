@@ -5,6 +5,13 @@ export function truncateText(value, max = 160) {
   return `${input.slice(0, max - 1).trim()}…`;
 }
 
+function toAbsoluteUrl(value, baseUrl) {
+  const input = String(value || '').trim();
+  if (!input) return baseUrl;
+  if (/^https?:\/\//i.test(input)) return input;
+  return `${baseUrl}${input.startsWith('/') ? input : `/${input}`}`;
+}
+
 export function buildPageMetadata({
   title,
   description,
@@ -14,13 +21,17 @@ export function buildPageMetadata({
   imageWidth = 1200,
   imageHeight = 630,
   includeLanguageAlternates = true,
+  alternatePath,
 }) {
   const baseUrl = 'https://www.cotedazuragency.com';
   const url = `${baseUrl}${pathname}`;
-  const imageUrl = /^https?:\/\//i.test(image) ? image : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+  const imageUrl = toAbsoluteUrl(image, baseUrl);
   const alternate = lang === 'fr' ? 'en' : 'fr';
   const altPath = pathname.replace(/^\/(fr|en)/, '');
-  const alternateUrl = `${baseUrl}/${alternate}${altPath}`;
+  const alternateUrl = toAbsoluteUrl(
+    alternatePath || `/${alternate}${altPath}`,
+    baseUrl,
+  );
 
   const alternates = includeLanguageAlternates
     ? {
@@ -28,7 +39,7 @@ export function buildPageMetadata({
         languages: {
           fr: lang === 'fr' ? url : alternateUrl,
           en: lang === 'en' ? url : alternateUrl,
-          'x-default': `${baseUrl}/fr`,
+          'x-default': lang === 'fr' ? url : alternateUrl,
         },
       }
     : {

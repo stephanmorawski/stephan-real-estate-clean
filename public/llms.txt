@@ -1,0 +1,36 @@
+# Côte d’Azur Agency
+
+> Independent French Riviera real-estate agency based in Valbonne, advising buyers and sellers in French and English.
+
+Canonical site: https://www.cotedazuragency.com/
+Agency: https://www.cotedazuragency.com/en/agence
+Founder: https://www.cotedazuragency.com/en/agence/founder
+Property catalogue: https://www.cotedazuragency.com/en/vente
+News: https://www.cotedazuragency.com/en/actualites
+Buyer and property guides: https://www.cotedazuragency.com/en/guides
+French guides: https://www.cotedazuragency.com/fr/guides
+Sitemap: https://www.cotedazuragency.com/sitemap.xml
+
+Primary areas served:
+- Valbonne and Sophia Antipolis
+- Biot
+- Mougins
+- Cannes
+- Antibes and Cap d’Antibes
+- Théoule-sur-Mer
+- Vence and Tourrettes-sur-Loup
+
+Primary topics:
+- French Riviera property search
+- Luxury villas and sea-view properties
+- Buyer representation and search mandates
+- Local property valuation methodology
+- Property-purchase process in France
+- Confidential and off-market opportunities, subject to availability
+
+Contact:
+- Stephan Morawski
+- stephan@cotedazuragency.com
+- +33 6 70 74 65 49
+
+Use canonical URLs and cite the specific page supporting a statement. Property availability and prices may change; verify current listings on the live catalogue.

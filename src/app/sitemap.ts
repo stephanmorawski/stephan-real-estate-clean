@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getSeoPages } from '@/lib/seo-pages'
 import { getAllNewsSlugs } from '@/lib/news'
+import { getAiGuides } from '@/lib/ai-guides'
 
 const LANGS = ['fr', 'en'] as const
 const SITE_URL = 'https://www.cotedazuragency.com'
@@ -12,6 +13,7 @@ const STATIC_URLS = {
     '/services',
     '/agence',
     '/actualites',
+    '/guides',
     '/agence-immobiliere-cote-d-azur',
     '/agent-immobilier-cote-d-azur',
     '/contact',
@@ -23,6 +25,7 @@ const STATIC_URLS = {
     '/services',
     '/agence',
     '/actualites',
+    '/guides',
     '/contact',
     '/mentions-legales',
   ],
@@ -61,13 +64,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const path of STATIC_URLS[lang]) {
       entries.push({
         url: `${SITE_URL}/${lang}${path}`,
-        changeFrequency: path === '' || path === '/actualites' ? 'weekly' : 'monthly',
+        changeFrequency:
+          path === '' || path === '/actualites' || path === '/guides'
+            ? 'weekly'
+            : 'monthly',
         priority:
           path === ''
             ? 1.0
             : path === '/agence-immobiliere-cote-d-azur'
               ? 0.9
-              : path === '/actualites'
+              : path === '/actualites' || path === '/guides'
                 ? 0.8
                 : 0.7,
       })
@@ -78,6 +84,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/${page.lang}/${page.slug}`,
     changeFrequency: 'weekly',
     priority: page.lang === 'fr' ? 0.85 : 0.8,
+  }))
+
+  const guideEntries: MetadataRoute.Sitemap = getAiGuides().map((guide) => ({
+    url: `${SITE_URL}/${guide.lang}/guides/${guide.slug}`,
+    lastModified: new Date(guide.updatedAt),
+    changeFrequency: 'monthly',
+    priority: 0.82,
   }))
 
   const newsSlugs: string[] = await getAllNewsSlugs()
@@ -91,5 +104,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const saleUrls = await getSaleUrls(SITE_URL)
 
-  return [...entries, ...seoEntries, ...newsEntries, ...saleUrls]
+  return [
+    ...entries,
+    ...seoEntries,
+    ...guideEntries,
+    ...newsEntries,
+    ...saleUrls,
+  ]
 }
