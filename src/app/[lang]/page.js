@@ -21,6 +21,8 @@ export default async function HomePage({ params }) {
   if (!isLang(lang)) notFound();
   const fr = lang === 'fr';
   const latestNews = (await getAllNews(lang)).slice(0, 3);
+  const reviewUrl = `/${lang}/actualites/2026-10-27-temoignage-client-confiance`;
+  const googleReviewsUrl = 'https://www.google.com/search?q=Stephan+Morawski+C%C3%B4te+d%27Azur+Agency+avis+Google';
 
   return (
     <main className="home-page">
@@ -77,6 +79,43 @@ export default async function HomePage({ params }) {
             </nav>
             <Link className="home-text-link" href={`/${lang}/agence/founder`}>{fr ? 'Découvrir mon parcours' : 'Discover my background'} ↗</Link>
           </div>
+        </div>
+      </section>
+
+      <section className="home-section home-reviews" id="avis-google">
+        <div className="container home-reviews-grid">
+          <div>
+            <p className="home-kicker">{fr ? 'Ils m’ont fait confiance' : 'Trusted by my clients'}</p>
+            <h2>{fr ? 'La confiance se construit dans la durée.' : 'Trust is built over time.'}</h2>
+            <p>{fr ? 'Deux ventes, un achat : dix ans d’accompagnement auprès de Maggie et de sa famille.' : 'Two sales, one purchase: ten years of guidance for Maggie and her family.'}</p>
+
+            <a
+              href={googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-2 border border-[#ded5c6] bg-white px-5 py-4 text-[#243039] transition hover:border-[#b59a65]"
+              aria-label={fr ? 'Note Google 5 sur 5, basée sur 19 avis' : 'Google rating 5 out of 5, based on 19 reviews'}
+            >
+              <img src="/branding/google-g.svg" alt="Google" width="28" height="28" />
+              <strong className="text-xl font-semibold">5,0</strong>
+              <span className="text-xl tracking-[.08em] text-[#a1782e]" aria-hidden="true">★★★★★</span>
+              <span className="text-sm text-[#626b70]">{fr ? '19 avis Google' : '19 Google reviews'}</span>
+            </a>
+
+            <a className="home-text-link" href={googleReviewsUrl} target="_blank" rel="noopener noreferrer">
+              {fr ? 'Consulter les avis sur Google' : 'View reviews on Google'} ↗
+            </a>
+          </div>
+
+          <article className="home-review-card">
+            <p className="home-stars" aria-label={fr ? 'Avis client : 5 étoiles sur 5' : 'Client review: 5 out of 5 stars'}>★★★★★</p>
+            {fr ? <blockquote>« Toujours disponible et très agréable de travailler avec elle. »</blockquote> : <blockquote>“Always available and great to work with.”</blockquote>}
+            <footer>
+              <strong>Maggie Evans</strong>
+              <span>{fr ? 'Avis Google · témoignage publié le 27 octobre 2026' : 'Google review · testimonial published on 27 October 2026'}</span>
+            </footer>
+            <Link href={reviewUrl} className="home-text-link">{fr ? 'Lire le témoignage original' : 'Read the original testimonial'} ↗</Link>
+          </article>
         </div>
       </section>
 
