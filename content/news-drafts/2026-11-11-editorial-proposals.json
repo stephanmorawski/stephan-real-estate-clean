@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 2,
-  "workflowStatus": "revision_requested",
+  "workflowStatus": "preparing",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -61,11 +61,11 @@
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
   "articlePrepared": true,
-  "visualPrepared": false,
+  "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|visual_reproposal|v3-candidate1",
-  "nextAction": "Await Stephan's response to one verified visual alternative proposal in existing Outlook thread. If accepted, replace the uncredited Stephan-supplied PNG with a licensed Pexels image, preserve FR/EN/LinkedIn text, validate actual photo dimensions/hash/credit and desktop/mobile Preview, then submit new pack v3 for explicit APPROUVER/MODIFIER/REFUSER. No merge, no deployment, no competing proposals.",
+  "idempotencyKey": "caa-2026-11-11-editorial|visual_choice_received|v3-candidate1",
+  "nextAction": "Selected Pexels JPEG is physically materialized on the existing PR branch; refresh the exact-SHA Vercel Preview and run bilingual desktop/mobile visual, metadata and image QA. Only after successful QA send v3 approval pack to Stephan in same Outlook thread. His 2026-11-17 APPROUVER answered a question asking whether the photo suited him, not approval of an as-yet-unsent v3 pack. Never merge or publish until explicit subsequent approval of last sent v3 pack.",
   "previousVersions": [
     {
       "version": 1,
@@ -164,26 +164,31 @@
     },
     "seoCheck": "Différent du guide existant sur le sentier littoral (3,7 km). Cette publication concerne le réaménagement des espaces publics de La Garoupe et l’accessibilité, non la randonnée. Aucun chiffre d'effet immobilier.",
     "visual": {
-      "assetPath": "public/news/2026-11-11-antibes-garoupe-stephan-requested.png",
-      "source": "inline_attachment_from_Stephan_reply_2026-11-12",
-      "author": "to_be_confirmed",
-      "license": "reproduction_rights_unverified",
-      "licenseUrl": "",
-      "isIllustrativeArchive": true,
-      "alterations": "no crop or retouch; supplied PNG as received",
-      "assetMime": "image/png",
-      "assetBytes": 2359996,
-      "assetWidth": 1360,
-      "assetHeight": 811,
-      "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
-      "decodedWithPillow": true,
-      "status": "excluded_after_2026-11-13_revision_missing_photographer_credit_do_not_publish"
+      "assetPath": "public/news/2026-11-11-antibes-garoupe-nini-wisti-pexels.jpg",
+      "sourceUrl": "https://www.pexels.com/photo/scenic-rocky-coastline-on-a-sunny-day-33350419/",
+      "author": "Nini Wisti",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "imageCredit": "Photo : Nini Wisti / Pexels",
+      "assetMime": "image/jpeg",
+      "assetBytes": 597232,
+      "assetWidth": 1600,
+      "assetHeight": 1200,
+      "assetSha256": "973994d7fa3141f387981880601c4e2c1a73fd67044ab4c5d03c088978f9d31e",
+      "sourceDimensions": [
+        4032,
+        3024
+      ],
+      "isIllustrationNotConstructionEvidence": true,
+      "alterations": "Proportional resize, JPEG quality 88, no crop",
+      "status": "materialized_in_PR_branch_license_verified_QA_pending",
+      "materializationRunId": 44137783056
     },
     "linkedin": {
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "revision2_FR_EN_unchanged_sunny_photo_preview_ready_QA_passed_waiting_approval",
+    "articleStatus": "v3_selected_licensed_photo_materialized_waiting_exact_sha_preview_and_QA",
     "visualPreviousReview2": {
       "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
@@ -206,7 +211,7 @@
   },
   "preparationStartedAt": "2026-11-11T11:03:44Z",
   "reviewBranch": "caa/editorial-2026-11-11-choice-2",
-  "approvalPackVersion": 2,
+  "approvalPackVersion": 3,
   "pullRequest": {
     "number": 62,
     "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/62",
@@ -216,34 +221,16 @@
     "mergeAllowed": false
   },
   "preview": {
-    "deploymentId": "dpl_5DuevUMsTXJDZG1FfLSmrXXYEhjX",
-    "sha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
-    "state": "READY",
-    "baseUrl": "https://stephan-real-estate-hcoz-ogk5ajc65-oliviers-projects-f3562ae3.vercel.app",
+    "status": "pending",
+    "state": null,
     "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
     "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
-    "htmlFR": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
-    "htmlEN": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
-    "png": "HTTP200_image_png_2359996B_SHA256_confirmed_in_git",
-    "access": "Vercel_Authentication; signed_review_links_only_Outlook_never_in_public_repo",
     "isProduction": false
   },
   "qa": {
-    "workflowRunId": 43267941708,
-    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43267941708",
-    "workflowSha": "c9882b36a80d21717c720f1d7d6eed3052f32480",
-    "result": "success",
-    "artifactId": 13966184184,
-    "checks": 8,
-    "failures": 0,
-    "desktopAndMobile": true,
-    "photoDecoded": true,
-    "photoNonCropped": true,
-    "consoleErrors": 0,
-    "networkErrors": 0,
-    "overflows": 0,
-    "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
-    "checkedArticleImageAndMetadata": true
+    "status": "pending",
+    "result": null,
+    "verifiedForPhotoSha256": null
   },
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
@@ -265,7 +252,7 @@
     "approvalReceived": false,
     "supersededByRevision": true
   },
-  "lastReconciledAt": "2026-11-13T14:30:44Z",
+  "lastReconciledAt": "2026-11-17T17:31:00Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -349,12 +336,12 @@
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "invalidated_by_new_visual_revision",
+    "status": "preparing_not_sent",
     "sent": false,
     "approvalReceived": false,
-    "requiresImageRightsAndCredit": true,
-    "reviewedContentSha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
-    "nextGate": "Wait for Stephan's selection of licensed replacement image; make and QA new FR/EN Preview, then send a new explicit approval pack"
+    "requiresImageRightsAndCredit": false,
+    "approvedPhotoSource": "Pexels Nini Wisti",
+    "nextGate": "Exact SHA Vercel preview FR+EN and desktop/mobile QA then send APPROUVER/MODIFIER/REFUSER pack"
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-13T14:01:26Z",
@@ -432,7 +419,7 @@
     "approvalPackSent": false
   },
   "photoCandidateProposal": {
-    "status": "waiting_stephan_visual_choice",
+    "status": "selected_explicit_response_2026-11-17_no_publication_approval",
     "sourceUrl": "https://www.pexels.com/fr-fr/photo/cote-rocheuse-pittoresque-par-une-journee-ensoleillee-33350419/",
     "photographer": "Nini Wisti",
     "license": "Pexels License",
@@ -446,6 +433,47 @@
       "messageIdSha256": "1f44c356ddee19200fb5ce12960ce1619ca8a2d5ebeff37e7dd4dedbca43ceda"
     },
     "sentVersion": "photo_candidate1",
-    "approvalForPublication": false
+    "approvalForPublication": false,
+    "selectedAt": "2026-11-17T16:29:59Z",
+    "selectedEvidence": {
+      "channel": "outlook",
+      "messageIdSha256": "c24d30c3cf4c134b85910ad79b9ac2f38a974afc2249994d6c07abcacdf2c4b5",
+      "replySha256": "a72c8d8a5b7babf0a2fe2dfedbf3a194afbc0131a272187c8d49197eb227bd74",
+      "reply": "APPROUVER",
+      "interpretedAs": "accept_photo_selection_only_because_photo_request_explicitly_promised_later_final_pack",
+      "matchedProposalAt": "2026-11-13T14:30:44Z",
+      "consumed": true,
+      "approvalForPublication": false
+    }
+  },
+  "qaPreviousReview3": {
+    "workflowRunId": 43267941708,
+    "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/43267941708",
+    "workflowSha": "c9882b36a80d21717c720f1d7d6eed3052f32480",
+    "result": "success",
+    "artifactId": 13966184184,
+    "checks": 8,
+    "failures": 0,
+    "desktopAndMobile": true,
+    "photoDecoded": true,
+    "photoNonCropped": true,
+    "consoleErrors": 0,
+    "networkErrors": 0,
+    "overflows": 0,
+    "assetSha256": "bba8199425fc31df7110d39fbe3a8df70c691cb44363c7dc073d127bc09cdf8e",
+    "checkedArticleImageAndMetadata": true
+  },
+  "previewPreviousReview3": {
+    "deploymentId": "dpl_5DuevUMsTXJDZG1FfLSmrXXYEhjX",
+    "sha": "b603a1952d6fba6b64a1b4d7bd21f43615955097",
+    "state": "READY",
+    "baseUrl": "https://stephan-real-estate-hcoz-ogk5ajc65-oliviers-projects-f3562ae3.vercel.app",
+    "frPath": "/fr/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "enPath": "/en/actualites/2026-11-11-antibes-garoupe-plage-publique",
+    "htmlFR": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
+    "htmlEN": "HTTP200_verified_title_description_canonical_image_source_credit_pending",
+    "png": "HTTP200_image_png_2359996B_SHA256_confirmed_in_git",
+    "access": "Vercel_Authentication; signed_review_links_only_Outlook_never_in_public_repo",
+    "isProduction": false
   }
 }
