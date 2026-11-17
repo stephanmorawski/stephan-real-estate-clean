@@ -54,3 +54,5 @@ jobs:
           path: artifacts/caa-garoupe-v3/
           retention-days: 30
           if-no-files-found: warn
+
+# QA rerun: check corrected Pexels attribution and superseded-photo removal, 2026-11-17.
