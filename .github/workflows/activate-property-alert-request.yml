@@ -1,0 +1,136 @@
+name: Activate property alert request
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/activate-property-alert-request.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Replace demo submission with real contact request
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('src/components/AlertPreview.jsx')
+          text = path.read_text(encoding='utf-8')
+
+          text = text.replace(
+              "  const [demo, setDemo] = useState(false);\n",
+              "  const [submissionStatus, setSubmissionStatus] = useState('idle');\n",
+              1,
+          )
+          text = text.replace('setDemo(false);', "setSubmissionStatus('idle');")
+
+          marker = "  const chips = [\n    ...selectedCities,\n    ...selectedTypeLabels,\n    minBudget || maxBudget ? budgetSummary : '',\n    rooms ? `${rooms}+ ${fr ? 'pièces' : 'rooms'}` : '',\n    surface ? `${surface}+ m²` : '',\n    frequencyLabel,\n  ].filter(Boolean);\n\n"
+          if marker not in text:
+              raise SystemExit('chips marker not found')
+
+          submit_function = marker + "  async function submitAlertRequest(event) {\n    event.preventDefault();\n    if (!consent || !email.trim() || submissionStatus === 'sending') return;\n\n    setSubmissionStatus('sending');\n\n    const message = [\n      fr ? 'Demande de création d’une alerte immobilière' : 'Property alert creation request',\n      '',\n      `${fr ? 'Secteurs' : 'Locations'} : ${selectedCities.length ? selectedCities.join(', ') : (fr ? 'Toute la Côte d’Azur' : 'All French Riviera')}`,\n      `${fr ? 'Type de bien' : 'Property type'} : ${selectedTypeLabels.length ? selectedTypeLabels.join(', ') : (fr ? 'Tous les biens' : 'All property types')}`,\n      `${fr ? 'Budget' : 'Budget'} : ${budgetSummary}`,\n      `${fr ? 'Pièces minimum' : 'Minimum rooms'} : ${rooms || (fr ? 'Indifférent' : 'Any')}`,\n      `${fr ? 'Surface minimum' : 'Minimum area'} : ${surface ? `${surface} m²` : (fr ? 'Indifférente' : 'Any')}`,\n      `${fr ? 'Fréquence souhaitée' : 'Preferred frequency'} : ${frequencyLabel}`,\n      '',\n      fr\n        ? 'Le demandeur a accepté de recevoir les annonces correspondant à ces critères.'\n        : 'The requester agreed to receive listings matching these criteria.',\n    ].join('\\n');\n\n    try {\n      const response = await fetch('/api/contact', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify({\n          name: fr ? 'Alerte immobilière' : 'Property alert',\n          email: email.trim(),\n          phone: '',\n          message,\n          lang,\n          website: '',\n        }),\n      });\n\n      if (!response.ok) {\n        throw new Error(`Alert request failed with status ${response.status}`);\n      }\n\n      setSubmissionStatus('success');\n    } catch (error) {\n      console.error('PROPERTY_ALERT_REQUEST_ERROR', error);\n      setSubmissionStatus('error');\n    }\n  }\n\n"
+          text = text.replace(marker, submit_function, 1)
+
+          old_submit = """          onSubmit={(event) => {
+            event.preventDefault();
+            if (consent && email.trim()) setDemo(true);
+          }}
+"""
+          if old_submit not in text:
+              raise SystemExit('old submit handler not found')
+          text = text.replace(old_submit, "          onSubmit={submitAlertRequest}\n", 1)
+
+          old_button = """            <button
+              type="submit"
+              className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b]"
+            >
+              {fr ? 'Prévisualiser mon alerte' : 'Preview my alert'} &nbsp; ↗
+            </button>
+"""
+          new_button = """            <button
+              type="submit"
+              disabled={submissionStatus === 'sending'}
+              className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b] disabled:cursor-wait disabled:opacity-60"
+            >
+              {submissionStatus === 'sending'
+                ? (fr ? 'Envoi en cours…' : 'Sending…')
+                : (fr ? 'Créer mon alerte' : 'Create my alert')} &nbsp; ↗
+            </button>
+"""
+          if old_button not in text:
+              raise SystemExit('old submit button not found')
+          text = text.replace(old_button, new_button, 1)
+
+          text = text.replace(
+              'onChange={(event) => setConsent(event.target.checked)}',
+              "onChange={(event) => { setConsent(event.target.checked); setSubmissionStatus('idle'); }}",
+              1,
+          )
+
+          old_status = """            {demo ? (
+              <p role="status" className="border-l-2 border-[#b59a65] bg-[#f5f0e8] p-3 text-sm lg:col-span-2">
+                {fr
+                  ? 'Aperçu validé. Aucun e-mail n’est enregistré et aucune alerte n’est envoyée dans cette démonstration.'
+                  : 'Preview complete. No email is stored and no alert is sent in this demo.'}
+              </p>
+            ) : null}
+"""
+          new_status = """            {submissionStatus === 'success' ? (
+              <p role="status" className="border-l-2 border-[#6f8b72] bg-[#eef4ee] p-3 text-sm lg:col-span-2">
+                {fr
+                  ? 'Votre demande d’alerte a bien été transmise à Côte d’Azur Agency. Vous recevrez une confirmation lors de son activation.'
+                  : 'Your alert request has been sent to Côte d’Azur Agency. You will receive confirmation when it is activated.'}
+              </p>
+            ) : null}
+            {submissionStatus === 'error' ? (
+              <p role="alert" className="border-l-2 border-[#a34b42] bg-[#f8efed] p-3 text-sm lg:col-span-2">
+                {fr
+                  ? 'La demande n’a pas pu être envoyée. Réessayez ou contactez directement l’agence.'
+                  : 'The request could not be sent. Please try again or contact the agency directly.'}
+              </p>
+            ) : null}
+"""
+          if old_status not in text:
+              raise SystemExit('old demo status not found')
+          text = text.replace(old_status, new_status, 1)
+
+          forbidden = [
+              'Prévisualiser mon alerte',
+              'Preview my alert',
+              'Aperçu validé',
+              'dans cette démonstration',
+              'Preview complete',
+              'in this demo',
+              'setDemo',
+              '{demo ?',
+          ]
+          for value in forbidden:
+              if value in text:
+                  raise SystemExit(f'forbidden production wording remains: {value}')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate build
+        run: npm ci && npm run build
+
+      - name: Commit activation and remove one-off workflow
+        shell: bash
+        run: |
+          rm .github/workflows/activate-property-alert-request.yml
+          git config user.name "caa-release-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/components/AlertPreview.jsx .github/workflows/activate-property-alert-request.yml
+          git commit -m "fix: submit property alert requests in production"
+          git push origin HEAD:main
