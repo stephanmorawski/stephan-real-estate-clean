@@ -16,22 +16,23 @@ const cities = [
 ];
 
 const propertyTypes = [
-  { fr: 'Appartement', en: 'Apartment' },
-  { fr: 'Maison / Villa', en: 'House / Villa' },
-  { fr: 'Terrain', en: 'Land' },
+  { value: 'apartment', fr: 'Appartement', en: 'Apartment' },
+  { value: 'house', fr: 'Maison / Villa', en: 'House / Villa' },
+  { value: 'land', fr: 'Terrain', en: 'Land' },
 ];
 
 const budgetOptions = [500000, 750000, 1000000, 1500000, 2000000, 3000000, 5000000, 10000000];
 const surfaceOptions = [50, 80, 100, 150, 200, 300];
 
-const formatMoney = (value, lang) =>
-  value
-    ? new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', {
-        style: 'currency',
-        currency: 'EUR',
-        maximumFractionDigits: 0,
-      }).format(Number(value))
-    : '';
+function formatMoney(value, lang) {
+  if (!value) return '';
+
+  return new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0,
+  }).format(Number(value));
+}
 
 export default function AlertPreview({ lang = 'fr' }) {
   const fr = lang !== 'en';
@@ -47,12 +48,20 @@ export default function AlertPreview({ lang = 'fr' }) {
   const [demo, setDemo] = useState(false);
   const [openPanel, setOpenPanel] = useState(null);
 
-  const toggleArrayValue = (items, setItems, value) => {
+  const labelClass = 'text-[10px] font-semibold uppercase tracking-[.16em] text-[#7b7d78]';
+  const selectClass =
+    'mt-2 w-full border border-[#ddd8ce] bg-white px-3 py-3 text-sm text-[#243039] focus:border-[#b59a65] focus:outline-none';
+  const panelButtonClass =
+    'group flex w-full items-center justify-between border border-[#ddd8ce] bg-white px-4 py-3 text-left transition hover:border-[#b59a65] focus:border-[#b59a65] focus:outline-none';
+  const panelClass =
+    'absolute left-0 top-[calc(100%+8px)] z-30 w-full min-w-[280px] border border-[#ddd8ce] bg-[#fffefb] p-4 shadow-[0_18px_45px_rgba(20,35,43,.14)] sm:min-w-[340px]';
+
+  function toggleArrayValue(items, setItems, value) {
     setItems(items.includes(value) ? items.filter((item) => item !== value) : [...items, value]);
     setDemo(false);
-  };
+  }
 
-  const resetCriteria = () => {
+  function resetCriteria() {
     setSelectedCities([]);
     setSelectedTypes([]);
     setMinBudget('');
@@ -61,12 +70,11 @@ export default function AlertPreview({ lang = 'fr' }) {
     setSurface('');
     setFrequency('instant');
     setDemo(false);
-  };
+  }
 
-  const typeLabel = (type) => (fr ? type.fr : type.en);
   const selectedTypeLabels = propertyTypes
-    .filter((type) => selectedTypes.includes(type.fr))
-    .map(typeLabel);
+    .filter((type) => selectedTypes.includes(type.value))
+    .map((type) => (fr ? type.fr : type.en));
 
   const locationSummary = selectedCities.length
     ? selectedCities.length === 1
@@ -81,9 +89,7 @@ export default function AlertPreview({ lang = 'fr' }) {
   const typeSummary = selectedTypeLabels.length
     ? selectedTypeLabels.length === 1
       ? selectedTypeLabels[0]
-      : fr
-        ? `${selectedTypeLabels.length} types`
-        : `${selectedTypeLabels.length} types`
+      : `${selectedTypeLabels.length} types`
     : fr
       ? 'Tous les biens'
       : 'All property types';
@@ -121,34 +127,21 @@ export default function AlertPreview({ lang = 'fr' }) {
     frequencyLabel,
   ].filter(Boolean);
 
-  const panelButtonClass =
-    'group flex w-full items-center justify-between border border-[#ddd8ce] bg-white px-4 py-3 text-left transition hover:border-[#b59a65] focus:border-[#b59a65] focus:outline-none';
-  const panelClass =
-    'absolute left-0 top-[calc(100%+8px)] z-30 w-full min-w-[280px] border border-[#ddd8ce] bg-[#fffefb] p-4 shadow-[0_18px_45px_rgba(20,35,43,.14)] sm:min-w-[340px]';
-  const labelClass = 'text-[10px] font-semibold uppercase tracking-[.16em] text-[#7b7d78]';
-  const selectClass =
-    'w-full border border-[#ddd8ce] bg-white px-3 py-3 text-sm text-[#243039] focus:border-[#b59a65] focus:outline-none';
-
   return (
     <section id="mes-alertes" className="bg-[#f5f0e8] py-12 text-[#243039] sm:py-16">
       <div className="container max-w-6xl">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-[720px]">
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-[.23em] text-[#987a4b]">
-              {fr ? 'Votre recherche, en toute simplicité' : 'A simpler property search'}
-            </p>
-            <h2 className="font-[Georgia] text-3xl leading-tight sm:text-4xl">
-              {fr ? 'Mes alertes immobilières' : 'My property alerts'}
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#616970]">
-              {fr
-                ? 'Enregistrez vos critères essentiels et soyez informé dès qu’un bien correspondant est publié.'
-                : 'Save your essential criteria and be notified when a matching property is published.'}
-            </p>
-          </div>
-          <span className="border border-[#d6b985] px-3 py-2 text-[10px] font-semibold uppercase tracking-widest text-[#8b724a]">
-            {fr ? 'Maquette · sans inscription' : 'Preview · no sign-up'}
-          </span>
+        <div className="mb-6 max-w-[720px]">
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-[.23em] text-[#987a4b]">
+            {fr ? 'Votre recherche, en toute simplicité' : 'A simpler property search'}
+          </p>
+          <h2 className="font-[Georgia] text-3xl leading-tight sm:text-4xl">
+            {fr ? 'Mes alertes immobilières' : 'My property alerts'}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#616970]">
+            {fr
+              ? 'Enregistrez vos critères essentiels et soyez informé dès qu’un bien correspondant est publié.'
+              : 'Save your essential criteria and be notified when a matching property is published.'}
+          </p>
         </div>
 
         <form
@@ -172,6 +165,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                 </span>
                 <span aria-hidden="true" className="text-lg text-[#987a4b]">⌄</span>
               </button>
+
               {openPanel === 'locations' ? (
                 <div className={panelClass}>
                   <p className="mb-3 text-xs leading-5 text-[#616970]">
@@ -181,7 +175,10 @@ export default function AlertPreview({ lang = 'fr' }) {
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     {cities.map((city) => (
-                      <label key={city} className="flex cursor-pointer items-center gap-2 border border-[#e5e1d9] px-3 py-2 text-xs hover:border-[#b59a65]">
+                      <label
+                        key={city}
+                        className="flex cursor-pointer items-center gap-2 border border-[#e5e1d9] px-3 py-2 text-xs hover:border-[#b59a65]"
+                      >
                         <input
                           type="checkbox"
                           checked={selectedCities.includes(city)}
@@ -192,7 +189,11 @@ export default function AlertPreview({ lang = 'fr' }) {
                       </label>
                     ))}
                   </div>
-                  <button type="button" onClick={() => setOpenPanel(null)} className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white">
+                  <button
+                    type="button"
+                    onClick={() => setOpenPanel(null)}
+                    className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white"
+                  >
                     {fr ? 'Valider les secteurs' : 'Apply locations'}
                   </button>
                 </div>
@@ -212,22 +213,30 @@ export default function AlertPreview({ lang = 'fr' }) {
                 </span>
                 <span aria-hidden="true" className="text-lg text-[#987a4b]">⌄</span>
               </button>
+
               {openPanel === 'types' ? (
                 <div className={panelClass}>
                   <div className="space-y-2">
                     {propertyTypes.map((type) => (
-                      <label key={type.fr} className="flex cursor-pointer items-center gap-3 border border-[#e5e1d9] px-3 py-3 text-sm hover:border-[#b59a65]">
+                      <label
+                        key={type.value}
+                        className="flex cursor-pointer items-center gap-3 border border-[#e5e1d9] px-3 py-3 text-sm hover:border-[#b59a65]"
+                      >
                         <input
                           type="checkbox"
-                          checked={selectedTypes.includes(type.fr)}
-                          onChange={() => toggleArrayValue(selectedTypes, setSelectedTypes, type.fr)}
+                          checked={selectedTypes.includes(type.value)}
+                          onChange={() => toggleArrayValue(selectedTypes, setSelectedTypes, type.value)}
                           className="h-4 w-4 accent-[#14232b]"
                         />
-                        <span>{typeLabel(type)}</span>
+                        <span>{fr ? type.fr : type.en}</span>
                       </label>
                     ))}
                   </div>
-                  <button type="button" onClick={() => setOpenPanel(null)} className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white">
+                  <button
+                    type="button"
+                    onClick={() => setOpenPanel(null)}
+                    className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white"
+                  >
                     {fr ? 'Valider les types' : 'Apply property types'}
                   </button>
                 </div>
@@ -242,30 +251,53 @@ export default function AlertPreview({ lang = 'fr' }) {
                 onClick={() => setOpenPanel(openPanel === 'budget' ? null : 'budget')}
               >
                 <span>
-                  <span className={labelClass}>{fr ? 'Budget' : 'Budget'}</span>
+                  <span className={labelClass}>Budget</span>
                   <span className="mt-1 block text-sm font-medium">{budgetSummary}</span>
                 </span>
                 <span aria-hidden="true" className="text-lg text-[#987a4b]">⌄</span>
               </button>
+
               {openPanel === 'budget' ? (
                 <div className={panelClass}>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label>
-                      <span className={labelClass}>{fr ? 'Minimum' : 'Minimum'}</span>
-                      <select value={minBudget} onChange={(event) => { setMinBudget(event.target.value); setDemo(false); }} className={`${selectClass} mt-2`}>
+                      <span className={labelClass}>Minimum</span>
+                      <select
+                        value={minBudget}
+                        onChange={(event) => {
+                          setMinBudget(event.target.value);
+                          setDemo(false);
+                        }}
+                        className={selectClass}
+                      >
                         <option value="">{fr ? 'Sans minimum' : 'No minimum'}</option>
-                        {budgetOptions.map((value) => <option key={value} value={value}>{formatMoney(value, lang)}</option>)}
+                        {budgetOptions.map((value) => (
+                          <option key={value} value={value}>{formatMoney(value, lang)}</option>
+                        ))}
                       </select>
                     </label>
                     <label>
-                      <span className={labelClass}>{fr ? 'Maximum' : 'Maximum'}</span>
-                      <select value={maxBudget} onChange={(event) => { setMaxBudget(event.target.value); setDemo(false); }} className={`${selectClass} mt-2`}>
+                      <span className={labelClass}>Maximum</span>
+                      <select
+                        value={maxBudget}
+                        onChange={(event) => {
+                          setMaxBudget(event.target.value);
+                          setDemo(false);
+                        }}
+                        className={selectClass}
+                      >
                         <option value="">{fr ? 'Sans maximum' : 'No maximum'}</option>
-                        {budgetOptions.map((value) => <option key={value} value={value}>{formatMoney(value, lang)}</option>)}
+                        {budgetOptions.map((value) => (
+                          <option key={value} value={value}>{formatMoney(value, lang)}</option>
+                        ))}
                       </select>
                     </label>
                   </div>
-                  <button type="button" onClick={() => setOpenPanel(null)} className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white">
+                  <button
+                    type="button"
+                    onClick={() => setOpenPanel(null)}
+                    className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white"
+                  >
                     {fr ? 'Valider le budget' : 'Apply budget'}
                   </button>
                 </div>
@@ -285,33 +317,65 @@ export default function AlertPreview({ lang = 'fr' }) {
                 </span>
                 <span aria-hidden="true" className="text-lg text-[#987a4b]">⌄</span>
               </button>
+
               {openPanel === 'criteria' ? (
                 <div className={`${panelClass} lg:left-auto lg:right-0`}>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label>
                       <span className={labelClass}>{fr ? 'Pièces minimum' : 'Minimum rooms'}</span>
-                      <select value={rooms} onChange={(event) => { setRooms(event.target.value); setDemo(false); }} className={`${selectClass} mt-2`}>
+                      <select
+                        value={rooms}
+                        onChange={(event) => {
+                          setRooms(event.target.value);
+                          setDemo(false);
+                        }}
+                        className={selectClass}
+                      >
                         <option value="">{fr ? 'Indifférent' : 'Any'}</option>
-                        {[2, 3, 4, 5, 6].map((value) => <option key={value} value={value}>{value}+</option>)}
+                        {[2, 3, 4, 5, 6].map((value) => (
+                          <option key={value} value={value}>{value}+</option>
+                        ))}
                       </select>
                     </label>
                     <label>
                       <span className={labelClass}>{fr ? 'Surface minimum' : 'Minimum area'}</span>
-                      <select value={surface} onChange={(event) => { setSurface(event.target.value); setDemo(false); }} className={`${selectClass} mt-2`}>
+                      <select
+                        value={surface}
+                        onChange={(event) => {
+                          setSurface(event.target.value);
+                          setDemo(false);
+                        }}
+                        className={selectClass}
+                      >
                         <option value="">{fr ? 'Indifférent' : 'Any'}</option>
-                        {surfaceOptions.map((value) => <option key={value} value={value}>{value} m²</option>)}
+                        {surfaceOptions.map((value) => (
+                          <option key={value} value={value}>{value} m²</option>
+                        ))}
                       </select>
                     </label>
                   </div>
+
                   <label className="mt-3 block">
                     <span className={labelClass}>{fr ? 'Fréquence souhaitée' : 'Preferred frequency'}</span>
-                    <select value={frequency} onChange={(event) => { setFrequency(event.target.value); setDemo(false); }} className={`${selectClass} mt-2`}>
+                    <select
+                      value={frequency}
+                      onChange={(event) => {
+                        setFrequency(event.target.value);
+                        setDemo(false);
+                      }}
+                      className={selectClass}
+                    >
                       <option value="instant">{fr ? 'Dès publication' : 'As soon as published'}</option>
                       <option value="daily">{fr ? 'Résumé quotidien' : 'Daily digest'}</option>
                       <option value="weekly">{fr ? 'Résumé hebdomadaire' : 'Weekly digest'}</option>
                     </select>
                   </label>
-                  <button type="button" onClick={() => setOpenPanel(null)} className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white">
+
+                  <button
+                    type="button"
+                    onClick={() => setOpenPanel(null)}
+                    className="mt-4 w-full bg-[#14232b] px-4 py-3 text-[11px] font-bold uppercase tracking-[.14em] text-white"
+                  >
                     {fr ? 'Valider les critères' : 'Apply criteria'}
                   </button>
                 </div>
@@ -324,7 +388,10 @@ export default function AlertPreview({ lang = 'fr' }) {
               <div className="flex min-w-0 flex-1 flex-wrap gap-2">
                 {chips.length ? (
                   chips.map((chip, index) => (
-                    <span key={`${chip}-${index}`} className="border border-[#ddd8ce] bg-white px-3 py-2 text-[11px] text-[#4d585e]">
+                    <span
+                      key={`${chip}-${index}`}
+                      className="border border-[#ddd8ce] bg-white px-3 py-2 text-[11px] text-[#4d585e]"
+                    >
                       {chip}
                     </span>
                   ))
@@ -334,7 +401,11 @@ export default function AlertPreview({ lang = 'fr' }) {
                   </span>
                 )}
               </div>
-              <button type="button" onClick={resetCriteria} className="text-[10px] font-semibold uppercase tracking-[.13em] text-[#8b724a] underline underline-offset-4">
+              <button
+                type="button"
+                onClick={resetCriteria}
+                className="text-[10px] font-semibold uppercase tracking-[.13em] text-[#8b724a] underline underline-offset-4"
+              >
                 {fr ? 'Réinitialiser' : 'Reset'}
               </button>
             </div>
@@ -342,29 +413,46 @@ export default function AlertPreview({ lang = 'fr' }) {
 
           <div className="grid gap-4 border-t border-[#e5e1d9] p-5 lg:grid-cols-[1fr_auto] lg:items-end sm:p-6">
             <div>
-              <label htmlFor="alertMail" className={labelClass}>{fr ? 'Votre adresse e-mail' : 'Your email address'}</label>
+              <label htmlFor="alertMail" className={labelClass}>
+                {fr ? 'Votre adresse e-mail' : 'Your email address'}
+              </label>
               <input
                 id="alertMail"
                 className="mt-2 w-full border border-[#ddd8ce] bg-white px-4 py-3 text-sm text-[#243039] focus:border-[#b59a65] focus:outline-none"
                 type="email"
                 required
                 value={email}
-                onChange={(event) => { setEmail(event.target.value); setDemo(false); }}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  setDemo(false);
+                }}
                 placeholder="vous@exemple.com"
                 autoComplete="email"
               />
             </div>
-            <button type="submit" className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b]">
+
+            <button
+              type="submit"
+              className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b]"
+            >
               {fr ? 'Prévisualiser mon alerte' : 'Preview my alert'} &nbsp; ↗
             </button>
+
             <label className="flex cursor-pointer items-start gap-3 text-xs leading-5 text-[#616970] lg:col-span-2">
-              <input type="checkbox" className="mt-1 h-4 w-4 shrink-0 accent-[#14232b]" checked={consent} onChange={(event) => setConsent(event.target.checked)} required />
+              <input
+                type="checkbox"
+                className="mt-1 h-4 w-4 shrink-0 accent-[#14232b]"
+                checked={consent}
+                onChange={(event) => setConsent(event.target.checked)}
+                required
+              />
               <span>
                 {fr
                   ? 'J’accepte de recevoir les annonces correspondant à mes critères. Désinscription possible à tout moment.'
                   : 'I agree to receive listings matching my criteria. I can unsubscribe at any time.'}
               </span>
             </label>
+
             {demo ? (
               <p role="status" className="border-l-2 border-[#b59a65] bg-[#f5f0e8] p-3 text-sm lg:col-span-2">
                 {fr
@@ -374,7 +462,7 @@ export default function AlertPreview({ lang = 'fr' }) {
             ) : null}
           </div>
 
-          <div className="grid gap-px bg-[#607078] text-white md:grid-cols-[1fr_1fr_1fr_auto]">
+          <div className="grid gap-px bg-[#607078] text-white md:grid-cols-3">
             {[
               fr ? 'Choisissez vos critères' : 'Choose your criteria',
               fr ? 'Un bien correspondant est publié' : 'A matching property is published',
@@ -385,9 +473,6 @@ export default function AlertPreview({ lang = 'fr' }) {
                 <span>{step}</span>
               </div>
             ))}
-            <div className="flex items-center bg-[#14232b] px-5 py-4 text-[10px] uppercase tracking-[.12em] text-[#bdc8c8]">
-              {fr ? 'Service en prévisualisation' : 'Service preview'}
-            </div>
           </div>
         </form>
       </div>
