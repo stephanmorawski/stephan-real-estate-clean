@@ -36,7 +36,7 @@ const text=document.body.innerText;
 const img=[...document.images].find(i=>(i.getAttribute('alt')||'').includes(lang==='fr'?'Littoral rocheux':'Sunny rocky'));
 const image=img?{src:img.getAttribute('src'),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,complete:img.complete,fit:getComputedStyle(img).objectFit,visible:!!img.getBoundingClientRect().width&&!!img.getBoundingClientRect().height}:null;
 const links=[...document.querySelectorAll('a[href]')].map(a=>a.href);
-return {lang:document.documentElement.lang,title:document.title,h1:document.querySelector('h1')?.textContent?.trim(),description:document.querySelector('meta[name="description"]')?.content,canonical:document.querySelector('link[rel="canonical"]')?.href,ogImage:document.querySelector('meta[property="og:image"]')?.content,overflow:document.documentElement.scrollWidth-innerWidth,image,hasCredit:text.includes('Nini Wisti')&&text.includes('Pexels'),hasIllustrationCaveat:/illustrat/i.test(text)&&(/chantier|works/i.test(text)),hasOfficialSource:links.some(l=>l.includes('antibes-juanlespins.com/information/actualites/la-garoupe-accessible')),linked:links.some(l=>l.endsWith('/actualites/'+slug))};
+return {lang:document.documentElement.lang,title:document.title,h1:document.querySelector('h1')?.textContent?.trim(),description:document.querySelector('meta[name="description"]')?.content,canonical:document.querySelector('link[rel="canonical"]')?.href,ogImage:document.querySelector('meta[property="og:image"]')?.content,overflow:document.documentElement.scrollWidth-innerWidth,image,hasCredit:text.includes('Nini Wisti')&&text.includes('Pexels'),incorrectCommonsAttribution:text.includes('Nini Wisti / Pexels / Wikimedia Commons'),hasIllustrationCaveat:/illustrat/i.test(text)&&(/chantier|works/i.test(text)),hasOfficialSource:links.some(l=>l.includes('antibes-juanlespins.com/information/actualites/la-garoupe-accessible')),linked:links.some(l=>l.endsWith('/actualites/'+slug))};
 },{slug,lang,isArticle:suffix.endsWith(slug)});
 await page.screenshot({path:repo+'/'+label+'.png',fullPage:true});
 pages.push({label,path:p,status:response?.status(),...out,jsErrors:js,networkErrors:net});
@@ -45,7 +45,7 @@ if(out.overflow>3)failures.push(label+' horizontal overflow '+out.overflow);
 if(js.length||net.length)failures.push(label+' JS/network errors '+JSON.stringify({js,net}));
 if(suffix.endsWith(slug)){
 if(!out.image||out.image.naturalWidth!==1600||out.image.naturalHeight!==1200||!out.image.complete||out.image.fit!=='contain'||!out.image.visible)failures.push(label+' non-decoded, cropped or hidden image');
-if(!out.hasCredit||!out.hasIllustrationCaveat||!out.hasOfficialSource)failures.push(label+' credit/source/caveat');
+if(!out.hasCredit||out.incorrectCommonsAttribution||!out.hasIllustrationCaveat||!out.hasOfficialSource)failures.push(label+' credit/source/caveat');
 if(!out.ogImage?.includes('nini-wisti-pexels'))failures.push(label+' OG image');
 }else if(!out.linked)failures.push(label+' article not listed');
 }catch(e){failures.push(label+': '+e.message)}
