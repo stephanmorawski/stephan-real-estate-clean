@@ -45,8 +45,8 @@ export default function AlertPreview({ lang = 'fr' }) {
   const [frequency, setFrequency] = useState('instant');
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
-  const [demo, setDemo] = useState(false);
   const [openPanel, setOpenPanel] = useState(null);
+  const [submissionStatus, setSubmissionStatus] = useState('idle');
 
   const labelClass = 'text-[10px] font-semibold uppercase tracking-[.16em] text-[#7b7d78]';
   const selectClass =
@@ -56,9 +56,13 @@ export default function AlertPreview({ lang = 'fr' }) {
   const panelClass =
     'absolute left-0 top-[calc(100%+8px)] z-30 w-full min-w-[280px] border border-[#ddd8ce] bg-[#fffefb] p-4 shadow-[0_18px_45px_rgba(20,35,43,.14)] sm:min-w-[340px]';
 
+  function clearFeedback() {
+    setSubmissionStatus('idle');
+  }
+
   function toggleArrayValue(items, setItems, value) {
     setItems(items.includes(value) ? items.filter((item) => item !== value) : [...items, value]);
-    setDemo(false);
+    clearFeedback();
   }
 
   function resetCriteria() {
@@ -69,7 +73,7 @@ export default function AlertPreview({ lang = 'fr' }) {
     setRooms('');
     setSurface('');
     setFrequency('instant');
-    setDemo(false);
+    clearFeedback();
   }
 
   const selectedTypeLabels = propertyTypes
@@ -127,6 +131,52 @@ export default function AlertPreview({ lang = 'fr' }) {
     frequencyLabel,
   ].filter(Boolean);
 
+  async function submitAlertRequest(event) {
+    event.preventDefault();
+    if (!consent || !email.trim() || submissionStatus === 'sending') return;
+
+    setSubmissionStatus('sending');
+
+    const message = [
+      fr ? 'Demande de création d’une alerte immobilière' : 'Property alert creation request',
+      '',
+      `${fr ? 'Secteurs' : 'Locations'} : ${selectedCities.length ? selectedCities.join(', ') : (fr ? 'Toute la Côte d’Azur' : 'All French Riviera')}`,
+      `${fr ? 'Type de bien' : 'Property type'} : ${selectedTypeLabels.length ? selectedTypeLabels.join(', ') : (fr ? 'Tous les biens' : 'All property types')}`,
+      `Budget : ${budgetSummary}`,
+      `${fr ? 'Pièces minimum' : 'Minimum rooms'} : ${rooms || (fr ? 'Indifférent' : 'Any')}`,
+      `${fr ? 'Surface minimum' : 'Minimum area'} : ${surface ? `${surface} m²` : (fr ? 'Indifférente' : 'Any')}`,
+      `${fr ? 'Fréquence souhaitée' : 'Preferred frequency'} : ${frequencyLabel}`,
+      '',
+      fr
+        ? 'Le demandeur a accepté de recevoir les annonces correspondant à ces critères.'
+        : 'The requester agreed to receive listings matching these criteria.',
+    ].join('\n');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fr ? 'Alerte immobilière' : 'Property alert',
+          email: email.trim(),
+          phone: '',
+          message,
+          lang,
+          website: '',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Alert request failed with status ${response.status}`);
+      }
+
+      setSubmissionStatus('success');
+    } catch (error) {
+      console.error('PROPERTY_ALERT_REQUEST_ERROR', error);
+      setSubmissionStatus('error');
+    }
+  }
+
   return (
     <section id="mes-alertes" className="bg-[#f5f0e8] py-12 text-[#243039] sm:py-16">
       <div className="container max-w-6xl">
@@ -146,10 +196,7 @@ export default function AlertPreview({ lang = 'fr' }) {
 
         <form
           className="border border-[#e5e1d9] bg-[#fffefb] shadow-[0_20px_65px_rgba(20,35,43,.07)]"
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (consent && email.trim()) setDemo(true);
-          }}
+          onSubmit={submitAlertRequest}
         >
           <div className="grid gap-px bg-[#e5e1d9] lg:grid-cols-4">
             <div className="relative bg-[#fffefb] p-3">
@@ -266,7 +313,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                         value={minBudget}
                         onChange={(event) => {
                           setMinBudget(event.target.value);
-                          setDemo(false);
+                          clearFeedback();
                         }}
                         className={selectClass}
                       >
@@ -282,7 +329,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                         value={maxBudget}
                         onChange={(event) => {
                           setMaxBudget(event.target.value);
-                          setDemo(false);
+                          clearFeedback();
                         }}
                         className={selectClass}
                       >
@@ -327,7 +374,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                         value={rooms}
                         onChange={(event) => {
                           setRooms(event.target.value);
-                          setDemo(false);
+                          clearFeedback();
                         }}
                         className={selectClass}
                       >
@@ -343,7 +390,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                         value={surface}
                         onChange={(event) => {
                           setSurface(event.target.value);
-                          setDemo(false);
+                          clearFeedback();
                         }}
                         className={selectClass}
                       >
@@ -361,7 +408,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                       value={frequency}
                       onChange={(event) => {
                         setFrequency(event.target.value);
-                        setDemo(false);
+                        clearFeedback();
                       }}
                       className={selectClass}
                     >
@@ -386,20 +433,14 @@ export default function AlertPreview({ lang = 'fr' }) {
           <div className="border-t border-[#e5e1d9] px-5 py-4 sm:px-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex min-w-0 flex-1 flex-wrap gap-2">
-                {chips.length ? (
-                  chips.map((chip, index) => (
-                    <span
-                      key={`${chip}-${index}`}
-                      className="border border-[#ddd8ce] bg-white px-3 py-2 text-[11px] text-[#4d585e]"
-                    >
-                      {chip}
-                    </span>
-                  ))
-                ) : (
-                  <span className="text-sm italic text-[#777a76]">
-                    {fr ? 'Tous les biens · Toute la Côte d’Azur' : 'All properties · All French Riviera'}
+                {chips.map((chip, index) => (
+                  <span
+                    key={`${chip}-${index}`}
+                    className="border border-[#ddd8ce] bg-white px-3 py-2 text-[11px] text-[#4d585e]"
+                  >
+                    {chip}
                   </span>
-                )}
+                ))}
               </div>
               <button
                 type="button"
@@ -424,18 +465,21 @@ export default function AlertPreview({ lang = 'fr' }) {
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
-                  setDemo(false);
+                  clearFeedback();
                 }}
-                placeholder="vous@exemple.com"
+                placeholder={fr ? 'vous@exemple.com' : 'you@example.com'}
                 autoComplete="email"
               />
             </div>
 
             <button
               type="submit"
-              className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b]"
+              disabled={submissionStatus === 'sending'}
+              className="h-[46px] bg-[#14232b] px-6 text-[11px] font-bold uppercase tracking-[.14em] text-white transition hover:bg-[#31434b] disabled:cursor-wait disabled:opacity-60"
             >
-              {fr ? 'Prévisualiser mon alerte' : 'Preview my alert'} &nbsp; ↗
+              {submissionStatus === 'sending'
+                ? (fr ? 'Envoi en cours…' : 'Sending…')
+                : (fr ? 'Créer mon alerte' : 'Create my alert')} &nbsp; ↗
             </button>
 
             <label className="flex cursor-pointer items-start gap-3 text-xs leading-5 text-[#616970] lg:col-span-2">
@@ -443,7 +487,10 @@ export default function AlertPreview({ lang = 'fr' }) {
                 type="checkbox"
                 className="mt-1 h-4 w-4 shrink-0 accent-[#14232b]"
                 checked={consent}
-                onChange={(event) => setConsent(event.target.checked)}
+                onChange={(event) => {
+                  setConsent(event.target.checked);
+                  clearFeedback();
+                }}
                 required
               />
               <span>
@@ -453,11 +500,19 @@ export default function AlertPreview({ lang = 'fr' }) {
               </span>
             </label>
 
-            {demo ? (
-              <p role="status" className="border-l-2 border-[#b59a65] bg-[#f5f0e8] p-3 text-sm lg:col-span-2">
+            {submissionStatus === 'success' ? (
+              <p role="status" className="border-l-2 border-[#6f8b72] bg-[#eef4ee] p-3 text-sm lg:col-span-2">
                 {fr
-                  ? 'Aperçu validé. Aucun e-mail n’est enregistré et aucune alerte n’est envoyée dans cette démonstration.'
-                  : 'Preview complete. No email is stored and no alert is sent in this demo.'}
+                  ? 'Votre demande d’alerte a bien été transmise à Côte d’Azur Agency. Vous recevrez une confirmation lors de son activation.'
+                  : 'Your alert request has been sent to Côte d’Azur Agency. You will receive confirmation when it is activated.'}
+              </p>
+            ) : null}
+
+            {submissionStatus === 'error' ? (
+              <p role="alert" className="border-l-2 border-[#a34b42] bg-[#f8efed] p-3 text-sm lg:col-span-2">
+                {fr
+                  ? 'La demande n’a pas pu être envoyée. Réessayez ou contactez directement l’agence.'
+                  : 'The request could not be sent. Please try again or contact the agency directly.'}
               </p>
             ) : null}
           </div>
