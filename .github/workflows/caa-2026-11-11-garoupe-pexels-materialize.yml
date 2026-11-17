@@ -1,0 +1,82 @@
+name: CAA Garoupe approved-photo materialization (draft only)
+on:
+  push:
+    branches:
+      - caa/editorial-2026-11-11-choice-2
+    paths:
+      - .github/workflows/caa-2026-11-11-garoupe-pexels-materialize.yml
+permissions:
+  contents: write
+concurrency:
+  group: caa-garoupe-photo-20261111
+  cancel-in-progress: false
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout only the existing editorial branch
+        uses: actions/checkout@v4
+        with:
+          ref: caa/editorial-2026-11-11-choice-2
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Retrieve selected licensed photo and verify real JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/news artifacts/caa-garoupe-photo
+          curl --fail --location --retry 2 --retry-delay 2 --max-time 90 \
+            'https://images.pexels.com/photos/33350419/pexels-photo-33350419.jpeg?cs=srgb&dl=pexels-nini-wisti-2154690135-33350419.jpg&fm=jpg' \
+            --output /tmp/caa-garoupe-pexels-original.jpg
+          test "$(file --brief --mime-type /tmp/caa-garoupe-pexels-original.jpg)" = 'image/jpeg'
+          python -m pip install --quiet --disable-pip-version-check Pillow
+          python - <<'PY'
+          import hashlib, json, mimetypes
+          from pathlib import Path
+          from PIL import Image,ImageOps
+          raw=Path('/tmp/caa-garoupe-pexels-original.jpg')
+          target=Path('public/news/2026-11-11-antibes-garoupe-nini-wisti-pexels.jpg')
+          with Image.open(raw) as source:
+              source.verify()
+          with Image.open(raw) as source:
+              assert source.format=='JPEG'
+              source=ImageOps.exif_transpose(source)
+              original=source.size
+              source=source.convert('RGB')
+              if source.width>1600:
+                  newsize=(1600,round(source.height*1600/source.width))
+                  source=source.resize(newsize,Image.Resampling.LANCZOS)
+              source.save(target,'JPEG',quality=88,optimize=True)
+          with Image.open(target) as final:
+              assert final.format=='JPEG' and final.width>=900 and final.height>=500
+              size=final.size
+              final.verify()
+          bs=target.read_bytes()
+          assert 100000<len(bs)<12000000
+          assert bs[:2]==b'\xff\xd8' and bs[-2:]==b'\xff\xd9'
+          metadata={'sourceUrl':'https://www.pexels.com/photo/scenic-rocky-coastline-on-a-sunny-day-33350419/','photographer':'Nini Wisti','license':'Pexels License','licenseUrl':'https://www.pexels.com/license/','description':'Illustration du littoral d’Antibes, pas du chantier 2026','imagePath':str(target),'mime':'image/jpeg','originalDimensions':list(original),'dimensions':list(size),'bytes':len(bs),'sha256':hashlib.sha256(bs).hexdigest(),'alterations':'EXIF orientation correction, proportional resize if needed, JPEG encoding without crop'}
+          Path('artifacts/caa-garoupe-photo/metadata.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2))
+          print(json.dumps(metadata,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit the JPEG to the existing PR branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/news/2026-11-11-antibes-garoupe-nini-wisti-pexels.jpg
+          if git diff --cached --quiet; then
+            echo 'Identical photo already exists; skip commit'
+          else
+            git commit -m 'news(draft): materialize Stephan-selected Pexels photo'
+            git push origin HEAD:caa/editorial-2026-11-11-choice-2
+          fi
+      - name: Archive visual metadata only, never publish
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: caa-garoupe-selected-pexels-metadata
+          path: artifacts/caa-garoupe-photo/metadata.json
+          retention-days: 30
+          if-no-files-found: warn
