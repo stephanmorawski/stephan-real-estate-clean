@@ -81,8 +81,6 @@ export default async function HomePage({ params }) {
         </div>
       </section>
 
-      <AlertPreview lang={lang} />
-
       <section className="home-section home-reviews" id="avis-google">
         <div className="container home-reviews-grid">
           <div>
@@ -120,6 +118,8 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>}
+
+      <AlertPreview lang={lang} />
     </main>
   );
 }
