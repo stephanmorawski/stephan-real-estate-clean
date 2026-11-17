@@ -21,7 +21,6 @@ export default async function HomePage({ params }) {
   if (!isLang(lang)) notFound();
   const fr = lang === 'fr';
   const latestNews = (await getAllNews(lang)).slice(0, 3);
-  const reviewUrl = `/${lang}/actualites/2026-10-27-temoignage-client-confiance`;
 
   return (
     <main className="home-page">
@@ -78,24 +77,6 @@ export default async function HomePage({ params }) {
             </nav>
             <Link className="home-text-link" href={`/${lang}/agence/founder`}>{fr ? 'Découvrir mon parcours' : 'Discover my background'} ↗</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="home-section home-reviews" id="avis-google">
-        <div className="container home-reviews-grid">
-          <div>
-            <p className="home-kicker">{fr ? 'Ils m’ont fait confiance' : 'Trusted by my clients'}</p>
-            <h2>{fr ? 'La confiance se construit dans la durée.' : 'Trust is built over time.'}</h2>
-            <p>{fr ? 'Deux ventes, un achat : dix ans d’accompagnement auprès de Maggie et de sa famille.' : 'Two sales, one purchase: ten years of guidance for Maggie and her family.'}</p>
-            <a className="home-text-link" href="https://www.google.com/search?q=Stephan+Morawski+C%C3%B4te+d%27Azur+Agency+avis+Google" target="_blank" rel="noopener noreferrer">{fr ? 'Consulter les avis sur Google' : 'View reviews on Google'} ↗</a>
-          </div>
-          {/* FR: published testimonial; EN: original supplied artwork /news/2026-10-27-maggie-google.png. */}
-          <article className="home-review-card">
-            <p className="home-stars" aria-label={fr ? 'Avis client : 5 étoiles sur 5' : 'Client review: 5 out of 5 stars'}>★★★★★</p>
-            {fr ? <blockquote>« Toujours disponible et très agréable de travailler avec elle. »</blockquote> : <blockquote>“Always available and great to work with.”</blockquote>}
-            <footer><strong>Maggie Evans</strong><span>{fr ? 'Avis Google · témoignage publié le 27 octobre 2026' : 'Google review · testimonial published on 27 October 2026'}</span></footer>
-            <Link href={reviewUrl} className="home-text-link">{fr ? 'Lire le témoignage original' : 'Read the original testimonial'} ↗</Link>
-          </article>
         </div>
       </section>
 
