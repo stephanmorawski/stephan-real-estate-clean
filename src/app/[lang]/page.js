@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { isLang } from '@/lib/i18n';
 import { buildPageMetadata } from '@/lib/seo';
 import { getAllNews } from '@/lib/news';
+import AlertPreview from '@/components/AlertPreview';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -117,6 +118,8 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>}
+
+      <AlertPreview lang={lang} />
     </main>
   );
 }
