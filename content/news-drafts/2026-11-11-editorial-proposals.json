@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
-  "version": 2,
-  "workflowStatus": "prepared_waiting_send",
+  "version": 3,
+  "workflowStatus": "waiting_approval",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|approval_pack_send|v3",
-  "nextAction": "Send v3 pack, verify Sent Items, then await explicit approval of the LAST sent v3 pack. The 2026-11-17 APPROUVER only accepted photo proposal. No merge or publication.",
+  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v3",
+  "nextAction": "Await a NEW explicit APPROUVER/MODIFIER/REFUSER replying to the last verified v3 pack sent 2026-11-17 17:45:58Z; match thread and message chronology. Stephan's prior 2026-11-17 16:29:59Z APPROUVER referred only to Pexels photo and does NOT authorize release. No new proposal, no merge or production deployment until new final approval.",
   "previousVersions": [
     {
       "version": 1,
@@ -188,7 +188,7 @@
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "v3_licensed_photo_preview_ready_QA_passed_waiting_final_approval_pack_send",
+    "articleStatus": "v3_pack_sent_verified_waiting_explicit_Stephan_approval_no_publication",
     "visualPreviousReview2": {
       "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
@@ -254,24 +254,28 @@
   "reviewContentAtQACommit": "131fa95ddacb250d4f385ba926776b10274e088e",
   "preparedAt": "2026-11-11T11:36:24Z",
   "approvalPack": {
-    "version": 2,
-    "markerSha256": "c6afb88e6061b5f3b5be3aac5d90c551672b0e14b7ca732e9526d54e6a43aab9",
+    "version": 3,
     "status": "verified_in_sent_items",
-    "sentAt": "2026-11-11T12:21:34Z",
-    "sentMessageIdSha256": "da72fbede0d8011a6ce48c73c2cc1d4c2ed8adef352dcf8faa4dc26ca901af93",
+    "sentAt": "2026-11-17T17:45:58Z",
+    "sentMessageIdSha256": "e3b64975f865830e4897588cf78369806042179a639240599393c53dadb262c0",
     "recipient": "editorial_approver",
     "sentFolder": "outlook_sentitems",
     "matchedThread": true,
+    "marker": "CAA-approval-20261111-v3",
     "expectedAnswer": [
       "APPROUVER",
       "MODIFIER",
       "REFUSER"
     ],
-    "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
+    "reviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
+    "qaRunId": 44139144986,
+    "previewDeploymentId": "dpl_FJCTDYZMs5d6mTdT2maNF9hB2pWu",
+    "photoSha256": "973994d7fa3141f387981880601c4e2c1a73fd67044ab4c5d03c088978f9d31e",
     "approvalReceived": false,
-    "supersededByRevision": true
+    "approvalForPublication": false,
+    "sentVerify": "found exact marker in outlook default Éléments envoyés after send"
   },
-  "lastReconciledAt": "2026-11-17T17:42:00Z",
+  "lastReconciledAt": "2026-11-17T17:46:00Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -351,12 +355,34 @@
       "reviewedContentSha": "db6d953587da5768073d7a38e76906b9582a242b",
       "approvalReceived": false,
       "supersededByRevision": true
+    },
+    {
+      "version": 3,
+      "status": "verified_in_sent_items",
+      "sentAt": "2026-11-17T17:45:58Z",
+      "sentMessageIdSha256": "e3b64975f865830e4897588cf78369806042179a639240599393c53dadb262c0",
+      "recipient": "editorial_approver",
+      "sentFolder": "outlook_sentitems",
+      "matchedThread": true,
+      "marker": "CAA-approval-20261111-v3",
+      "expectedAnswer": [
+        "APPROUVER",
+        "MODIFIER",
+        "REFUSER"
+      ],
+      "reviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
+      "qaRunId": 44139144986,
+      "previewDeploymentId": "dpl_FJCTDYZMs5d6mTdT2maNF9hB2pWu",
+      "photoSha256": "973994d7fa3141f387981880601c4e2c1a73fd67044ab4c5d03c088978f9d31e",
+      "approvalReceived": false,
+      "approvalForPublication": false,
+      "sentVerify": "found exact marker in outlook default Éléments envoyés after send"
     }
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "ready_to_send",
-    "sent": false,
+    "status": "waiting_approval",
+    "sent": true,
     "approvalReceived": false,
     "selectedImageConfirmed": true,
     "reviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
