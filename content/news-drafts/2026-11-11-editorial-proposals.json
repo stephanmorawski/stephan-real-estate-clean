@@ -65,7 +65,7 @@
   "pullRequestPrepared": true,
   "previewPrepared": true,
   "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v3",
-  "nextAction": "Await a NEW explicit APPROUVER/MODIFIER/REFUSER replying to the last verified v3 pack sent 2026-11-17 17:45:58Z; match thread and message chronology. Stephan's prior 2026-11-17 16:29:59Z APPROUVER referred only to Pexels photo and does NOT authorize release. No new proposal, no merge or production deployment until new final approval.",
+  "nextAction": "Await Stephan's reply after re-sending access to the identical V3 preview on 2026-11-18 18:08:30Z. If access still fails, provide alternate visual review method; do not merge or publish without a NEW explicit approval of V3.",
   "previousVersions": [
     {
       "version": 1,
@@ -275,7 +275,7 @@
     "approvalForPublication": false,
     "sentVerify": "found exact marker in outlook default Éléments envoyés after send"
   },
-  "lastReconciledAt": "2026-11-17T17:46:00Z",
+  "lastReconciledAt": "2026-11-18T18:08:30Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -387,7 +387,7 @@
     "selectedImageConfirmed": true,
     "reviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
     "idempotencyKey": "caa-2026-11-11-editorial|approval_pack_send|v3",
-    "nextGate": "Send full FR/EN/LinkedIn pack in same Outlook thread and confirm Sent Items before waiting_approval"
+    "nextGate": "Await explicit APPROUVER/MODIFIER/REFUSER for last verified V3 pack; access-remediation mail does not itself authorize publication."
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-13T14:01:26Z",
@@ -521,5 +521,21 @@
     "png": "HTTP200_image_png_2359996B_SHA256_confirmed_in_git",
     "access": "Vercel_Authentication; signed_review_links_only_Outlook_never_in_public_repo",
     "isProduction": false
+  },
+  "previewAccessSupport": {
+    "idempotencyKey": "caa-2026-11-11-editorial|v3_preview_access_remediation|2026-11-18",
+    "receivedAt": "2026-11-18T17:00:12Z",
+    "senderRole": "editorial_approver",
+    "issue": "Reviewer could not open the initial protected Vercel Preview link",
+    "inboundMessageIdSha256": "d20522354e9a595cb1d3f3ebb391ab9115fb730f258b968c13c00bc7f180c920",
+    "remediation": "New Vercel deployment share link generated and sent privately for the SAME V3 preview, no article/visual changes and no publication",
+    "status": "remediation_sent_verified_in_outlook_sent_items",
+    "sentAt": "2026-11-18T18:08:30Z",
+    "sentMessageIdSha256": "aa6004218526d1f7dad5bb403777f9ccbfeacc8279fe777ce50951e1ae4694c6",
+    "shareLinkExpirationDate": "2026-11-19",
+    "signedLinkStoredInRepository": false,
+    "originalReviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
+    "requiresNewApproval": true,
+    "recipientAccessNotYetConfirmed": true
   }
 }
