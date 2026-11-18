@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 3,
-  "workflowStatus": "qa_pending",
+  "workflowStatus": "published",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|qa_pending|v3",
-  "nextAction": "First release SHA 031265c9 deployed to canonical domain but QA gate found Garoupe news-list card not filling media cell. Apply targeted listing-only style fix via PR, ensure new exact commit on production, rerun full post-production gate. Do not confirm published until passed.",
+  "idempotencyKey": "caa-2026-11-11-editorial|published|v3",
+  "nextAction": "Cycle closed after verified production QA and Outlook confirmation. Do not reprocess or republish.",
   "previousVersions": [
     {
       "version": 1,
@@ -188,7 +188,7 @@
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "live_from_approved_V3_qa_pending_card_layout_fix",
+    "articleStatus": "published_qa_passed",
     "visualPreviousReview2": {
       "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
@@ -217,8 +217,11 @@
     "url": "https://github.com/stephanmorawski/stephan-real-estate-clean/pull/62",
     "branch": "caa/editorial-2026-11-11-choice-2",
     "base": "main",
-    "draft": true,
-    "mergeAllowed": false
+    "draft": false,
+    "mergeAllowed": true,
+    "merged": true,
+    "mergedAt": "2026-11-18T20:47:23Z",
+    "mergeSha": "031265c9db2cd56445346feded5f59c3c2ec1c86"
   },
   "preview": {
     "state": "READY",
@@ -276,7 +279,7 @@
     "sentVerify": "found exact marker in outlook default Éléments envoyés after send",
     "approvalReceivedAt": "2026-11-18T19:47:09Z"
   },
-  "lastReconciledAt": "2026-11-18T20:56:42Z",
+  "lastReconciledAt": "2026-11-18T21:37:58Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -382,13 +385,13 @@
   ],
   "pendingApprovalPack": {
     "version": 3,
-    "status": "waiting_approval",
+    "status": "approved_published",
     "sent": true,
-    "approvalReceived": false,
+    "approvalReceived": true,
     "selectedImageConfirmed": true,
     "reviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
     "idempotencyKey": "caa-2026-11-11-editorial|approval_pack_send|v3",
-    "nextGate": "Await explicit APPROUVER/MODIFIER/REFUSER for last verified V3 pack; access-remediation mail does not itself authorize publication."
+    "nextGate": "Cycle completed; no further action"
   },
   "latestRevisionReceived": {
     "receivedAt": "2026-11-13T14:01:26Z",
@@ -556,7 +559,7 @@
     "notEarlierPhotoApproval": true
   },
   "postProduction": {
-    "state": "qa_pending",
+    "state": "published",
     "initialRelease": {
       "mergeSha": "031265c9db2cd56445346feded5f59c3c2ec1c86",
       "prNumber": 62,
@@ -585,7 +588,54 @@
     "remediation": {
       "branch": "caa/garoupe-v3-postproduction-card-fix",
       "change": "News-listing-only image cover for Garoupe; full article preserves original 1600x1200 image in contain mode with credit, no content or media bytes changed",
-      "awaitingQA": true
+      "awaitingQA": false,
+      "correctionPR": 71,
+      "mergeSha": "b10284f21e20e786c5be2deeb4a84cba9fe20797"
+    },
+    "production": {
+      "projectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
+      "domain": "www.cotedazuragency.com",
+      "deploymentId": "dpl_AmrBagiJsWYZ3ouquzGF1PFsiHeo",
+      "deployedCommitSha": "b10284f21e20e786c5be2deeb4a84cba9fe20797",
+      "deploymentStatus": "READY",
+      "aliasVerified": true
+    },
+    "finalGate": {
+      "status": "success",
+      "workflowRunId": 44397265885,
+      "workflowUrl": "https://github.com/stephanmorawski/stephan-real-estate-clean/actions/runs/44397265885",
+      "expectedSha": "b10284f21e20e786c5be2deeb4a84cba9fe20797",
+      "verifiedThrough": "2026-11-18T21:14:56Z",
+      "articleRoutes": 42,
+      "browserPages": 12,
+      "viewports": [
+        "desktop_1440x900",
+        "mobile_390x844"
+      ],
+      "propertyCardChecks": 112,
+      "failures": 0,
+      "binaryAssets": 2,
+      "artifactId": 14471068551,
+      "notes": "Automated Chromium QA on live production checked article routes, responsive layout, images and scripts; property cards passed. Independent web crawler could not directly access domain."
+    },
+    "confirmation": {
+      "channel": "outlook",
+      "status": "verified_in_sent_items",
+      "sentAt": "2026-11-18T21:37:58Z",
+      "recipientRole": "editorial_approver",
+      "messageIdSha256": "2e13494267904674b0ce4b2919983e51abe5908787cc5742e13be23e42128e1e",
+      "sentFolder": "outlook_sentitems",
+      "sameThread": true,
+      "includes": [
+        "fr_url",
+        "en_url",
+        "linkedin_fr",
+        "linkedin_en",
+        "photo_credit",
+        "qa_report"
+      ],
+      "idempotencyKey": "caa-2026-11-11-editorial|publication_confirmation|v3"
     }
-  }
+  },
+  "publishedAt": "2026-11-18T21:14:56Z"
 }
