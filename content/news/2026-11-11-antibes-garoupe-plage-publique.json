@@ -1,0 +1,60 @@
+{
+  "slug": "2026-11-11-antibes-garoupe-plage-publique",
+  "status": "published",
+  "publishedAt": "2026-11-11",
+  "source": "Côte d’Azur Agency",
+  "linkedinUrl": "",
+  "image": "/news/2026-11-11-antibes-garoupe-nini-wisti-pexels.jpg",
+  "imageLayout": "contain",
+  "imageWidth": 1600,
+  "imageHeight": 1200,
+  "imageCredit": {
+    "author": "Nini Wisti / Pexels",
+    "sourceUrl": "https://www.pexels.com/photo/scenic-rocky-coastline-on-a-sunny-day-33350419/",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "alterations": "Illustrative Antibes coastline image, not La Garoupe construction works. Proportional resize 4032 × 3024 to 1600 × 1200, JPEG quality 88, no crop. SHA256 973994d7fa3141f387981880601c4e2c1a73fd67044ab4c5d03c088978f9d31e"
+  },
+  "sources": [
+    {
+      "url": "https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux",
+      "label": {
+        "fr": "Ville d’Antibes — La Garoupe accessible pendant les travaux, 5 octobre 2026",
+        "en": "City of Antibes — La Garoupe accessible during the works, 5 October 2026"
+      }
+    },
+    {
+      "url": "https://www.nicematin.com/loisirs/balade/nouveaux-amenagements-accessibilite-environnement-les-travaux-de-la-garoupe-transforment-deja-cette-plage-bien-connue-d-antibes-10725253",
+      "label": {
+        "fr": "Nice-Matin — état du chantier au 18 septembre 2026",
+        "en": "Nice-Matin — works progress, 18 September 2026"
+      }
+    }
+  ],
+  "fr": {
+    "title": "Cap d’Antibes : La Garoupe retrouve de l’espace pour tous",
+    "excerpt": "À La Garoupe, 900 m² de sable sont restitués et une nouvelle plage publique est déjà ouverte, tandis que les travaux se poursuivent jusqu’à fin 2026.",
+    "imageAlt": "Littoral rocheux d’Antibes ensoleillé, pins et eau turquoise — photographie d’illustration",
+    "imageCaption": "Photo d’illustration du littoral d’Antibes : Nini Wisti / Pexels. Elle ne représente pas le chantier de La Garoupe ni son avancement en 2026.",
+    "content": [
+      "Au Cap d’Antibes, La Garoupe amorce une nouvelle étape de sa transformation. Connue pour son anse et ses vues sur la Méditerranée, cette plage fait l’objet d’un réaménagement destiné à redonner de la place aux espaces publics et à faciliter l’accès au littoral.",
+      "Selon la Ville d’Antibes, dans une actualité publiée le 5 octobre 2026, les travaux permettent de restituer 900 m² de sable fin. Une nouvelle plage publique est déjà ouverte entre l’établissement Keller et l’entrée du sentier du littoral. En revanche, la promenade végétalisée qui doit former un balcon sur la mer est encore annoncée pour la fin de l’année 2026.",
+      "Le programme prévoit également trois élévateurs pour les personnes à mobilité réduite, six escaliers et une réorganisation du stationnement et des manœuvres près du sentier. La municipalité annonce la conservation des pins et des plantations méditerranéennes adaptées au climat. Ces aménagements et leur calendrier restent à apprécier au fil de l’avancement du chantier.",
+      "Pour les résidents comme pour les acquéreurs internationaux, ce projet rappelle que l’attrait d’une adresse au Cap d’Antibes tient aussi à la qualité et à l’accessibilité des lieux partagés : plages, promenades, vues et services de proximité. C’est une dimension concrète du cadre de vie, sans préjuger d’un quelconque effet sur les prix immobiliers.",
+      "Le chantier se poursuit à l’automne. Les conditions d’accès et de circulation peuvent évoluer ; avant toute visite, il convient de consulter les informations pratiques communiquées par la Ville."
+    ]
+  },
+  "en": {
+    "title": "Cap d’Antibes: more public space at La Garoupe beach",
+    "excerpt": "La Garoupe’s redevelopment is returning 900 sq m of sand and has already opened a new public beach area, with further works planned through late 2026.",
+    "imageAlt": "Sunny rocky Antibes coastline with pine trees and turquoise sea — illustrative photograph",
+    "imageCaption": "Illustrative photograph of the Antibes coastline: Nini Wisti / Pexels. It does not show La Garoupe’s 2026 works or their progress.",
+    "content": [
+      "At Cap d’Antibes, La Garoupe is entering another phase of its coastal transformation. Known for its sheltered bay and Mediterranean views, the beach is undergoing improvements designed to reclaim public space and make the waterfront easier to access.",
+      "According to the City of Antibes in an update published on 5 October 2026, the redevelopment is returning 900 square metres of fine sand to the beach. A new public section is already open between the Keller establishment and the entrance to the coastal path. The landscaped seafront promenade, intended as an elevated viewpoint over the bay, is still scheduled for completion towards the end of 2026.",
+      "The project also includes three lifts for visitors with reduced mobility, six stairways and reorganised parking and turning areas near the coastal path. The municipality says existing pine trees will be retained, with Mediterranean plants added. These are announced features of an ongoing project, not a claim that every facility is already in service.",
+      "For local residents and international buyers, the project highlights an important aspect of life on the French Riviera: the value of accessible shared spaces, from beaches and viewpoints to walking routes and neighbourhood amenities. It is a tangible lifestyle consideration, not evidence of any measurable effect on property prices.",
+      "Works continue during the autumn, and temporary traffic and access arrangements may change. Visitors should check the City of Antibes’ latest practical guidance before travelling to La Garoupe."
+    ]
+  }
+}

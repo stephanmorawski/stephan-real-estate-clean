@@ -107,7 +107,7 @@ export default async function NewsDetailPage({ params }) {
               <p>
                 {lang === 'fr' ? 'Photo : ' : 'Photo: '}
                 <a href={article.imageCredit.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-                  {article.imageCredit.author} / Wikimedia Commons
+                  {article.imageCredit.author}{/(?:commons|upload)\.wikimedia\.org/i.test(article.imageCredit.sourceUrl || '') && !/Wikimedia Commons/i.test(article.imageCredit.author || '') ? ' / Wikimedia Commons' : ''}
                 </a>
                 {' — '}
                 <a href={article.imageCredit.licenseUrl} target="_blank" rel="license noopener noreferrer" className="underline underline-offset-4">
