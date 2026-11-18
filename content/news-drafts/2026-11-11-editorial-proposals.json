@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 3,
-  "workflowStatus": "waiting_approval",
+  "workflowStatus": "approval_received",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -58,14 +58,14 @@
     "newProposalScope": "Valbonne et Antibes, conformément à la réponse de Stephan ; Mougins examiné sans nouveauté assez forte",
     "replacementForVersion": 1
   },
-  "publicationAuthorized": false,
+  "publicationAuthorized": true,
   "approvalRequiredAfterChoice": true,
   "articlePrepared": true,
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|waiting_approval|v3",
-  "nextAction": "Await Stephan's reply after re-sending access to the identical V3 preview on 2026-11-18 18:08:30Z. If access still fails, provide alternate visual review method; do not merge or publish without a NEW explicit approval of V3.",
+  "idempotencyKey": "caa-2026-11-11-editorial|approval_received|v3",
+  "nextAction": "Merge only approved V3 via PR #62 after head/base checks, deploy exact main SHA to canonical Vercel, complete full FR/EN post-production QA; never mark published before QA and verified confirmation.",
   "previousVersions": [
     {
       "version": 1,
@@ -271,11 +271,12 @@
     "qaRunId": 44139144986,
     "previewDeploymentId": "dpl_FJCTDYZMs5d6mTdT2maNF9hB2pWu",
     "photoSha256": "973994d7fa3141f387981880601c4e2c1a73fd67044ab4c5d03c088978f9d31e",
-    "approvalReceived": false,
-    "approvalForPublication": false,
-    "sentVerify": "found exact marker in outlook default Éléments envoyés after send"
+    "approvalReceived": true,
+    "approvalForPublication": true,
+    "sentVerify": "found exact marker in outlook default Éléments envoyés after send",
+    "approvalReceivedAt": "2026-11-18T19:47:09Z"
   },
-  "lastReconciledAt": "2026-11-18T18:08:30Z",
+  "lastReconciledAt": "2026-11-18T19:47:09Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -537,5 +538,21 @@
     "originalReviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
     "requiresNewApproval": true,
     "recipientAccessNotYetConfirmed": true
+  },
+  "approvalEvidence": {
+    "idempotencyKey": "caa-2026-11-11-editorial|approval_received|v3",
+    "receivedAt": "2026-11-18T19:47:09Z",
+    "channel": "outlook",
+    "senderRole": "editorial_approver",
+    "replyTextNormalized": "APPROUVER",
+    "replyTextSha256": "a72c8d8a5b7babf0a2fe2dfedbf3a194afbc0131a272187c8d49197eb227bd74",
+    "inboundMessageIdSha256": "a14bc5b0046b8937ece2f273bd630dbe0fd14a45fdaf1f57e7f062dd6e025e64",
+    "matchedThread": true,
+    "matchedLatestPackMarker": "CAA-approval-20261111-v3",
+    "matchedReviewedContentSha": "d34b2b173e4625d7d182d831895e888bfa082d41",
+    "matchedFollowUpSentAt": "2026-11-18T18:08:30Z",
+    "precededByFinalV3PackSentAt": "2026-11-17T17:45:58Z",
+    "approvedPublication": true,
+    "notEarlierPhotoApproval": true
   }
 }
