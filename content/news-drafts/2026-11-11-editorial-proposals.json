@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-11-editorial",
   "version": 3,
-  "workflowStatus": "approval_received",
+  "workflowStatus": "qa_pending",
   "kind": "wednesday-attractiveness-economy-international",
   "proposalDate": "2026-11-11",
   "sourceChannel": "outlook",
@@ -64,8 +64,8 @@
   "visualPrepared": true,
   "pullRequestPrepared": true,
   "previewPrepared": true,
-  "idempotencyKey": "caa-2026-11-11-editorial|approval_received|v3",
-  "nextAction": "Merge only approved V3 via PR #62 after head/base checks, deploy exact main SHA to canonical Vercel, complete full FR/EN post-production QA; never mark published before QA and verified confirmation.",
+  "idempotencyKey": "caa-2026-11-11-editorial|qa_pending|v3",
+  "nextAction": "First release SHA 031265c9 deployed to canonical domain but QA gate found Garoupe news-list card not filling media cell. Apply targeted listing-only style fix via PR, ensure new exact commit on production, rerun full post-production gate. Do not confirm published until passed.",
   "previousVersions": [
     {
       "version": 1,
@@ -188,7 +188,7 @@
       "fr": "Au Cap d’Antibes, La Garoupe se transforme. La Ville annonce 900 m² de sable restitués, avec une nouvelle plage publique déjà ouverte. Une promenade végétalisée et des dispositifs d’accessibilité complètent le projet, dont la livraison générale est prévue fin 2026. Un exemple concret de l’importance des espaces publics et du cadre de vie sur la Riviera — sans extrapolation sur les prix de l’immobilier. Source : https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #CotedAzur #FrenchRiviera",
       "en": "La Garoupe at Cap d’Antibes is being reshaped for greater public access. The City of Antibes reports 900 sq m of reclaimed sand and a new public beach area already open. A landscaped promenade and improved accessibility are planned as the wider project progresses towards a late-2026 completion. Shared coastal spaces are part of the French Riviera’s everyday residential appeal. Official source: https://www.antibes-juanlespins.com/information/actualites/la-garoupe-accessible-pendant-les-travaux #Antibes #CapdAntibes #FrenchRiviera #Lifestyle"
     },
-    "articleStatus": "v3_pack_sent_verified_waiting_explicit_Stephan_approval_no_publication",
+    "articleStatus": "live_from_approved_V3_qa_pending_card_layout_fix",
     "visualPreviousReview2": {
       "assetPath": "public/news/2026-11-11-antibes-garoupe-soleil-abxbay-03.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plage_de_la_garoupe_03.jpg",
@@ -276,7 +276,7 @@
     "sentVerify": "found exact marker in outlook default Éléments envoyés after send",
     "approvalReceivedAt": "2026-11-18T19:47:09Z"
   },
-  "lastReconciledAt": "2026-11-18T19:47:09Z",
+  "lastReconciledAt": "2026-11-18T20:56:42Z",
   "revisionReceived": {
     "receivedAt": "2026-11-11T11:44:02Z",
     "requestTextSha256": "235809db0fd999a73547ecfdefa40479a9c85160762d2dc457759530e994e2e9",
@@ -554,5 +554,38 @@
     "precededByFinalV3PackSentAt": "2026-11-17T17:45:58Z",
     "approvedPublication": true,
     "notEarlierPhotoApproval": true
+  },
+  "postProduction": {
+    "state": "qa_pending",
+    "initialRelease": {
+      "mergeSha": "031265c9db2cd56445346feded5f59c3c2ec1c86",
+      "prNumber": 62,
+      "projectId": "prj_IHBfFvmGVMWtOmIAgQFurZbd8x23",
+      "deployments": [
+        "dpl_BT27qWFLg6SGeEZfXL8BnE95eNPb",
+        "dpl_4qip6k8PZBMZ9gAJchrp3s1amciS"
+      ],
+      "aliasDeploymentId": "dpl_4qip6k8PZBMZ9gAJchrp3s1amciS",
+      "status": "READY"
+    },
+    "firstGate": {
+      "runId": 44394693920,
+      "result": "failure",
+      "expectedSha": "031265c9db2cd56445346feded5f59c3c2ec1c86",
+      "failures": [
+        "FR news listing desktop: Garoupe card photo does not fill media cell",
+        "EN news listing desktop: Garoupe card photo does not fill media cell",
+        "FR news listing mobile: Garoupe card photo does not fill media cell",
+        "EN news listing mobile: Garoupe card photo does not fill media cell"
+      ],
+      "propertyCardChecks": 112,
+      "propertyCardFailures": 0,
+      "artifactId": 14471815685
+    },
+    "remediation": {
+      "branch": "caa/garoupe-v3-postproduction-card-fix",
+      "change": "News-listing-only image cover for Garoupe; full article preserves original 1600x1200 image in contain mode with credit, no content or media bytes changed",
+      "awaitingQA": true
+    }
   }
 }
