@@ -3,16 +3,25 @@
 import { useState } from 'react';
 
 const cities = [
-  'Valbonne',
-  'Mougins',
+  'Antibes',
   'Biot',
   'Cannes',
-  'Antibes',
-  'Théoule-sur-Mer',
-  'Sophia Antipolis',
+  'Châteauneuf-Grasse',
   'Grasse',
-  'Vence',
+  'La Colle-sur-Loup',
+  'Le Bar-sur-Loup',
+  'Le Rouret',
+  'Mandelieu-la-Napoule',
+  'Mouans-Sartoux',
+  'Mougins',
   'Opio',
+  'Roquefort-les-Pins',
+  'Saint-Paul-de-Vence',
+  'Sophia Antipolis',
+  'Théoule-sur-Mer',
+  'Tourrettes-sur-Loup',
+  'Valbonne',
+  'Vence',
 ];
 
 const propertyTypes = [
@@ -220,7 +229,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                       ? 'Sélection multiple possible. Aucun choix = toute la Côte d’Azur.'
                       : 'Select several locations. No selection = the whole French Riviera.'}
                   </p>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid max-h-72 grid-cols-2 gap-2 overflow-y-auto overscroll-contain">
                     {cities.map((city) => (
                       <label
                         key={city}
@@ -230,7 +239,7 @@ export default function AlertPreview({ lang = 'fr' }) {
                           type="checkbox"
                           checked={selectedCities.includes(city)}
                           onChange={() => toggleArrayValue(selectedCities, setSelectedCities, city)}
-                          className="h-4 w-4 accent-[#14232b]"
+                          className="h-4 w-4 shrink-0 accent-[#14232b]"
                         />
                         <span>{city}</span>
                       </label>
