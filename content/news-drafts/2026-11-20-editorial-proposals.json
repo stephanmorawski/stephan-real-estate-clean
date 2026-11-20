@@ -1,0 +1,58 @@
+{
+  "cycleId": "caa-2026-11-20-friday-editorial",
+  "version": 1,
+  "workflowStatus": "waiting_choice",
+  "category": "friday-evergreen-quality-of-life",
+  "proposalDate": "2026-11-20",
+  "sourcesVerifiedAt": "2026-11-20",
+  "sourceChannel": "outlook",
+  "outlookThread": "existing_editorial_thread",
+  "sentAt": "2026-11-20T07:47:04Z",
+  "sentMarker": "CAA-proposals-20261120-v1",
+  "sentEvidence": {
+    "verifiedFolder": "outlook_sentitems",
+    "status": "verified",
+    "recipient": "editorial_approver",
+    "markerSha256": "sha256:f069f11b94633cf09b3565d26035724471135b7014d13166e602050daf8b757f",
+    "sentFingerprintSha256": "sha256:80963552da45521d885077db046bd058a6c93d3bb527b917021febc593d34d06",
+    "fingerprintDefinition": "sha256(sentMarker|sentAtUTC|approvedRecipient)",
+    "subject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)"
+  },
+  "proposals": [
+    {
+      "number": 1,
+      "title": "Valbonne : préserver un patrimoine qui fait vivre le village",
+      "primarySource": "https://www.ville-valbonne.fr/actualite/sauvegarde-des-interets-culturels-valbonnais/",
+      "sourcePublishedAt": "2026-10-29",
+      "angle": "Rôle de la nouvelle association municipale de mécénat patrimonial dans l'identité culturelle du village; sans affirmations sur les prix"
+    },
+    {
+      "number": 2,
+      "title": "Mougins : une ville qui associe ses seniors à la qualité de vie",
+      "primarySource": "https://mougins.fr/conseil-des-sages-de-mougins-nos-seniors-acteurs-de-la-vie-locale/",
+      "sourcePublishedAt": "2026-10-08",
+      "angle": "Bien-vieillir, services, intergénérationnel; première installation annoncée T1 2027"
+    },
+    {
+      "number": 3,
+      "title": "Cannes : l’accessibilité comme critère de qualité de vie",
+      "primarySource": "https://www.cannes.com/fr/index/actualites/annee-2026/novembre/cannes-poursuit-ses-efforts-pour-ameliorer-l-accessibilite.html",
+      "sourcePublishedAt": "2026-11-19",
+      "angle": "Accès aux espaces publics et services municipaux; distinguer réalisations et travaux en cours"
+    }
+  ],
+  "editorialChecks": {
+    "newsFilesReviewed": 22,
+    "draftRegistriesReviewed": 15,
+    "openEditorialPrs": 0,
+    "priorRejectedProposalExcluded": "2026-10-30 Moulin des Moines",
+    "noExactTopicDuplicateFound": true,
+    "sourcePrimaries": "official_municipal_websites",
+    "productionHeadObserved": "929ab92c8d1fd67b20bd5b13702108e87524100b"
+  },
+  "publicationAuthorized": false,
+  "approvalRequiredAfterChoice": true,
+  "preparationAuthorized": false,
+  "nextAction": "wait_explicit_numbered_choice_from_stephan; prepare review pack only after choice",
+  "idempotencyKey": "caa-2026-11-20-friday-editorial|sent_proposals|v1"
+}
