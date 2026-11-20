@@ -8,15 +8,16 @@
   "sourceChannel": "outlook",
   "outlookThread": "existing_editorial_thread",
   "sentAt": "2026-11-20T07:47:04Z",
-  "sentMarker": "CAA-proposals-20261120-v1",
+  "sentMarker": "sélection éditoriale du vendredi 20 novembre 2026",
   "sentEvidence": {
     "verifiedFolder": "outlook_sentitems",
     "status": "verified",
     "recipient": "editorial_approver",
-    "markerSha256": "sha256:f069f11b94633cf09b3565d26035724471135b7014d13166e602050daf8b757f",
-    "sentFingerprintSha256": "sha256:80963552da45521d885077db046bd058a6c93d3bb527b917021febc593d34d06",
-    "fingerprintDefinition": "sha256(sentMarker|sentAtUTC|approvedRecipient)",
-    "subject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)"
+    "markerSha256": "sha256:dd58ba03f848341cd552c284d6d0ffa146b76fb12259dbc4a81eb4ccbaa69a50",
+    "sentFingerprintSha256": "sha256:65d18fd9831b42e1213c2ae521e8d92fed5a2df5f26653b4b167af83335ee5bc",
+    "fingerprintDefinition": "sha256(subject|sentAtUTC|recipient|sentMarker)",
+    "subject": "RE: Côte d’Azur Agency — 3 propositions d’actualités du 6 novembre (choix 1/2/3)",
+    "messageContainsMarker": true
   },
   "proposals": [
     {
