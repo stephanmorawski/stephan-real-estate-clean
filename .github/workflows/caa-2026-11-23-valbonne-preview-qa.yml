@@ -94,7 +94,7 @@ jobs:
                       linked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
                       images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
                       ratio,
-                      hasNonDocumentaryCaption:document.body.innerText.includes(articlePage ? 'IA' : '') && document.body.innerText.includes(articlePage ? (document.documentElement.lang==='fr'?'Valbonne':'Valbonne') : 'Valbonne'),
+                      hasNonDocumentaryCaption:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'générée par IA':'AI-generated') : true,
                       hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=2
                     };
                   },{slug,articlePage});
