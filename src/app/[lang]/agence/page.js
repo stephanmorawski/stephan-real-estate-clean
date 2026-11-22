@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 const cards = {
   fr: [
     {
-      title: 'Fondateur',
+      title: 'Fondatrice',
       text: 'Le parcours de Stephan Morawski, sa culture du service et son approche de l’immobilier sur la Côte d’Azur.',
       href: '/agence/founder',
       cta: 'Découvrir'
