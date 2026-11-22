@@ -6,6 +6,7 @@ import AiGuidePage from '@/components/AiGuidePage';
 import { getAiGuide, getAiGuides } from '@/lib/ai-guides';
 
 const BASE_URL = 'https://www.cotedazuragency.com';
+const GUIDE_IMAGE_URL = `${BASE_URL}/images/hero-pool.jpg`;
 
 export function generateStaticParams() {
   return getAiGuides().map((guide) => ({
@@ -34,6 +35,15 @@ async function GuideJsonLd({ guide, lang }) {
   const nonce = (await headers()).get('x-nonce') || undefined;
   const url = `${BASE_URL}/${lang}/guides/${guide.slug}`;
   const guidesUrl = `${BASE_URL}/${lang}/guides`;
+  const image = {
+    '@type': 'ImageObject',
+    '@id': `${url}#primaryimage`,
+    url: GUIDE_IMAGE_URL,
+    contentUrl: GUIDE_IMAGE_URL,
+    width: 1200,
+    height: 630,
+    caption: guide.h1,
+  };
 
   const graph = [
     {
@@ -48,13 +58,16 @@ async function GuideJsonLd({ guide, lang }) {
       isPartOf: { '@id': `${BASE_URL}/#website` },
       about: { '@id': `${BASE_URL}/#organization` },
       breadcrumb: { '@id': `${url}#breadcrumb` },
+      primaryImageOfPage: { '@id': `${url}#primaryimage` },
       mainEntity: { '@id': `${url}#article` },
     },
+    image,
     {
       '@type': 'Article',
       '@id': `${url}#article`,
       headline: guide.h1,
       description: guide.description,
+      image: { '@id': `${url}#primaryimage` },
       datePublished: guide.updatedAt,
       dateModified: guide.updatedAt,
       inLanguage: lang === 'fr' ? 'fr-FR' : 'en-GB',
