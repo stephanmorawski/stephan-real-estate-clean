@@ -1,5 +1,6 @@
 import { draftMode, headers } from 'next/headers';
 import './globals.css';
+import { CampaignAttribution } from '@/components/CampaignAttribution';
 
 export const metadata = {
   metadataBase: new URL('https://www.cotedazuragency.com'),
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={lang}>
       <body>
+        <CampaignAttribution />
         {children}
 
         {draft.isEnabled ? (

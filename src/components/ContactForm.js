@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { getCampaignAttribution } from '@/lib/campaign-attribution.mjs';
 
 function formatPrice(value, lang) {
   if (!value) return '';
@@ -50,12 +51,14 @@ export function ContactForm({ t, lang = 'fr', property = null }) {
         body: JSON.stringify({
           ...form,
           lang,
+          attribution: getCampaignAttribution(),
+          requestKind: 'contact',
           propertySlug: property?.slug || ''
         })
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || 'Request failed');
+      if (!res.ok || data?.ok !== true) throw new Error(data?.error || 'Request failed');
 
       setFeedback(t.contact.success);
       setForm(EMPTY_FORM);
