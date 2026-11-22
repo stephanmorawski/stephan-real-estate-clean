@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import SeoLandingPage from '@/components/SeoLandingPage';
 import { buildPageMetadata } from '@/lib/seo';
 
@@ -38,7 +39,10 @@ const page = {
   ],
 };
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  if (lang !== 'en') return {};
+
   return buildPageMetadata({
     title: page.title,
     description: page.description,
@@ -48,6 +52,9 @@ export async function generateMetadata() {
   });
 }
 
-export default function LuxuryVillaFrenchRivieraPage() {
+export default async function LuxuryVillaFrenchRivieraPage({ params }) {
+  const { lang } = await params;
+  if (lang !== 'en') notFound();
+
   return <SeoLandingPage page={page} lang="en" />;
 }

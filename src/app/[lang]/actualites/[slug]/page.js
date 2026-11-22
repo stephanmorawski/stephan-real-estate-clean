@@ -24,16 +24,10 @@ async function NewsJsonLd({ article, lang }) {
     mainEntityOfPage: url,
     image: article.image ? [/^https?:\/\//i.test(article.image) ? article.image : `${baseUrl}${article.image.startsWith('/') ? '' : '/'}${article.image}`] : undefined,
     author: {
-      '@type': 'Organization',
-      name: 'Côte d’Azur Agency'
+      '@id': `${baseUrl}/#stephan-morawski`
     },
     publisher: {
-      '@type': 'Organization',
-      name: 'Côte d’Azur Agency',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/branding/logo-full.png`
-      }
+      '@id': `${baseUrl}/#organization`
     }
   };
 
