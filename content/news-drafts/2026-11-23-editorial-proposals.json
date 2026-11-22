@@ -1,0 +1,64 @@
+{
+  "cycleId": "caa-2026-11-23-editorial",
+  "version": 1,
+  "workflowStatus": "preparing",
+  "sourceChannel": "outlook",
+  "proposalDate": "2026-11-23",
+  "proposalSentAt": "2026-11-22T10:55:49Z",
+  "proposalSubject": "RE: Post",
+  "selectedChoice": 3,
+  "selectedTitle": "Valbonne : et si votre prochain Noël se passait chez vous ?",
+  "choiceReceivedAt": "2026-11-22T11:22:03Z",
+  "choiceNormalized": "3",
+  "sentEvidence": {
+    "status": "verified_in_sent_items",
+    "recipient": "editorial_approver",
+    "messageIdSha256": "10c57a61e76b8d4fcc3bdd3406c47ca815bf0a743af1a6ba769edd1ae5a61895",
+    "markerSha256": "d5f6016aed7b712212ee767fbc6efdbb58c8c12f162ec2f3cee7c7b6eaef95bb"
+  },
+  "choiceEvidence": {
+    "status": "matched_last_sent_selection",
+    "channel": "outlook",
+    "messageIdSha256": "6f0b7d8d0b9832f410ff886309beeb5d7f537e2d54ff188273e76bb25e792811",
+    "answerSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    "selectedSentVersion": 1
+  },
+  "priorLot": {
+    "cycleId": "caa-2026-11-20-friday-editorial",
+    "replacedOn": "2026-11-22",
+    "reason": "Editorial selections superseded after Stephan requested buyer-focused subjects; no previous numbered choice to consume"
+  },
+  "verifiedSourcesAt": "2026-11-22",
+  "sources": [
+    "https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/",
+    "https://www.ville-valbonne.fr/actualite/marche-artisanal-de-noel-les-candidatures-sont-ouvertes/"
+  ],
+  "selectedArticle": {
+    "slug": "2026-11-23-valbonne-noel-maison-famille",
+    "path": "content/news/2026-11-23-valbonne-noel-maison-famille.json",
+    "frTitle": "Valbonne à Noël : imaginez votre prochaine maison de famille",
+    "enTitle": "Christmas in Valbonne: imagine your next family home",
+    "seoCheck": "Angle Noël 2026 et dates concrètes du nouveau marché distinct du guide evergreen Valbonne du 16 mai 2026; pas de prix ni de propriété fictifs.",
+    "image": {
+      "path": "public/news/2026-11-23-valbonne-noel-illustration-ia.jpg",
+      "origin": "existing AI-generated generic Provençal street illustration",
+      "license": "original AI-generated",
+      "mime": "image/jpeg",
+      "width": 480,
+      "height": 314,
+      "bytes": 34677,
+      "sha256": "0c62abed36314d9ef72ad78c52bea6da06ce6cf83766fd9e3fde50949a443d2a",
+      "nonDocumentary": true
+    },
+    "linkedin": {
+      "fr": "Et si votre prochain Noël se passait chez vous, à Valbonne ? Les ruelles provençales, les lumières et les rendez-vous gourmands donnent envie de se projeter dans une maison de famille sur la Côte d’Azur. La Ville annonce ses festivités du 1er au 24 décembre 2026, avec un nouveau marché des chalets gourmands du 18 au 24 décembre (horaires spécifiques le 24). Envie d'explorer les quartiers et les maisons correspondant à votre projet ? Parlons-en. Source officielle : https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #CotedAzur #FrenchRiviera #Immobilier",
+      "en": "What if next Christmas found you at home in Valbonne? Provençal streets, festive lights and seasonal food markets invite you to imagine a family home on the French Riviera. The city has announced its 1–24 December 2026 Christmas programme, including a new gourmet chalet market scheduled for 18–24 December. Looking for a place to call your own on the Côte d’Azur? Let's explore the right neighbourhood and property together. Official source: https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #FrenchRiviera #RealEstate"
+    }
+  },
+  "publicationAuthorized": false,
+  "approvalRequiredAfterChoice": true,
+  "approvalReceived": false,
+  "preparationAuthorized": true,
+  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v1",
+  "nextAction": "Create/reuse PR and exact-SHA Preview; inspect FR/EN, visual and mobile/desktop before emailing review pack."
+}
