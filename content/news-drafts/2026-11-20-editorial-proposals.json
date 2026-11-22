@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-20-friday-editorial",
   "version": 1,
-  "workflowStatus": "waiting_choice",
+  "workflowStatus": "refused",
   "category": "friday-evergreen-quality-of-life",
   "proposalDate": "2026-11-20",
   "sourcesVerifiedAt": "2026-11-20",
@@ -54,6 +54,9 @@
   "publicationAuthorized": false,
   "approvalRequiredAfterChoice": true,
   "preparationAuthorized": false,
-  "nextAction": "wait_explicit_numbered_choice_from_stephan; prepare review pack only after choice",
-  "idempotencyKey": "caa-2026-11-20-friday-editorial|sent_proposals|v1"
+  "nextAction": "Do not revive or ask choice for this superseded selection.",
+  "idempotencyKey": "caa-2026-11-20-friday-editorial|superseded|v1",
+  "closureReason": "Superseded by replacement explicitly requested by Olivier on 2026-11-22 after Stephan rejected commercial relevance; not a literal REFUSER email",
+  "replacementCycleId": "caa-2026-11-23-editorial",
+  "supersededAt": "2026-11-22"
 }
