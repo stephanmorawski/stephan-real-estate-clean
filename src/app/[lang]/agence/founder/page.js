@@ -11,11 +11,11 @@ export async function generateMetadata({ params }) {
   const { lang } = await params;
   return buildPageMetadata({
     title: lang === 'fr'
-      ? 'Stephan Morawski, fondateur | Côte d’Azur Agency'
+      ? 'Stephan Morawski, fondatrice | Côte d’Azur Agency'
       : 'Stephan Morawski, Founder | Côte d’Azur Agency',
     description: lang === 'fr'
-      ? 'Découvrez le parcours de Stephan Morawski, fondateur de Côte d’Azur Agency, et sa vision du conseil immobilier sur la Côte d’Azur.'
-      : 'Discover Stephan Morawski’s background, the founder of Côte d’Azur Agency, and his approach to French Riviera property advice.',
+      ? 'Découvrez le parcours de Stephan Morawski, fondatrice de Côte d’Azur Agency, et sa vision du conseil immobilier sur la Côte d’Azur.'
+      : 'Discover Stephan Morawski’s background, the founder of Côte d’Azur Agency, and her approach to French Riviera property advice.',
     lang,
     pathname: `/${lang}/agence/founder`
   });
@@ -31,7 +31,7 @@ async function FounderSchema({ lang }) {
     '@id': `${pageUrl}#profile`,
     url: pageUrl,
     name: lang === 'fr'
-      ? 'Stephan Morawski, fondateur de Côte d’Azur Agency'
+      ? 'Stephan Morawski, fondatrice de Côte d’Azur Agency'
       : 'Stephan Morawski, founder of Côte d’Azur Agency',
     inLanguage: lang === 'fr' ? 'fr-FR' : 'en-GB',
     mainEntity: {
@@ -51,11 +51,11 @@ async function FounderSchema({ lang }) {
   );
 }
 
-function Heading() {
+function Heading({ lang }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
       <div className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7541]">
-        Founder
+        {lang === 'fr' ? 'Fondatrice' : 'Founder'}
       </div>
       <div className="text-xl font-medium tracking-[0.02em] text-zinc-900 md:text-2xl">
         Stephan Morawski
@@ -67,7 +67,7 @@ function Heading() {
 function FRText() {
   return (
     <>
-      <Heading />
+      <Heading lang="fr" />
 
       <h1 className="mt-4 font-luxe text-4xl leading-tight text-zinc-900 md:text-6xl">
         Une vision exigeante de l’immobilier sur la Côte d’Azur
@@ -86,7 +86,7 @@ function FRText() {
         </p>
         <p>
           Avant de me consacrer pleinement à l’immobilier de prestige, j’ai occupé pendant dix ans le poste de
-          directeur administratif et financier. Cette expérience m’a apporté une maîtrise exigeante du
+          directrice administrative et financière. Cette expérience m’a apporté une maîtrise exigeante du
           management, de la négociation, de la gestion de projet et de la relation client.
         </p>
         <p>
@@ -109,7 +109,7 @@ function FRText() {
 function ENText() {
   return (
     <>
-      <Heading />
+      <Heading lang="en" />
 
       <h1 className="mt-4 font-luxe text-4xl leading-tight text-zinc-900 md:text-6xl">
         A demanding vision of real estate on the French Riviera

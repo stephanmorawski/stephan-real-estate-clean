@@ -9,6 +9,22 @@ const PERMANENT_REDIRECTS = new Map([
   ['/en/cote-d-azur-real-estate', '/en/french-riviera-real-estate'],
   ['/en/agence-immobiliere-cote-d-azur', '/en'],
   ['/en/agent-immobilier-cote-d-azur', '/en/french-riviera-real-estate'],
+  [
+    '/fr/actualites/photographie-immobiliere-cote-dazur',
+    '/fr/actualites/2026-02-01-photographie-immobiliere',
+  ],
+  [
+    '/en/actualites/photographie-immobiliere-cote-dazur',
+    '/en/actualites/2026-02-01-photographie-immobiliere',
+  ],
+  [
+    '/fr/actualites/valbonne-art-de-vivre',
+    '/fr/actualites/2026-05-16-valbonne-art-de-vivre',
+  ],
+  [
+    '/en/actualites/valbonne-art-de-vivre',
+    '/en/actualites/2026-05-16-valbonne-art-de-vivre',
+  ],
 ]);
 
 function buildCsp(nonce) {
