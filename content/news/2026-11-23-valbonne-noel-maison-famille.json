@@ -7,13 +7,6 @@
   "imageLayout": "contain",
   "imageWidth": 480,
   "imageHeight": 314,
-  "imageCredit": {
-    "author": "Illustration générée par IA / Côte d’Azur Agency",
-    "sourceUrl": "",
-    "license": "Illustration originale générée par IA pour Côte d’Azur Agency",
-    "licenseUrl": "",
-    "alterations": "Réemploi sans modification d’une illustration de village provençal générique, sans représentation documentaire des fêtes de Valbonne 2026. JPEG 480 × 314, 34 677 octets, SHA256 0c62abed36314d9ef72ad78c52bea6da06ce6cf83766fd9e3fde50949a443d2a"
-  },
   "sources": [
     {
       "url": "https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/",
@@ -34,7 +27,7 @@
     "title": "Valbonne à Noël : imaginez votre prochaine maison de famille",
     "excerpt": "Ruelles illuminées, chalets gourmands et art de vivre provençal : en décembre, Valbonne donne une autre dimension au rêve d'une maison sur la Côte d’Azur.",
     "imageAlt": "Illustration générée d’une rue de village provençal ensoleillée, avec arcades et terrasses",
-    "imageCaption": "Illustration d’ambiance provençale générée par IA pour Côte d’Azur Agency. Ce n’est ni une photographie de Valbonne ni une image des marchés de Noël 2026.",
+    "imageCaption": "Illustration d’ambiance originale générée par IA pour Côte d’Azur Agency : ce visuel ne représente ni une photographie de Valbonne ni les marchés de Noël 2026. Crédit : Côte d’Azur Agency.",
     "content": [
       "Et si les fêtes de fin d’année vous donnaient envie de poser vos valises sur la Côte d’Azur ? À Valbonne, l'hiver ne fait pas disparaître le charme du village : les ruelles, les terrasses et les façades provençales composent un décor dans lequel on s'imagine facilement rentrer chez soi après une promenade.",
       "La Ville de Valbonne Sophia Antipolis a annoncé le 19 novembre une saison de Noël du 1er au 24 décembre 2026. Marchés, spectacles, concerts, projections lumineuses et animations sont au programme annoncé. Nouveauté cette année : des chalets dédiés aux gourmandises et aux spécialités festives sur le pré de l'Hôtel de Ville.",
@@ -47,7 +40,7 @@
     "title": "Christmas in Valbonne: imagine your next family home",
     "excerpt": "Festive village streets, gourmet chalets and Provençal charm: Christmas in Valbonne offers another reason to imagine a home on the French Riviera.",
     "imageAlt": "AI-generated illustration of a sunlit Provençal village street with arches and café terraces",
-    "imageCaption": "AI-generated Provençal village atmosphere illustration for Côte d’Azur Agency. It is neither a photograph of Valbonne nor a depiction of the 2026 Christmas markets.",
+    "imageCaption": "Original AI-generated atmosphere illustration for Côte d’Azur Agency. It is neither a photograph of Valbonne nor a depiction of its 2026 Christmas markets. Credit: Côte d’Azur Agency.",
     "content": [
       "What if the festive season inspired you to picture a different way of life on the French Riviera? Valbonne retains its village character through the winter, with quiet streets, inviting terraces and Provençal façades that make it easy to imagine returning to your own home after an afternoon stroll.",
       "On 19 November, the City of Valbonne Sophia Antipolis announced Christmas festivities running from 1 to 24 December 2026. Markets, performances, concerts, light projections and family activities feature in the announced programme. A new addition this year is a gourmet chalet market on the lawn beside the Town Hall.",
