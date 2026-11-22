@@ -1,4 +1,21 @@
 import Image from 'next/image';
+import { buildPageMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const isFr = lang !== 'en';
+
+  return buildPageMetadata({
+    title: isFr
+      ? 'Partenaires immobiliers sur la Côte d’Azur | Côte d’Azur Agency'
+      : 'French Riviera Property Partners | Côte d’Azur Agency',
+    description: isFr
+      ? 'Découvrez les partenaires de Côte d’Azur Agency pour les notaires, le financement immobilier, les transferts internationaux, les diagnostics et la valorisation des biens.'
+      : 'Discover Côte d’Azur Agency’s trusted partners for notarial coordination, property finance, international transfers, diagnostics and property presentation.',
+    lang: isFr ? 'fr' : 'en',
+    pathname: `/${isFr ? 'fr' : 'en'}/agence/partenaires`,
+  });
+}
 
 const CONTENT = {
   fr: {
@@ -170,7 +187,7 @@ function PartnerLogo({ partner }) {
       <div className="flex h-[88px] w-[106px] shrink-0 items-center justify-center">
         <Image
           src={partner.logo}
-          alt=""
+          alt={`${partner.name} logo`}
           width={184}
           height={153}
           className="h-auto w-[94px] object-contain"
@@ -185,7 +202,7 @@ function PartnerLogo({ partner }) {
     <div className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-[18px] bg-white ring-1 ring-black/5">
       <Image
         src={partner.logo}
-        alt=""
+        alt={`${partner.name} logo`}
         width={52}
         height={51}
         className="h-[51px] w-[52px] object-contain"
