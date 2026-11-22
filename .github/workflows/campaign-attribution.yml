@@ -1,0 +1,38 @@
+name: Campaign attribution checks
+on:
+  push:
+    branches: [codex/caa-chatgpt-attribution]
+  pull_request:
+    paths:
+      - 'src/lib/campaign-attribution.mjs'
+      - 'src/components/CampaignAttribution.js'
+      - 'src/components/ContactForm.js'
+      - 'src/components/AlertPreview.jsx'
+      - 'src/app/api/contact/route.js'
+      - 'src/app/layout.js'
+      - 'scripts/check-campaign-attribution.mjs'
+      - '.github/workflows/campaign-attribution.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-campaign-attribution.mjs
+      - name: Build with public property fixture
+        env:
+          APIMO_BASE_URL: http://127.0.0.1:4174
+          APIMO_PROVIDER_CODE: qa
+          APIMO_API_KEY: qa-placeholder-not-a-secret
+          APIMO_AGENCY_CODE: qa
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: |
+          node scripts/serve-qa-property-fixture.mjs > /tmp/caa-fixture.log 2>&1 &
+          npm run build

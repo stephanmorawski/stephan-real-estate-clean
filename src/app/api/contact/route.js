@@ -1,4 +1,5 @@
 import { getMandatBySlug } from '@/lib/apimo';
+import { validateAttribution } from '@/lib/campaign-attribution.mjs';
 
 const RATE_WINDOW_IP_MS = 15 * 60 * 1000;
 const RATE_WINDOW_EMAIL_MS = 60 * 60 * 1000;
@@ -230,6 +231,8 @@ export async function POST(req) {
     const message = cleanMessage(body?.message, 5000);
     const propertySlug = cleanSingleLine(body?.propertySlug, 200);
     const lang = body?.lang === 'en' ? 'en' : 'fr';
+    const attribution = validateAttribution(body?.attribution);
+    const requestKind = body?.requestKind === 'property_alert' ? 'property_alert' : 'contact';
 
     if (name.length < 2 || !isValidEmail(email) || message.length < 10) {
       return json({ error: 'Invalid required fields' }, 400);
@@ -307,6 +310,7 @@ export async function POST(req) {
         </h2>
 
         ${propertyHtml}
+        ${attribution ? `<p><strong>Origine déclarée du lien :</strong> ChatGPT Ads<br />Campagne : caa_acquereurs_test · annonce_01<br />Type : ${requestKind === 'property_alert' ? 'Demande d’alerte immobilière' : 'Demande de contact'}</p>` : ''}
 
         <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:24px;font-size:15px;">
           <tr>

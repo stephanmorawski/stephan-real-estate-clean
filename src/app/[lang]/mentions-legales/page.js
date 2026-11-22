@@ -78,6 +78,7 @@ function FR() {
         <h2 className="font-luxe text-2xl">Données personnelles</h2>
         <div className="mt-4 space-y-3 text-zinc-700">
           <p>Les informations recueillies via le formulaire de contact du site sont enregistrées par CÔTE D’AZUR AGENCY afin de répondre aux demandes adressées via le site.</p>
+          <p>Si vous arrivez depuis notre campagne ChatGPT Ads, sa référence peut être jointe à votre demande afin d’en mesurer les résultats. Elle reste uniquement en mémoire pendant la navigation, au maximum 30 minutes, sans cookie ni identifiant publicitaire. Un rechargement complet peut effacer cette information.</p>
           <p><strong>Finalité du traitement :</strong> Gestion des demandes de contact, de renseignement, d’accompagnement immobilier, d’estimation ou de prise de rendez-vous.</p>
           <p><strong>Base légale :</strong> Intérêt légitime à répondre aux demandes adressées via le site et/ou exécution de mesures précontractuelles à la demande de l’utilisateur.</p>
           <p><strong>Destinataires :</strong> Les données sont destinées uniquement à CÔTE D’AZUR AGENCY et, le cas échéant, à ses prestataires techniques habilités.</p>
@@ -180,6 +181,7 @@ function EN() {
         <h2 className="font-luxe text-2xl">Personal Data</h2>
         <div className="mt-4 space-y-3 text-zinc-700">
           <p>Information collected through the contact form on this website is processed by CÔTE D’AZUR AGENCY in order to respond to requests submitted through the website.</p>
+          <p>If you arrive from our ChatGPT Ads campaign, its reference may be included with your enquiry to measure campaign results. It is retained only in memory during navigation for up to 30 minutes, without cookies or advertising identifiers. A full reload may clear this information.</p>
           <p><strong>Purpose of processing:</strong> Management of contact requests, information requests, property support services, valuations, or appointment bookings.</p>
           <p><strong>Legal basis:</strong> Legitimate interest in responding to requests submitted through the website and/or taking pre-contractual steps at the request of the user.</p>
           <p><strong>Recipients of the data:</strong> The data is intended solely for CÔTE D’AZUR AGENCY and, where applicable, its duly authorised technical service providers.</p>

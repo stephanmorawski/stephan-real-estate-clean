@@ -1,5 +1,7 @@
 'use client';
 
+import { getCampaignAttribution } from '@/lib/campaign-attribution.mjs';
+
 import { useState } from 'react';
 
 const cities = [
@@ -172,10 +174,13 @@ export default function AlertPreview({ lang = 'fr' }) {
           message,
           lang,
           website: '',
+          attribution: getCampaignAttribution(),
+          requestKind: 'property_alert',
         }),
       });
 
-      if (!response.ok) {
+      const result = await response.json();
+      if (!response.ok || result?.ok !== true) {
         throw new Error(`Alert request failed with status ${response.status}`);
       }
 
