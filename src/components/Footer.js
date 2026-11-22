@@ -30,7 +30,7 @@ export function Footer({ lang, t }) {
               Stephan Morawski
               <br />
               {lang === 'fr'
-                ? 'Votre interlocuteur immobilier dans les Alpes-Maritimes.'
+                ? 'Votre interlocutrice immobilière dans les Alpes-Maritimes.'
                 : 'Your property advisor in the Alpes-Maritimes.'}
             </p>
           </div>
