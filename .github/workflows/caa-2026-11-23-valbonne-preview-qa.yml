@@ -53,7 +53,7 @@ jobs:
           const failures=[],warnings=[],observations=[];
           const dir='artifacts/valbonne-christmas-preview';
           fs.mkdirSync(dir,{recursive:true});
-          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==5||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
+          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==6||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
           if(draft.workflowStatus!=='preparing')failures.push('unexpected state');
           if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
           if(article.image!=='/news/2026-11-23-valbonne-noel-stephan-morawski.jpg'||draft.selectedArticle?.image?.path!==imagePath)failures.push('wrong archive photograph path');
@@ -64,6 +64,10 @@ jobs:
           if(!article.sources.some(s=>s.url.includes('windpress.info/fr/press-release/1215002/')))failures.push('attributed archived municipal market schedule not cited');
           if(!article.fr.content.some(s=>s.includes('18 au 23 décembre'))||!article.fr.content.some(s=>s.includes('24 décembre')))failures.push('market dates not distinct');
           if(!article.fr.content.some(s=>s.includes('19 au 21 décembre')))failures.push('artisan market not distinct');
+          const forbiddenFr=['a annoncé le 19 novembre','Le calendrier municipal précise que','Ces rendez-vous sont à venir','sans présumer d\'une disponibilité ou d\'un prix'];
+          const forbiddenEn=['On 19 November','The municipal schedule specifies that','These are future events','without suggesting that any particular property is currently available'];
+          if(forbiddenFr.some(s=>article.fr.content.some(p=>p.includes(s))))failures.push('V6 French edit instructions not fully applied');
+          if(forbiddenEn.some(s=>article.en.content.some(p=>p.includes(s))))failures.push('V6 English edit instructions not fully applied');
           if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
           if(bin[0]!==255||bin[1]!==216||bin.at(-2)!==255||bin.at(-1)!==217)failures.push('JPEG marker invalid');
           if(article.imageCredit||!draft.selectedArticle.image.rightsConfirmed)failures.push('photographer permission not recorded');
