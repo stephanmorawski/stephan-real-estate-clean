@@ -53,7 +53,7 @@ jobs:
           const failures=[],warnings=[],observations=[];
           const dir='artifacts/valbonne-christmas-preview';
           fs.mkdirSync(dir,{recursive:true});
-          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==4||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
+          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==5||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
           if(draft.workflowStatus!=='preparing')failures.push('unexpected state');
           if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
           if(article.image!=='/news/2026-11-23-valbonne-noel-stephan-morawski.jpg'||draft.selectedArticle?.image?.path!==imagePath)failures.push('wrong archive photograph path');
@@ -67,7 +67,7 @@ jobs:
           if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
           if(bin[0]!==255||bin[1]!==216||bin.at(-2)!==255||bin.at(-1)!==217)failures.push('JPEG marker invalid');
           if(article.imageCredit||!draft.selectedArticle.image.rightsConfirmed)failures.push('photographer permission not recorded');
-          if(!article.fr.imageCaption?.includes('date de prise de vue non précisée')||!article.en.imageCaption?.includes('date not specified'))failures.push('photo date disclosure missing');
+          if(article.fr.imageCaption||article.en.imageCaption)failures.push('V5 must not display a caption beneath the photo');
           if(bin.length<50000||expectedWidth<900)warnings.push('Editorial image below 50 KB or 900px wide: inspect clarity on desktop');
           const browser=await chromium.launch({headless:true});
           const base='http://127.0.0.1:3100';
@@ -122,7 +122,7 @@ jobs:
                     if(!info.h1.includes(lang==='fr'?'Valbonne':'Valbonne'))failures.push(key+' incorrect title');
                     if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight))failures.push(key+' JPEG missing/not decoded or dimensions differ from article/draft');
                     if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
-                    if(!info.hasPrimarySource||!info.hasArchiveCaption||!info.hasImageCreditLink||!info.hasImageLicenseLink)failures.push(key+' missing source, date disclosure or photographer rights text');
+                    if(!info.hasPrimarySource||info.hasArchiveCaption||info.hasImageCreditLink||info.hasImageLicenseLink)failures.push(key+' missing source or unwanted photo caption/rights text');
                     if(!info.ogImage.endsWith(article.image))failures.push(key+' OG image');
                   }else if(!info.linked){failures.push(key+' missing link to new article')}
                 }catch(e){failures.push(key+' '+e.message)}
