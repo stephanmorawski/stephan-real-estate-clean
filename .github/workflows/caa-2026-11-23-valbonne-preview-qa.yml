@@ -6,7 +6,7 @@ on:
     paths:
       - content/news/2026-11-23-valbonne-noel-maison-famille.json
       - content/news-drafts/2026-11-23-editorial-proposals.json
-      - public/news/2026-11-23-valbonne-noel-illustration-ia.jpg
+      - public/news/2026-11-23-valbonne-place-des-arcades.jpg
       - .github/workflows/caa-2026-11-23-valbonne-preview-qa.yml
   workflow_dispatch:
 permissions:
@@ -45,14 +45,20 @@ jobs:
           const draft=JSON.parse(fs.readFileSync('content/news-drafts/2026-11-23-editorial-proposals.json','utf8'));
           const article=JSON.parse(fs.readFileSync('content/news/'+slug+'.json','utf8'));
           const imagePath='public'+article.image;
+          const expectedWidth=article.imageWidth;
+          const expectedHeight=article.imageHeight;
+          const validCreditLink=value=>{try{return typeof value==='string'&&value.trim()!==''&&new URL(value).protocol==='https:'}catch{return false}};
           const bin=fs.readFileSync(imagePath);
           const hash=crypto.createHash('sha256').update(bin).digest('hex');
           const failures=[],warnings=[],observations=[];
           const dir='artifacts/valbonne-christmas-preview';
           fs.mkdirSync(dir,{recursive:true});
-          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, choice, or authorization state');
+          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==3||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
           if(draft.workflowStatus!=='preparing')failures.push('unexpected state');
           if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
+          if(article.image!=='/news/2026-11-23-valbonne-place-des-arcades.jpg'||draft.selectedArticle?.image?.path!==imagePath)failures.push('wrong archive photograph path');
+          if(article.imageLayout!=='contain')failures.push('archive photograph must use contain layout');
+          if(!Number.isInteger(expectedWidth)||expectedWidth<=0||!Number.isInteger(expectedHeight)||expectedHeight<=0||draft.selectedArticle?.image?.width!==expectedWidth||draft.selectedArticle?.image?.height!==expectedHeight)failures.push('article/draft image dimensions missing or inconsistent');
           if(!Array.isArray(article.sources)||article.sources.length<2)failures.push('missing official primary sources');
           if(!article.sources.some(s=>s.url.includes('ville-valbonne.fr/actualite/ce-noel-la')))failures.push('official announcement not cited');
           if(!article.sources.some(s=>s.url.includes('windpress.info/fr/press-release/1215002/')))failures.push('attributed archived municipal market schedule not cited');
@@ -60,9 +66,9 @@ jobs:
           if(!article.fr.content.some(s=>s.includes('19 au 21 décembre')))failures.push('artisan market not distinct');
           if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
           if(bin[0]!==255||bin[1]!==216||bin.at(-2)!==255||bin.at(-1)!==217)failures.push('JPEG marker invalid');
-          if(article.imageCredit?.sourceUrl===''||article.imageCredit?.licenseUrl==='')failures.push('empty credit/license href');
-          if(!article.fr.imageCaption?.includes('générée par IA')||!article.en.imageCaption?.includes('AI-generated'))failures.push('non-documentary AI disclosure missing');
-          if(bin.length<50000||draft.selectedArticle.image.width<900)warnings.push('Small editorial image: assess pixelation on desktop; 480px is below ideal editorial resolution');
+          if(!validCreditLink(article.imageCredit?.sourceUrl)||!validCreditLink(article.imageCredit?.licenseUrl))failures.push('missing or invalid credit/license href');
+          if(!article.fr.imageCaption?.toLowerCase().includes('photographie d’archive')||!article.en.imageCaption?.toLowerCase().includes('archive photograph'))failures.push('archive photograph disclosure missing');
+          if(bin.length<50000||expectedWidth<900)warnings.push('Editorial image below 50 KB or 900px wide: inspect clarity on desktop');
           const browser=await chromium.launch({headless:true});
           const base='http://127.0.0.1:3100';
           for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
@@ -78,9 +84,9 @@ jobs:
                 page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)failed.push(r.status()+' '+r.url())});
                 try{
                   const response=await page.goto(base+path,{waitUntil:'networkidle',timeout:45000});
-                  const info=await page.evaluate(({slug,articlePage})=>{
+                  const info=await page.evaluate(({slug,articlePage,imageSrc,creditSourceUrl,creditLicenseUrl})=>{
                     const h1=document.querySelector('h1')?.textContent?.trim()||'';
-                    const selected=[...document.querySelectorAll('img')].filter(i=>(i.getAttribute('src')||'').includes('valbonne-noel-illustration-ia.jpg'));
+                    const selected=[...document.querySelectorAll('img')].filter(i=>i.getAttribute('src')===imageSrc);
                     const img=selected[0];
                     const rect=img?.getBoundingClientRect();
                     const ratio=img?.naturalWidth&&rect ? Math.abs(rect.width/rect.height-img.naturalWidth/img.naturalHeight):null;
@@ -94,12 +100,14 @@ jobs:
                       linked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
                       images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
                       ratio,
-                      hasNonDocumentaryCaption:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'générée par IA':'AI-generated') : true,
+                      hasArchiveCaption:articlePage ? document.body.innerText.toLowerCase().includes(document.documentElement.lang==='fr'?'photographie d’archive':'archive photograph') : true,
+                      hasImageCreditLink:articlePage ? Boolean(creditSourceUrl)&&[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')===creditSourceUrl) : true,
+                      hasImageLicenseLink:articlePage ? Boolean(creditLicenseUrl)&&[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')===creditLicenseUrl&&(a.getAttribute('rel')||'').split(/\s+/).includes('license')) : true,
                       hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=1 && document.querySelectorAll('a[href*="windpress.info"]').length>=1
                     };
-                  },{slug,articlePage});
+                  },{slug,articlePage,imageSrc:article.image,creditSourceUrl:article.imageCredit?.sourceUrl||'',creditLicenseUrl:article.imageCredit?.licenseUrl||''});
                   if(articlePage){
-                    const img=page.locator('img[src*="valbonne-noel-illustration-ia.jpg"]').first();
+                    const img=page.locator('img[src="'+article.image+'"]').first();
                     if(await img.count()){
                       await img.evaluate(async el=>{await el.decode()});
                     }
@@ -112,10 +120,10 @@ jobs:
                   if(errors.length||failed.length)failures.push(key+' browser errors '+JSON.stringify({errors,failed}));
                   if(articlePage){
                     if(!info.h1.includes(lang==='fr'?'Valbonne':'Valbonne'))failures.push(key+' incorrect title');
-                    if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==480||x.naturalHeight!==314))failures.push(key+' JPEG missing/not decoded');
+                    if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight))failures.push(key+' JPEG missing/not decoded or dimensions differ from article/draft');
                     if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
-                    if(!info.hasPrimarySource||!info.hasNonDocumentaryCaption)failures.push(key+' missing source or image disclosure');
-                    if(!info.ogImage.includes('valbonne-noel-illustration-ia.jpg'))failures.push(key+' OG image');
+                    if(!info.hasPrimarySource||!info.hasArchiveCaption||!info.hasImageCreditLink||!info.hasImageLicenseLink)failures.push(key+' missing source, archive disclosure, credit, or license link');
+                    if(!info.ogImage.endsWith(article.image))failures.push(key+' OG image');
                   }else if(!info.linked){failures.push(key+' missing link to new article')}
                 }catch(e){failures.push(key+' '+e.message)}
                 finally{await page.close()}
@@ -134,3 +142,4 @@ jobs:
           name: valbonne-christmas-preview-qa
           path: artifacts/valbonne-christmas-preview/
           if-no-files-found: warn
+
