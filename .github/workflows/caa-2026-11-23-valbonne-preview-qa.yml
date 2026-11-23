@@ -1,0 +1,151 @@
+name: CAA Valbonne Christmas 2026 preview QA (draft only)
+on:
+  push:
+    branches:
+      - caa/editorial-2026-11-23-valbonne-noel-v1
+    paths:
+      - content/news/2026-11-23-valbonne-noel-maison-famille.json
+      - content/news-drafts/2026-11-23-editorial-proposals.json
+      - public/news/2026-11-23-valbonne-noel-stephan-morawski.jpg
+      - .github/workflows/caa-2026-11-23-valbonne-preview-qa.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview-qa:
+    runs-on: ubuntu-24.04 # Playwright 1.56 requires Ubuntu 24.04; GitHub ubuntu-latest is 26.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install, build, and start exact commit
+        run: |
+          set -euo pipefail
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          npm run build
+          (npm start -- -p 3100 >/tmp/caa-valbonne-preview.log 2>&1 &)
+          for i in $(seq 1 70); do
+            if curl -fsS http://127.0.0.1:3100/fr/actualites >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/caa-valbonne-preview.log
+          exit 1
+      - name: FR and EN desktop/mobile article, card, image, metadata, links, and JS QA
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import { chromium } from 'playwright';
+          const slug='2026-11-23-valbonne-noel-maison-famille';
+          const draft=JSON.parse(fs.readFileSync('content/news-drafts/2026-11-23-editorial-proposals.json','utf8'));
+          const article=JSON.parse(fs.readFileSync('content/news/'+slug+'.json','utf8'));
+          const imagePath='public'+article.image;
+          const expectedWidth=article.imageWidth;
+          const expectedHeight=article.imageHeight;
+          const validCreditLink=value=>{try{return typeof value==='string'&&value.trim()!==''&&new URL(value).protocol==='https:'}catch{return false}};
+          const bin=fs.readFileSync(imagePath);
+          const hash=crypto.createHash('sha256').update(bin).digest('hex');
+          const failures=[],warnings=[],observations=[];
+          const dir='artifacts/valbonne-christmas-preview';
+          fs.mkdirSync(dir,{recursive:true});
+          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==7||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
+          if(draft.workflowStatus!=='preparing')failures.push('unexpected state');
+          if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
+          if(article.image!=='/news/2026-11-23-valbonne-noel-stephan-morawski.jpg'||draft.selectedArticle?.image?.path!==imagePath)failures.push('wrong archive photograph path');
+          if(article.imageLayout!=='contain')failures.push('archive photograph must use contain layout');
+          if(!Number.isInteger(expectedWidth)||expectedWidth<=0||!Number.isInteger(expectedHeight)||expectedHeight<=0||draft.selectedArticle?.image?.width!==expectedWidth||draft.selectedArticle?.image?.height!==expectedHeight)failures.push('article/draft image dimensions missing or inconsistent');
+          if(!Array.isArray(article.sources)||article.sources.length<2)failures.push('missing official primary sources');
+          if(!article.sources.some(s=>s.url.includes('ville-valbonne.fr/actualite/ce-noel-la')))failures.push('official announcement not cited');
+          if(!article.sources.some(s=>s.url.includes('windpress.info/fr/press-release/1215002/')))failures.push('attributed archived municipal market schedule not cited');
+          if(!article.fr.content.some(s=>s.includes('18 au 23 décembre'))||!article.fr.content.some(s=>s.includes('24 décembre')))failures.push('market dates not distinct');
+          if(!article.fr.content.some(s=>s.includes('19 au 21 décembre')))failures.push('artisan market not distinct');
+          const forbiddenFr=['a annoncé le 19 novembre','Le calendrier municipal précise que','Ces rendez-vous sont à venir','sans présumer d\'une disponibilité ou d\'un prix'];
+          const forbiddenEn=['On 19 November','The municipal schedule specifies that','These are future events','without suggesting that any particular property is currently available'];
+          if(forbiddenFr.some(s=>article.fr.content.some(p=>p.includes(s))))failures.push('V6 French edit instructions not fully applied');
+          if(forbiddenEn.some(s=>article.en.content.some(p=>p.includes(s))))failures.push('V6 English edit instructions not fully applied');
+          const frVisible=[article.fr.title,article.fr.excerpt,...article.fr.content,draft.selectedArticle.linkedin.fr];
+          if(frVisible.some(s=>s.includes(' :')))failures.push('V7 French colon spacing must be non-breaking');
+          if(!article.fr.content.some(s=>s.includes('Nouveauté cette année\u00a0:')))failures.push('V7 specified colon may wrap separately');
+          if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
+          if(bin[0]!==255||bin[1]!==216||bin.at(-2)!==255||bin.at(-1)!==217)failures.push('JPEG marker invalid');
+          if(article.imageCredit||!draft.selectedArticle.image.rightsConfirmed)failures.push('photographer permission not recorded');
+          if(article.fr.imageCaption||article.en.imageCaption)failures.push('V5 must not display a caption beneath the photo');
+          if(bin.length<50000||expectedWidth<900)warnings.push('Editorial image below 50 KB or 900px wide: inspect clarity on desktop');
+          const browser=await chromium.launch({headless:true});
+          const base='http://127.0.0.1:3100';
+          for(const [device,viewport] of Object.entries({desktop:{width:1440,height:900},mobile:{width:390,height:844}})){
+            for(const lang of ['fr','en']){
+              for(const suffix of ['/actualites','/actualites/'+slug]){
+                const path='/'+lang+suffix;
+                const articlePage=suffix.includes(slug);
+                const key=lang+'-'+(articlePage?'article':'index')+'-'+device;
+                const page=await browser.newPage({viewport,deviceScaleFactor:1});
+                const errors=[],failed=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+                page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)failed.push(r.status()+' '+r.url())});
+                try{
+                  const response=await page.goto(base+path,{waitUntil:'networkidle',timeout:45000});
+                  const info=await page.evaluate(({slug,articlePage,imageSrc,creditSourceUrl,creditLicenseUrl})=>{
+                    const h1=document.querySelector('h1')?.textContent?.trim()||'';
+                    const selected=[...document.querySelectorAll('img')].filter(i=>i.getAttribute('src')===imageSrc);
+                    const img=selected[0];
+                    const rect=img?.getBoundingClientRect();
+                    const ratio=img?.naturalWidth&&rect ? Math.abs(rect.width/rect.height-img.naturalWidth/img.naturalHeight):null;
+                    return {
+                      h1,title:document.title,
+                      lang:document.documentElement.lang,
+                      description:document.querySelector('meta[name="description"]')?.content||'',
+                      canonical:document.querySelector('link[rel="canonical"]')?.href||'',
+                      ogImage:document.querySelector('meta[property="og:image"]')?.content||'',
+                      overflow:document.documentElement.scrollWidth-window.innerWidth,
+                      linked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
+                      images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
+                      ratio,
+                      hasPhotoCaption:articlePage ? Boolean(img?.parentElement?.nextElementSibling?.classList.contains('mt-3') && img.parentElement.nextElementSibling.textContent?.trim()) : false,
+                      hasUnwantedDateDisclaimer:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'date de prise de vue non précisée':'date not specified') : false,
+                      hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=1 && document.querySelectorAll('a[href*="windpress.info"]').length>=1
+                    };
+                  },{slug,articlePage,imageSrc:article.image,creditSourceUrl:article.imageCredit?.sourceUrl||'',creditLicenseUrl:article.imageCredit?.licenseUrl||''});
+                  if(articlePage){
+                    const img=page.locator('img[src="'+article.image+'"]').first();
+                    if(await img.count()){
+                      await img.evaluate(async el=>{await el.decode()});
+                    }
+                  }
+                  await page.evaluate(()=>window.scrollTo(0,0));
+                  await page.screenshot({path:dir+'/'+key+'.png',fullPage:true});
+                  observations.push({path,device,http:response?.status(),...info,errors,failed});
+                  if(response?.status()!==200||info.lang!==lang||!info.h1||!info.description||!info.canonical)failures.push(key+' response/language/SEO');
+                  if(info.overflow>3)failures.push(key+' horizontal overflow '+info.overflow);
+                  if(errors.length||failed.length)failures.push(key+' browser errors '+JSON.stringify({errors,failed}));
+                  if(articlePage){
+                    if(!info.h1.includes(lang==='fr'?'Valbonne':'Valbonne'))failures.push(key+' incorrect title');
+                    if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight))failures.push(key+' JPEG missing/not decoded or dimensions differ from article/draft');
+                    if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
+                    if(!info.hasPrimarySource||info.hasPhotoCaption||info.hasUnwantedDateDisclaimer)failures.push(key+' missing source or unwanted image caption/disclaimer');
+                    if(!info.ogImage.endsWith(article.image))failures.push(key+' OG image');
+                  }else if(!info.linked){failures.push(key+' missing link to new article')}
+                }catch(e){failures.push(key+' '+e.message)}
+                finally{await page.close()}
+              }
+            }
+          }
+          await browser.close();
+          const report={sha:process.env.GITHUB_SHA,cycleId:draft.cycleId,image:{bytes:bin.length,sha256:hash,declaredWidth:draft.selectedArticle.image.width,declaredHeight:draft.selectedArticle.image.height},observations,warnings,failures};
+          fs.writeFileSync(dir+'/report.json',JSON.stringify(report,null,2));
+          console.log(JSON.stringify({sha:report.sha,checkedPages:observations.length,warnings,failures},null,2));
+          if(failures.length)process.exitCode=1;
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: valbonne-christmas-preview-qa
+          path: artifacts/valbonne-christmas-preview/
+          if-no-files-found: warn
+
