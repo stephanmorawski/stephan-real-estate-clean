@@ -20,7 +20,7 @@ function formatPrice(value, lang) {
 
 function LocationLine({ label }) {
   return (
-    <div className="mt-4 flex items-center gap-3 text-[15px] font-medium uppercase tracking-[0.18em] text-[#C6A46C]">
+    <div className="mt-4 flex min-w-0 items-center gap-2 text-[13px] font-medium uppercase tracking-[0.14em] text-[#C6A46C] sm:gap-3 sm:text-sm">
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -162,10 +162,10 @@ export default async function VenteDetailPage({ params }) {
   const extraPictures = pictures.slice(1);
 
   return (
-    <main className="container py-16">
+    <main className="container py-8 md:py-12 lg:py-16">
       <SaleJsonLd mandat={mandat} lang={lang} />
 
-      <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
+      <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)] lg:items-start lg:gap-8">
         <div className="space-y-6">
           <div className="overflow-hidden rounded-[28px] bg-zinc-100">
             <div className="aspect-[16/10]">
@@ -192,8 +192,8 @@ export default async function VenteDetailPage({ params }) {
           ) : null}
         </div>
 
-        <div className="rounded-[28px] bg-white p-8 shadow-soft ring-1 ring-[var(--gold-light)] md:p-12">
-          <h1 className="text-4xl font-light leading-[1.05] text-zinc-900 md:text-7xl">
+        <div className="min-w-0 rounded-[28px] bg-white p-6 shadow-soft ring-1 ring-[var(--gold-light)] sm:p-8 lg:p-10">
+          <h1 className="break-words text-[26px] font-light leading-[1.15] tracking-[-0.025em] text-zinc-900 sm:text-[30px] lg:text-[36px]">
             {mandat.title}
           </h1>
 
@@ -206,21 +206,21 @@ export default async function VenteDetailPage({ params }) {
           ) : null}
 
           {mandat.description ? (
-            <div className="mt-10 whitespace-pre-line text-lg leading-relaxed text-zinc-700">
+            <div className="mt-8 whitespace-pre-line break-words text-base leading-[1.65] text-zinc-700 sm:text-[17px]">
               {mandat.description}
             </div>
           ) : null}
 
-          <div className="mt-10 flex flex-wrap gap-6 text-sm uppercase tracking-[0.16em] text-zinc-700">
+          <div className="mt-8 flex flex-wrap gap-4 text-sm uppercase tracking-[0.12em] text-zinc-700 sm:gap-6">
             {mandat.area ? <span>{mandat.area} m²</span> : null}
             {mandat.rooms ? <span>{mandat.rooms} {lang === 'fr' ? 'pièces' : 'rooms'}</span> : null}
             {mandat.bedrooms ? <span>{mandat.bedrooms} {lang === 'fr' ? 'chambres' : 'bedrooms'}</span> : null}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-10">
             <Link
               href={`/${lang}/contact?property=${encodeURIComponent(mandat.slug)}`}
-              className="inline-flex rounded-full border border-zinc-900 px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-zinc-900"
+              className="inline-flex max-w-full items-center justify-center rounded-full border border-zinc-900 px-5 py-3 text-center text-xs font-medium uppercase tracking-[0.1em] text-zinc-900 transition-colors hover:bg-zinc-900 hover:text-white sm:px-7 sm:py-4 sm:text-sm"
             >
               {lang === 'fr' ? 'Demander plus d’information' : 'Request more information'}
             </Link>
