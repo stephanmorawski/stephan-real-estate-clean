@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-11-23-editorial",
-  "version": 6,
+  "version": 7,
   "workflowStatus": "preparing",
   "sourceChannel": "outlook",
   "proposalDate": "2026-11-23",
@@ -36,7 +36,7 @@
   "selectedArticle": {
     "slug": "2026-11-23-valbonne-noel-maison-famille",
     "path": "content/news/2026-11-23-valbonne-noel-maison-famille.json",
-    "frTitle": "Valbonne à Noël : imaginez votre prochaine maison de famille",
+    "frTitle": "Valbonne à Noël : imaginez votre prochaine maison de famille",
     "enTitle": "Christmas in Valbonne: imagine your next family home",
     "seoCheck": "Angle Noël 2026 et dates concrètes du nouveau marché distinct du guide evergreen Valbonne du 16 mai 2026; pas de prix ni de propriété fictifs.",
     "image": {
@@ -56,7 +56,7 @@
       "optimization": "Lossy JPEG recompression; original author-supplied photo archived in authorized Outlook thread; composition unchanged"
     },
     "linkedin": {
-      "fr": "Et si votre prochain Noël se passait chez vous, à Valbonne ? Les ruelles provençales, les lumières et les rendez-vous gourmands donnent envie de se projeter dans une maison de famille sur la Côte d’Azur. La Ville annonce ses festivités du 1er au 24 décembre 2026, avec un nouveau marché des chalets gourmands du 18 au 24 décembre (horaires spécifiques le 24). Envie d'explorer les quartiers et les maisons correspondant à votre projet ? Parlons-en. Source officielle : https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #CotedAzur #FrenchRiviera #Immobilier",
+      "fr": "Et si votre prochain Noël se passait chez vous, à Valbonne ? Les ruelles provençales, les lumières et les rendez-vous gourmands donnent envie de se projeter dans une maison de famille sur la Côte d’Azur. La Ville annonce ses festivités du 1er au 24 décembre 2026, avec un nouveau marché des chalets gourmands du 18 au 24 décembre (horaires spécifiques le 24). Envie d'explorer les quartiers et les maisons correspondant à votre projet ? Parlons-en. Source officielle : https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #CotedAzur #FrenchRiviera #Immobilier",
       "en": "What if next Christmas found you at home in Valbonne? Provençal streets, festive lights and seasonal food markets invite you to imagine a family home on the French Riviera. The city has announced its 1–24 December 2026 Christmas programme, including a new gourmet chalet market scheduled for 18–24 December. Looking for a place to call your own on the Côte d’Azur? Let's explore the right neighbourhood and property together. Official source: https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #FrenchRiviera #RealEstate"
     }
   },
@@ -64,12 +64,12 @@
   "approvalRequiredAfterChoice": true,
   "approvalReceived": false,
   "preparationAuthorized": true,
-  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v6",
-  "nextAction": "Confirm exact V6 head SHA; complete exact SHA QA and canonical Vercel preview for FR/EN, then send complete V6 approval pack in same Outlook thread to editorial_approver only; do not publish without explicit V6 approval.",
+  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v7",
+  "nextAction": "Verify V7 exact SHA and preview, then send complete V7 approval dossier in existing RE: Post thread exclusively to editorial_approver; never publish without explicit V7 approval.",
   "revision": {
-    "fromVersion": 5,
-    "reason": "Stephan's explicit 23 Nov 2026 17:24:26 UTC request on the last V5 email: remove 'le 19 novembre', 'Le calendrier municipal précise que', the full future-events verification disclaimer, and the availability/price caveat from the French article; apply equivalent deletions to English article. Retain all market dates, official source citations, photograph, metadata, and LinkedIn unchanged.",
-    "previousReviewSha": "8d32898d9cf9aa9620f3a385ae4884aeb54a5b08",
+    "fromVersion": 6,
+    "reason": "Stephan's 23 Nov 2026 17:48:14 UTC formatting request after V6: keep French colons attached to preceding words, particularly 'Nouveauté cette année : des chalets'. Applied non-breaking spaces before colons across French article title, excerpt and body, plus French LinkedIn. No substantive copy, dates, facts, image or English changes.",
+    "previousReviewSha": "af169caf42b4df0ebabebd558c72ca10415dbbfe",
     "previousApprovalStatus": "not_received",
     "newApprovalRequired": true
   },
@@ -85,6 +85,13 @@
       "fromVersion": 4,
       "reason": "Stephan's explicit 23 Nov 2026 16:38:19 UTC request: remove the entire date disclaimer and copyright/permission sentence displayed beneath the Christmas photograph. Removed FR and EN image captions; kept the image, author rights and provenance in the non-publication workflow metadata; articles and LinkedIn unchanged.",
       "previousReviewSha": "d55cb5b1afad292145a92543eec290edd532c526",
+      "previousApprovalStatus": "not_received",
+      "newApprovalRequired": true
+    },
+    {
+      "fromVersion": 5,
+      "reason": "Stephan's explicit 23 Nov 2026 17:24:26 UTC request on the last V5 email: remove 'le 19 novembre', 'Le calendrier municipal précise que', the full future-events verification disclaimer, and the availability/price caveat from the French article; apply equivalent deletions to English article. Retain all market dates, official source citations, photograph, metadata, and LinkedIn unchanged.",
+      "previousReviewSha": "8d32898d9cf9aa9620f3a385ae4884aeb54a5b08",
       "previousApprovalStatus": "not_received",
       "newApprovalRequired": true
     }
