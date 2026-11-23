@@ -1,6 +1,6 @@
 {
   "cycleId": "caa-2026-11-23-editorial",
-  "version": 1,
+  "version": 2,
   "workflowStatus": "preparing",
   "sourceChannel": "outlook",
   "proposalDate": "2026-11-23",
@@ -28,10 +28,10 @@
     "replacedOn": "2026-11-22",
     "reason": "Editorial selections superseded after Stephan requested buyer-focused subjects; no previous numbered choice to consume"
   },
-  "verifiedSourcesAt": "2026-11-22",
+  "verifiedSourcesAt": "2026-11-23",
   "sources": [
     "https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/",
-    "https://www.ville-valbonne.fr/actualite/marche-artisanal-de-noel-les-candidatures-sont-ouvertes/"
+    "https://windpress.info/fr/press-release/1215002/march-artisanal-de-nol-les-candidatures-sont-ouvertes-ville-de-valbonne-sophia-antipolis"
   ],
   "selectedArticle": {
     "slug": "2026-11-23-valbonne-noel-maison-famille",
@@ -59,6 +59,13 @@
   "approvalRequiredAfterChoice": true,
   "approvalReceived": false,
   "preparationAuthorized": true,
-  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v1",
-  "nextAction": "Create/reuse PR and exact-SHA Preview; inspect FR/EN, visual and mobile/desktop before emailing review pack."
+  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v2",
+  "nextAction": "Verify complete branch SHA and Vercel Preview, run bilingual desktop/mobile QA, then send V2 corrected pack and verify Sent Items; preserve V1 as superseded, no production release.",
+  "revision": {
+    "fromVersion": 1,
+    "reason": "Public municipal source link returned 404; replace only its URL with a dated, attributed archived copy of the municipality's press release. FR/EN article text, dates, image and LinkedIn remain unchanged.",
+    "previousReviewSha": "4612f8dbebae89348680f95f1dac1491a6c223d6",
+    "previousApprovalStatus": "not_received",
+    "newApprovalRequired": true
+  }
 }
