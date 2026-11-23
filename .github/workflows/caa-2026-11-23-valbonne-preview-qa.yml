@@ -100,9 +100,8 @@ jobs:
                       linked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
                       images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
                       ratio,
-                      hasArchiveCaption:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'date de prise de vue non précisée':'date not specified') : true,
-                      hasImageCreditLink:articlePage ? document.body.innerText.includes('Stephan Morawski') : true,
-                      hasImageLicenseLink:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'avec l’accord de son auteur':"photographer's permission") : true,
+                      hasPhotoCaption:articlePage ? Boolean(img?.parentElement?.nextElementSibling?.classList.contains('mt-3') && img.parentElement.nextElementSibling.textContent?.trim()) : false,
+                      hasUnwantedDateDisclaimer:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'date de prise de vue non précisée':'date not specified') : false,
                       hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=1 && document.querySelectorAll('a[href*="windpress.info"]').length>=1
                     };
                   },{slug,articlePage,imageSrc:article.image,creditSourceUrl:article.imageCredit?.sourceUrl||'',creditLicenseUrl:article.imageCredit?.licenseUrl||''});
@@ -122,7 +121,7 @@ jobs:
                     if(!info.h1.includes(lang==='fr'?'Valbonne':'Valbonne'))failures.push(key+' incorrect title');
                     if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight))failures.push(key+' JPEG missing/not decoded or dimensions differ from article/draft');
                     if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
-                    if(!info.hasPrimarySource||info.hasArchiveCaption||info.hasImageCreditLink||info.hasImageLicenseLink)failures.push(key+' missing source or unwanted photo caption/rights text');
+                    if(!info.hasPrimarySource||info.hasPhotoCaption||info.hasUnwantedDateDisclaimer)failures.push(key+' missing source or unwanted image caption/disclaimer');
                     if(!info.ogImage.endsWith(article.image))failures.push(key+' OG image');
                   }else if(!info.linked){failures.push(key+' missing link to new article')}
                 }catch(e){failures.push(key+' '+e.message)}
