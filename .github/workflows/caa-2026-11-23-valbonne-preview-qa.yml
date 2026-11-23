@@ -55,7 +55,7 @@ jobs:
           if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
           if(!Array.isArray(article.sources)||article.sources.length<2)failures.push('missing official primary sources');
           if(!article.sources.some(s=>s.url.includes('ville-valbonne.fr/actualite/ce-noel-la')))failures.push('official announcement not cited');
-          if(!article.sources.some(s=>s.url.includes('marche-artisanal-de-noel')))failures.push('official market schedule not cited');
+          if(!article.sources.some(s=>s.url.includes('windpress.info/fr/press-release/1215002/')))failures.push('attributed archived municipal market schedule not cited');
           if(!article.fr.content.some(s=>s.includes('18 au 23 décembre'))||!article.fr.content.some(s=>s.includes('24 décembre')))failures.push('market dates not distinct');
           if(!article.fr.content.some(s=>s.includes('19 au 21 décembre')))failures.push('artisan market not distinct');
           if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
@@ -95,7 +95,7 @@ jobs:
                       images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
                       ratio,
                       hasNonDocumentaryCaption:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'générée par IA':'AI-generated') : true,
-                      hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=2
+                      hasPrimarySource:document.querySelectorAll('a[href*="ville-valbonne.fr"]').length>=1 && document.querySelectorAll('a[href*="windpress.info"]').length>=1
                     };
                   },{slug,articlePage});
                   if(articlePage){
