@@ -41,12 +41,12 @@ export default async function NewsPage({ params }) {
         {items.map((item) => (
           <article key={item.id} className="card-luxe overflow-hidden">
             <div className="grid gap-0 md:grid-cols-[320px_1fr]">
-              <div className={((item.imageLayout === 'contain' && item.slug !== '2026-11-11-antibes-garoupe-plage-publique') || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'self-start bg-white' : 'bg-zinc-100'}>
+              <div className={item.slug === '2026-11-23-valbonne-noel-maison-famille' ? 'aspect-[3/4] self-start overflow-hidden bg-zinc-100' : ((item.imageLayout === 'contain' && item.slug !== '2026-11-11-antibes-garoupe-plage-publique') || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'self-start bg-white' : 'bg-zinc-100'}>
                 {item.image ? (
                   <img
                     src={item.image}
                     alt={item.title}
-                    className={((item.imageLayout === 'contain' && item.slug !== '2026-11-11-antibes-garoupe-plage-publique') || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'block h-auto w-full bg-white' : 'h-full w-full object-cover'}
+                    className={item.slug === '2026-11-23-valbonne-noel-maison-famille' ? 'block h-full w-full object-cover' : ((item.imageLayout === 'contain' && item.slug !== '2026-11-11-antibes-garoupe-plage-publique') || item.image === '/news/partenariat-financement-2026-10-17-fr.png' || item.image === '/news/partenariat-financement-2026-10-17-en.png' || item.image === '/news/2026-10-27-maggie-google.png') ? 'block h-auto w-full bg-white' : 'h-full w-full object-cover'}
                     style={item.slug === '2026-10-29-biot-village-art-nature' ? { objectPosition: '85% center' } : undefined}
                   />
                 ) : null}
