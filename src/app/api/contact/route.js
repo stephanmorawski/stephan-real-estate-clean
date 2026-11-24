@@ -6,6 +6,7 @@ const RATE_WINDOW_EMAIL_MS = 60 * 60 * 1000;
 const RATE_LIMIT_IP = 5;
 const RATE_LIMIT_EMAIL = 3;
 const MAX_BODY_BYTES = 16 * 1024;
+const PROPERTY_ALERT_RECIPIENT = 'stephan@cotedazuragency.com';
 
 const rateStore = globalThis.__caaContactRateStore || new Map();
 globalThis.__caaContactRateStore = rateStore;
@@ -150,7 +151,7 @@ async function getGraphToken() {
   return data.access_token;
 }
 
-async function sendMailViaGraph({ mailbox, from, replyTo, subject, html }) {
+async function sendMailViaGraph({ mailbox, from, recipients, replyTo, subject, html }) {
   const token = await getGraphToken();
 
   const res = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(mailbox)}/sendMail`, {
@@ -167,13 +168,7 @@ async function sendMailViaGraph({ mailbox, from, replyTo, subject, html }) {
           contentType: 'HTML',
           content: html,
         },
-        toRecipients: [
-          {
-            emailAddress: {
-              address: mailbox,
-            },
-          },
-        ],
+        toRecipients: recipients.map((address) => ({ emailAddress: { address } })),
         from: {
           emailAddress: {
             address: from,
@@ -232,7 +227,7 @@ export async function POST(req) {
     const propertySlug = cleanSingleLine(body?.propertySlug, 200);
     const lang = body?.lang === 'en' ? 'en' : 'fr';
     const attribution = validateAttribution(body?.attribution);
-    const requestKind = body?.requestKind === 'property_alert' ? 'property_alert' : 'contact';
+    const isPropertyAlert = body?.requestKind === 'property_alert';
 
     if (name.length < 2 || !isValidEmail(email) || message.length < 10) {
       return json({ error: 'Invalid required fields' }, 400);
@@ -262,6 +257,10 @@ export async function POST(req) {
 
     const mailbox = process.env.CONTACT_TO || 'contact@cotedazuragency.com';
     const from = process.env.CONTACT_FROM || 'contact@cotedazuragency.com';
+    const recipients = [mailbox];
+    if (isPropertyAlert && mailbox.trim().toLowerCase() !== PROPERTY_ALERT_RECIPIENT) {
+      recipients.push(PROPERTY_ALERT_RECIPIENT);
+    }
 
     const propertyLabel = property
       ? [
@@ -303,14 +302,15 @@ export async function POST(req) {
       `
       : '';
 
+    const messageHtml = escapeHtml(message);
     const html = `
       <div style="max-width:720px;font-family:Arial,sans-serif;line-height:1.6;color:#27272a;">
         <h2 style="margin:0 0 24px;color:#18181b;">
-          Nouvelle demande — Côte d’Azur Agency
+          ${isPropertyAlert ? 'Nouvelle demande d’alerte immobilière' : 'Nouvelle demande'} — Côte d’Azur Agency
         </h2>
 
         ${propertyHtml}
-        ${attribution ? `<p><strong>Origine déclarée du lien :</strong> ChatGPT Ads<br />Campagne : caa_acquereurs_test · annonce_01<br />Type : ${requestKind === 'property_alert' ? 'Demande d’alerte immobilière' : 'Demande de contact'}</p>` : ''}
+        ${attribution ? `<p><strong>Origine déclarée du lien :</strong> ChatGPT Ads<br />Campagne : caa_acquereurs_test · annonce_01<br />Type : ${isPropertyAlert ? 'Demande d’alerte immobilière' : 'Demande de contact'}</p>` : ''}
 
         <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:24px;font-size:15px;">
           <tr>
@@ -330,8 +330,8 @@ export async function POST(req) {
         </table>
 
         <div style="border-left:3px solid #C6A46C;padding-left:18px;">
-          <div style="margin-bottom:8px;font-weight:600;">Message</div>
-          <div style="white-space:pre-wrap;">${escapeHtml(message)}</div>
+          <div style="margin-bottom:8px;font-weight:600;">${isPropertyAlert ? 'Critères demandés' : 'Message'}</div>
+          ${isPropertyAlert ? `<div>${messageHtml.replace(/\r\n|\r|\n/g, '<br>')}</div>` : `<div style="white-space:pre-wrap;">${messageHtml}</div>`}
         </div>
       </div>
     `;
@@ -339,8 +339,9 @@ export async function POST(req) {
     await sendMailViaGraph({
       mailbox,
       from,
+      recipients,
       replyTo: email,
-      subject,
+      subject: isPropertyAlert ? 'Nouvelle demande d’alerte immobilière — Côte d’Azur Agency' : subject,
       html,
     });
 
