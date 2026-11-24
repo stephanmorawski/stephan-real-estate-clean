@@ -43,7 +43,7 @@ try{
     try{
       await goto(p.url);
       const screenshot=lang==='fr'&&p.id==='86806890';
-      if(screenshot){const extra=await run(()=>[...document.querySelectorAll('main img')].slice(2).map(i=>i.src)); await cdp('Network.setBlockedURLs',{urls:extra});await cmd('/refresh',{});await run(()=>Promise.all([document.fonts.ready,document.querySelector('main img').decode().catch(()=>{})]).then(()=>true));}
+      if(screenshot){await cdp('Network.setBlockedURLs',{urls:[]});await cmd('/refresh',{});await run(()=>Promise.all([document.fonts.ready,...[...document.querySelectorAll('main img')].map(i=>i.decode().catch(()=>{}))]).then(()=>true));}
       for(const viewport of viewports){
         await size(viewport);
         const result=await run(()=>{
@@ -54,7 +54,9 @@ try{
         const width=viewport[0];if(result.url!==p.url||result.title.replace(/\s+/g,' ')!==p.title.replace(/\s+/g,' ')||result.h1Count!==1||result.font!==(width<640?26:width<1024?30:36)||!result.fullyVisible||result.horizontalOverflow>2)report.failures.push(`${lang} ${p.id} ${width} ${JSON.stringify(result)}`);
         report.details.push({lang,id:p.id,width,...result});
         if(screenshot&&[390,1440].includes(width)){
-          await run(w=>window.scrollTo(0,w===390?document.querySelector('main h1').getBoundingClientRect().top+scrollY-125:0),width);
+          await run(w=>{const h=document.querySelector('main h1');const header=document.querySelector('body > header') || document.querySelector('header');const inset=Math.max(245,header.getBoundingClientRect().height+60);window.scrollTo({top:w===390?h.getBoundingClientRect().top+scrollY-inset:0,behavior:'instant'});return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))));},width);
+          const displayed=await run(()=>{const h=document.querySelector('main h1'),r=h.getBoundingClientRect();const p=document.elementFromPoint(r.left+Math.min(25,r.width/2),r.top+r.height/2);return Boolean(p && (p===h || h.contains(p)) && r.top>=0 && r.bottom<=innerHeight);});
+          if(!displayed)throw Error(`Title obscured in screenshot at ${width}px`);
           const {data}=await cdp('Page.captureScreenshot',{format:'jpeg',quality:85,fromSurface:true,captureBeyondViewport:false});await fs.writeFile(`${dir}/vence-${width===390?'mobile':'ordinateur'}.jpg`,Buffer.from(data,'base64'));
         }
       }
@@ -69,3 +71,4 @@ try{
   console.log(JSON.stringify({version:report.version,mandats:new Set(report.details.map(d=>d.id)).size,fiches:new Set(report.details.map(d=>d.url)).size,controles:report.details.length,indexes:report.indexes,vence:report.details.filter(d=>d.lang==='fr'&&d.id==='86806890'),failures:report.failures},null,2));
   if(!report.details.length||report.failures.length)process.exitCode=1;
 }
+
