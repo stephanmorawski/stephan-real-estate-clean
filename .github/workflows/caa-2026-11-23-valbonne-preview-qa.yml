@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - caa/editorial-2026-11-23-valbonne-noel-v1
+      - caa/valbonne-v7-postproduction-card-fix
     paths:
+      - 'src/app/[lang]/actualites/page.js'
       - content/news/2026-11-23-valbonne-noel-maison-famille.json
       - content/news-drafts/2026-11-23-editorial-proposals.json
       - public/news/2026-11-23-valbonne-noel-stephan-morawski.jpg
@@ -105,7 +107,7 @@ jobs:
                       ogImage:document.querySelector('meta[property="og:image"]')?.content||'',
                       overflow:document.documentElement.scrollWidth-window.innerWidth,
                       linked:[...document.querySelectorAll('a[href]')].some(a=>a.getAttribute('href')?.endsWith(slug)),
-                      images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit})),
+                      images:selected.map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,renderWidth:i.getBoundingClientRect().width,renderHeight:i.getBoundingClientRect().height,fit:getComputedStyle(i).objectFit,parentHeight:i.parentElement?.getBoundingClientRect().height,parentWidth:i.parentElement?.getBoundingClientRect().width})),
                       ratio,
                       hasPhotoCaption:articlePage ? Boolean(img?.parentElement?.nextElementSibling?.classList.contains('mt-3') && img.parentElement.nextElementSibling.textContent?.trim()) : false,
                       hasUnwantedDateDisclaimer:articlePage ? document.body.innerText.includes(document.documentElement.lang==='fr'?'date de prise de vue non précisée':'date not specified') : false,
@@ -130,7 +132,10 @@ jobs:
                     if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
                     if(!info.hasPrimarySource||info.hasPhotoCaption||info.hasUnwantedDateDisclaimer)failures.push(key+' missing source or unwanted image caption/disclaimer');
                     if(!info.ogImage.endsWith(article.image))failures.push(key+' OG image');
-                  }else if(!info.linked){failures.push(key+' missing link to new article')}
+                  }else {
+                      if(!info.linked)failures.push(key+' missing link to new article');
+                      if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight||x.fit!=='cover'||Math.abs(x.parentHeight-x.renderHeight)>3||Math.abs(x.parentWidth-x.renderWidth)>3||Math.abs(x.renderWidth/x.renderHeight-expectedWidth/expectedHeight)>.025||(device==='desktop'&&Math.abs(x.parentWidth-320)>3)))failures.push(key+' card photo missing, clipped, distorted, or not filling its media cell');
+                    }
                 }catch(e){failures.push(key+' '+e.message)}
                 finally{await page.close()}
               }
