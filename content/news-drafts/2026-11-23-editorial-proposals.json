@@ -1,7 +1,7 @@
 {
   "cycleId": "caa-2026-11-23-editorial",
   "version": 7,
-  "workflowStatus": "preparing",
+  "workflowStatus": "published",
   "sourceChannel": "outlook",
   "proposalDate": "2026-11-23",
   "proposalSentAt": "2026-11-22T10:55:49Z",
@@ -60,12 +60,12 @@
       "en": "What if next Christmas found you at home in Valbonne? Provençal streets, festive lights and seasonal food markets invite you to imagine a family home on the French Riviera. The city has announced its 1–24 December 2026 Christmas programme, including a new gourmet chalet market scheduled for 18–24 December. Looking for a place to call your own on the Côte d’Azur? Let's explore the right neighbourhood and property together. Official source: https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #FrenchRiviera #RealEstate"
     }
   },
-  "publicationAuthorized": false,
+  "publicationAuthorized": true,
   "approvalRequiredAfterChoice": true,
-  "approvalReceived": false,
+  "approvalReceived": true,
   "preparationAuthorized": true,
-  "idempotencyKey": "caa-2026-11-23-editorial|preparing|v7",
-  "nextAction": "Verify V7 exact SHA and preview, then send complete V7 approval dossier in existing RE: Post thread exclusively to editorial_approver; never publish without explicit V7 approval.",
+  "idempotencyKey": "caa-2026-11-23-editorial|published|v7",
+  "nextAction": "none_cycle_completed",
   "revision": {
     "fromVersion": 6,
     "reason": "Stephan's 23 Nov 2026 17:48:14 UTC formatting request after V6: keep French colons attached to preceding words, particularly 'Nouveauté cette année : des chalets'. Applied non-breaking spaces before colons across French article title, excerpt and body, plus French LinkedIn. No substantive copy, dates, facts, image or English changes.",
@@ -95,5 +95,43 @@
       "previousApprovalStatus": "not_received",
       "newApprovalRequired": true
     }
-  ]
+  ],
+  "approvalStatus": "approved_v7",
+  "approvalEvidence": {
+    "status": "explicit_approval_correlated_to_last_sent_v7",
+    "channel": "outlook",
+    "approvedVersion": 7,
+    "approvalReceivedAt": "2026-11-23T17:54:07Z",
+    "approvalNormalized": "APPROUVER",
+    "reviewSha": "1adfc58a8edf4c973d58a3f2325964bb46425d66"
+  },
+  "publication": {
+    "status": "published",
+    "pullRequest": 78,
+    "mergeSha": "e15256aacee3cc3cd8af9e96122c6823a07806e7",
+    "confirmation": {
+      "status": "verified_in_sent_items",
+      "sentAt": "2026-11-23T18:40:56Z",
+      "recipient": "editorial_approver",
+      "ccCount": 0,
+      "bccCount": 0
+    },
+    "remediation": {
+      "status": "completed",
+      "pullRequest": 80,
+      "mergeSha": "ddae842d3ba0c383b8265090bfb94482280ba4fc",
+      "previewQaRun": 45334012107,
+      "postProductionQaRun": 45346049759,
+      "latestVerifiedProductionQaRun": 45347440086,
+      "verifiedProductionSha": "078afaeecc9e8f1aed36ba990a6a2d1f313638d8",
+      "verifiedDeployment": "dpl_GxvdBBZepCfFjdhjNPpz5caq9nZc",
+      "verifiedAt": "2026-11-24T08:03:42Z",
+      "qaStatus": "success",
+      "articleRoutes": 44,
+      "browserPages": 12,
+      "viewports": 2,
+      "binaryAssets": 2,
+      "contentAndImageUnchanged": true
+    }
+  }
 }
