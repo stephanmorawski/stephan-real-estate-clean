@@ -16,17 +16,14 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Installer Chromium et Playwright dans un dossier isolé
+      - name: Vérifier Chrome et ChromeDriver fournis par le runner
         run: |
-          mkdir .qa-vente
-          cp scripts/qa-vente-typographie.mjs .qa-vente/
-          echo '{"private":true}' > .qa-vente/package.json
-          npm --prefix .qa-vente install --ignore-scripts --no-audit --no-fund --no-package-lock playwright@1.56.1
-          node .qa-vente/node_modules/playwright/cli.js install --with-deps chromium
+          google-chrome --version
+          chromedriver --version
       - name: Mesurer les titres des fiches et du catalogue public en FR et EN
         env:
           EXPECTED_SHA: 'f87f3c6931beeb11ded55370d18a73c97f3736a8'
-        run: node .qa-vente/qa-vente-typographie.mjs
+        run: node scripts/qa-vente-typographie.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

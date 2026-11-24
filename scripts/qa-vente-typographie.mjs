@@ -1,84 +1,71 @@
-import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
-
-const host = 'https://www.cotedazuragency.com';
-const out = 'artifacts/vente-typographie';
-const expectedSha = process.env.EXPECTED_SHA;
-const viewports = [[390, 844], [768, 1024], [1024, 768], [1440, 900]];
-const report = { expectedSha, started: new Date().toISOString(), indexes: [], details: [], failures: [] };
-const failure = msg => report.failures.push(msg);
-const norm = str => str.replace(/\s+/g, ' ').trim();
-await fs.mkdir(out, {recursive: true});
-let browser;
-try {
-  const version = await fetch(host + '/api/version', {cache: 'no-store'});
-  report.version = await version.json();
-  if (report.version.commitSha !== expectedSha) throw Error(`Production is ${report.version.commitSha}, expected ${expectedSha}`);
-  browser = await chromium.launch();
-  const context = await browser.newContext({viewport:{width:1440, height:900}, deviceScaleFactor:1});
-  const catalogs = {};
-  for (const lang of ['fr','en']) {
-    const page = await context.newPage();
-    await page.route('**/*', route => route.request().resourceType() === 'image' ? route.abort() : route.continue());
-    const indexURL = `${host}/${lang}/vente`;
-    const response = await page.goto(indexURL,{waitUntil:'domcontentloaded'});
-    if (response.status() !== 200 || page.url() !== indexURL) failure(`Invalid catalogue ${lang}`);
-    const cards = page.locator(`main section a[href^="/${lang}/vente/"]`);
-    await cards.first().waitFor();
-    catalogs[lang] = await cards.evaluateAll(nodes => nodes.map(a => ({url:a.href,id:a.href.split('-').pop(),title:a.querySelector('h2').textContent.trim()})));
-    if (!catalogs[lang].length || new Set(catalogs[lang].map(c=>c.id)).size !== catalogs[lang].length) failure(`Empty or duplicate property list in ${lang}`);
-    for (const [width,height] of viewports) {
-      await page.setViewportSize({width,height});
-      const fonts = await cards.locator('h2').evaluateAll(els => [...new Set(els.map(el=>getComputedStyle(el).fontSize))]);
-      const expected = width<768?'14px':'15px';
-      if (fonts.length !== 1 || fonts[0] !== expected) failure(`Inconsistent catalogue title sizes ${lang} ${width}: ${fonts}`);
-      report.indexes.push({lang,width,cardCount:catalogs[lang].length,titleFontSizes:fonts});
+import {spawn} from 'node:child_process';
+import {setTimeout as delay} from 'node:timers/promises';
+const base='https://www.cotedazuragency.com',dir='artifacts/vente-typographie';
+const expectedSha=process.env.EXPECTED_SHA;
+const viewports=[[390,844],[768,1024],[1024,768],[1440,900]];
+const report={expectedSha,started:new Date().toISOString(),indexes:[],details:[],failures:[]};
+let session,driver;
+const local='http://127.0.0.1:9515';
+await fs.mkdir(dir,{recursive:true});
+async function call(path,body,method=body===undefined?'GET':'POST'){
+  const response=await fetch(local+path,{method,headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body),signal:AbortSignal.timeout(45000)});
+  const {value}=await response.json(); if(!response.ok || value?.error)throw Error(`${path} ${value?.error}: ${value?.message}`);return value;
+}
+const cmd=(path,body)=>call('/session/'+session+path,body);
+const cdp=(name,params)=>cmd('/goog/cdp/execute',{cmd:name,params});
+const run=(fn,...args)=>cmd('/execute/sync',{script:'return ('+fn.toString()+').apply(null,arguments)',args});
+const goto=async url=>{await cmd('/url',{url});await run(()=>document.fonts.ready.then(()=>true));};
+const size=([width,height])=>cdp('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
+async function version(){return (await fetch(base+'/api/version',{cache:'no-store'})).json()}
+const equals=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+try{
+  report.version=await version();if(report.version.commitSha!==expectedSha)throw Error(`Wrong revision ${report.version.commitSha}`);
+  driver=spawn('chromedriver',['--port=9515'],{stdio:['ignore','inherit','inherit']});
+  for(let i=0;i<50;i++){try{await call('/status');break;}catch(e){if(i===49)throw e;await delay(150);}}
+  const s=await call('/session',{capabilities:{alwaysMatch:{browserName:'chrome',pageLoadStrategy:'eager','goog:chromeOptions':{args:['--headless','--no-sandbox','--disable-dev-shm-usage','--hide-scrollbars']}}}});
+  session=s.sessionId;
+  report.browser=s.capabilities.browserVersion;
+  await cdp('Network.enable',{});
+  await cdp('Network.setBlockedURLs',{urls:['https://media.apimo.pro/*']});
+  const properties={};
+  for(const lang of ['fr','en']){
+    await goto(`${base}/${lang}/vente`);
+    for(const viewport of viewports){
+      await size(viewport);
+      const data=await run((lang)=>[...document.querySelectorAll(`main section a[href^="/${lang}/vente/"]`)].map(a=>({title:a.querySelector('h2').textContent.trim(),font:getComputedStyle(a.querySelector('h2')).fontSize,url:a.href,id:a.href.split('-').pop()})),lang);
+      if(!data.length||new Set(data.map(c=>c.id)).size!==data.length||data.some(c=>c.font!==(viewport[0]<768?'14px':'15px')))report.failures.push(`Invalid catalogue (${lang}, ${viewport})`);
+      report.indexes.push({lang,width:viewport[0],cards:data.length,fonts:[...new Set(data.map(c=>c.font))]});properties[lang]=data;
     }
-    await page.close();
   }
-  if (catalogs.fr.map(c=>c.id).sort().join() !== catalogs.en.map(c=>c.id).sort().join()) failure('FR/EN catalogue IDs differ');
-  for (const [lang,properties] of Object.entries(catalogs)) {
-    for (const property of properties) {
-      const page = await context.newPage();
-      try {
-        const capture = lang==='fr' && property.id==='86806890';
-        let imageCount=0;
-        await page.route('**/*', route => {
-          if (route.request().resourceType()==='image' && route.request().url().startsWith('https://media.apimo.pro/') && (!capture || ++imageCount > 2)) return route.abort();
-          return route.continue();
+  if(!equals(properties.fr.map(c=>c.id).sort(),properties.en.map(c=>c.id).sort()))report.failures.push('Different catalogue IDs across languages');
+  for(const [lang,items] of Object.entries(properties))for(const p of items){
+    try{
+      await goto(p.url);
+      const screenshot=lang==='fr'&&p.id==='86806890';
+      if(screenshot){const extra=await run(()=>[...document.querySelectorAll('main img')].slice(2).map(i=>i.src)); await cdp('Network.setBlockedURLs',{urls:extra});await cmd('/refresh',{});await run(()=>Promise.all([document.fonts.ready,document.querySelector('main img').decode().catch(()=>{})]).then(()=>true));}
+      for(const viewport of viewports){
+        await size(viewport);
+        const result=await run(()=>{
+          const h=document.querySelector('main h1'),r=h.getBoundingClientRect(),s=getComputedStyle(h),c=h.parentElement.getBoundingClientRect();const rg=document.createRange();rg.selectNodeContents(h);
+          const lines=[...rg.getClientRects()].filter(i=>i.width>0);const fits=(b,x)=>b.left>=x.left-2&&b.right<=x.right+2&&b.top>=x.top-2&&b.bottom<=x.bottom+2;
+          return {url:location.href,title:h.textContent.trim(),font:parseFloat(s.fontSize),lines:lines.length,titleTop:Math.round(r.top+scrollY),fullyVisible:lines.length>0&&h.checkVisibility()&&lines.every(b=>fits(b,r)&&fits(b,c))&&h.scrollWidth<=h.clientWidth+2&&h.scrollHeight<=h.clientHeight+2,horizontalOverflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),h1Count:document.querySelectorAll('main h1').length};
         });
-        const response = await page.goto(property.url, {waitUntil:'load',timeout:30000});
-        const title = page.locator('main h1');
-        if (response.status() !== 200 || page.url() !== property.url || await title.count() !== 1 || norm(await title.textContent()) !== norm(property.title)) failure(`Wrong page/title ${property.url}`);
-        await page.evaluate(()=>document.fonts.ready);
-        for (const [width,height] of viewports) {
-          await page.setViewportSize({width,height});
-          const metrics = await title.evaluate(h => {
-            const rect=h.getBoundingClientRect(), style=getComputedStyle(h), card=h.parentElement.getBoundingClientRect();
-            const range=document.createRange(); range.selectNodeContents(h);
-            const lines=[...range.getClientRects()].filter(r=>r.width>0);
-            const fits=(r,box)=>r.top>=box.top-2 && r.bottom<=box.bottom+2 && r.left>=box.left-2 && r.right<=box.right+2;
-            return {fontPx:parseFloat(style.fontSize),lineCount:lines.length,fullyDisplayed:lines.length>0 && lines.every(r=>fits(r,rect)&&fits(r,card)) && h.scrollHeight<=h.clientHeight+2 && h.scrollWidth<=h.clientWidth+2 && h.checkVisibility(),horizontalOverflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),titleTopFromDocument:Math.round(rect.top+scrollY),cardWidth:Math.round(card.width)};
-          });
-          const expected=width<640?26:width<1024?30:36;
-          if(metrics.fontPx!==expected || !metrics.fullyDisplayed || metrics.horizontalOverflow>2) failure(`${lang} ${property.id} ${width}px: ${JSON.stringify(metrics)}`);
-          report.details.push({lang,url:property.url,id:property.id,title:property.title,width,height,...metrics});
-          if(capture && [390,1440].includes(width)) {
-            if(width===390) await title.evaluate(h=>window.scrollTo(0,h.getBoundingClientRect().top+scrollY-128));
-            else await page.evaluate(()=>window.scrollTo(0,0));
-            await page.screenshot({path:`${out}/vence-${width===390?'mobile':'ordinateur'}.jpg`,type:'jpeg',quality:85});
-          }
+        const width=viewport[0];if(result.url!==p.url||result.title.replace(/\s+/g,' ')!==p.title.replace(/\s+/g,' ')||result.h1Count!==1||result.font!==(width<640?26:width<1024?30:36)||!result.fullyVisible||result.horizontalOverflow>2)report.failures.push(`${lang} ${p.id} ${width} ${JSON.stringify(result)}`);
+        report.details.push({lang,id:p.id,width,...result});
+        if(screenshot&&[390,1440].includes(width)){
+          await run(w=>window.scrollTo(0,w===390?document.querySelector('main h1').getBoundingClientRect().top+scrollY-125:0),width);
+          const {data}=await cdp('Page.captureScreenshot',{format:'jpeg',quality:85,fromSurface:true,captureBeyondViewport:false});await fs.writeFile(`${dir}/vence-${width===390?'mobile':'ordinateur'}.jpg`,Buffer.from(data,'base64'));
         }
-      } catch(e) {failure(`${property.url}: ${e.message}`);} finally {await page.close();}
-    }
+      }
+      if(screenshot)await cdp('Network.setBlockedURLs',{urls:['https://media.apimo.pro/*']});
+    }catch(e){report.failures.push(`${p.url}: ${e.message}`)}
   }
-  const finalVersion = await fetch(host+'/api/version', {cache:'no-store'});
-  if ((await finalVersion.json()).commitSha !== expectedSha) failure('Production version changed during QA');
-} catch(e) {failure(e.message);} finally {
-  if(browser) await browser.close();
-  report.finished = new Date().toISOString();
-  await fs.writeFile(`${out}/rapport.json`,JSON.stringify(report,null,2));
-  const summary={version:report.version?.commitSha, fiches: new Set(report.details.map(e=>e.url)).size, mandats:new Set(report.details.map(e=>e.id)).size, controles:report.details.length, cartes:report.indexes, venceFR:report.details.filter(e=>e.id==='86806890'&&e.lang==='fr'), failures:report.failures};
-  console.log(JSON.stringify(summary,null,2));
-  if (report.failures.length || !report.details.length) process.exitCode=1;
+  if((await version()).commitSha!==expectedSha)report.failures.push('Version changed during QA');
+}catch(e){report.failures.push(e.message)}finally{
+  if(session)try{await call('/session/'+session,undefined,'DELETE')}catch{}
+  if(driver)driver.kill();
+  report.finished=new Date().toISOString();await fs.writeFile(`${dir}/rapport.json`,JSON.stringify(report,null,2));
+  console.log(JSON.stringify({version:report.version,mandats:new Set(report.details.map(d=>d.id)).size,fiches:new Set(report.details.map(d=>d.url)).size,controles:report.details.length,indexes:report.indexes,vence:report.details.filter(d=>d.lang==='fr'&&d.id==='86806890'),failures:report.failures},null,2));
+  if(!report.details.length||report.failures.length)process.exitCode=1;
 }
