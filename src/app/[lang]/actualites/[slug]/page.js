@@ -117,11 +117,11 @@ export default async function NewsDetailPage({ params }) {
             <div className="grid gap-4 sm:grid-cols-3">
               {article.galleryImages.map((photo) => (
                 <figure key={photo.src} className="overflow-hidden rounded-2xl bg-zinc-100">
-                  <img src={photo.src} alt={photo.alt || article.title} loading="lazy" className="aspect-[3/2] h-auto w-full object-cover" />
+                  <img src={photo.src} alt={photo.alt || article.title} loading="lazy" className={article.galleryLayout === "contain" ? "aspect-[3/2] h-auto w-full object-contain" : "aspect-[3/2] h-auto w-full object-cover"} />
                 </figure>
               ))}
             </div>
-            <p className="mt-2 text-sm text-zinc-500">© Côte d’Azur Agency</p>
+            {article.galleryCreditVisible ? (<p className="mt-2 text-sm text-zinc-500">© Côte d’Azur Agency</p>) : null}
           </div>
         ) : null}
 

@@ -1,0 +1,107 @@
+{
+  "slug": "2026-11-25-biot-domaine-des-clausonnes",
+  "status": "draft",
+  "publishedAt": "2026-11-25",
+  "source": "Côte d’Azur Agency",
+  "image": "/news/villa-biot-01-villa-piscine.jpg",
+  "imageLayout": "contain",
+  "imageWidth": 1887,
+  "imageHeight": 1060,
+  "galleryLayout": "contain",
+  "galleryCreditVisible": false,
+  "galleryImages": [
+    {
+      "src": "/news/villa-biot-02-piscine-panorama.jpg",
+      "alt": {
+        "fr": "Piscine et panorama sur le littoral",
+        "en": "Pool and coastal panorama"
+      }
+    },
+    {
+      "src": "/news/villa-biot-03-terrasse.jpg",
+      "alt": {
+        "fr": "Vue sur le jardin et la mer depuis la villa",
+        "en": "Garden and sea views from the villa"
+      }
+    },
+    {
+      "src": "/news/villa-biot-04-salon.jpg",
+      "alt": {
+        "fr": "Salon de la villa",
+        "en": "Villa living room"
+      }
+    },
+    {
+      "src": "/news/villa-biot-05-chambre.jpg",
+      "alt": {
+        "fr": "Chambre ouverte sur la terrasse",
+        "en": "Bedroom opening onto the terrace"
+      }
+    },
+    {
+      "src": "/news/villa-biot-06-cuisine.jpg",
+      "alt": {
+        "fr": "Cuisine de la villa",
+        "en": "Villa kitchen"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.cotedazuragency.com/fr/vente/biot-exclusivite-villa-en-position-dominante-avec-vue-panoramique-mer-et-village-87576604",
+      "label": {
+        "fr": "Voir la fiche du bien — référence 87576604",
+        "en": "View the property listing — reference 87576604"
+      }
+    },
+    {
+      "url": "https://www.georisques.gouv.fr",
+      "label": {
+        "fr": "Géorisques — informations sur les risques",
+        "en": "Géorisques — property risk information"
+      }
+    }
+  ],
+  "fr": {
+    "title": "EXCLUSIVITÉ | BIOT – DOMAINE DES CLAUSONNES",
+    "excerpt": "Charme provençal et vue panoramique spectaculaire sur la mer et le village, au sein d’un domaine fermé de prestige.",
+    "imageAlt": "Villa provençale et piscine",
+    "content": [
+      "Charme provençal et vue panoramique spectaculaire sur la mer et le village, au sein d’un domaine fermé de prestige.",
+      "◆ Vaste terrasse avec piscine",
+      "◆ 3 chambres avec salle de bains ou salle d’eau privative",
+      "◆ Possibilité d’une quatrième chambre ou d’un bureau",
+      "◆ Grand garage et nombreux stationnements",
+      "À quelques minutes de Sophia Antipolis, du littoral et de l’aéroport de Nice.",
+      "Découvrez l’art de vivre sur la Côte d’Azur.",
+      "Contactez-moi pour une visite privée.",
+      "Stephan Morawski | Côte d’Azur Agency",
+      "DPE : D (223) – GES : D (48).",
+      "Dépenses annuelles d’énergie estimées : 3 320–4 540 €.",
+      "Honoraires à la charge du vendeur.",
+      "125 lots – Aucune procédure en cours.",
+      "Les informations sur les risques auxquels ce bien est exposé sont disponibles sur www.georisques.gouv.fr."
+    ]
+  },
+  "en": {
+    "title": "EXCLUSIVE LISTING | BIOT – DOMAINE DES CLAUSONNES",
+    "excerpt": "Provençal charm and spectacular panoramic sea and village views in a prestigious gated domain.",
+    "imageAlt": "Provençal villa and swimming pool",
+    "content": [
+      "Provençal charm and spectacular panoramic sea and village views in a prestigious gated domain.",
+      "◆ Spacious terrace with swimming pool",
+      "◆ 3 bedrooms with private bathrooms",
+      "◆ Potential fourth bedroom or office",
+      "◆ Large garage and ample parking",
+      "📍 Minutes from Sophia Antipolis, the coast and Nice Airport.",
+      "✨ Experience the French Riviera lifestyle.",
+      "⟶ DM me for a private viewing.",
+      "Stephan Morawski | Côte d'Azur Agency",
+      "Energy rating: D (223) – GES: D (48).",
+      "Estimated annual energy costs: €3,320–€4,540.",
+      "Agency fees payable by the seller.",
+      "125 lots – No ongoing legal proceedings.",
+      "Information on the risks to which this property is exposed is available on www.georisques.gouv.fr."
+    ]
+  }
+}

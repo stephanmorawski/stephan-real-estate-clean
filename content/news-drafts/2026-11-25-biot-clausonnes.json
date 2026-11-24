@@ -30,7 +30,7 @@
     "author": "Stephan Morawski",
     "rightsConfirmed": true,
     "license": "Author supplied own photos for this editorial use; no visible credit or caption at his explicit request.",
-    "assetStatus": "Six Outlook PNGs retrieved, decoded and visually inspected; repository upload pending. Original-byte hashes from local materialization."
+    "assetStatus": "Six source PNGs reverified against recorded SHA256; six full-resolution JPEG derivatives locally encoded and decoded without cropping. Binary upload to GitHub pending; connector accepts inline base64 only, no file reference. No preview approval pack sent."
   },
   "assets": [
     {
@@ -45,6 +45,15 @@
       "alt": {
         "fr": "Villa provençale et piscine",
         "en": "Provençal villa and swimming pool"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1887,
+        "height": 1060,
+        "sha256": "11e4eedbb05c5bb882f1d1af13575c813d09c184642de492fdc248193a99fba4",
+        "bytes": 704150,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     },
     {
@@ -59,6 +68,15 @@
       "alt": {
         "fr": "Piscine et panorama sur le littoral",
         "en": "Pool and coastal panorama"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1887,
+        "height": 1060,
+        "sha256": "7923287131d4f954bd6861e89f2dffcf26b773b25045d1d4b454f7e18eba89cf",
+        "bytes": 742776,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     },
     {
@@ -73,6 +91,15 @@
       "alt": {
         "fr": "Vue sur le jardin et la mer depuis la villa",
         "en": "Garden and sea views from the villa"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1154,
+        "sha256": "ddbab04b1a7157a026b7563f6a4f82c1dd728b7479e7eebd1ed6e53b471ed748",
+        "bytes": 687649,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     },
     {
@@ -87,6 +114,15 @@
       "alt": {
         "fr": "Salon de la villa",
         "en": "Villa living room"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1155,
+        "sha256": "ac4bb472b305c766ee51033bf5f5e09725f978f44b8444a0dc3e938777ea27a0",
+        "bytes": 320635,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     },
     {
@@ -101,6 +137,15 @@
       "alt": {
         "fr": "Chambre ouverte sur la terrasse",
         "en": "Bedroom opening onto the terrace"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1155,
+        "sha256": "6e1f6f532eb3d39f09f53b81e0af21c41f3611fcdeab2053f5b9194accff0051",
+        "bytes": 298477,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     },
     {
@@ -115,6 +160,15 @@
       "alt": {
         "fr": "Cuisine de la villa",
         "en": "Villa kitchen"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1225,
+        "height": 816,
+        "sha256": "0c3fcd58d622838df31c89e60e604a0c014d5eea77dd198338617f9570b06d69",
+        "bytes": 162802,
+        "decoded": true,
+        "repositoryUploaded": false
       }
     }
   ],
@@ -168,5 +222,11 @@
     }
   },
   "idempotencyKey": "caa-2026-11-25-biot-clausonnes|preparing|v1",
-  "nextAction": "Stage original authorized photographs as optimized local assets; create article in isolated branch using existing gallery schema, validate preview at exact SHA and send approval pack. No merge or publication before explicit approval. Do not send competing selection on 25 November."
+  "nextAction": "Transfer six verified JPEG derivatives to their planned paths; verify repository bytes, then switch article status from draft to published for isolated review branch only and validate canonical Preview exact SHA. Await explicit approval before merging. Do not send competing selection.",
+  "technicalCheckpoint": {
+    "status": "preparing",
+    "date": "2026-11-24",
+    "gallery": "Opt-in no visible credit and no crop, preserves existing articles",
+    "binaryTransfer": "Pending: no local-file input on GitHub binary blob action; direct network unavailable. No substitutes."
+  }
 }
