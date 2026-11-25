@@ -30,7 +30,7 @@
     "author": "Stephan Morawski",
     "rightsConfirmed": true,
     "license": "Author supplied own photos for this editorial use; no visible credit or caption at his explicit request.",
-    "assetStatus": "Six source PNGs reverified against recorded SHA256; six full-resolution JPEG derivatives locally encoded and decoded without cropping. Binary upload to GitHub pending; connector accepts inline base64 only, no file reference. No preview approval pack sent."
+    "assetStatus": "Six JPEG full-resolution derivatives rebuilt and SHA256 verified; two Git blobs created with matching Git object SHA and staged in the draft branch (04 salon, 06 cuisine). Four photos still pending; no review pack sent."
   },
   "assets": [
     {
@@ -122,7 +122,8 @@
         "sha256": "ac4bb472b305c766ee51033bf5f5e09725f978f44b8444a0dc3e938777ea27a0",
         "bytes": 320635,
         "decoded": true,
-        "repositoryUploaded": false
+        "repositoryUploaded": true,
+        "gitBlobSha": "5e432775d2fb754452a9d0acd8dd9fbc963fff09"
       }
     },
     {
@@ -168,7 +169,8 @@
         "sha256": "0c3fcd58d622838df31c89e60e604a0c014d5eea77dd198338617f9570b06d69",
         "bytes": 162802,
         "decoded": true,
-        "repositoryUploaded": false
+        "repositoryUploaded": true,
+        "gitBlobSha": "ddd5c3e5adbe44a755ca99ac7b6c2198cff9c53d"
       }
     }
   ],
@@ -222,11 +224,11 @@
     }
   },
   "idempotencyKey": "caa-2026-11-25-biot-clausonnes|preparing|v1",
-  "nextAction": "Transfer six verified JPEG derivatives to their planned paths; verify repository bytes, then switch article status from draft to published for isolated review branch only and validate canonical Preview exact SHA. Await explicit approval before merging. Do not send competing selection.",
+  "nextAction": "Complete transfer of four remaining verified JPEGs via an authorized supported binary upload; verify all six repository bytes, then activate isolated review, QA, and canonical Preview before sending V1 for approval. Do not merge or send competing selection.",
   "technicalCheckpoint": {
     "status": "preparing",
     "date": "2026-11-24",
     "gallery": "Opt-in no visible credit and no crop, preserves existing articles",
-    "binaryTransfer": "Pending: no local-file input on GitHub binary blob action; direct network unavailable. No substitutes."
+    "binaryTransfer": "2026-11-25: chunked transfer successfully created two verified Git blobs. Further transfer was blocked by a tool safety check. No bypass or substitute. Preserve draft status."
   }
 }
