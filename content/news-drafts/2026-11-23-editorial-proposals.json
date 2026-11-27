@@ -133,5 +133,22 @@
       "binaryAssets": 2,
       "contentAndImageUnchanged": true
     }
+  },
+  "postPublicationCorrection": {
+    "version": 8,
+    "workflowStatus": "preparing",
+    "publicationAuthorized": false,
+    "approvalReceived": false,
+    "idempotencyKey": "caa-2026-11-23-editorial|post-publication|v8",
+    "verifiedAt": "2026-11-27",
+    "reason": "Municipal calendar updated 27 November 2026: general festivities now run 4–24 December. Detailed market dates unchanged. Archived municipal source retained because direct URL still returns 404.",
+    "branch": "caa/valbonne-v8-date-correction",
+    "previousPublishedVersion": 7,
+    "articleBlobSha": "ed9f05c1483178b003678791004007f15c2476bb",
+    "linkedin": {
+      "fr": "Et si votre prochain Noël se passait chez vous, à Valbonne ? Les ruelles provençales, les lumières et les rendez-vous gourmands donnent envie de se projeter dans une maison de famille sur la Côte d’Azur. La Ville annonce ses festivités du 4 au 24 décembre 2026, avec un nouveau marché des chalets gourmands du 18 au 24 décembre (horaires spécifiques le 24). Envie d'explorer les quartiers et les maisons correspondant à votre projet ? Parlons-en. Source officielle : https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #CotedAzur #FrenchRiviera #Immobilier",
+      "en": "What if next Christmas found you at home in Valbonne? Provençal streets, festive lights and seasonal food markets invite you to imagine a family home on the French Riviera. The city has announced its 4–24 December 2026 Christmas programme, including a new gourmet chalet market scheduled for 18–24 December. Looking for a place to call your own on the Côte d’Azur? Let's explore the right neighbourhood and property together. Official source: https://www.ville-valbonne.fr/actualite/ce-noel-la-a-valbonne-sophia-antipolis/ #Valbonne #FrenchRiviera #RealEstate"
+    },
+    "nextAction": "QA and canonical preview, then obtain explicit approval of the corrected version; never merge based on V7 approval"
   }
 }
