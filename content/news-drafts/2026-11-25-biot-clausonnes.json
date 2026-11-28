@@ -1,0 +1,234 @@
+{
+  "cycleId": "caa-2026-11-25-biot-clausonnes",
+  "version": 1,
+  "workflowStatus": "preparing",
+  "plannedPublicationDate": "2026-11-25",
+  "sourceChannel": "outlook",
+  "sourceReceivedAt": "2026-11-24T13:44:09Z",
+  "sourceSubject": "prochain actualité",
+  "selectionMode": "direct editorial selection by authorized approver",
+  "choiceReceived": true,
+  "preparationAuthorized": true,
+  "publicationAuthorized": false,
+  "approvalReceived": false,
+  "approvalRequiredAfterChoice": true,
+  "replyEvidence": {
+    "status": "verified_in_sent_items",
+    "sentAt": "2026-11-24T13:55:00Z",
+    "ccCount": 0,
+    "bccCount": 0
+  },
+  "verifiedSourcesAt": "2026-11-24",
+  "sources": [
+    "https://www.cotedazuragency.com/fr/vente/biot-exclusivite-villa-en-position-dominante-avec-vue-panoramique-mer-et-village-87576604",
+    "https://www.georisques.gouv.fr"
+  ],
+  "listingReference": "87576604",
+  "factCheck": "Canonical production listing confirms exclusivity, domain, pool, 3 bedrooms, possible fourth/office, garage, DPE/GES, annual energy range, fees, 125 lots, no proceedings. No price added to supplied post.",
+  "seoCheck": "No duplicate Biot Clausonnes news in main; this specific exclusive listing is distinct from evergreen Biot article. Link to existing listing.",
+  "imageRights": {
+    "author": "Stephan Morawski",
+    "rightsConfirmed": true,
+    "license": "Author supplied own photos for this editorial use; no visible credit or caption at his explicit request.",
+    "assetStatus": "Six JPEG full-resolution derivatives rebuilt and SHA256 verified; two Git blobs created with matching Git object SHA and staged in the draft branch (04 salon, 06 cuisine). Four photos still pending; no review pack sent."
+  },
+  "assets": [
+    {
+      "sourceFilename": "Villa Provençale - Biot-47.png",
+      "plannedPath": "public/news/villa-biot-01-villa-piscine.jpg",
+      "originalMime": "image/png",
+      "width": 1887,
+      "height": 1060,
+      "bytes": 3510148,
+      "sha256": "7539c6d4098bb2b4958c6e224b546b33ac96e481db0e3050ac37ce4b176773fe",
+      "decoded": true,
+      "alt": {
+        "fr": "Villa provençale et piscine",
+        "en": "Provençal villa and swimming pool"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1887,
+        "height": 1060,
+        "sha256": "11e4eedbb05c5bb882f1d1af13575c813d09c184642de492fdc248193a99fba4",
+        "bytes": 704150,
+        "decoded": true,
+        "repositoryUploaded": false
+      }
+    },
+    {
+      "sourceFilename": "Villa Provençale - Biot-42.png",
+      "plannedPath": "public/news/villa-biot-02-piscine-panorama.jpg",
+      "originalMime": "image/png",
+      "width": 1887,
+      "height": 1060,
+      "bytes": 3654626,
+      "sha256": "01a7b14cd28e04cc4b7241f4a27f14d6348eea9d3c31ee9e07badcbe21812071",
+      "decoded": true,
+      "alt": {
+        "fr": "Piscine et panorama sur le littoral",
+        "en": "Pool and coastal panorama"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1887,
+        "height": 1060,
+        "sha256": "7923287131d4f954bd6861e89f2dffcf26b773b25045d1d4b454f7e18eba89cf",
+        "bytes": 742776,
+        "decoded": true,
+        "repositoryUploaded": false
+      }
+    },
+    {
+      "sourceFilename": "Villa Provençale - Biot-12.png",
+      "plannedPath": "public/news/villa-biot-03-terrasse.jpg",
+      "originalMime": "image/png",
+      "width": 1732,
+      "height": 1154,
+      "bytes": 3250926,
+      "sha256": "2e6e17e2d27394c197ecca9ee1b5a0c5e9431c0d11ffb9bef423d31425b318e1",
+      "decoded": true,
+      "alt": {
+        "fr": "Vue sur le jardin et la mer depuis la villa",
+        "en": "Garden and sea views from the villa"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1154,
+        "sha256": "ddbab04b1a7157a026b7563f6a4f82c1dd728b7479e7eebd1ed6e53b471ed748",
+        "bytes": 687649,
+        "decoded": true,
+        "repositoryUploaded": false
+      }
+    },
+    {
+      "sourceFilename": "Villa Provençale - Biot-15.png",
+      "plannedPath": "public/news/villa-biot-04-salon.jpg",
+      "originalMime": "image/png",
+      "width": 1732,
+      "height": 1155,
+      "bytes": 2031299,
+      "sha256": "27c158827c73a4eaa5a9638047a553c56a012a2e589dd342a7d653e250678c76",
+      "decoded": true,
+      "alt": {
+        "fr": "Salon de la villa",
+        "en": "Villa living room"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1155,
+        "sha256": "ac4bb472b305c766ee51033bf5f5e09725f978f44b8444a0dc3e938777ea27a0",
+        "bytes": 320635,
+        "decoded": true,
+        "repositoryUploaded": true,
+        "gitBlobSha": "5e432775d2fb754452a9d0acd8dd9fbc963fff09"
+      }
+    },
+    {
+      "sourceFilename": "Villa Provençale - Biot-18.png",
+      "plannedPath": "public/news/villa-biot-05-chambre.jpg",
+      "originalMime": "image/png",
+      "width": 1732,
+      "height": 1155,
+      "bytes": 1975371,
+      "sha256": "933ba0209dbdfa96e28e1cad6757a2e5f94556967ced80186ffd0ed6240d78d3",
+      "decoded": true,
+      "alt": {
+        "fr": "Chambre ouverte sur la terrasse",
+        "en": "Bedroom opening onto the terrace"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1732,
+        "height": 1155,
+        "sha256": "6e1f6f532eb3d39f09f53b81e0af21c41f3611fcdeab2053f5b9194accff0051",
+        "bytes": 298477,
+        "decoded": true,
+        "repositoryUploaded": false
+      }
+    },
+    {
+      "sourceFilename": "Villa Provençale - Biot R-3.png",
+      "plannedPath": "public/news/villa-biot-06-cuisine.jpg",
+      "originalMime": "image/png",
+      "width": 1225,
+      "height": 816,
+      "bytes": 1143650,
+      "sha256": "3a89b9a3831e2a408e1714448621138160074059a1af0731411764ece1f1b831",
+      "decoded": true,
+      "alt": {
+        "fr": "Cuisine de la villa",
+        "en": "Villa kitchen"
+      },
+      "optimized": {
+        "mime": "image/jpeg",
+        "width": 1225,
+        "height": 816,
+        "sha256": "0c3fcd58d622838df31c89e60e604a0c014d5eea77dd198338617f9570b06d69",
+        "bytes": 162802,
+        "decoded": true,
+        "repositoryUploaded": true,
+        "gitBlobSha": "ddd5c3e5adbe44a755ca99ac7b6c2198cff9c53d"
+      }
+    }
+  ],
+  "selectedArticle": {
+    "slug": "2026-11-25-biot-domaine-des-clausonnes",
+    "fr": {
+      "title": "EXCLUSIVITÉ | BIOT – DOMAINE DES CLAUSONNES",
+      "excerpt": "Charme provençal et vue panoramique spectaculaire sur la mer et le village, au sein d’un domaine fermé de prestige.",
+      "imageAlt": "Villa provençale et piscine",
+      "content": [
+        "Charme provençal et vue panoramique spectaculaire sur la mer et le village, au sein d’un domaine fermé de prestige.",
+        "◆ Vaste terrasse avec piscine",
+        "◆ 3 chambres avec salle de bains ou salle d’eau privative",
+        "◆ Possibilité d’une quatrième chambre ou d’un bureau",
+        "◆ Grand garage et nombreux stationnements",
+        "À quelques minutes de Sophia Antipolis, du littoral et de l’aéroport de Nice.",
+        "Découvrez l’art de vivre sur la Côte d’Azur.",
+        "Contactez-moi pour une visite privée.",
+        "Stephan Morawski | Côte d’Azur Agency",
+        "DPE : D (223) – GES : D (48).",
+        "Dépenses annuelles d’énergie estimées : 3 320–4 540 €.",
+        "Honoraires à la charge du vendeur.",
+        "125 lots – Aucune procédure en cours.",
+        "Les informations sur les risques auxquels ce bien est exposé sont disponibles sur www.georisques.gouv.fr."
+      ]
+    },
+    "en": {
+      "title": "EXCLUSIVE LISTING | BIOT – DOMAINE DES CLAUSONNES",
+      "excerpt": "Provençal charm and spectacular panoramic sea and village views in a prestigious gated domain.",
+      "imageAlt": "Provençal villa and swimming pool",
+      "content": [
+        "Provençal charm and spectacular panoramic sea and village views in a prestigious gated domain.",
+        "◆ Spacious terrace with swimming pool",
+        "◆ 3 bedrooms with private bathrooms",
+        "◆ Potential fourth bedroom or office",
+        "◆ Large garage and ample parking",
+        "📍 Minutes from Sophia Antipolis, the coast and Nice Airport.",
+        "✨ Experience the French Riviera lifestyle.",
+        "⟶ DM me for a private viewing.",
+        "Stephan Morawski | Côte d'Azur Agency",
+        "Energy rating: D (223) – GES: D (48).",
+        "Estimated annual energy costs: €3,320–€4,540.",
+        "Agency fees payable by the seller.",
+        "125 lots – No ongoing legal proceedings.",
+        "Information on the risks to which this property is exposed is available on www.georisques.gouv.fr."
+      ]
+    },
+    "linkedin": {
+      "fr": "✦ EXCLUSIVITÉ | BIOT – DOMAINE DES CLAUSONNES ✦\nCharme provençal et vue panoramique spectaculaire sur la mer et le village, au sein d’un domaine fermé de prestige.\n◆ Vaste terrasse avec piscine\n◆ 3 chambres avec salle de bains ou salle d’eau privative\n◆ Possibilité d’une quatrième chambre ou d’un bureau\n◆ Grand garage et nombreux stationnements\nÀ quelques minutes de Sophia Antipolis, du littoral et de l’aéroport de Nice.\nDécouvrez l’art de vivre sur la Côte d’Azur.\nContactez-moi pour une visite privée.\nStephan Morawski | Côte d’Azur Agency\nDPE : D (223) – GES : D (48).\nDépenses annuelles d’énergie estimées : 3 320–4 540 €.\nHonoraires à la charge du vendeur.\n125 lots – Aucune procédure en cours.\nLes informations sur les risques auxquels ce bien est exposé sont disponibles sur www.georisques.gouv.fr.\n#Biot #DomaineDesClausonnes #ExclusiveListing #SeaView #FrenchRiviera #LuxuryRealEstate #CotedAzurAgency",
+      "en": "✦ EXCLUSIVE LISTING | BIOT – DOMAINE DES CLAUSONNES ✦\nProvençal charm and spectacular panoramic sea and village views in a prestigious gated domain.\n◆ Spacious terrace with swimming pool\n◆ 3 bedrooms with private bathrooms\n◆ Potential fourth bedroom or office\n◆ Large garage and ample parking\n📍 Minutes from Sophia Antipolis, the coast and Nice Airport.\n✨ Experience the French Riviera lifestyle.\n⟶ DM me for a private viewing.\nStephan Morawski | Côte d'Azur Agency\nEnergy rating: D (223) – GES: D (48).\nEstimated annual energy costs: €3,320–€4,540.\nAgency fees payable by the seller.\n125 lots – No ongoing legal proceedings.\nInformation on the risks to which this property is exposed is available on www.georisques.gouv.fr.\n#Biot #DomaineDesClausonnes #ExclusiveListing #SeaView #FrenchRiviera #LuxuryRealEstate #CotedAzurAgency"
+    }
+  },
+  "idempotencyKey": "caa-2026-11-25-biot-clausonnes|preparing|v1",
+  "nextAction": "Complete transfer of four remaining verified JPEGs via an authorized supported binary upload; verify all six repository bytes, then activate isolated review, QA, and canonical Preview before sending V1 for approval. Do not merge or send competing selection.",
+  "technicalCheckpoint": {
+    "status": "preparing",
+    "date": "2026-11-24",
+    "gallery": "Opt-in no visible credit and no crop, preserves existing articles",
+    "binaryTransfer": "2026-11-25: chunked transfer successfully created two verified Git blobs. Further transfer was blocked by a tool safety check. No bypass or substitute. Preserve draft status."
+  }
+}
