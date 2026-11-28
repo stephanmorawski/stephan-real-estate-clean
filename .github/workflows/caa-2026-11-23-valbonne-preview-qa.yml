@@ -4,6 +4,7 @@ on:
     branches:
       - caa/editorial-2026-11-23-valbonne-noel-v1
       - caa/valbonne-v7-postproduction-card-fix
+      - caa/valbonne-v8-date-correction
     paths:
       - 'src/app/[lang]/actualites/page.js'
       - content/news/2026-11-23-valbonne-noel-maison-famille.json
@@ -55,8 +56,14 @@ jobs:
           const failures=[],warnings=[],observations=[];
           const dir='artifacts/valbonne-christmas-preview';
           fs.mkdirSync(dir,{recursive:true});
-          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==7||draft.selectedChoice!==3||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('wrong workflow identity, version, choice, or authorization state');
-          if(draft.workflowStatus!=='preparing')failures.push('unexpected state');
+          const correction=draft.postPublicationCorrection;
+          if(draft.cycleId!=='caa-2026-11-23-editorial'||draft.version!==7||draft.selectedChoice!==3)failures.push('wrong workflow identity, version or choice');
+          if(correction){
+            if(draft.workflowStatus!=='published'||draft.publicationAuthorized!==true||draft.approvalReceived!==true||correction.version!==8||correction.previousPublishedVersion!==7||correction.workflowStatus!=='preparing'||correction.publicationAuthorized!==false||correction.approvalReceived!==false)failures.push('V8 approval gate or V7 historical publication state invalid');
+            if(!article.fr.content.some(s=>s.includes('du 4 au 24 décembre 2026'))||!article.en.content.some(s=>s.includes('from 4 to 24 December 2026'))||!correction.linkedin.fr.includes('du 4 au 24 décembre 2026')||!correction.linkedin.en.includes('4–24 December 2026'))failures.push('V8 corrected dates absent in bilingual article or LinkedIn');
+            if(article.fr.content.some(s=>s.includes('du 1er au 24 décembre'))||article.en.content.some(s=>s.includes('from 1 to 24 December')))failures.push('V7 dates remain in V8 article');
+          }else if(draft.workflowStatus!=='preparing'||draft.publicationAuthorized!==false||draft.approvalReceived!==false)failures.push('unexpected draft state or authorization');
+
           if(article.slug!==slug||!article.fr?.title||!article.en?.title)failures.push('incomplete bilingual article');
           if(article.image!=='/news/2026-11-23-valbonne-noel-stephan-morawski.jpg'||draft.selectedArticle?.image?.path!==imagePath)failures.push('wrong archive photograph path');
           if(article.imageLayout!=='contain')failures.push('archive photograph must use contain layout');
@@ -70,7 +77,7 @@ jobs:
           const forbiddenEn=['On 19 November','The municipal schedule specifies that','These are future events','without suggesting that any particular property is currently available'];
           if(forbiddenFr.some(s=>article.fr.content.some(p=>p.includes(s))))failures.push('V6 French edit instructions not fully applied');
           if(forbiddenEn.some(s=>article.en.content.some(p=>p.includes(s))))failures.push('V6 English edit instructions not fully applied');
-          const frVisible=[article.fr.title,article.fr.excerpt,...article.fr.content,draft.selectedArticle.linkedin.fr];
+          const frVisible=[article.fr.title,article.fr.excerpt,...article.fr.content,(correction?.linkedin??draft.selectedArticle.linkedin).fr];
           if(frVisible.some(s=>s.includes(' :')))failures.push('V7 French colon spacing must be non-breaking');
           if(!article.fr.content.some(s=>s.includes('Nouveauté cette année\u00a0:')))failures.push('V7 specified colon may wrap separately');
           if(hash!==draft.selectedArticle.image.sha256||bin.length!==draft.selectedArticle.image.bytes)failures.push('image hash/size not matching draft');
@@ -101,6 +108,7 @@ jobs:
                     const ratio=img?.naturalWidth&&rect ? Math.abs(rect.width/rect.height-img.naturalWidth/img.naturalHeight):null;
                     return {
                       h1,title:document.title,
+                      correctedDate:document.body.innerText.includes(document.documentElement.lang==='fr'?'du 4 au 24 décembre 2026':'from 4 to 24 December 2026'),
                       lang:document.documentElement.lang,
                       description:document.querySelector('meta[name="description"]')?.content||'',
                       canonical:document.querySelector('link[rel="canonical"]')?.href||'',
@@ -127,6 +135,7 @@ jobs:
                   if(info.overflow>3)failures.push(key+' horizontal overflow '+info.overflow);
                   if(errors.length||failed.length)failures.push(key+' browser errors '+JSON.stringify({errors,failed}));
                   if(articlePage){
+                    if(correction&&!info.correctedDate)failures.push(key+' V8 corrected date missing in rendered page');
                     if(!info.h1.includes(lang==='fr'?'Valbonne':'Valbonne'))failures.push(key+' incorrect title');
                     if(!info.images.length||info.images.some(x=>!x.complete||x.naturalWidth!==expectedWidth||x.naturalHeight!==expectedHeight))failures.push(key+' JPEG missing/not decoded or dimensions differ from article/draft');
                     if(info.ratio!==null&&info.ratio>.04)failures.push(key+' cropped article image');
